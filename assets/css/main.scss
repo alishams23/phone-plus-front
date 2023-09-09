@@ -1,0 +1,44 @@
+
+.shadow-1 {
+    box-shadow: rgba(50, 50, 93, 0.05) 0px 50px 100px -20px, rgba(0, 0, 0, 0.1) 0px 30px 60px -30px !important;
+}
+
+.shadow-2 {
+    box-shadow: rgba(50, 50, 93, 0.05) 0px 25px 40px -20px, rgba(0, 0, 0, 0.17) 0px 15px 30px -10px !important;
+}
+.shadow-3 {
+    box-shadow: rgba(50, 50, 93, 0.05) 0px 25px 40px -20px, rgba(0, 0, 0, 0.05) 0px 15px 30px -10px !important;
+}
+
+.bg-glass{
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.909);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(5px);
+}
+
+.bg-glass-red{
+    background: rgba(255, 214, 214, 0.627);
+    
+   
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+   
+}
+
+.bg-glass-black{
+    background: rgba(218, 214, 255, 0.627);
+    
+   
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+   
+}
+
+.rtl {
+    direction: rtl;
+}
+
+.ltr {
+    direction: ltr;
+}
