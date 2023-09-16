@@ -153,35 +153,29 @@
           نظرات
         </div>
         <figure class="mx-auto rtl  border-t pb-10" v-for="item in 3">
-          <p class="sr-only">5 out of 5 stars</p>
+          <p class="sr-only">پنچ ستاره</p>
           <div class="flex gap-x-1 text-indigo-600">
            
           </div>
           <blockquote class="mt-10 text-lg leading-8 tracking-tight text-gray-900  sm:leading-9">
-            <p>“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”</p>
+            <p>“این ایفون ۱۳ پرو واقعاً عالیه! کیفیت ساختش بی‌نظیره و دوربینش به شدت توانمند. واقعاً خوشحالم که این محصول رو انتخاب کردم. ممنون از شما برای ارائه این محصول فوق‌العاده.”</p>
           </blockquote>
           <figcaption class="mt-10 flex items-center gap-x-6">
-            <img class="h-12 w-12 rounded-full bg-gray-200"  alt="" />
+            <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" class="h-12 w-12 rounded-full bg-gray-200"  alt="" />
             <div class="text-sm leading-6">
-              <div class="font-semibold text-gray-900">Judith Black</div>
-              <div class="mt-0.5 text-gray-600">CEO of Workcation</div>
+              <div class="font-semibold text-gray-900">علی شمس</div>
             </div>
           </figcaption>
         </figure>
         <div class="flex items-start space-x-4 mt-10">
-          <div class="flex-shrink-0">
-            <img class="inline-block h-10 w-10 rounded-full bg-gray-200"
-             
-              alt="" />
-          </div>
           <div class="min-w-0 flex-1">
             <form action="#" class="relative">
               <div
                 class="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
-                <label for="comment" class="sr-only ">Add your comment</label>
+                <label for="comment" class="sr-only ">نظر خود را بنویسید</label>
                 <textarea rows="3" name="comment" id="comment"
-                  class="block w-full p-3  resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  placeholder="Add your comment..." />
+                  class="block w-full p-3 text-right resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                  placeholder="... نظر خود را بنویسید " />
   
                 <!-- Spacer element to match the height of the toolbar -->
                 <div class="py-2" aria-hidden="true">
@@ -198,7 +192,7 @@
                 </div>
                 <div class="flex-shrink-0">
                   <button type="submit"
-                    class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Post</button>
+                    class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ارسال</button>
                 </div>
               </div>
             </form>
@@ -248,7 +242,7 @@ const product = {
     {
       id: 1,
       name: 'Angled view',
-      src: '/images/4.jpg',
+      src: '/images/2.jpeg',
       alt: 'Angled front view with bag zipped and handles upright.',
     },
     // More images...
