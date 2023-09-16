@@ -1,18 +1,4 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/typography'),
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
--->
+
 <template>
   <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -20,7 +6,7 @@
         <!-- Image gallery -->
         <TabGroup as="div" class="flex flex-col-reverse">
           <!-- Image selector -->
-          <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+          <div class="mx-auto mt-6  w-full max-w-2xl lg:max-w-none">
             <TabList class="grid grid-cols-4 gap-6">
               <Tab v-for="image in product.images" :key="image.id"
                 class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
@@ -38,7 +24,7 @@
 
           <TabPanels class="aspect-h-1 aspect-w-1 w-full">
             <TabPanel v-for="image in product.images" :key="image.id" class="h-[500px]">
-              <img :src="image.src" :alt="image.alt" class="h-full object-center sm:rounded-lg" />
+              <img :src="image.src" :alt="image.alt" class=" h-full  object-cover sm:rounded-lg" />
             </TabPanel>
 
           </TabPanels>
