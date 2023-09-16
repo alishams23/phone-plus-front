@@ -33,7 +33,7 @@
         </defs>
       </svg>
     </div>
-    vsvds
+     
 
   </div>
 </template>
