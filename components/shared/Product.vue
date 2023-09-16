@@ -1,5 +1,5 @@
 <template>
-    <div class=" my-10 mx-2  rounded-xl bg-white  px-5 w-64">
+    <nuxt-link to="/product/1/" class=" my-10 mx-2  rounded-xl bg-white  px-5 w-64">
         <div class="relative pb-5">
             <div class="relative shadow-3  h-72 w-full overflow-hidden rounded-lg">
 
@@ -23,7 +23,7 @@
             </div>
         </div>
 
-    </div>
+    </nuxt-link>
 </template>
   
 <script >
