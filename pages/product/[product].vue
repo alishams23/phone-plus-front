@@ -176,15 +176,14 @@
     `,
     details: [
       {
-        name: 'Features',
+        name: 'امکانات',
         items: [
-          'Multiple strap configurations',
-          'Spacious interior with top zip',
-          'Leather handle and tabs',
-          'Interior dividers',
-          'Stainless strap loops',
-          'Double stitched construction',
-          'Water-resistant',
+          'فناوری صفحه‌نمایش : Super Retina XDR OLED',
+          'اندازه : 6.1',
+          'رزولوشن عکس :12 مگاپیکسل',
+          'نسخه سیستم عامل : iOS 15',
+          'اقلام همراه :دفترچه‌ راهنما، کابل Lightning',
+
         ],
       },
       // More sections...
