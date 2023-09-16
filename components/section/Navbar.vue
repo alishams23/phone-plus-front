@@ -103,17 +103,7 @@
               <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                 <!-- Currency selector -->
                 <form>
-                  <div class="inline-block">
-                    <label for="mobile-currency" class="sr-only">Currency</label>
-                    <div class="group relative -ml-2 rounded-md border-transparent focus-within:ring-2 focus-within:ring-white">
-                      <select id="mobile-currency" name="currency" class="flex items-center rounded-md border-transparent bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-gray-700 focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-gray-800">
-                        <option v-for="currency in currencies" :key="currency">{{ currency }}</option>
-                      </select>
-                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center">
-                        <ChevronDownIcon class="h-5 w-5 text-gray-500" aria-hidden="true" />
-                      </div>
-                    </div>
-                  </div>
+               
                 </form>
               </div>
             </DialogPanel>
@@ -130,12 +120,12 @@
         <div class="  ">
           <div class="  px-4 sm:px-6 lg:px-8">
             <div class="">
-              <div class="flex h-16 items-center justify-between flex-row-reverse">
+              <div class="flex h-16 items-center px-3 justify-between md:flex-row-reverse flex-row">
                 <!-- Logo (lg+) -->
                 <div class="hidden lg:flex lg:items-center">
                   <a href="#" class="ml-5">
-                    <span class="sr-only">Your Company</span>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                    <span class="sr-only">phone plus</span>
+                    <img class="h-8 w-auto" src="/images/logo1.jpeg" alt="" />
                   </a>
                 </div>
 
@@ -221,8 +211,8 @@
 
                 <!-- Logo (lg-) -->
                 <a href="#" class="lg:hidden">
-                  <span class="sr-only">Your Company</span>
-                  <img src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />
+                  <span class="sr-only">phone plus</span>
+                  <!-- <img src="/images/logo1.jpeg" alt="" class="h-8 w-auto" /> -->
                 </a>
 
                 <div class="flex flex-1 items-center justify-start">
@@ -281,9 +271,9 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingCartIcon, UserIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
-const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
+
+
 const navigation = {
   categories: [
 
