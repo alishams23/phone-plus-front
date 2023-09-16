@@ -13,12 +13,12 @@
   ```
 -->
 <template>
-    <div class="bg-white">
-      <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h1>
+    <div class="bg-white ">
+      <div class="mx-auto max-w-2xl px-4 pb-24 pt-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">سبد خرید</h1>
         <form class="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
           <section aria-labelledby="cart-heading" class="lg:col-span-7">
-            <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
+            <h2 id="cart-heading" class="sr-only">محصولات داخل سبد خرید</h2>
   
             <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
               <li v-for="(product, productIdx) in products" :key="product.id" class="flex py-6 sm:py-10">
@@ -42,7 +42,7 @@
                     </div>
   
                     <div class="mt-4 sm:mt-0 sm:pr-9">
-                      <label :for="`quantity-${productIdx}`" class="sr-only">Quantity, {{ product.name }}</label>
+                      <label :for="`quantity-${productIdx}`" class="sr-only">تعداد, {{ product.name }}</label>
                       <select :id="`quantity-${productIdx}`" :name="`quantity-${productIdx}`" class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -56,7 +56,7 @@
   
                       <div class="absolute right-0 top-0">
                         <button type="button" class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500">
-                          <span class="sr-only">Remove</span>
+                          <span class="sr-only">حدف</span>
                           <XMarkIcon class="h-5 w-5" aria-hidden="true" />
                         </button>
                       </div>
@@ -66,7 +66,7 @@
                   <p class="mt-4 flex space-x-2 text-sm text-gray-700">
                     <CheckIcon v-if="product.inStock" class="h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
                     <ClockIcon v-else class="h-5 w-5 flex-shrink-0 text-gray-300" aria-hidden="true" />
-                    <span>{{ product.inStock ? 'In stock' : `Ships in ${product.leadTime}` }}</span>
+                    <span>{{ product.inStock ? 'موجود در انبار' : `Ships in ${product.leadTime}` }}</span>
                   </p>
                 </div>
               </li>
@@ -75,36 +75,36 @@
   
           <!-- Order summary -->
           <section aria-labelledby="summary-heading" class="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
-            <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
+            <h2 id="summary-heading" class="text-lg font-medium text-gray-900">قیمت سفارشات</h2>
   
             <dl class="mt-6 space-y-4">
               <div class="flex items-center justify-between">
-                <dt class="text-sm text-gray-600">Subtotal</dt>
-                <dd class="text-sm font-medium text-gray-900">$99.00</dd>
+                <dt class="text-sm text-gray-600">مجموع قیمت کالاها</dt>
+                <dd class="text-sm font-medium text-gray-900">تومان 270,000,000  </dd>
               </div>
               <div class="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt class="flex items-center text-sm text-gray-600">
-                  <span>Shipping estimate</span>
+                  <span>هزینه ارسال</span>
                   <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                    <span class="sr-only">Learn more about how shipping is calculated</span>
+                    <span class="sr-only">در مورد هزینه ارسال بیشتر بدانید</span>
                     <QuestionMarkCircleIcon class="h-5 w-5" aria-hidden="true" />
                   </a>
                 </dt>
-                <dd class="text-sm font-medium text-gray-900">$5.00</dd>
+                <dd class="text-sm font-medium text-gray-900" > تومان 30,000  </dd>
               </div>
               <div class="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt class="flex text-sm text-gray-600">
-                  <span>Tax estimate</span>
+                  <span>مالیات</span>
                   <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                    <span class="sr-only">Learn more about how tax is calculated</span>
+                    <span class="sr-only">در مورد محاسبه هزینه مالیات بیشتر بدانید</span>
                     <QuestionMarkCircleIcon class="h-5 w-5" aria-hidden="true" />
                   </a>
                 </dt>
-                <dd class="text-sm font-medium text-gray-900">$8.32</dd>
+                <dd class="text-sm font-medium text-gray-900">تومان 24,300,000  </dd>
               </div>
               <div class="flex items-center justify-between border-t border-gray-200 pt-4">
-                <dt class="text-base font-medium text-gray-900">Order total</dt>
-                <dd class="text-base font-medium text-gray-900">$112.32</dd>
+                <dt class="text-base font-medium text-gray-900">مبلغ قابل پرداخت</dt>
+                <dd class="text-base font-medium text-gray-900">تومان 294,330,000  </dd>
               </div>
             </dl>
   
@@ -126,36 +126,36 @@ components:{ CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon },
     products : [
     {
       id: 1,
-      name: 'Basic Tee',
+      name: 'iPhone 13 Pro گوشی موبایل اپل مدل ',
       href: '#',
-      price: '$32.00',
-      color: 'Sienna',
+      price: '85,000,000 تومان',
+      color: 'طلایی',
       inStock: true,
-      size: 'Large',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg',
-      imageAlt: "Front of men's Basic Tee in sienna.",
+      size: '256',
+      imageSrc: '/images/3.jpg',
+      imageAlt: "iPhone 13 Pro",
     },
     {
       id: 2,
-      name: 'Basic Tee',
+      name: 'MacBook Pro MNWE3 2023 لپ تاپ 16.2 اینچی اپل مدل ',
       href: '#',
-      price: '$32.00',
-      color: 'Black',
+      price: '120,000,000 تومان',
+      color: 'خاکستری',
       inStock: false,
-      leadTime: '3–4 weeks',
-      size: 'Large',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-02.jpg',
-      imageAlt: "Front of men's Basic Tee in black.",
+      leadTime: '3–4 روز',
+      size: '512',
+      imageSrc: '/images/4.jpg',
+      imageAlt: "MacBook Pro MNWE3 2023",
     },
     {
       id: 3,
-      name: 'Nomad Tumbler',
+      name: 'iPhone 14 گوشی موبایل اپل مدل ',
       href: '#',
-      price: '$35.00',
-      color: 'White',
+      price: '65,000,000 تومان',
+      color: 'خاکستری',
       inStock: true,
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg',
-      imageAlt: 'Insulated bottle with white base and black snap lid.',
+      imageSrc: '/images/5.jpg',
+      imageAlt: 'iPhone 14',
     },
   ]
   }),mounted(){
