@@ -75,7 +75,6 @@ const navigation = {
   ],
   social: [
 
-      
     {
       name: 'Instagram',
       href: '#',
