@@ -1,21 +1,8 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
+
 <template>
     <div class="bg-white ">
-      <div class="mx-auto max-w-2xl px-4 pb-24 pt-24 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">سبد خرید</h1>
+      <div class="mx-auto max-w-2xl px-4 pb-24 pt-24 sm:px-6 lg:max-w-7xl lg:px-8 text-right">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl ">سبد خرید</h1>
         <form class="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
           <section aria-labelledby="cart-heading" class="lg:col-span-7">
             <h2 id="cart-heading" class="sr-only">محصولات داخل سبد خرید</h2>
@@ -63,11 +50,7 @@
                     </div>
                   </div>
   
-                  <p class="mt-4 flex space-x-2 text-sm text-gray-700">
-                    <CheckIcon v-if="product.inStock" class="h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
-                    <ClockIcon v-else class="h-5 w-5 flex-shrink-0 text-gray-300" aria-hidden="true" />
-                    <span>{{ product.inStock ? 'موجود در انبار' : `Ships in ${product.leadTime}` }}</span>
-                  </p>
+                
                 </div>
               </li>
             </ul>
@@ -109,7 +92,7 @@
             </dl>
   
             <div class="mt-6">
-              <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>
+              <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">ثبت سفارش</button>
             </div>
           </section>
         </form>
@@ -159,7 +142,7 @@ components:{ CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon },
     },
   ]
   }),mounted(){
-    require('@tailwindcss/forms')
+   
 
   }
 }

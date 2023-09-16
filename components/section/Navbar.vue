@@ -1,17 +1,4 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
+
 <template>
   <div class="bg-glass py-2 fixed   w-full top-0" style="z-index: 9999999;">
     <!-- Mobile menu -->
@@ -122,12 +109,12 @@
             <div class="">
               <div class="flex h-16 items-center px-3 justify-between md:flex-row-reverse flex-row">
                 <!-- Logo (lg+) -->
-                <div class="hidden lg:flex lg:items-center">
+                <nuxt-link to="/" class="hidden lg:flex lg:items-center">
                   <a href="#" class="ml-5">
                     <span class="sr-only">phone plus</span>
                     <img class="h-8 w-auto" src="/images/logo1.jpeg" alt="" />
                   </a>
-                </div>
+                </nuxt-link>
 
                 <div class="hidden h-full lg:flex">
                   <!-- Mega menus -->
@@ -210,12 +197,12 @@
                 </div>
 
                 <!-- Logo (lg-) -->
-                <a href="#" class="lg:hidden">
+                <a to="/"  href="#" class="lg:hidden">
                   <span class="sr-only">phone plus</span>
                   <!-- <img src="/images/logo1.jpeg" alt="" class="h-8 w-auto" /> -->
                 </a>
 
-                <div class="flex flex-1 items-center justify-start">
+                <div class="flex flex-1 items-center justify-end md:justify-start">
                   <div class="flex items-center lg:ml-8">
                     <div class="flex space-x-8">
                       <div class="hidden lg:flex">
@@ -233,15 +220,14 @@
                       </div>
                     </div>
 
-                    <span class="mx-4 h-6 w-px bg-gray-200 lg:mx-6" aria-hidden="true" />
+                    <span class="mx-4 h-6 w-px bg-gray-200 lg:mx-6" aria-hidden="true"  />
 
-                    <div class="flow-root">
+                    <nuxt-link to="/order/1/" class="flow-root">
                       <a href="#" class="group -m-2 flex items-center p-2">
                         <ShoppingCartIcon class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
-                        <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                        <span class="sr-only">items in cart, view bag</span>
+
                       </a>
-                    </div>
+                    </nuxt-link>
                   </div>
                 </div>
               </div>

@@ -35,54 +35,68 @@
       
     </div>
     </template>
-    
     <script>
-  import Product from "@/components/shared/Product.vue"
-  export default {
-    components:{Product},  data: () => ({
-      data:[
-        {
-          image:'/images/1.webp',
-          title : 'ایفون ۱۴'
-        },
-        {
-          image:'/images/2.jpeg',
-          title : 'ایفون ۱۴'
-        },
-        {
-          image:'/images/6.jpg',
-          title : 'ایرپاد'
-        },
-        {
-          image:'/images/4.jpg',
-          title : 'مک بوک' 
-        },
-        {
-          image:'/images/5.jpg',
-          title : 'ایفون ۱۴'
-        },
-      ],
-      // carousel settings
-      settings: {
-        itemsToShow: 1,
-        snapAlign: 'center',
-      },
-      // breakpoints are mobile first
-      // any settings not specified will fallback to the carousel settings
-      breakpoints: {
-        // 700px and up
-        700: {
-          itemsToShow: 3.5,
+    import Product from "@/components/shared/Product.vue"
+    export default {
+      components: { Product }, data: () => ({
+        data: [
+          {
+            image: '/images/1.webp',
+            title: 'ایفون ۱۴'
+            , price: 1000000
+            , percent: 10
+          },
+          {
+            image: '/images/2.jpeg',
+            title: 'ایفون ۱۴'
+            , price: 1000000
+            , percent: 10
+    
+          },
+         
+          {
+            image: '/images/4.jpg',
+            title: 'مک بوک'
+            , price: 1000000
+            , percent: 10
+    
+          },
+          {
+            image: '/images/2.jpeg',
+            title: 'ایفون ۱۴'
+            , price: 1000000
+            , percent: 10
+    
+          },
+          {
+            image: '/images/5.jpg',
+            title: 'ایفون ۱۴'
+            , price: 1000000
+            , percent: 10
+    
+          },
+        ],
+        // carousel settings
+        settings: {
+          itemsToShow: 1,
           snapAlign: 'center',
         },
-        // 1024 and up
-        1024: {
-          itemsToShow: 5,
-          snapAlign: 'start',
+        // breakpoints are mobile first
+        // any settings not specified will fallback to the carousel settings
+        breakpoints: {
+          // 700px and up
+          700: {
+            itemsToShow: 3.5,
+            snapAlign: 'center',
+          },
+          // 1024 and up
+          1024: {
+            itemsToShow: 5,
+            snapAlign: 'start',
+          },
         },
-      },
-    }),
-  }
+      }),
+    }
     
-  
+    
     </script>

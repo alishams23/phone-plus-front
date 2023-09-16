@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true }
   ,
-  css:['~/assets/css/main.scss',],
+  css:['~/assets/css/main.scss','~/assets/css/WebFonts/css/fontiran.css',],
   modules: [
     '@nuxtjs/tailwindcss',
     'vue3-carousel-nuxt'
