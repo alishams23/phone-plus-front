@@ -8,12 +8,12 @@
       <FeatureSection />
 
     </div>
-    <div>
+    <div class="mx-2">
       <BestProduct />
 
     </div>
-    <Categories />
-    <div>
+    <Categories class="mx-2" />
+    <div class="mx-2">
       <Discount />
 
     </div>
