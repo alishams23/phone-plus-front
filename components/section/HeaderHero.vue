@@ -16,7 +16,7 @@
                 <div class=" bg-gray-200 rounded-xl">
                 <img src="/images/header3.jpeg" class="h-full rounded-xl w-full object-cover cover" alt="">
 
-                </div>
+                </div>  
             </div>
 
     </div>

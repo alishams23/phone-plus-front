@@ -10,7 +10,6 @@
           <a href="#" class="focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true" />
             <p class="text-sm font-medium text-gray-900">{{ person.name }}</p>
-            <p class="truncate text-sm text-gray-500">{{ person.role }}</p>
           </a>
         </div>
       </div>
@@ -28,7 +27,7 @@ import {
 } from '@heroicons/vue/24/outline'
   const people = [
     {
-      name: 'Leslie Alexander',
+      name: 'اپل آیدی',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: ClockIcon,
@@ -36,7 +35,7 @@ import {
     iconBackground: 'bg-teal-50',
     },
     {
-      name: 'Leslie Alexander',
+      name: 'گوشی هوشمند',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: CheckBadgeIcon,
@@ -44,7 +43,7 @@ import {
     iconBackground: 'bg-purple-50',
     },
     {
-      name: 'Leslie Alexander',
+      name: 'ساعت هوشمند',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: UsersIcon,
@@ -52,7 +51,7 @@ import {
     iconBackground: 'bg-sky-50',
     },
     {
-      name: 'Leslie Alexander',
+      name: 'لپ‌تاپ و الترابوک',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
     icon: BanknotesIcon,
@@ -61,7 +60,7 @@ import {
     iconBackground: 'bg-yellow-50',
     },
     {
-      name: 'Leslie Alexander',
+      name: 'کیف و کاور گوشی',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: ReceiptRefundIcon,
@@ -69,7 +68,7 @@ import {
     iconBackground: 'bg-rose-50',
     },
     {
-      name: 'Leslie Alexander',
+      name: 'هدفون و هدست',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: AcademicCapIcon,

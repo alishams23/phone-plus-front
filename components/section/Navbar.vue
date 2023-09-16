@@ -290,8 +290,8 @@ const navigation = {
     {
       name: 'دسته بندی',
       featured: [
-        { name: 'Casual', href: '#' },
-        { name: 'Boxers', href: '#' },
+        { name: 'هدفون و هدست', href: '#' },
+        { name: 'ساعت هوشمند', href: '#' },
         { name: 'Outdoor', href: '#' },
       ],
       collection: [
