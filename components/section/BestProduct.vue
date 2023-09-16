@@ -103,3 +103,8 @@ export default {
 
 
 </script>
+
+<style>
+.carousel__prev, .carousel__next {
+  color: rgb(144, 144, 144);
+}</style>
