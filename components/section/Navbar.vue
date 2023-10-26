@@ -240,9 +240,9 @@
   <div class="fixed bottom-0 w-full py-2"  style="z-index: 9999999;">
    <div class=" flex justify-center bg-glass-3 mx-6">
 
-    <Navigation />
    </div>
 </div>
+<Navigation />
 
 </template>
 
