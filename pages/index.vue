@@ -6,7 +6,7 @@
     </div>
     <div>
       <FeatureSection />
-<Test/>
+
     </div>
     <div class="mx-2">
       <BestProduct />
@@ -34,9 +34,9 @@ import MainBlog from "@/components/section/MainBlog.vue"
 import Advertisement from "@/components/section/Advertisement.vue"
 import Advertisement2 from "@/components/section/Advertisement2.vue"
 import Categories from "@/components/section/Categories.vue"
-import Test from "@/components/section/Test.vue"
+
 export default {
-  components: { Categories,BestProduct,Discount, HeaderHero, FeatureSection, PromoSection, MainBlog, Advertisement, Advertisement2,Test },
+  components: { Categories,BestProduct,Discount, HeaderHero, FeatureSection, PromoSection, MainBlog, Advertisement, Advertisement2 },
   head() {
     return {
       // title: "ثبت نام"
