@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   css:['~/assets/css/main.scss','~/assets/css/WebFonts/css/fontiran.css',],
   modules: [
     '@nuxtjs/tailwindcss',
-    'vue3-carousel-nuxt'
+    'vue3-carousel-nuxt',
+    'nuxt-swiper'
   ],
   
   devServer: {
