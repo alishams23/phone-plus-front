@@ -14,7 +14,7 @@
     </div>
 
         <div class="flex items-center bg-glass-3 px-8 rounded-full justify-center mx-auto">
-            <button data-tooltip-target="tooltip-microphone" type="button" class="p-2.5 transform hover:-translate-y-3  duration-500  group bg-indigo-600 rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            <button data-tooltip-target="tooltip-microphone" type="button" class="p-2.5 transform hover:-translate-y-3  duration-500  group bg-indigo-800 rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
                <HomeIcon class=" w-5 text-white" />
                 <span class="sr-only">Mute microphone</span>
             </button>
