@@ -1,7 +1,7 @@
 
 <template>
-  <div class="bg-glass py-2 fixed   w-full top-0" style="z-index: 9999999;">
-    <!-- Mobile menu -->
+  <!-- <div class="bg-glass py-2 fixed   w-full top-0" style="z-index: 9999999;">
+    
     <TransitionRoot as="template" :show="open">
       <Dialog as="div" class="relative z-40 lg:hidden" @close="open = false">
         <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
@@ -18,7 +18,7 @@
                 </button>
               </div>
 
-              <!-- Links -->
+              
               <TabGroup as="div" class="mt-2">
                 <div class="border-b border-gray-200">
                   <TabList class="-mb-px flex space-x-8 px-4">
@@ -88,7 +88,7 @@
               </div>
 
               <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-                <!-- Currency selector -->
+      
                 <form>
                
                 </form>
@@ -101,14 +101,11 @@
 
     <header class="relative">
       <nav aria-label="Top">
-        <!-- Top navigation -->
-      
-        <!-- Secondary navigation -->
+    
         <div class="  ">
           <div class="  px-4 sm:px-6 lg:px-8">
             <div class="">
               <div class="flex h-16 items-center px-3 justify-between md:flex-row-reverse flex-row">
-                <!-- Logo (lg+) -->
                 <nuxt-link to="/" class="hidden lg:flex lg:items-center">
                   <a href="#" class="ml-5">
                     <span class="sr-only">phone plus</span>
@@ -117,7 +114,6 @@
                 </nuxt-link>
 
                 <div class="hidden h-full lg:flex">
-                  <!-- Mega menus -->
                   <PopoverGroup class="ml-8">
                     <div class="flex h-full justify-center space-x-8">
                       <Popover v-for="(category, categoryIdx) in navigation.categories" :key="category.name" class="flex" v-slot="{ open }">
@@ -127,7 +123,6 @@
 
                         <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100" leave-to-class="opacity-0">
                           <PopoverPanel class="absolute inset-x-0 top-full text-gray-500 sm:text-sm">
-                            <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
                             <div class="absolute inset-0 top-1/2 bg-glass shadow" aria-hidden="true" />
 
                             <div class="relative bg-white">
@@ -182,24 +177,23 @@
                   </PopoverGroup>
                 </div>
 
-                <!-- Mobile menu and search (lg-) -->
+               
                 <div class="flex flex-1 items-center lg:hidden">
                   <button type="button" class="-ml-2 rounded-md bg-glass p-2 text-gray-400" @click="open = true">
                     <span class="sr-only">Open menu</span>
                     <Bars3Icon class="h-6 w-6" aria-hidden="true" />
                   </button>
 
-                  <!-- Search -->
+               
                   <a href="#" class="ml-2 p-2 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Search</span>
                     <MagnifyingGlassIcon class="h-6 w-6" aria-hidden="true" />
                   </a>
                 </div>
 
-                <!-- Logo (lg-) -->
+              
                 <a to="/"  href="#" class="lg:hidden">
                   <span class="sr-only">phone plus</span>
-                  <!-- <img src="/images/logo1.jpeg" alt="" class="h-8 w-auto" /> -->
                 </a>
 
                 <div class="flex flex-1 items-center justify-end md:justify-start">
@@ -236,7 +230,7 @@
         </div>
       </nav>
     </header>
-  </div>
+  </div> -->
   <div class="fixed bottom-0 w-full py-2"  style="z-index: 9999999;">
    <div class=" flex justify-center bg-glass-3 mx-6">
 

@@ -11,7 +11,7 @@
       <ChatBubbleLeftRightIcon class="w-6" />
       
     </div>
-      <div class="col-span-2 mx-auto items-center bg-glass-3 rounded-full px-3 justify-center hidden  text-indigo-600 md:flex">
+      <div class="col-span-2 mx-auto items-center bg-glass-3 rounded-full px-3 justify-center hidden  text-white md:flex">
         <form>
           <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -22,7 +22,7 @@
               </svg>
             </div>
             <input type="search" v-model="inputValue" @focus="onFocus" @blur="onBlur" id="default-search"
-              class="w-full p-4 pl-10 text-sm text-indigo-600 rounded-full bg-transparent focus:border-transparent placeholder-indigo-600  border-transparent"
+              class="w-full p-4 pl-10 text-sm text-white rounded-full bg-transparent focus:border-transparent placeholder-white  border-transparent"
               placeholder="Search..." required>
           </div>
         </form>
@@ -68,7 +68,7 @@
           </div>
           <div class="flex  my-4">
             <div v-for="page in pages" :key="page.name"
-              class="rounded-full mx-1 duration-500 hover:bg-indigo-600 text-indigo-900 hover:text-white hover:border-indigo-600    py-4">
+              class=" text-white rounded-full mx-1 duration-500 hover:bg-indigo-600 text-indigo-900 hover:text-white hover:border-indigo-600    py-4">
               <a :href="page.href" class="-m-2 block px-6 text-sm font-medium ">{{ page.name }}</a>
             </div>
           </div>
