@@ -1,6 +1,6 @@
 <template>
   <!-- <Blog /> -->
-  <div class="">
+  <div class="rounded-b-[50px] isolate relative isolate overflow-hidden">
     <HeaderHero2 />
   </div>
   <div class="container mx-auto">

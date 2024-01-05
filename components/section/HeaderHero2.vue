@@ -1,7 +1,5 @@
 <template>
-  <div class="bg-gray-900 rounded-b-[50px] ">
-
-
+  <div class="bg-gray-900  ">
     <div class=" relative isolate overflow-hidden pt-14">
       <img
         src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
@@ -12,28 +10,21 @@
           style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
       </div>
       <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-        <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-          <div
-            class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
-            Announcing our next round of funding. <a href="#" class="font-semibold text-white"><span
-                class="absolute inset-0" aria-hidden="true" />Read more <span aria-hidden="true">&rarr;</span></a>
-          </div>
+        <div class="text-center">
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Data to enrich your online business</h1>
         </div>
-
-
+        <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+          
+        </div>
         <form>
           <div class="flex">
-            <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your
-              Email</label>
-
               <Menu as="div" class="relative inline-block text-left">
                 <div>
-                  <MenuButton class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
-                    Options
-                    <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+                  <MenuButton class="flex-shrink-0 z-10 inline-flex items-center bg-glass-3 py-4 px-4 text-sm font-medium text-center text-indigo-900 bg-indigo-100 rounded-s-[20px] hover:bg-indigo-200  dark:bg-indigo-700 dark:hover:bg-indigo-600  dark:text-white ">
+                     دسته‌ها
+                    <ChevronDownIcon class="-mr-1 h-5 w-5 text-indigo-400" aria-hidden="true" />
                   </MenuButton>
                 </div>
-            
                 <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                   <MenuItems class="absolute text-right text-white right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-black shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div class="py-1">
@@ -41,22 +32,21 @@
                         <a href="#" :class="[active ? 'bg-gray-900 ' : '', 'block px-4 py-2 text-sm']">محصولات </a>
                       </MenuItem>
                       <MenuItem v-slot="{ active }">
-                        <a href="#" :class="[active ? 'bg-gray-900' : '', 'block px-4 py-2 text-sm']">محصولات غیرفیزیکی</a>
+                        <a href="#" :class="[active ? 'bg-gray-900' : '', 'block px-4 py-2 text-sm']">خدمات</a>
                       </MenuItem>
                       <MenuItem v-slot="{ active }">
                         <a href="#" :class="[active ? 'bg-gray-900' : '', 'block px-4 py-2 text-sm']">وبلاگ</a>
                       </MenuItem>
-                      
                     </div>
                   </MenuItems>
                 </transition>
               </Menu>
             <div class="relative w-full">
               <input type="search" id="search-dropdown"
-                class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-                placeholder="Search Mockups, Logos, Design Templates..." required>
+                class="block p-4 w-full z-20 text-sm text-indigo-900 bg-glass-3 bg-indigo-500 rounded-e-[20px] "
+                placeholder="جستجو محصولات، خدمات، وبلاگ" required>
               <button type="submit"
-                class="absolute  top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="absolute  top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700 bg-glass-3 rounded-e-[20px]">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 20 20">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -67,21 +57,6 @@
             </div>
           </div>
         </form>
-
-
-
-        <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Data to enrich your online business</h1>
-          <p class="mt-6 text-lg leading-8 text-gray-300">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
-          <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="#"
-              class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Get
-              started</a>
-            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn more <span
-                aria-hidden="true">→</span></a>
-        </div>
-      </div>
     </div>
     <div
       class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
