@@ -5,17 +5,14 @@
       class="col-span-1 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
       <div class=" block px-1 text-sm font-bold ">
         پشتیبانی
-
-        
       </div>
       <ChatBubbleLeftRightIcon class="w-6" />
-      
     </div>
       <div class="col-span-2 mx-auto items-center bg-glass-3 rounded-full px-3 justify-center hidden  text-white md:flex">
         <form>
           <div class="relative">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg class="w-4 h-4 text-indigo-600 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+            <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg class="w-4 h-4 text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -31,7 +28,7 @@
       <div class="col-span-6 bg-glass-3 px-8 rounded-full   flex  justify-between">
           <div class="flex items-center  px-8 rounded-full ">
             <button data-tooltip-target="tooltip-microphone" type="button"
-              class="p-2.5 transform hover:-translate-y-3  duration-500  group bg-indigo-800 rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+              class="p-2.5 transform hover:-translate-y-3  duration-500  group bg-blue-700 rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
               <HomeIcon class=" w-5 text-white" />
               <span class="sr-only">Mute microphone</span>
             </button>

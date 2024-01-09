@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-900  ">
-    <div class=" relative isolate overflow-hidden pt-14">
+    <div class=" relative isolate overflow-hidden ">
       <img
         src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
         alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
@@ -11,7 +11,7 @@
       </div>
       <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
         <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Data to enrich your online business</h1>
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-4xl">بهترین فروشگاه ها رو اینجا پیدا کن</h1>
         </div>
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
           
@@ -20,22 +20,22 @@
           <div class="flex">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
-                  <MenuButton class="flex-shrink-0 z-10 inline-flex items-center bg-glass-3 py-4 px-4 text-sm font-medium text-center text-indigo-900 bg-indigo-100 rounded-s-[20px] hover:bg-indigo-200  dark:bg-indigo-700 dark:hover:bg-indigo-600  dark:text-white ">
-                     دسته‌ها
+                  <MenuButton class="   py-4 px-5 text-sm font-medium text-center  rounded-[20px] mx-2   bg-blue-700 hover:bg-indigo-600  text-white ">
+                     محصولات
                     <ChevronDownIcon class="-mr-1 h-5 w-5 text-indigo-400" aria-hidden="true" />
                   </MenuButton>
                 </div>
                 <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                  <MenuItems class="absolute text-right text-white right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-black shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <MenuItems class="absolute text-right text-white right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div class="py-1">
                       <MenuItem v-slot="{ active }">
-                        <a href="#" :class="[active ? 'bg-gray-900 ' : '', 'block px-4 py-2 text-sm']">محصولات </a>
+                        <a href="#" :class="[active ? '' : ' ', ' bg-gray-800 block px-4 py-2 text-sm rounded-lg mx-1 mb-1']">محصولات </a>
                       </MenuItem>
                       <MenuItem v-slot="{ active }">
-                        <a href="#" :class="[active ? 'bg-gray-900' : '', 'block px-4 py-2 text-sm']">خدمات</a>
+                        <a href="#" :class="[active ? 'bg-gray-800' : '', 'block px-4 py-2 text-sm rounded-lg mx-1 mb-1']">خدمات</a>
                       </MenuItem>
                       <MenuItem v-slot="{ active }">
-                        <a href="#" :class="[active ? 'bg-gray-900' : '', 'block px-4 py-2 text-sm']">وبلاگ</a>
+                        <a href="#" :class="[active ? 'bg-gray-800' : '', 'block px-4 py-2 text-sm rounded-lg mx-1 mb-1']">وبلاگ</a>
                       </MenuItem>
                     </div>
                   </MenuItems>
@@ -43,10 +43,10 @@
               </Menu>
             <div class="relative w-full">
               <input type="search" id="search-dropdown"
-                class="block p-4 w-full z-20 text-sm text-indigo-900 bg-glass-3 bg-indigo-500 rounded-e-[20px] "
-                placeholder="جستجو محصولات، خدمات، وبلاگ" required>
+                class="block p-4 w-full z-20 text-sm text-indigo-900 bg-glass-3 text-right rtl pr-20  rounded-[20px] "
+                placeholder="جستجو بین محصولات هزاران فروشگاه ..." required>
               <button type="submit"
-                class="absolute  top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700 bg-glass-3 rounded-e-[20px]">
+                class="absolute  top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700  rounded-e-[20px]">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 20 20">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,7 +57,15 @@
             </div>
           </div>
         </form>
+        <div class="mt-3 flex items-center ">
+          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">موبایل</span>
+          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">هدفون</span>
+          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">لپ تاپ</span>
+          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">تبلت</span>
+          
+        </div>
     </div>
+  
     <div
       class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
       aria-hidden="true">

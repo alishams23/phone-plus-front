@@ -1,8 +1,9 @@
 <template>
   <!-- <Blog /> -->
-  <div class="rounded-b-[50px] isolate relative isolate overflow-hidden">
+  <div class="rounded-b-[50px] ">
     <HeaderHero2 />
   </div>
+  <div class=" w-full isolate relative isolate overflow-hidden py-10 rounded-t-[50px] -mt-10 bg-white"></div>
   <div class="container mx-auto">
  
     <div>
