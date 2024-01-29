@@ -137,7 +137,7 @@ components:{ CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon },
       price: '65,000,000 تومان',
       color: 'خاکستری',
       inStock: true,
-      imageSrc: '/images/5.jpg',
+      imageSrc: '/images/3.jpg',
       imageAlt: 'iPhone 14',
     },
   ]

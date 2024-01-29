@@ -44,13 +44,13 @@ export default {
   components: { Product }, data: () => ({
     data: [
       {
-        image: '/images/1.webp',
-        title: 'ایفون ۱۴'
+        image: '/images/2.jpeg',
+        title: 'samsung'
         , price: 1000000
         , percent: 10
       },
       {
-        image: '/images/2.jpeg',
+        image: '/images/3.jpg',
         title: 'ایفون ۱۴'
         , price: 1000000
         , percent: 10
@@ -73,7 +73,7 @@ export default {
       },
       {
         image: '/images/5.jpg',
-        title: 'ایفون ۱۴'
+        title: 'هدفون'
         , price: 1000000
         , percent: 10
 

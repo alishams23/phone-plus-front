@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-4 py-20 rtl" :style="{ backgroundImage: 'url(/your-background-image.jpg)', backgroundSize: 'cover' }">
     <div v-for="person in people" :key="person.email" 
-         class=" relative isolate  flex items-center shadow-lg rounded-lg border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-indigo-400"
+         class=" relative isolate drop-shadow-md flex items-center shadow-lg rounded-lg border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-indigo-400"
          :style="{ backgroundImage: 'url(' + person.imageUrl + ')', backgroundSize: 'cover' }">
          <div class=" absolute inset-0 -z-10 bg-gradient-to-l  from-white from-20% via-white/40" />
          <div class=" bg-blue-circle-categories  absolute inset-0  " />
@@ -32,7 +32,7 @@ import {
   const people = [
     {
       name: 'اپل آیدی',
-      imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+      imageUrl: '/images/appleid_category.png',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: ClockIcon,
@@ -41,7 +41,7 @@ import {
     },
     {
       name: 'گوشی هوشمند',
-      imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+      imageUrl: '/images/phone_category.png',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: CheckBadgeIcon,
@@ -50,7 +50,7 @@ import {
     },
     {
       name: 'ساعت هوشمند',
-      imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+      imageUrl: '/images/watch_category.png',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: UsersIcon,
@@ -59,7 +59,26 @@ import {
     },
     {
       name: 'لپ‌تاپ و الترابوک',
-      imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+      imageUrl: '/images/laptop_category.png',
+      email: 'leslie.alexander@example.com',
+      role: 'Co-Founder / CEO',
+    icon: BanknotesIcon,
+
+      iconForeground: 'text-yellow-700',
+    iconBackground: 'bg-yellow-50',
+    },
+    {
+      name: 'ساعت هوشمند',
+      imageUrl: '/images/watch_category.png',
+      email: 'leslie.alexander@example.com',
+      role: 'Co-Founder / CEO',
+      icon: UsersIcon,
+    iconForeground: 'text-sky-700',
+    iconBackground: 'bg-sky-50',
+    },
+    {
+      name: 'لپ‌تاپ و الترابوک',
+      imageUrl: '/images/laptop_category.png',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
     icon: BanknotesIcon,
@@ -69,7 +88,7 @@ import {
     },
     {
       name: 'کیف و کاور گوشی',
-      imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+      imageUrl: '/images/phone_category.png',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: ReceiptRefundIcon,
@@ -78,7 +97,7 @@ import {
     },
     {
       name: 'هدفون و هدست',
-      imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+      imageUrl: '/images/headphone_category.png',
       email: 'leslie.alexander@example.com',
       role: 'Co-Founder / CEO',
       icon: AcademicCapIcon,
