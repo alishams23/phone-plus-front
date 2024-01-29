@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-900 rounded-xl isolate overflow-hidden relative">
+  <div class="bg-gray-900 rounded-2xl isolate overflow-hidden relative">
     <div class="text-white text-xl text-right px-4 pt-4">
       پر فروش ترین محصولات
 
