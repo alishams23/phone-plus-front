@@ -10,7 +10,7 @@
       <Banner />
 
     </div>
-    <div class="mx-2">
+    <div class="mx-2 mt-10">
       <BestProduct />
 
     </div>
