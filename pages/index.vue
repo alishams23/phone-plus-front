@@ -7,7 +7,7 @@
   <div class="container mx-auto">
  
     <div>
-      <FeatureSection />
+      <Banner />
 
     </div>
     <div class="mx-2">
@@ -31,7 +31,7 @@ import BestProduct from "@/components/section/BestProduct.vue"
 import Discount from "@/components/section/Discount.vue"
 import HeaderHero2 from "@/components/section/HeaderHero2.vue"
 import HeaderHero from "@/components/section/HeaderHero.vue"
-import FeatureSection from "@/components/section/FeatureSection.vue"
+import Banner from "@/components/section/Banner.vue"
 import PromoSection from "@/components/section/PromoSection.vue"
 import MainBlog from "@/components/section/MainBlog.vue"
 import Advertisement from "@/components/section/Advertisement.vue"
@@ -39,7 +39,7 @@ import Advertisement2 from "@/components/section/Advertisement2.vue"
 import Categories from "@/components/section/Categories.vue"
 
 export default {
-  components: { Categories,BestProduct,Discount, HeaderHero, FeatureSection, PromoSection, MainBlog, Advertisement, Advertisement2,HeaderHero2 },
+  components: { Categories,BestProduct,Discount, HeaderHero, Banner, PromoSection, MainBlog, Advertisement, Advertisement2,HeaderHero2 },
   head() {
     return {
       // title: "ثبت نام"
