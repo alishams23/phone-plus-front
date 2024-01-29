@@ -18,29 +18,7 @@
         </div>
         <form>
           <div class="flex">
-              <Menu as="div" class="relative inline-block text-left">
-                <div>
-                  <MenuButton class="   py-4 px-5 text-sm font-medium text-center  rounded-[20px] mx-2   bg-blue-700 hover:bg-indigo-600  text-white ">
-                     محصولات
-                    <ChevronDownIcon class="-mr-1 h-5 w-5 text-indigo-400" aria-hidden="true" />
-                  </MenuButton>
-                </div>
-                <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                  <MenuItems class="absolute text-right text-white right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div class="py-1">
-                      <MenuItem v-slot="{ active }">
-                        <a href="#" :class="[active ? '' : ' ', ' bg-gray-800 block px-4 py-2 text-sm rounded-lg mx-1 mb-1']">محصولات </a>
-                      </MenuItem>
-                      <MenuItem v-slot="{ active }">
-                        <a href="#" :class="[active ? 'bg-gray-800' : '', 'block px-4 py-2 text-sm rounded-lg mx-1 mb-1']">خدمات</a>
-                      </MenuItem>
-                      <MenuItem v-slot="{ active }">
-                        <a href="#" :class="[active ? 'bg-gray-800' : '', 'block px-4 py-2 text-sm rounded-lg mx-1 mb-1']">وبلاگ</a>
-                      </MenuItem>
-                    </div>
-                  </MenuItems>
-                </transition>
-              </Menu>
+             
             <div class="relative w-full">
               <input type="search" id="search-dropdown"
                 class="block p-4 w-full z-20 text-sm text-indigo-900 bg-glass-3 text-right rtl pr-20  rounded-[20px] "

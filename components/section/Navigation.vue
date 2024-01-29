@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center ">
-    <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 grid w-full h-16 grid-cols-1 px-8 md:grid-cols-9  ">
+    <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 grid w-full  grid-cols-1 px-8 md:grid-cols-9  ">
       <div
       class="col-span-1 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
       <div class=" block px-1 text-sm font-bold ">
@@ -65,7 +65,7 @@
           </div>
           <div class="flex  my-4">
             <div v-for="page in pages" :key="page.name"
-              class=" text-white rounded-full mx-1 duration-500 hover:bg-indigo-600 text-indigo-900 hover:text-white hover:border-indigo-600    py-4">
+              class=" text-white rounded-full mx-1 duration-500 hover:bg-indigo-600 text-indigo-900 hover:text-white hover:border-indigo-600    py-3">
               <a :href="page.href" class="-m-2 block px-6 text-sm font-medium ">{{ page.name }}</a>
             </div>
           </div>
