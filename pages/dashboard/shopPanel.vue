@@ -149,7 +149,7 @@
                             <a href="#" class="inline-block w-full p-4 bg-white border-s-0 border-gray-200 rounded-e-lg hover:bg-gray-100">Invoice</a>
                         </li>
                     </ul>
-                    <div class="mt-6 grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       <div v-for="item in data" :key="item" class="group relative">
                         <Product :data="item" class="text-center drop-shadow-md hover:drop-shadow-xl"/>
                       </div>
