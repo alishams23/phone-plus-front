@@ -1,6 +1,6 @@
 <template>
 
-    <div  class="relative isolate my-10 mx-2 justify-end overflow-hidden rounded-2xl w-[15rem] bg-gray-900 px-8 pb-8 pt-60 sm:pt-60 lg:pt-60">
+    <div :class="width ? `${width}` : 'w-[15rem]'" class="relative isolate my-10 mx-2 justify-end overflow-hidden rounded-2xl  bg-gray-900 px-8 pb-8 pt-60 sm:pt-60 lg:pt-60">
         <img :src="data.image" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-white from-10% via-white/30" />
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
@@ -57,7 +57,7 @@
   
 <script >
 export default {
-    props: ["data"],
+    props: ["data","width"],
 
 }
 
@@ -68,7 +68,7 @@ export default {
 .bg-blue-circle{
    
   
-    background-image:radial-gradient(ellipse 100% 30% at 50% 10%, #fcfcfc3f 89.9%, #00000000 90%)!important;
+    background-image:radial-gradient(ellipse 100% 30% at 50% 10%, #fcfcfc3f 86.9%, #00000000 90%)!important;
 
 }
 </style>

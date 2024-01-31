@@ -79,6 +79,6 @@ const posts = [
 <style>
 .gradient-banner{
 
-background: linear-gradient(160deg, rgba(255, 255, 255, 0.191) 0%, rgba(255, 255, 255, 0.292) 50%, rgba(0, 213, 255, 0) 50%);
+background: linear-gradient(160deg, rgba(255, 255, 255, 0.191) 0%, rgba(255, 255, 255, 0.292) 50%, rgba(255, 255, 255, 0.1) 51% ,rgba(255, 255, 255, 0.01) 52% ,rgba(0, 213, 255, 0) 50%);
 }
 </style>

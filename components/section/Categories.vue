@@ -108,7 +108,7 @@ import {
   <style>
   .bg-blue-circle-categories{
      
-    background-image:radial-gradient(ellipse 140% 130% at 80% -50%, #fcfcfc56 89.9%, #00000000 90%)!important;
+    background-image:radial-gradient(ellipse 140% 130% at 80% -50%, #fcfcfc7d 80.9%, #00000000 90%)!important;
 
   }
   </style>

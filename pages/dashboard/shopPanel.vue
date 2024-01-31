@@ -151,7 +151,7 @@
                     </ul>
                     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       <div v-for="item in data" :key="item" class="group relative">
-                        <Product :data="item" class="text-center drop-shadow-md hover:drop-shadow-xl"/>
+                        <Product :data="item" width=" " class="text-center drop-shadow-md hover:drop-shadow-xl"/>
                       </div>
                     </div>
                   </div>

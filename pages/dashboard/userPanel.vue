@@ -315,8 +315,8 @@ export default {
     return {
       items: [
         { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/' },
-        { name: 'Save and publish', href: '#' },
-        { name: 'Export PDF', href: '#' },
+        { name: 'سفارشات من', href: '#' },
+        { name: 'خروج', href: '#' },
       ], user: {
         name: 'Tom Cook',
         email: 'tom@example.com',
