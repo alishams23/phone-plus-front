@@ -126,6 +126,34 @@
                 <div class="overflow-hidden rounded-lg bg-white shadow">
                   <div class="p-6">
                     <!-- Your content -->
+                    <div class="sm:hidden">
+                        <label for="tabs" class="sr-only">Select your country</label>
+                        <select id="tabs" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                            <option>Profile</option>
+                            <option>Canada</option>
+                            <option>France</option>
+                            <option>Germany</option>
+                        </select>
+                    </div>
+                    <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+                        <li class="w-full">
+                            <a href="#" class="inline-block w-full p-4 text-gray-900 bg-gray-200 border-r hover:bg-gray-100 border-gray-200 rounded-s-lg active" aria-current="page">Profile</a>
+                        </li>
+                        <li class="w-full">
+                            <a href="#" class="inline-block w-full p-4 bg-white border-r border-gray-200d hover:bg-gray-100">Dashboard</a>
+                        </li>
+                        <li class="w-full">
+                            <a href="#" class="inline-block w-full p-4 bg-white border-r border-gray-200 hover:bg-gray-100">Settings</a>
+                        </li>
+                        <li class="w-full">
+                            <a href="#" class="inline-block w-full p-4 bg-white border-s-0 border-gray-200 rounded-e-lg hover:bg-gray-100">Invoice</a>
+                        </li>
+                    </ul>
+                    <div class="mt-6 grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                      <div v-for="item in data" :key="item" class="group relative">
+                        <Product :data="item" class="text-center drop-shadow-md hover:drop-shadow-xl"/>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -236,7 +264,7 @@
     </div>
   </template>
   
-  <script setup>
+  <script>
   import { PaperClipIcon } from '@heroicons/vue/20/solid'
   import {
     Menu,
@@ -252,23 +280,149 @@
   } from '@headlessui/vue'
   import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
   import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
+  import Product from "@/components/shared/Product.vue"
   
-  const user = {
-    name: 'Tom Cook',
-    email: 'tom@example.com',
-    imageUrl:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  export default {
+    components: { Product, 
+                  PaperClipIcon,
+                  Menu,
+                  MenuButton,
+                  MenuItem,
+                  MenuItems,
+                  Popover,
+                  PopoverButton,
+                  PopoverOverlay,
+                  PopoverPanel,
+                  TransitionChild,
+                  TransitionRoot,
+                  Bars3Icon,
+                  BellIcon,
+                  XMarkIcon,
+                  MagnifyingGlassIcon, }, data: () => ({
+      user : {
+        name: 'Tom Cook',
+        email: 'tom@example.com',
+        imageUrl:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      },
+      navigation : [
+        { name: 'Home', href: '#', current: true },
+        { name: 'Profile', href: '#', current: false },
+        { name: 'Resources', href: '#', current: false },
+        { name: 'Company Directory', href: '#', current: false },
+        { name: 'Openings', href: '#', current: false },
+      ],
+      userNavigation : [
+        { name: 'Your Profile', href: '#' },
+        { name: 'Settings', href: '#' },
+        { name: 'Sign out', href: '#' },
+      ],
+      data: [
+        {
+          image: '/images/2.jpeg',
+          title: 'samsung'
+          , price: 1000000
+          , percent: 10
+        },
+        {
+          image: '/images/3.jpg',
+          title: 'ایفون ۱۴'
+          , price: 1000000
+          , percent: 10
+  
+        },
+        {
+          image: '/images/6.jpg',
+          title: 'ایرپاد'
+          , price: 1000000
+          , percent: 0
+      
+  
+        },
+        {
+          image: '/images/4.jpg',
+          title: 'مک بوک'
+          , price: 1000000
+          , percent: 10
+  
+        },
+        {
+          image: '/images/5.jpg',
+          title: 'هدفون'
+          , price: 1000000
+          , percent: 10
+  
+        },
+      ],
+      // carousel settings
+      settings: {
+        itemsToShow: 1,
+        snapAlign: 'center',
+      },
+      // breakpoints are mobile first
+      // any settings not specified will fallback to the carousel settings
+      breakpoints: {
+        // 700px and up
+        700: {
+          itemsToShow: 3.5,
+          snapAlign: 'center',
+        },
+        // 1024 and up
+        1024: {
+          itemsToShow: 5,
+          snapAlign: 'start',
+        },
+      },
+    }),
   }
-  const navigation = [
-    { name: 'Home', href: '#', current: true },
-    { name: 'Profile', href: '#', current: false },
-    { name: 'Resources', href: '#', current: false },
-    { name: 'Company Directory', href: '#', current: false },
-    { name: 'Openings', href: '#', current: false },
-  ]
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
-  ]
+  
   </script>
+  
+  <style scoped>
+  .carousel__slide {
+    padding: 5px;
+  }
+  
+  .carousel__viewport {
+    perspective: 2000px;
+  }
+  
+  .carousel__track {
+    transform-style: preserve-3d;
+  }
+  
+  .carousel__slide--sliding {
+    transition: 0.5s;
+  }
+  
+  .carousel__slide {
+    opacity: 0.5;
+    filter: blur(3px);
+  
+    transform: rotateY(-10deg) scale(0.99);
+  }
+  
+  
+  
+  .carousel__slide--prev {
+    opacity: 0.8;
+    filter: blur(1px);
+  
+    transform: rotateY(-10deg) scale(0.99);
+  }
+  
+  .carousel__slide--next {
+    opacity: 0.8;
+    filter: blur(1px);
+    
+  
+  
+    transform: rotateY(10deg) scale(0.99);
+  }
+  
+  .carousel__slide--active {
+    opacity: 1;
+    filter: blur(0px);
+  
+    transform: rotateY(0) scale(1.15);
+  }
+  </style>
