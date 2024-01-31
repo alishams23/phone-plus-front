@@ -8,18 +8,18 @@
       </div>
       <ChatBubbleLeftRightIcon class="w-6" />
     </div>
-      <div class="col-span-2 mx-auto items-center bg-glass-3 rounded-full px-3 justify-center hidden  text-white md:flex">
+      <div class="col-span-2 mx-auto items-center bg-glass-2  rounded-full px-3 justify-center hidden  text-indigo-800 md:flex">
         <form>
           <div class="relative">
             <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg class="w-4 h-4 text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+              <svg class="w-4 h-4 text-indigo-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
               </svg>
             </div>
             <input type="search" v-model="inputValue" @focus="onFocus" @blur="onBlur" id="default-search"
-              class="w-full p-4 pl-10 text-sm text-white rounded-full bg-transparent focus:border-transparent placeholder-white  border-transparent"
+              class="w-full p-4 pl-10 text-sm text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-indigo-800   border-transparent"
               placeholder="Search..." required>
           </div>
         </form>
@@ -28,24 +28,24 @@
       <div class="col-span-6 bg-glass-3 px-8 rounded-full   flex  justify-between">
           <div class="flex items-center  px-8 rounded-full ">
             <button data-tooltip-target="tooltip-microphone" type="button"
-              class="p-2.5 transform hover:-translate-y-3  duration-500  group bg-blue-700 rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-              <HomeIcon class=" w-5 text-white" />
+              class="p-2.5 transform hover:-translate-y-3  duration-500  group bg-white rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+              <HomeIcon class=" w-5 text-indigo-900" />
               <span class="sr-only">Mute microphone</span>
             </button>
   
             <button data-tooltip-target="tooltip-camera" type="button"
-              class="p-2.5 transform hover:-translate-y-3  duration-500 bg-indigo-600 group rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-              <UserIcon class=" w-5 text-white" />
+              class="p-2.5 transform hover:-translate-y-3  duration-500 bg-indigo-200  group rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+              <UserIcon class=" w-5 text-indigo-600" />
             </button>
   
             <button data-tooltip-target="tooltip-feedback" type="button"
-              class="p-2.5 transform hover:-translate-y-3  duration-500 bg-indigo-600 group rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-              <ShoppingCartIcon class=" w-5 text-white" />
+              class="p-2.5 transform hover:-translate-y-3  duration-500 bg-indigo-200  group rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+              <ShoppingCartIcon class=" w-5 text-indigo-600" />
             </button>
   
             <button data-tooltip-target="tooltip-settings" type="button"
-              class="p-2.5 animate-pulse transform hover:-translate-y-3  duration-500 bg-indigo-600 group rounded-full mr-4 md:mr-0 hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-              <BellAlertIcon class=" w-5 text-white" />
+              class="p-2.5 animate-pulse transform hover:-translate-y-3  duration-500 bg-indigo-200  group rounded-full mr-4 md:mr-0 hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+              <BellAlertIcon class=" w-5 text-indigo-600" />
             </button>
             <div id="tooltip-settings" role="tooltip"
               class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-indigo-800 rounded-lg shadow-sm opacity-0 tooltip ">
@@ -65,7 +65,7 @@
           </div>
           <div class="flex  my-4">
             <div v-for="page in pages" :key="page.name"
-              class=" text-white rounded-full mx-1 duration-500 hover:bg-indigo-600 text-indigo-900 hover:text-white hover:border-indigo-600    py-3">
+              class=" text-white rounded-full mx-1 duration-500 hover:bg-indigo-800 text-indigo-900 hover:text-white hover:border-indigo-600    py-3">
               <a :href="page.href" class="-m-2 block px-6 text-sm font-medium ">{{ page.name }}</a>
             </div>
           </div>

@@ -1,16 +1,14 @@
 <template>
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-4 py-20 rtl" :style="{ backgroundImage: 'url(/your-background-image.jpg)', backgroundSize: 'cover' }">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-4 py-20 rtl " :style="{ backgroundImage: 'url(/your-background-image.jpg)', backgroundSize: 'cover' }">
     <div v-for="person in people" :key="person.email" 
-         class=" relative isolate drop-shadow-md flex items-center shadow-lg rounded-lg border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-indigo-400"
+         class=" relative isolate  flex items-center  rounded-xl border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
          :style="{ backgroundImage: 'url(' + person.imageUrl + ')', backgroundSize: 'cover' }">
-         <div class=" absolute inset-0 -z-10 bg-gradient-to-l  from-white from-20% via-white/40" />
+         <div class="rounded-lg absolute inset-0 -z-10 bg-gradient-to-l  from-white from-20% via-white/40" />
          <div class=" bg-blue-circle-categories  absolute inset-0  " />
       <div class="flex-shrink-0">
-        <span :class="[person.iconBackground, person.iconForeground, 'inline-flex rounded-lg p-3 ring-4 ring-white']">
-          <!-- Existing icon component -->
-        </span>
+      
       </div>
-      <div class="min-w-0 flex-1">
+      <div class="min-w-0 flex-1 ">
         <a href="#" class="focus:outline-none">
           <span class="absolute inset-0" aria-hidden="true" />
           <p class="text-sm font-medium text-gray-900 px-3">{{ person.name }}</p>
@@ -110,7 +108,7 @@ import {
   <style>
   .bg-blue-circle-categories{
      
-    background-image:radial-gradient(ellipse 100% 80% at 80% 0%, #fcfcfc6c 89.9%, #00000000 90%)!important;
+    background-image:radial-gradient(ellipse 140% 130% at 80% -50%, #fcfcfc56 89.9%, #00000000 90%)!important;
 
   }
   </style>
