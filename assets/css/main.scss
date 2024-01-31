@@ -45,3 +45,11 @@ backdrop-filter: blur(15px);
     backdrop-filter: blur(5px) !important;
     -webkit-backdrop-filter: blur(5px) !important;
   }
+
+
+  .inner-shadow-1 {
+    border-top: solid rgba(50, 50, 93,0.3) 1px !important;
+    box-shadow:inset rgba(50, 50, 93, 0) 0px 50px 100px -20px,inset rgba(50, 50, 93, 0.2) 0px 30px 200px -30px , rgba(50, 50, 93, 0.5) 0px 30px 60px -30px !important;
+
+   
+}
