@@ -129,29 +129,36 @@
                     <div class="sm:hidden">
                         <label for="tabs" class="sr-only">Select your country</label>
                         <select id="tabs" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
-                            <option>Profile</option>
+                            <option >Profile</option>
                             <option>Canada</option>
                             <option>France</option>
                             <option>Germany</option>
                         </select>
                     </div>
                     <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+                      <li class="w-full">
+                          <a href="#" @click="selectedTab = 'products'" :class="selectedTab === 'products' ? 'bg-indigo-200 active text-gray-900' : 'bg-white hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200d">محصولات</a>
+                      </li>
+                      <li class="w-full">
+                          <a href="#" @click="selectedTab = 'digital_products'" :class="selectedTab === 'digital_products' ? 'bg-indigo-200 active text-gray-900' : 'bg-white hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200">محصولات دیجیتال</a>
+                      </li>
                         <li class="w-full">
-                            <a href="#" class="inline-block w-full p-4 text-gray-900 bg-gray-200 border-r hover:bg-gray-100 border-gray-200 rounded-s-lg active" aria-current="page">Profile</a>
-                        </li>
-                        <li class="w-full">
-                            <a href="#" class="inline-block w-full p-4 bg-white border-r border-gray-200d hover:bg-gray-100">Dashboard</a>
-                        </li>
-                        <li class="w-full">
-                            <a href="#" class="inline-block w-full p-4 bg-white border-r border-gray-200 hover:bg-gray-100">Settings</a>
-                        </li>
-                        <li class="w-full">
-                            <a href="#" class="inline-block w-full p-4 bg-white border-s-0 border-gray-200 rounded-e-lg hover:bg-gray-100">Invoice</a>
+                            <a href="#" @click="selectedTab = 'blog'" :class="selectedTab === 'blog' ? 'bg-indigo-200 active text-gray-900' : 'bg-white hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200 rounded-s-lg" aria-current="page">مقاله‌ها</a>
                         </li>
                     </ul>
-                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                    <div v-if="selectedTab == 'products'" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       <div v-for="item in data" :key="item" class="group relative">
                         <Product :data="item" width=" " class="text-center drop-shadow-md hover:drop-shadow-xl"/>
+                      </div>
+                    </div>
+                    <div v-if="selectedTab == 'digital_products'" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                      <div v-for="item in data" :key="item" class="group relative">
+                        <DigitalProduct :data="item" width=" " class="text-center drop-shadow-md hover:drop-shadow-xl"/>
+                      </div>
+                    </div>
+                    <div v-if="selectedTab == 'blog'" class="mt-6 grid grid-cols-1 xl:gap-x-8">
+                      <div v-for="item in data" :key="item" class="group relative">
+                        <Blog_test :data="item" width=" " class="text-center drop-shadow-md hover:drop-shadow-xl"/>
                       </div>
                     </div>
                   </div>
@@ -281,24 +288,32 @@
   import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
   import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
   import Product from "@/components/shared/Product.vue"
+  import DigitalProduct from "@/components/shared/DigitalProduct.vue"
+  import Blog_test from "@/components/shared/Blog_test.vue"
   
   export default {
-    components: { Product, 
-                  PaperClipIcon,
-                  Menu,
-                  MenuButton,
-                  MenuItem,
-                  MenuItems,
-                  Popover,
-                  PopoverButton,
-                  PopoverOverlay,
-                  PopoverPanel,
-                  TransitionChild,
-                  TransitionRoot,
-                  Bars3Icon,
-                  BellIcon,
-                  XMarkIcon,
-                  MagnifyingGlassIcon, }, data: () => ({
+    components: { 
+      Product, 
+      Blog_test,
+      DigitalProduct, 
+      PaperClipIcon,
+      Menu,
+      MenuButton,
+      MenuItem,
+      MenuItems,
+      Popover,
+      PopoverButton,
+      PopoverOverlay,
+      PopoverPanel,
+      TransitionChild,
+      TransitionRoot,
+      Bars3Icon,
+      BellIcon,
+      XMarkIcon,
+      MagnifyingGlassIcon, 
+    },
+    data: () => ({
+      selectedTab: 'products',
       user : {
         name: 'Tom Cook',
         email: 'tom@example.com',
@@ -373,9 +388,20 @@
         },
       },
     }),
+    computed: {
+      filteredData() {
+        // This computed property filters the data based on the selected country.
+        // Adjust the logic according to your needs.
+        if (this.selectedCountry === 'Canada') {
+          return this.data.filter((item) => item.country === 'Canada');
+        } else {
+          return this.data; // Return all data if no specific filter is applied
+        }
+      },
+    },
   }
   
-  </script>
+</script>
   
   <style scoped>
   .carousel__slide {
@@ -425,4 +451,4 @@
   
     transform: rotateY(0) scale(1.15);
   }
-  </style>
+</style>
