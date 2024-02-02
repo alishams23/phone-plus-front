@@ -10,7 +10,7 @@
     </div>
       <div class="col-span-2 mx-auto items-center bg-glass-2   rounded-full  justify-center shadow-lg  text-indigo-800 md:flex">
         <form class="shadow-lg rounded-full h-full px-4">
-          <div class="relative ">
+          <div class="relative pt-1 ">
             <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg class="w-4 h-4 text-indigo-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 20 20">

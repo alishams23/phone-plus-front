@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     'vue3-carousel-nuxt',
+    'nuxt-swiper'
     // 'nuxt-swiper'
   ],
   

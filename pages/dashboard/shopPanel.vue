@@ -135,30 +135,30 @@
                             <option>Germany</option>
                         </select>
                     </div>
-                    <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+                    <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-xl shadow sm:flex bg-gray-100">
                       <li class="w-full">
-                          <a href="#" @click="selectedTab = 'products'" :class="selectedTab === 'products' ? 'bg-indigo-200 active text-gray-900' : 'bg-white hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200d">محصولات</a>
+                          <a href="#" @click="selectedTab = 'products'" :class="selectedTab === 'products' ? 'rounded-xl  bg-indigo-600 active text-white' : 'hover:rounded-xl hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200">محصولات</a>
                       </li>
                       <li class="w-full">
-                          <a href="#" @click="selectedTab = 'digital_products'" :class="selectedTab === 'digital_products' ? 'bg-indigo-200 active text-gray-900' : 'bg-white hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200">محصولات دیجیتال</a>
+                          <a href="#" @click="selectedTab = 'digital_products'" :class="selectedTab === 'digital_products' ? 'rounded-xl bg-indigo-600 active text-white' : 'hover:rounded-xl hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200">محصولات دیجیتال</a>
                       </li>
                         <li class="w-full">
-                            <a href="#" @click="selectedTab = 'blog'" :class="selectedTab === 'blog' ? 'bg-indigo-200 active text-gray-900' : 'bg-white hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200 rounded-s-lg" aria-current="page">مقاله‌ها</a>
+                            <a href="#" @click="selectedTab = 'blog'" :class="selectedTab === 'blog' ? 'rounded-xl bg-indigo-600 active text-white' : 'hover:rounded-xl hover:bg-indigo-100'" class="inline-block w-full p-4  border-gray-200 rounded-s-lg" aria-current="page">مقاله‌ها</a>
                         </li>
                     </ul>
                     <div v-if="selectedTab == 'products'" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       <div v-for="item in data" :key="item" class="group relative">
-                        <Product :data="item" width=" " class="text-center drop-shadow-md hover:drop-shadow-xl"/>
+                        <Product :data="item" width=" " class=" text-center  "/>
                       </div>
                     </div>
                     <div v-if="selectedTab == 'digital_products'" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       <div v-for="item in data" :key="item" class="group relative">
-                        <DigitalProduct :data="item" width=" " class="text-center drop-shadow-md hover:drop-shadow-xl"/>
+                        <DigitalProduct :data="item" width=" " class=" text-center  "/>
                       </div>
                     </div>
                     <div v-if="selectedTab == 'blog'" class="mt-6 grid grid-cols-1 xl:gap-x-8">
                       <div v-for="item in data" :key="item" class="group relative">
-                        <Blog_test :data="item" width=" " class="text-center drop-shadow-md hover:drop-shadow-xl"/>
+                        <Blog_test :data="item" width=" " class=" text-center  "/>
                       </div>
                     </div>
                   </div>
@@ -170,95 +170,39 @@
             <div class="grid grid-cols-1 gap-4">
               <section aria-labelledby="section-2-title">
                 <h2 class="sr-only" id="section-2-title">Section title</h2>
-                <div class="overflow-hidden rounded-lg bg-white shadow">
+                <div class="overflow-hidden rounded-lg bg-white shadow rtl">
                   <div class="p-6">
                     <!-- Your content -->
                     <div class="px-4 sm:px-0">
-                        <h3 class="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>
-                        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
+                        <h3 class="text-base font-semibold leading-7 text-gray-900">اطلاعات فروشگاه</h3>
+                       
                       </div>
                       <div class="mt-6 border-t border-gray-100">
                         <dl class="divide-y divide-gray-100">
-                          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-                            <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                              <span class="flex-grow">Margot Foster</span>
-                              <span class="ml-4 flex-shrink-0">
-                                <button type="button" class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                              </span>
+                          <div class="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
+                            <dt class="text-sm font-medium leading-6 text-gray-900">نام</dt>
+                            <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:mt-0">
+                              <span class="flex-grow">فروشگاه فون پلاس</span>
+                              
                             </dd>
                           </div>
-                          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">Application for</dt>
-                            <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                              <span class="flex-grow">Backend Developer</span>
-                              <span class="ml-4 flex-shrink-0">
-                                <button type="button" class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                              </span>
+                          <div class="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
+                            <dt class="text-sm font-medium leading-6 text-gray-900">تلفن</dt>
+                            <dd class="mt-1 flex text-sm leading-6 text-gray-700  sm:mt-0">
+                              <span class="flex-grow">۰۹۱۲۰۰۰۰۰۰</span>
+                             
                             </dd>
                           </div>
-                          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-                            <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                              <span class="flex-grow">margotfoster@example.com</span>
-                              <span class="ml-4 flex-shrink-0">
-                                <button type="button" class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                              </span>
+                         
+                         
+                          <div class="px-4 py-6 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-0">
+                            <dt class="text-sm font-medium leading-6 text-gray-900">آدرس</dt>
+                            <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:mt-0">
+                              <span class="flex-grow">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</span>
+                             
                             </dd>
                           </div>
-                          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
-                            <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                              <span class="flex-grow">$120,000</span>
-                              <span class="ml-4 flex-shrink-0">
-                                <button type="button" class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                              </span>
-                            </dd>
-                          </div>
-                          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
-                            <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                              <span class="flex-grow">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</span>
-                              <span class="ml-4 flex-shrink-0">
-                                <button type="button" class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                              </span>
-                            </dd>
-                          </div>
-                          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt class="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                              <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-                                <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                                  <div class="flex w-0 flex-1 items-center">
-                                    <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                                      <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                                      <span class="flex-shrink-0 text-gray-400">2.4mb</span>
-                                    </div>
-                                  </div>
-                                  <div class="ml-4 flex flex-shrink-0 space-x-4">
-                                    <button type="button" class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                                    <span class="text-gray-200" aria-hidden="true">|</span>
-                                    <button type="button" class="rounded-md bg-white font-medium text-gray-900 hover:text-gray-800">Remove</button>
-                                  </div>
-                                </li>
-                                <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                                  <div class="flex w-0 flex-1 items-center">
-                                    <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                                      <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                                      <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                                    </div>
-                                  </div>
-                                  <div class="ml-4 flex flex-shrink-0 space-x-4">
-                                    <button type="button" class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                                    <span class="text-gray-200" aria-hidden="true">|</span>
-                                    <button type="button" class="rounded-md bg-white font-medium text-gray-900 hover:text-gray-800">Remove</button>
-                                  </div>
-                                </li>
-                              </ul>
-                            </dd>
-                          </div>
+                         
                         </dl>
                       </div>
                   </div>
