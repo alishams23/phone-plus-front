@@ -1,16 +1,14 @@
 <template>
   <!-- <Blog /> -->
-  <div class="rounded-b-[50px] ">
+  <div class=" rounded-b-[50px]">
     <HeaderHero2 />
   </div>
-  <div class=" w-full isolate relative isolate overflow-hidden py-10 rounded-t-[50px] -mt-10 bg-white"></div>
+  <div>
+    <Banner class="pt-10" />
+  </div>
   <div class="container mx-auto">
  
-    <div>
-      <Banner />
-
-    </div>
-    <div class="mx-2 mt-10">
+    <div class="mx-2 mt-5">
       <BestProduct />
 
     </div>

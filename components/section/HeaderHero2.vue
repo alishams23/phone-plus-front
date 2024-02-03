@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-gray-900  ">
-    <div class=" relative isolate overflow-hidden ">
+  <div class=" rounded-b-[50px]">
+    <div class=" rounded-b-[50px] relative ">
       <img
         src="/images/header.avif"
-        alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+        alt="" class="absolute inset-0 -z-10 h-full w-full object-cover rounded-b-[50px]" />
       <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div
           class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
@@ -20,9 +20,25 @@
           <div class="flex">
              
             <div class="relative w-full">
-              <input type="search" id="search-dropdown"
-                class="block p-4 w-full z-20 text-sm text-indigo-900 bg-glass-3 text-right rtl pr-20  rounded-[20px] "
+              <input type="search" id="search-dropdown"    v-model="searchQuery"  @input="filterOptions"
+                class="text-white block p-4 w-full z-20 text-sm text-indigo-900 bg-glass-3 text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات هزاران فروشگاه ..." required>
+                <div v-if="filteredOptions.length > 0 && searchQuery" class="absolute  mt-2 w-full" style="z-index:9999999999999999">
+                  <ul class="bg-gray-100 rtl  rounded-xl shadow-xl">
+                    <li class=" p-4 font-bold"> محصولات</li>
+                    <li v-for="option in filteredOptions" :key="option.id" class="py-2 px-4">
+                      {{ option.label }}
+                    </li>
+                    <li class=" p-4 font-bold border-t">دیجیتال محصولات</li>
+                    <li v-for="option in filteredOptions" :key="option.id" class="py-2 px-4">
+                      {{ option.label }}
+                    </li>
+                    <li class=" p-4 font-bold border-t"> وبلاگ</li>
+                    <li v-for="option in filteredOptions" :key="option.id" class="py-2 px-4">
+                      {{ option.label }}
+                    </li>
+                  </ul>
+                </div>
               <button type="submit"
                 class="absolute  top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700  rounded-e-[20px]">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -54,18 +70,36 @@
   </div>
 </div></template>
   
-<script setup>
-import { ref } from 'vue'
-import { Dialog, DialogPanel } from '@headlessui/vue'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
-
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
+<script >
 
 
+
+export default {
+  data() {
+    return {
+      searchQuery: '',
+      options: [
+        { id: 1, label: 'Option 1' },
+        { id: 2, label: 'Option 2' },
+        // Add more options as needed
+      ],
+    };
+  },
+  computed: {
+    filteredOptions() {
+      return this.options.filter(option =>
+        option.label.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+  },
+  methods: {
+    filterOptions() {
+      // You can add additional logic here if needed
+    },
+  },
+};
 </script>
+
+<style scoped>
+/* Add your Tailwind CSS classes here */
+</style>
