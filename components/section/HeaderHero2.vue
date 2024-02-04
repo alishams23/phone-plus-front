@@ -1,9 +1,7 @@
 <template>
   <div class=" rounded-b-[50px]">
     <div class=" rounded-b-[50px] relative ">
-      <img
-        src="/images/header.avif"
-        alt="" class="absolute inset-0 -z-10 h-full w-full object-cover rounded-b-[50px]" />
+      <img src="/images/header.avif" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover rounded-b-[50px]" />
       <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div
           class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
@@ -11,34 +9,100 @@
       </div>
       <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-48">
         <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-4xl">بهترین فروشگاه ها رو اینجا پیدا کن</h1>
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-4xl">بهترین فروشگاه‌ها رو اینجا پیدا کن</h1>
         </div>
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-          
+
         </div>
         <form>
           <div class="flex">
-             
             <div class="relative w-full">
-              <input type="search" id="search-dropdown"    v-model="searchQuery"  @input="filterOptions"
+              <input type="search" id="search-dropdown" v-model="searchQuery" @input="filterOptions"
                 class="text-white block p-4 w-full z-20 text-sm text-indigo-900 bg-glass-3 text-right rtl pr-20  rounded-[20px] "
-                placeholder="جستجو بین محصولات هزاران فروشگاه ..." required>
-                <div v-if="filteredOptions.length > 0 && searchQuery" class="absolute  mt-2 w-full" style="z-index:9999999999999999">
-                  <ul class="bg-gray-100 rtl  rounded-xl shadow-xl">
-                    <li class=" p-4 font-bold"> محصولات</li>
-                    <li v-for="option in filteredOptions" :key="option.id" class="py-2 px-4">
-                      {{ option.label }}
-                    </li>
-                    <li class=" p-4 font-bold border-t">دیجیتال محصولات</li>
-                    <li v-for="option in filteredOptions" :key="option.id" class="py-2 px-4">
-                      {{ option.label }}
-                    </li>
-                    <li class=" p-4 font-bold border-t"> وبلاگ</li>
-                    <li v-for="option in filteredOptions" :key="option.id" class="py-2 px-4">
-                      {{ option.label }}
-                    </li>
-                  </ul>
-                </div>
+                placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
+              <div v-if="filteredOptions.length > 0 && searchQuery" class="absolute  mt-2 w-full"
+                style="z-index:9999999999999999">
+                <ul class="bg-gray-100 rtl rounded-xl px-5 shadow-xl w-full">
+                  <li class=" p-4 font-body-2 text-gray-500"> محصولات</li>
+                  <Swiper  
+                    :modules="modules" 
+                    :slides-per-view="'auto'" 
+                    :loop="false" 
+                    :autoplay="{
+                      delay: 2000,
+                      disableOnInteraction: false,
+                    }"
+                    :space-between="20" class="px-3 ">
+                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10"> 
+                      <div class="rtl"> 
+                        <div class="flex items-start border bg-gray-200 rounded-xl overflow-hidden"> 
+                          <div class="px-5 py-3 flex-grow"> 
+                            <div class="font-bold"> 
+                              {{ option.label }}
+                            </div>
+                            <div class="pt-3">
+                              {{ option.price }}
+                            </div>
+                          </div>
+                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-full object-cover rounded-e-lg" />
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  </Swiper>
+                  <li class=" p-4 font-body-1 text-gray-500 border-t">محصولات دیجیتال </li>
+                  <Swiper  
+                    :modules="modules" 
+                    :slides-per-view="'auto'" 
+                    :loop="false" 
+                    :autoplay="{
+                      delay: 2030,
+                      disableOnInteraction: false,
+                    }"
+                    :space-between="20" class="px-3 ">
+                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10"> 
+                      <div class="rtl"> 
+                        <div class="flex items-start border bg-gray-200 rounded-xl overflow-hidden"> 
+                          <div class="px-5 py-3 flex-grow"> 
+                            <div class="font-bold"> 
+                              {{ option.label }}
+                            </div>
+                            <div class="pt-3">
+                              {{ option.price }}
+                            </div>
+                          </div>
+                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-full object-cover rounded-e-lg" />
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  </Swiper>
+                  <li class=" p-4 font-body-1 text-gray-500 border-t"> مقاله‌ها</li>
+                  <Swiper  
+                    :modules="modules" 
+                    :slides-per-view="'auto'" 
+                    :loop="false" 
+                    :autoplay="{
+                      delay: 2060,
+                      disableOnInteraction: false,
+                    }"
+                    :space-between="20" class="px-3 ">
+                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10"> 
+                      <div class="rtl"> 
+                        <div class="flex items-start border bg-gray-200 rounded-xl overflow-hidden"> 
+                          <div class="px-5 py-3 flex-grow"> 
+                            <div class="font-bold"> 
+                              {{ option.label }}
+                            </div>
+                            <div class="pt-3">
+                              {{ option.price }}
+                            </div>
+                          </div>
+                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-full object-cover rounded-e-lg" />
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  </Swiper>
+                </ul>
+              </div>
               <button type="submit"
                 class="absolute  top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700  rounded-e-[20px]">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -52,35 +116,51 @@
           </div>
         </form>
         <div class="mt-3 flex items-center ">
-          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">موبایل</span>
-          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">هدفون</span>
-          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">لپ تاپ</span>
-          <span class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">تبلت</span>
-          
+          <span
+            class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">موبایل</span>
+          <span
+            class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">هدفون</span>
+          <span
+            class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">لپ
+            تاپ</span>
+          <span
+            class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">تبلت</span>
         </div>
-    </div>
-  
-    <div
-      class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-      aria-hidden="true">
+      </div>
+
       <div
-        class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
+        class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+        aria-hidden="true">
+        <div
+          class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+          style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
+      </div>
     </div>
   </div>
-</div></template>
+</template>
   
 <script >
 
 
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export default {
+  setup() {
+    return {
+      modules: [Autoplay, Pagination, Navigation],
+    };
+  },
   data() {
     return {
       searchQuery: '',
       options: [
-        { id: 1, label: 'Option 1' },
-        { id: 2, label: 'Option 2' },
+        { id: 1, label: 'Option 1', price: 10000, imageUrl: '/images/3.jpg' },
+        { id: 2, label: 'Option 2', price: 10000, imageUrl: '/images/3.jpg' },
+        { id: 2, label: 'Option 2', price: 10000, imageUrl: '/images/3.jpg' },
+        { id: 2, label: 'Option 2', price: 10000, imageUrl: '/images/3.jpg' },
+        { id: 2, label: 'Option 2', price: 10000, imageUrl: '/images/3.jpg' },
+        { id: 2, label: 'Option 2', price: 10000, imageUrl: '/images/3.jpg' },
+        { id: 2, label: 'Option 2', price: 10000, imageUrl: '/images/3.jpg' },
         // Add more options as needed
       ],
     };
@@ -102,4 +182,8 @@ export default {
 
 <style scoped>
 /* Add your Tailwind CSS classes here */
+
+.swiper-slide {
+  width: auto;
+}
 </style>
