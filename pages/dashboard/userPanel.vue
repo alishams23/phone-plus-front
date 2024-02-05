@@ -21,13 +21,7 @@
 
             <!-- Profile dropdown -->
             <Menu as="div" class="relative ml-4 flex-shrink-0">
-              <div>
-                <MenuButton
-                  class="flex rounded-full bg-white text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100">
-                  <span class="sr-only">Open user menu</span>
-                  <img class="h-50 w-50 rounded-full" :src="user.imageUrl" alt="" />
-                </MenuButton>
-              </div>
+              
               <transition leave-active-class="transition ease-in duration-75"
                 leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                 <MenuItems
@@ -140,109 +134,112 @@
         <!-- Main 3 column grid -->
         <div class="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
           <!-- Left column -->
-          <div class="grid grid-cols-1 gap-4 lg:col-span-2">
+          <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2">
             <section aria-labelledby="section-1-title">
               <h2 class="sr-only" id="section-1-title">Section title</h2>
               <div class="overflow-hidden rounded-lg bg-white shadow">
                 <div class="p-6">
                   <div class="px-4 sm:px-0">
-                    <h3 class="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>
-                    <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
+                    <h3 class="text-base font-semibold leading-7 text-gray-900">اطلاعات شخصی</h3>
                   </div>
                   <div class="mt-6 border-t border-gray-100">
                     <dl class="divide-y divide-gray-100">
                       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+                        <dt class="text-sm font-medium leading-6 text-gray-900">نام </dt>
                         <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">Margot Foster</span>
-                          <span class="ml-4 flex-shrink-0">
-                            <button type="button"
-                              class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                          </span>
+                        
+                           <div class=" flex-grow">
+                            <div class="flex">
+                                 <input type="text" id="first_name" class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5" value="Ali" required>
+                            </div>
+                           </div>
+                        
                         </dd>
                       </div>
                       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-medium leading-6 text-gray-900">Application for</dt>
+                        <dt class="text-sm font-medium leading-6 text-gray-900">نام خانوادگی</dt>
                         <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">Backend Developer</span>
-                          <span class="ml-4 flex-shrink-0">
-                            <button type="button"
-                              class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                          </span>
+                        
+                           <div class=" flex-grow">
+                            <div class="flex">
+                                 <input type="text" id="first_name" class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5" value="Ahmadi" required>
+                            </div>
+                           </div>
+                        
                         </dd>
                       </div>
                       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-medium leading-6 text-gray-900">Email address</dt>
+                        <dt class="text-sm font-medium leading-6 text-gray-900">شماره همراه</dt>
                         <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">margotfoster@example.com</span>
-                          <span class="ml-4 flex-shrink-0">
-                            <button type="button"
-                              class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                          </span>
+                          <div class=" flex-grow">
+                            <div class="flex">
+                                 <div class="relative">
+                                    <input type="text" id="floating-phone-number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="09122345678" />
+                                    <label for="floating-phone-number" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:start-6 peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Phone number</label>
+                                </div>                            
+                              </div>
+                           </div>
                         </dd>
                       </div>
                       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
+                        <dt class="text-sm font-medium leading-6 text-gray-900">ایمیل</dt>
                         <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">$120,000</span>
-                          <span class="ml-4 flex-shrink-0">
-                            <button type="button"
-                              class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                          </span>
+                          <div class=" flex-grow">
+                            <div class="flex">
+                                 <input type="email" id="first_name" class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5" value="test@example.com" required>
+                            </div>
+                           </div>
                         </dd>
                       </div>
                       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
+                        <dt class="text-sm font-medium leading-6 text-gray-900">آدرس</dt>
                         <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt
-                            cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit
-                            nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit
-                            deserunt qui eu.</span>
-                          <span class="ml-4 flex-shrink-0">
-                            <button type="button"
-                              class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                          </span>
-                        </dd>
-                      </div>
-                      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt class="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
-                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                          <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-                            <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                              <div class="flex w-0 flex-1 items-center">
-                                <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                                  <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                                  <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                          <div class="flex flex-wrap -mx-3 mb-2">
+                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                                استان
+                              </label>
+                              <div class="relative">
+                                <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                  <option v-for="province in provinces" :key="province">{{ province }}</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                                 </div>
                               </div>
-                              <div class="ml-4 flex flex-shrink-0 space-x-4">
-                                <button type="button"
-                                  class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                                <span class="text-gray-200" aria-hidden="true">|</span>
-                                <button type="button"
-                                  class="rounded-md bg-white font-medium text-gray-900 hover:text-gray-800">Remove</button>
-                              </div>
-                            </li>
-                            <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                              <div class="flex w-0 flex-1 items-center">
-                                <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                                  <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                                  <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                                </div>
-                              </div>
-                              <div class="ml-4 flex flex-shrink-0 space-x-4">
-                                <button type="button"
-                                  class="rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">Update</button>
-                                <span class="text-gray-200" aria-hidden="true">|</span>
-                                <button type="button"
-                                  class="rounded-md bg-white font-medium text-gray-900 hover:text-gray-800">Remove</button>
-                              </div>
-                            </li>
-                          </ul>
+                            </div>
+
+                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                                شهر
+                              </label>
+                              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" value="تهران">
+                            </div>
+                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                               خیابان اصلی
+                              </label>
+                              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" value="ولیعصر">
+                            </div>
+                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                                خیابان فرعی
+                              </label>
+                              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" value="آسمان">
+                            </div>
+                            
+                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                                کدپستی
+                              </label>
+                              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" value="1439889342">
+                            </div>
+                          </div>
                         </dd>
                       </div>
+                        <button class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full px-10">
+                          ثبت تغییرات
+                        </button>
                     </dl>
                   </div>
                 </div>
@@ -263,7 +260,6 @@
                         class=" flex-auto rtl   border-b  block  px-4 py-8 text-sm text-gray-700 ">{{
                           item.name }}</nuxt-link>
                       <div  class="px-[0.01rem] my-4" :class="currentRouteCheck(item.href)?' border-l-8 rounded-l-lg bg-red  border-indigo-500 bg-indigo-500':''"></div>
-
                     </div>
                   </div>
                 </div>
@@ -313,16 +309,52 @@ export default {
     },},
   data() {
     return {
+      provinces: [
+        "انتخاب کنید",
+        "آذربایجان شرقی",
+        "آذربایجان غربی",
+        "اردبیل",
+        "اصفهان",
+        "البرز",
+        "ایلام",
+        "بوشهر",
+        "تهران",
+        "چهارمحال و بختیاری",
+        "خراسان جنوبی",
+        "خراسان رضوی",
+        "خراسان شمالی",
+        "خوزستان",
+        "زنجان",
+        "سمنان",
+        "سیستان و بلوچستان",
+        "فارس",
+        "قزوین",
+        "قم",
+        "کردستان",
+        "کرمان",
+        "کرمانشاه",
+        "کهگیلویه و بویراحمد",
+        "گلستان",
+        "گیلان",
+        "لرستان",
+        "مازندران",
+        "مرکزی",
+        "هرمزگان",
+        "همدان",
+        "یزد"
+      ],
       items: [
         { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/' },
         { name: 'سفارشات من', href: '#' },
         { name: 'خروج', href: '#' },
-      ], user: {
+      ], 
+      user: {
         name: 'Tom Cook',
         email: 'tom@example.com',
         imageUrl:
           'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      }, userNavigation :[
+      }, 
+      userNavigation :[
         { name: 'Your Profile', href: '#' },
         { name: 'Settings', href: '#' },
         { name: 'Sign out', href: '#' },
