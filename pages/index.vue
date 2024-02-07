@@ -20,7 +20,15 @@
   
       </div>
       <MainBlog />
-  
+
+      <div class="mx-2 mt-5 pb-10 ">
+        <BestDigitalProduct />
+      </div>
+      
+      <div class="mx-2 mt-5 pb-10 ">
+        <DiscountDigitalProduct />
+      </div>
+
       <!-- <Advertisement /> -->
     </div>
   </div>
@@ -28,6 +36,8 @@
 
 <script>
 import axios from "axios";
+import DiscountDigitalProduct from "@/components/section/DiscountDigitalProduct.vue"
+import BestDigitalProduct from "@/components/section/BestDigitalProduct.vue"
 import BestProduct from "@/components/section/BestProduct.vue"
 import Discount from "@/components/section/Discount.vue"
 import HeaderHero2 from "@/components/section/HeaderHero2.vue"
@@ -40,7 +50,7 @@ import Advertisement2 from "@/components/section/Advertisement2.vue"
 import Categories from "@/components/section/Categories.vue"
 
 export default {
-  components: { Categories,BestProduct,Discount, HeaderHero, Banner, PromoSection, MainBlog, Advertisement, Advertisement2,HeaderHero2 },
+  components: { Categories, DiscountDigitalProduct, BestProduct, BestDigitalProduct, Discount, HeaderHero, Banner, PromoSection, MainBlog, Advertisement, Advertisement2,HeaderHero2 },
   head() {
     return {
       // title: "ثبت نام"
