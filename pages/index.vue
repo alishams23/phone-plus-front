@@ -3,23 +3,26 @@
   <div class=" rounded-b-[50px]">
     <HeaderHero2 />
   </div>
-  <div>
-    <Banner class="pt-10" />
-  </div>
-  <div class="container mx-auto">
+
+  <div class="bg-white">
+    <div>
+      <Banner class="pt-10" />
+    </div>
+    <div class="container mx-auto ">
  
-    <div class="mx-2 mt-5">
-      <BestProduct />
-
+      <div class="mx-2 mt-5">
+        <BestProduct />
+  
+      </div>
+      <Categories class="mx-2" />
+      <div class="mx-2">
+        <Discount />
+  
+      </div>
+      <MainBlog />
+  
+      <!-- <Advertisement /> -->
     </div>
-    <Categories class="mx-2" />
-    <div class="mx-2">
-      <Discount />
-
-    </div>
-    <MainBlog />
-
-    <!-- <Advertisement /> -->
   </div>
 </template>
 

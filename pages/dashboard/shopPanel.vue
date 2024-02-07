@@ -158,7 +158,7 @@
                     </div>
                     <div v-if="selectedTab == 'blog'" class="mt-6 grid grid-cols-1 xl:gap-x-8">
                       <div v-for="item in data" :key="item" class="group relative">
-                        <Blog_test :data="item" width=" " class=" text-center  "/>
+                        <Blog_test :data="item" width=" " class=" text-center py-3 "/>
                       </div>
                     </div>
                   </div>

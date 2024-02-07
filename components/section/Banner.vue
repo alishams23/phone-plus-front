@@ -20,8 +20,8 @@
            
           }"
           :space-between="20" class="px-3 ">
-            <SwiperSlide v-for="post in posts" :key="post.id" class="mb-10">
-                <div class=" w-80 pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
+            <SwiperSlide v-for="post in posts" :key="post.id" class="mb-10 ">
+                <div class="  w-80 pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
         
                  <div class="">
                     <img :src="post.imageUrl" alt=""

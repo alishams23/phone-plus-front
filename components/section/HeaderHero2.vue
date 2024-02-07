@@ -1,13 +1,21 @@
 <template>
-  <div class=" rounded-b-[50px]">
-    <div class=" rounded-b-[50px] relative ">
-      <img src="/images/header.avif" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover rounded-b-[50px]" />
+  <div class=" ">
+    <div class="  relative ">
+
+
+      <div class="bg rounded-b-[50px]"></div>
+<div class="bg bg2 rounded-b-[50px]"></div>
+<div class="bg bg3 rounded-b-[50px]"></div>
+
+
+
+      <img src="/images/header.avif" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover " />
       <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div
           class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
       </div>
-      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-48">
+      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-[10rem]">
         <div class="text-center">
           <h1 class="text-4xl font-bold tracking-tight text-white sm:text-4xl">بهترین فروشگاه‌ها رو اینجا پیدا کن</h1>
         </div>
@@ -22,81 +30,72 @@
                 placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
               <div v-if="filteredOptions.length > 0 && searchQuery" class="absolute  mt-2 w-full"
                 style="z-index:9999999999999999">
-                <ul class="bg-gray-100 rtl rounded-xl px-5 shadow-xl w-full">
-                  <li class=" p-4 font-body-2 text-gray-500"> محصولات</li>
+                <ul class="bg-gray-100 rtl rounded-xl  shadow-xl w-full">
+                  <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
                   <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
                     :loop="false" 
-                    :autoplay="{
-                      delay: 2000,
-                      disableOnInteraction: false,
-                    }"
-                    :space-between="20" class="px-3 ">
-                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10"> 
+                   
+                    :space-between="20" >
+                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10 px-2"> 
                       <div class="rtl"> 
-                        <div class="flex items-start border bg-gray-200 rounded-xl overflow-hidden"> 
-                          <div class="px-5 py-3 flex-grow"> 
-                            <div class="font-bold"> 
+                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
+                          <div class="px-5 py-3 flex-grow "> 
+                            <div class=""> 
                               {{ option.label }}
                             </div>
-                            <div class="pt-3">
+                            <div class="text-gray-500 text-xs mt-3" >
                               {{ option.price }}
                             </div>
                           </div>
-                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-full object-cover rounded-e-lg" />
+                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
                   </Swiper>
-                  <li class=" p-4 font-body-1 text-gray-500 border-t">محصولات دیجیتال </li>
+                  <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
                   <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
                     :loop="false" 
-                    :autoplay="{
-                      delay: 2030,
-                      disableOnInteraction: false,
-                    }"
-                    :space-between="20" class="px-3 ">
-                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10"> 
+                  
+                    :space-between="20" >
+                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10 px-2"> 
                       <div class="rtl"> 
-                        <div class="flex items-start border bg-gray-200 rounded-xl overflow-hidden"> 
-                          <div class="px-5 py-3 flex-grow"> 
-                            <div class="font-bold"> 
+                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
+                          <div class="px-5 py-3 flex-grow "> 
+                            <div class=""> 
                               {{ option.label }}
                             </div>
-                            <div class="pt-3">
+                            <div class="text-gray-500 text-xs mt-3" >
                               {{ option.price }}
                             </div>
                           </div>
-                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-full object-cover rounded-e-lg" />
+                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
                   </Swiper>
-                  <li class=" p-4 font-body-1 text-gray-500 border-t"> مقاله‌ها</li>
+                  <li class=" p-4 font-body-1 text-gray-500 border-t font-bold"> مقاله‌ها</li>
                   <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
                     :loop="false" 
-                    :autoplay="{
-                      delay: 2060,
-                      disableOnInteraction: false,
-                    }"
-                    :space-between="20" class="px-3 ">
-                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10"> 
+                  
+                    :space-between="20" >
+                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10 px-2"> 
                       <div class="rtl"> 
-                        <div class="flex items-start border bg-gray-200 rounded-xl overflow-hidden"> 
-                          <div class="px-5 py-3 flex-grow"> 
+                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
+                          <div class="px-5 py-3 flex-grow "> 
                             <div class="font-bold"> 
                               {{ option.label }}
                             </div>
-                            <div class="pt-3">
+                            <div class="text-gray-500 text-xs mt-3" >
                               {{ option.price }}
                             </div>
                           </div>
-                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-full object-cover rounded-e-lg" />
+                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
@@ -137,6 +136,10 @@
       </div>
     </div>
   </div>
+
+
+
+  
 </template>
   
 <script >
@@ -182,6 +185,49 @@ export default {
 
 <style scoped>
 /* Add your Tailwind CSS classes here */
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, rgba(66, 51, 204, 0.609) 50%, rgba(0, 17, 255, 0.202) 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.3;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:fixed;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
 
 .swiper-slide {
   width: auto;
