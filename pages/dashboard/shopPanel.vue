@@ -213,7 +213,7 @@
         </div>
       </main>
     </div>
-  </template>
+</template>
   
   <script>
   import { PaperClipIcon } from '@heroicons/vue/20/solid'
