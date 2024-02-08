@@ -1,6 +1,6 @@
 <template>
-  <div class="  bg-blue-circle-best-product  bg-[#142b50] rounded-2xl isolate overflow-hidden relative">
-   <div class="flex justify-between items-center">
+  <div class="  bg-blue-circle-best-product  bg-[#142b50] rounded-[35px] isolate overflow-hidden relative">
+   <div class="flex pt-2 justify-between items-center">
     <div class="rtl px-3">
       <a href="#" class="text-gray-200 rtl  ">
         بیشتر

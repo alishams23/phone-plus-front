@@ -1,18 +1,7 @@
 <template>
-    <div class="bg-white pb-16 ">
-        <!-- <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            <article v-for="post in posts" :key="post.id" class="relative isolate flex flex-col items-start justify-between">
-
-                <div class="aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9] relative w-full">
-                    <img :src="post.imageUrl" alt="" class="absolute  w-full rounded-2xl bg-gray-100 object-cover inset-0 -z-10 h-full w-full object-cover" />
-         <div class=" absolute inset-0 -z-10 gradient-banner" />
-
-                    <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-                </div>
-            </article>
-        </div> -->
-
-        <Swiper  :modules="modules" :slides-per-view="'auto'" :loop="false"  :autoplay="{
+    <div class="bg-white pb-16 flex items-center ">
+   
+        <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false"  :autoplay="{
             delay: 2000,
             disableOnInteraction: false,
           }" :pagination="{
@@ -25,13 +14,17 @@
         
                  <div class="">
                     <img :src="post.imageUrl" alt=""
-                    class="absolute  w-full rounded-2xl bg-gray-100 object-cover inset-0 -z-10 h-full w-full object-cover" />
+                    class="absolute  w-full rounded-[30px] bg-gray-100 object-cover inset-0 -z-10 h-full w-full object-cover" />
                 <div class=" absolute inset-0 -z-10 gradient-banner" />
-                <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+                <div class="absolute inset-0 rounded-[30px] ring-1 ring-inset ring-gray-900/10" />
                  </div>
                 </div>
             </SwiperSlide>
+        
         </Swiper>
+        <div @click="swiper.slideNext()" class="rounded-full bg-indigo-900 p-3 m-4 mb-[3.3rem]">
+           <ArrowRightIcon class="h-5 text-white " />
+        </div>
     </div>
 </template>
 
@@ -40,7 +33,6 @@
 
 // Import Swiper styles
 import 'swiper/css';
-
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
@@ -48,11 +40,18 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 
 export default {
-
-  setup() {
+    components:{ArrowRightIcon},
+  setup() { 
+    const swiper = ref(null);
+    const onSwiper = (swiperInstance) => {
+        swiper.value =  swiperInstance
+      };
     return {
+        onSwiper,
+        swiper,
       modules: [Autoplay, Pagination, Navigation],
     };
   },
