@@ -1,42 +1,54 @@
 <template>
+  <div class="flex items-center flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-110  duration-300  ">
 
-    <article  class="flex flex-col items-start justify-between">
-        <div class="relative w-full">
-          <img :src="data.imageUrl" alt="" class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]" />
-          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-        </div>
-        <div class="max-w-xl">
-          <div class="mt-8 flex items-center gap-x-4 text-xs">
-            <time :datetime="data.datetime" class="text-gray-500">{{ data.date }}</time>
-            <a :href="data.category.href" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ data.category.title }}</a>
-          </div>
-          <div class="group relative">
-            <h3 class="mt-3 text-lg h-16 text-right font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-              <a :href="data.href">
-                <span class="absolute inset-0" />
-                {{ data.title }}
-              </a>
-            </h3>
-            <p class="mt-5 line-clamp-3 text-justify text-right rtl text-sm leading-6 text-gray-600">{{ data.description }}</p>
-          </div>
-          <div class="relative mt-8 flex items-center gap-x-4 rtl">
-            <img :src="data.author.imageUrl" alt="" class="h-10 w-10 rounded-full bg-gray-100" />
-            <div class="text-sm leading-6">
-              <p class="font-semibold text-gray-900">
-                <a :href="data.author.href">
-                  <span class="absolute inset-0" />
-                  {{ data.author.name }}
-                </a>
-              </p>
-              <p class="text-gray-600">{{ data.author.role }}</p>
-            </div>
-          </div>
-        </div>
-      </article>
-    </template>
-    <script>
+  <div class="bg-white border-t p-10 text-right pl-[200px] rounded-2xl shadow-xl  ">
+    <div>
+      <div class="font-bold text-xs text-indigo-500 text-md">{{ date }}</div>
+
+      <div class="text-gray-900 font-semibold text-lg mt-2">{{ title }}</div>
+      <p class="text-gray-600 text-[14px] py-2 font-light text-xs mt-2">{{ description }}</p>
+
+     <div class="flex rtl">
+      <button
+      class="text-sm  mt-4 bg-indigo-600 px-10 text-white font-bold py-2 px-4 rounded-full hover:bg-indigo-800 focus:outline-none focus:shadow-outline"
+      @click="readMore"
+    >
+     ادامه 
+    </button>
+    <button
+    class="text-sm mx-3 mt-4 flex items-center bg-gray-100  text-gray-500 py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
+    @click="readMore"
+  >
+  <div class="pl-2">
+    120
+  </div>
+  <HeartIcon class="h-4  "/> 
+  </button>
+     </div>
+    </div>
+  </div>
+  <img :src="imageUrl" class="z-[9] h-[12rem] w-[12rem]  w-100 rounded-[30px] mr-[-160px] shadow-xl" style="" />
+
+  </div>
+</template>
+
+<script>
+import { HeartIcon } from '@heroicons/vue/20/solid'
 export default {
- props:["data"],
+  name: 'CardComponent',
+  components:{HeartIcon},
+  data() {
+    return {
+      date: '1400/11/10',
+      title: 'تاریخچه و تکامل گوشی‌های هوشمند: از نوکیا تا آیفون ',
+      description: 'این متن تاریخچه تکامل گوشی‌های هوشمند از دهه ۱۹۹۰ تا به امروز را بررسی می‌کند.نیای گوشی‌های هوشمند آشنا خواهید شد',
+      imageUrl: '/images/blog/2.jpg',
+    }
+  },
+  methods: {
+    readMore() {
+      // Define what happens when the "READ MORE" button is clicked.
+    },
+  },
 }
-
-    </script>
+</script>
