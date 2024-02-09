@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-110  duration-300  ">
+  <div class="flex items-center flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
 
   <div class="bg-white border-t p-10 text-right pl-[200px] rounded-2xl shadow-xl  ">
     <div>

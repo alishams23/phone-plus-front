@@ -8,30 +8,32 @@
     <div>
       <Banner class="pt-10" />
     </div>
-    <div class="container mx-auto ">
+   
  
-      <div class="mx-2 mt-5">
+      <div class=" mt-5">
         <BestProduct />
   
       </div>
-      <Categories class="mx-2" />
-      <div class="mx-2">
+      <div class="container mx-auto">
+        <Categories class="mx-2" />
+      </div>
+      <div class="">
         <Discount />
   
       </div>
-      <MainBlog />
+      <div class="container mx-auto"><MainBlog  /></div>
 
-      <div class="mx-2 mt-5 pb-10 ">
+      <div class=" mt-5 pb-10 ">
         <BestDigitalProduct />
       </div>
       
-      <div class="mx-2 mt-5 pb-10 ">
+      <div class=" mt-5 pb-10 ">
         <DiscountDigitalProduct />
       </div>
 
       <!-- <Advertisement /> -->
     </div>
-  </div>
+
 </template>
 
 <script>

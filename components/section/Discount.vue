@@ -1,5 +1,5 @@
 <template>
-  <div class="  bg-blue-circle-best-product  bg-[#19025B] rounded-[35px] isolate overflow-hidden relative">
+  <div class="  bg-blue-circle-best-product  bg-[#19025B]  isolate overflow-hidden relative">
    <div class="flex pt-2 justify-between items-center">
     <div class="rtl px-3">
       <a href="#" class="text-gray-200 rtl  ">
@@ -14,7 +14,7 @@
     </div>
     
    </div>
-    <Carousel  :itemsToShow="4.5" :wrapAround="true" :transition="500">
+    <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500">
       <Slide v-for="item in data" :key="item">
         <Product :data="item" />
       </Slide>
