@@ -1,22 +1,41 @@
 <template>
-  <div class="  bg-blue-circle-best-product  bg-[#142b50] rounded-[35px] isolate overflow-hidden relative">
-   <div class="flex pt-2 justify-between items-center">
-    <div class="rtl px-3">
-      <a href="#" class="text-gray-200 rtl  ">
-        بیشتر
-        <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
-      </a>
-    </div>
-    <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
-      پر فروش ترین محصولات
-
+  <div class="     isolate overflow-hidden relative">
+   
+    <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-blue-800/80 via-black/100" />
+    <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
+    <div class=" absolute inset-0  -z-1000" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="white" fill-opacity="1" d="M0,96L120,112C240,128,480,160,720,160C960,160,1200,128,1320,112L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+      </svg>
 
     </div>
-    
-   </div>
-    <Carousel  :itemsToShow="4.5" :wrapAround="true" :transition="500">
-      <Slide v-for="item in data" :key="item">
-        <Product :data="item" />
+    <div class=" absolute inset-0 h-full  -z-1000" style="bottom: 0px;"  >
+     <div class="pt-[200px]">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="white" fill-opacity="1" d="M0,256L120,261.3C240,267,480,277,720,266.7C960,256,1200,224,1320,208L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+      </svg>
+     </div>
+
+    </div>
+  <div class="absolute inset-0 -z-1000">
+    <div class="flex pt-2 justify-between items-center">
+      <div class="rtl px-3">
+        <a href="#" class="text-indigo-900 rtl  ">
+          بیشتر
+          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+        </a>
+      </div>
+      <div class="text-indigo-900 font-bold text-xl text-right px-4 pt-4">
+        پر فروش ترین محصولات
+  
+  
+      </div>
+      
+     </div>
+  </div>
+    <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500" class="pt-10">
+      <Slide v-for="item in data" :key="item" >
+        <Product :data="item" class="my-10" />
       </Slide>
 
       <template #addons>
@@ -24,17 +43,7 @@
       </template>
 
     </Carousel>
-    <div class="h-50">
-      <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2" >
-        <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
-        <defs>
-          <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(512)">
-            <stop stop-color="blue" />
-            <stop offset="1" stop-color="blue" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-      </svg>
-     </div>
+ 
      
 
   </div>
@@ -157,8 +166,7 @@ export default {
 }
 .bg-blue-circle-best-product{
    
-  
-  background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #0000007d 88.9%, #00000000 90%)!important;
 
+  background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #5109d591 20.9%, #00000000 90%);
 }
 </style>

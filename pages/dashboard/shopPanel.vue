@@ -4,22 +4,9 @@
       <Popover as="header" class="bg-indigo-600 pb-24" v-slot="{ open }">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <div class="relative flex items-center justify-center py-5 lg:justify-between">
-            <!-- Logo -->
-            <!-- <div class="absolute left-0 flex-shrink-0 lg:static">
-              <a href="#">
-                <span class="sr-only">Your Company</span>
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300" alt="Your Company" />
-              </a>
-            </div> -->
-  
-            <!-- Right section on desktop -->
+      
             <div class="hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5">
-              <!-- <button type="button" class="flex-shrink-0 rounded-full p-1 text-indigo-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
-                <span class="sr-only">View notifications</span>
-                <BellIcon class="h-6 w-6" aria-hidden="true" />
-              </button> -->
-  
-              <!-- Profile dropdown -->
+       
               <Menu as="div" class="relative ml-4 flex-shrink-0">
                 <div>
                   <MenuButton class="flex rounded-full bg-white text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100">
@@ -36,20 +23,6 @@
                 </transition>
               </Menu>
             </div>
-  
-            <!-- Search -->
-            <!-- <div class="min-w-0 flex-1 px-12 lg:hidden">
-              <div class="mx-auto w-full max-w-xs">
-                <label for="desktop-search" class="sr-only">Search</label>
-                <div class="relative text-white focus-within:text-gray-600">
-                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <input id="desktop-search" class="block w-full rounded-md border-0 bg-white/20 py-1.5 pl-10 pr-3 text-white placeholder:text-white focus:bg-white focus:text-gray-900 focus:ring-0 focus:placeholder:text-gray-500 sm:text-sm sm:leading-6" placeholder="Search" type="search" name="search" />
-                </div>
-              </div>
-            </div>-->
-            <!-- Menu button -->
             <div class="absolute right-0 flex-shrink-0 lg:hidden">
               <!-- Mobile menu button -->
               <PopoverButton class="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-indigo-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
@@ -60,13 +33,11 @@
             </div>
           </div>
         </div>
-  
         <TransitionRoot as="template" :show="open">
           <div class="lg:hidden">
             <TransitionChild as="template" enter="duration-150 ease-out" enter-from="opacity-0" enter-to="opacity-100" leave="duration-150 ease-in" leave-from="opacity-100" leave-to="opacity-0">
               <PopoverOverlay class="fixed inset-0 z-20 bg-black bg-opacity-25" />
             </TransitionChild>
-  
             <TransitionChild as="template" enter="duration-150 ease-out" enter-from="opacity-0 scale-95" enter-to="opacity-100 scale-100" leave="duration-150 ease-in" leave-from="opacity-100 scale-100" leave-to="opacity-0 scale-95">
               <PopoverPanel focus class="absolute inset-x-0 top-0 z-30 mx-auto w-full max-w-3xl origin-top transform p-2 transition">
                 <div class="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
@@ -126,41 +97,67 @@
                 <div class="overflow-hidden rounded-lg bg-white shadow">
                   <div class="p-6">
                     <!-- Your content -->
-                    <div class="sm:hidden">
-                        <label for="tabs" class="sr-only">Select your country</label>
-                        <select id="tabs" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
-                            <option >Profile</option>
-                            <option>Canada</option>
-                            <option>France</option>
-                            <option>Germany</option>
-                        </select>
+                  
+                    <div class="text-gray-800 font-bold text-xl text-right px-4 pt-4">
+                     محصولات 
                     </div>
-                    <ul class="hidden text-sm font-medium text-center text-gray-500 rounded-xl shadow sm:flex bg-gray-100">
-                      <li class="w-full">
-                          <a href="#" @click="selectedTab = 'products'" :class="selectedTab === 'products' ? 'rounded-xl  bg-indigo-600 active text-white' : 'hover:rounded-xl hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200">محصولات</a>
-                      </li>
-                      <li class="w-full">
-                          <a href="#" @click="selectedTab = 'digital_products'" :class="selectedTab === 'digital_products' ? 'rounded-xl bg-indigo-600 active text-white' : 'hover:rounded-xl hover:bg-indigo-100'" class="inline-block w-full p-4 border-r border-gray-200">محصولات دیجیتال</a>
-                      </li>
-                        <li class="w-full">
-                            <a href="#" @click="selectedTab = 'blog'" :class="selectedTab === 'blog' ? 'rounded-xl bg-indigo-600 active text-white' : 'hover:rounded-xl hover:bg-indigo-100'" class="inline-block w-full p-4  border-gray-200 rounded-s-lg" aria-current="page">مقاله‌ها</a>
-                        </li>
-                    </ul>
-                    <div v-if="selectedTab == 'products'" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+
+                    <div  class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
                       <div v-for="item in data" :key="item" class="group relative">
-                        <Product :data="item" width=" " class=" text-center  "/>
+                        <Product :data="item" width=" " class=" text-center my-2 "/>
+                      </div>
+                      <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
+                    </div>           
+                    <div class="border-t-2 mt-8  py-1">
+                    </div>
+                    <div  class="flex items-center justify-center " style="margin-top:-35px">
+                       <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                      بیشتر
                       </div>
                     </div>
-                    <div v-if="selectedTab == 'digital_products'" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+
+
+                    <div class="text-gray-800 font-bold text-xl text-right px-4 pt-20">
+                      محصولات  دیجیتال
+                     </div>
+
+                    <div  class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  relative isolate ">
                       <div v-for="item in data" :key="item" class="group relative">
                         <DigitalProduct :data="item" width=" " class=" text-center  "/>
                       </div>
+                      <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
+
                     </div>
-                    <div v-if="selectedTab == 'blog'" class="mt-6 grid grid-cols-1 xl:gap-x-8">
-                      <div v-for="item in data" :key="item" class="group relative">
-                        <Blog_test :data="item" width=" " class=" text-center py-3 "/>
+                    <div class="border-t-2 mt-8  py-1">
+                    </div>
+                    <div  class="flex items-center justify-center " style="margin-top:-35px">
+                       <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                      بیشتر
                       </div>
                     </div>
+
+
+                    <div class="text-gray-800 font-bold text-xl text-right px-4 pt-20">
+                      وبلاگ
+                     </div>
+
+                    <div  class="mt-6 grid grid-cols-1  relative isolate">
+                      <div v-for="item in data" :key="item" class="group px-5 relative">
+                        <Blog :data="item" width=" " class=" text-center py-3 "/>
+                      </div>
+                      <div class="absolute z-[80] inset-0 mb-[-20px] bg-gradient-to-t  from-white from-10% via-white/30" />
+
+                    </div>
+
+                    <div class="border-t-2 mt-14  py-1">
+                    </div>
+                    <div  class="flex items-center justify-center " style="margin-top:-35px">
+                       <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                      بیشتر
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
               </section>
@@ -182,27 +179,21 @@
                           <div class="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
                             <dt class="text-sm font-medium leading-6 text-gray-900">نام</dt>
                             <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:mt-0">
-                              <span class="flex-grow">فروشگاه فون پلاس</span>
-                              
+                              <span class="flex-grow">فروشگاه فون پلاس</span>   
                             </dd>
                           </div>
                           <div class="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
                             <dt class="text-sm font-medium leading-6 text-gray-900">تلفن</dt>
                             <dd class="mt-1 flex text-sm leading-6 text-gray-700  sm:mt-0">
                               <span class="flex-grow">۰۹۱۲۰۰۰۰۰۰</span>
-                             
                             </dd>
                           </div>
-                         
-                         
                           <div class="px-4 py-6 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-0">
                             <dt class="text-sm font-medium leading-6 text-gray-900">آدرس</dt>
                             <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:mt-0">
                               <span class="flex-grow">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</span>
-                             
                             </dd>
                           </div>
-                         
                         </dl>
                       </div>
                   </div>
@@ -233,12 +224,12 @@
   import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
   import Product from "@/components/shared/Product.vue"
   import DigitalProduct from "@/components/shared/DigitalProduct.vue"
-  import Blog_test from "@/components/shared/Blog_test.vue"
+  import Blog from "@/components/shared/Blog.vue"
   
   export default {
     components: { 
       Product, 
-      Blog_test,
+      Blog,
       DigitalProduct, 
       PaperClipIcon,
       Menu,

@@ -15,7 +15,7 @@
    </div>
     <Carousel  :itemsToShow="4.5" :wrapAround="true" :transition="500">
       <Slide v-for="item in data" :key="item">
-        <Product :data="item" />
+        <DigitalProduct :data="item" />
       </Slide>
 
       <template #addons>
@@ -30,9 +30,9 @@
 </template>
   
 <script>
-import Product from "@/components/shared/Product.vue"
+import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 export default {
-  components: { Product }, data: () => ({
+  components: { DigitalProduct }, data: () => ({
     data: [
       {
         image: '/images/2.jpeg',

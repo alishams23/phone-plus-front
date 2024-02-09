@@ -4,22 +4,9 @@
     <Popover as="header" class="bg-indigo-600 pb-24" v-slot="{ open }">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div class="relative flex items-center justify-center py-5 lg:justify-between">
-          <!-- Logo -->
-          <!-- <div class="absolute left-0 flex-shrink-0 lg:static">
-              <a href="#">
-                <span class="sr-only">Your Company</span>
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300" alt="Your Company" />
-              </a>
-            </div> -->
-
-          <!-- Right section on desktop -->
+        
           <div class="hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5">
-            <!-- <button type="button" class="flex-shrink-0 rounded-full p-1 text-indigo-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
-                <span class="sr-only">View notifications</span>
-                <BellIcon class="h-6 w-6" aria-hidden="true" />
-              </button> -->
-
-            <!-- Profile dropdown -->
+      
             <Menu as="div" class="relative ml-4 flex-shrink-0">
               
               <transition leave-active-class="transition ease-in duration-75"
@@ -35,19 +22,7 @@
             </Menu>
           </div>
 
-          <!-- Search -->
-          <!-- <div class="min-w-0 flex-1 px-12 lg:hidden">
-              <div class="mx-auto w-full max-w-xs">
-                <label for="desktop-search" class="sr-only">Search</label>
-                <div class="relative text-white focus-within:text-gray-600">
-                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    <MagnifyingGlassIcon class="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <input id="desktop-search" class="block w-full rounded-md border-0 bg-white/20 py-1.5 pl-10 pr-3 text-white placeholder:text-white focus:bg-white focus:text-gray-900 focus:ring-0 focus:placeholder:text-gray-500 sm:text-sm sm:leading-6" placeholder="Search" type="search" name="search" />
-                </div>
-              </div>
-            </div>-->
-          <!-- Menu button -->
+         
           <div class="absolute right-0 flex-shrink-0 lg:hidden">
             <!-- Mobile menu button -->
             <PopoverButton

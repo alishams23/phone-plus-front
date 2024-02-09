@@ -1,18 +1,18 @@
 <template>
   <div class="flex pt-20 pb-10 justify-between items-center">
     <div class="rtl px-3">
-      <a href="#" class="text-black rtl  ">
+      <a href="#" class="text-black rtl">
         بیشتر
         <span aria-hidden="true" class="px-3 "> &larr;</span>
       </a>
     </div>
-    <div class="text-black font-bold text-xl text-right px-4 ">
+    <div class="text-black font-bold text-xl text-right px-4">
       دسته بند‌ی‌ها
     </div>
   </div>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-4 pb-20 rtl " :style="{ backgroundImage: 'url(/your-background-image.jpg)', backgroundSize: 'cover' }">
     <div v-for="person in data" :key="person.email" 
-         class=" relative isolate  flex items-center  rounded-[19px] border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
+         class=" relative isolate  flex items-center  rounded-[30px] border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
          :style="{ backgroundImage: 'url(' + person.imageUrl + ')', backgroundSize: 'cover' }">
          <div class="rounded-lg absolute inset-0 -z-10 bg-gradient-to-l  from-white from-20% via-white/40" />
          <div class=" bg-blue-circle-categories  absolute inset-0  " />
@@ -27,16 +27,16 @@
       </div>
     </div>
   </div>
-  <div class="border-t-2 border-dashed py-1">
+  <div class="border-t-2  py-2 ">
 
   </div>
-  <div v-if="!show_categories" class="flex items-center justify-center " style="margin-top:-35px">
-     <div @click="data = categories, show_categories = !show_categories" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
+  <div v-if="!show_categories" class="flex items-center justify-center mb-10" style="margin-top:-35px">
+     <div @click="data = categories, show_categories = !show_categories" class="text-sm border-2 bg-white rounded-full px-10 py-2 mb-5">
     بیشتر
     </div>
   </div>
-  <div v-else class="flex items-center justify-center  " style="margin-top:-35px">
-     <div @click="data = categories.slice(0,4), show_categories = !show_categories" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
+  <div v-else class="flex items-center justify-center  mb-10" style="margin-top:-35px">
+     <div @click="data = categories.slice(0,4), show_categories = !show_categories" class="text-sm border-2 bg-white rounded-full px-10 py-2 mb-5">
     بستن
   </div>
   </div>

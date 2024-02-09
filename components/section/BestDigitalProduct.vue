@@ -1,6 +1,9 @@
 <template>
-  <div class="inner-shadow-custom  bg-[#5B022A]   isolate overflow-hidden relative">
-   <div class="flex pt-3 justify-between items-center">
+  <div class="   isolate overflow-hidden relative">
+    <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-indigo-800/80 via-black/100" />
+    <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
+ <div class="absolute inset-0 -z-1000">
+  <div class="flex pt-3 justify-between items-center">
     <div class="rtl px-3">
       <a href="#" class="text-gray-200 rtl  ">
         بیشتر
@@ -9,14 +12,13 @@
     </div>
     <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
       پر فروش ترین محصولات دیجیتال
-
-
     </div>
     
    </div>
-    <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500">
+ </div>
+    <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500" class="pt-10">
       <Slide v-for="item in data" :key="item">
-        <Product :data="item" />
+        <DigitalProduct class="my-10" :data="item" />
       </Slide>
 
       <template #addons>
@@ -31,9 +33,9 @@
 </template>
   
 <script>
-import Product from "@/components/shared/Product.vue"
+import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 export default {
-  components: { Product }, data: () => ({
+  components: { DigitalProduct }, data: () => ({
     data: [
       {
         image: '/images/2.jpeg',
@@ -145,14 +147,20 @@ export default {
 
   transform: rotateY(0) scale(1.15);
 }
-.bg-blue-circle-best-product{
+.bg-blue-circle-33{
    
   
-  background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #0000007d 88.9%, #00000000 90%)!important;
-
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(76,9,121,1) 33%, rgba(76,9,121,1) 64%, rgba(0,0,0,1) 100%);
 }
 
 .inner-shadow-custom{
   box-shadow: inset 100px 0px 100px -30px rgba(0, 0, 0, 0.787),inset -100px 0px 100px -30px rgba(0, 0, 0, 0.787);
+}
+
+.bg-blue-circle-best-product{
+   
+
+  background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #5e09d591 20.9%, #00000000 90%);
 }
 </style>

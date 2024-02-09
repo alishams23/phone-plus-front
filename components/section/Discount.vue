@@ -1,22 +1,23 @@
 <template>
-  <div class="  bg-blue-circle-best-product  bg-[#19025B]  isolate overflow-hidden relative">
-   <div class="flex pt-2 justify-between items-center">
-    <div class="rtl px-3">
-      <a href="#" class="text-gray-200 rtl  ">
-        بیشتر
-        <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
-      </a>
-    </div>
-    <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
-      محصولات شگفت انگیز
-
-
-    </div>
-    
-   </div>
-    <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500">
+  <div class="   isolate overflow-hidden relative">
+    <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-red-800/80 via-black/100" />
+    <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
+  <div class="absolute inset-0 -z-1000">
+    <div class="flex pt-2 justify-between items-center">
+      <div class="rtl px-3 ">
+        <a href="#" class="text-gray-200 rtl  ">
+          بیشتر
+          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+        </a>
+      </div>
+      <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
+        محصولات شگفت انگیز
+      </div>
+     </div>
+  </div>
+    <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500" class="pt-10">
       <Slide v-for="item in data" :key="item">
-        <Product :data="item" />
+        <Product class="my-10" :data="item" />
       </Slide>
       <template #addons>
         <Navigation />
@@ -155,7 +156,7 @@ export default {
 .bg-blue-circle-best-product{
    
   
-  background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #0000007d 88.9%, #00000000 90%)!important;
+  background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #5109d591 20.9%, #00000000 90%);
 
 }
 </style>
