@@ -17,6 +17,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
+    "@vueform/slider": "^2.1.10",
     "nuxt-swiper": "^1.2.2",
     "vue-carousel-3d": "^1.0.1",
     "vue3-carousel": "^0.3.1",

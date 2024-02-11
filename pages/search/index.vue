@@ -10,13 +10,13 @@
                     <div class="flex p-2 bg-indigo-700 rounded-[28px] ">
                         <div class=" flex-auto">
                             <input type="search" id="search-dropdown" v-model="searchQuery" @input="filterOptions"
-                                class="text-white block p-4 w-full z-20 text-sm text-indigo-900 text-right rtl pr-5
+                                class="text-white block p-4 w-full z-20 text-sm text-indigo-500 text-right rtl pr-5
                                  rounded-sm rounded-e-[20px]  "
                                 placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
                         </div>
                         <div class=" pl-1">
                             <button type="submit"
-                                class=" pl-9 pr-14 top-0 end-0 h-full p-4 text-sm w-10 font-medium  text-white bg-yellow-600 rounded-sm rounded-e-[20px]">
+                                class=" pl-9 pr-14 top-0 end-0 h-full p-4 text-sm w-10 font-medium  text-white bg-orange-600 rounded-sm rounded-e-[20px]">
                                 <svg class="w-4 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -41,90 +41,70 @@
                         <h2 class="sr-only" id="section-1-title">Section title</h2>
                         <div class="overflow-hidden rounded-lg bg-white shadow">
                         <!-- Your content -->
-                            <div>
-                                <div class="flex pt-20 pb-10 justify-between items-center">
-                                    <div class="rtl px-3">
-                                        <!-- <a href="#" class="text-black rtl  ">
-                                            بیشتر
-                                            <span aria-hidden="true" class="px-3 "> &larr;</span>
-                                        </a> -->
-                                    </div>
-                                    <div class="text-black font-bold text-xl text-right px-4 ">
-                                        محصولات
-                                    </div>
-                                </div>
-                                <div class="p-6 grid grid-cols-3 gap-4 ">
-                                    <div v-for="product in show_products_list" :key="product" class="group relative">
-                                        <Product :data="product" width=" " class=" text-center  "/>
-                                    </div>
-                                </div>
-                                <div v-if="!show_products" class="flex items-center justify-center " style="margin-top:-35px">
-                                    <div @click="show_products_list = products.slice(0,9), show_products = !show_products" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
-                                        بیشتر
-                                    </div>
-                                </div>
-                                <div v-else class="flex items-center justify-center  " style="margin-top:-35px">
-                                    <div @click="show_products_list = products.slice(0,3), show_products = !show_products" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
-                                        بستن
-                                    </div>
-                                </div>
+                        <div class="p-6">
+                          <!-- Your content -->
+                        
+                          <div class="text-gray-800 font-bold text-xl text-right px-4 pt-4">
+                           محصولات 
+                          </div>
+      
+                          <div  class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
+                            <div v-for="item in data" :key="item" class="group relative">
+                              <Product :data="item" width=" " class=" text-center my-2 "/>
                             </div>
-                            <div>
-                                <div class="flex pt-20 pb-10 justify-between items-center">
-                                    <div class="rtl px-3">
-                                        <!-- <a href="#" class="text-black rtl  ">
-                                            بیشتر
-                                            <span aria-hidden="true" class="px-3 "> &larr;</span>
-                                        </a> -->
-                                    </div>
-                                    <div class="text-black font-bold text-xl text-right px-4 ">
-                                        محصولات دیجیتال
-                                    </div>
-                                </div>
-                                <div class="p-6 grid grid-cols-3 gap-4 ">
-                                    <div v-for="digital_product in show_digital_products_list" :key="digital_product" class="group relative">
-                                        <Product :data="digital_product" width=" " class=" text-center  "/>
-                                    </div>
-                                </div>
-                                <div v-if="!show_digital_products" class="flex items-center justify-center " style="margin-top:-35px">
-                                    <div @click="show_digital_products_list = products.slice(0,9), show_digital_products = !show_digital_products" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
-                                        بیشتر
-                                    </div>
-                                </div>
-                                <div v-else class="flex items-center justify-center  " style="margin-top:-35px">
-                                    <div @click="show_digital_products_list = products.slice(0,3), show_digital_products = !show_digital_products" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
-                                        بستن
-                                    </div>
-                                </div>
+                            <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
+                          </div>           
+                          <div class="border-t-2 mt-8  py-1">
+                          </div>
+                          <div  class="flex items-center justify-center " style="margin-top:-35px">
+                             <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                            بیشتر
                             </div>
-                            <div>
-                                <div class="flex pt-20 pb-10 justify-between items-center">
-                                    <div class="rtl px-3">
-                                        <!-- <a href="#" class="text-black rtl  ">
-                                            بیشتر
-                                            <span aria-hidden="true" class="px-3 "> &larr;</span>
-                                        </a> -->
-                                    </div>
-                                    <div class="text-black font-bold text-xl text-right px-4 ">
-                                        مقاله‌ها
-                                    </div>
-                                </div>
-                                <div class="p-6 grid grid-cols-1 gap-4 ">
-                                    <div v-for="blog in show_blogs_list" :key="blog" class="group relative">
-                                        <Blog />
-                                    </div>
-                                </div>
-                                <div v-if="!show_blogs" class="flex pt-8 items-center justify-center " style="margin-top:-35px">
-                                    <div @click="show_blogs_list = blogs.slice(0,9), show_blogs = !show_blogs" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
-                                        بیشتر
-                                    </div>
-                                </div>
-                                <div v-else class="flex pt-8 items-center justify-center  " style="margin-top:-35px">
-                                    <div @click="show_blogs_list = blogs.slice(0,3), show_blogs = !show_blogs" class="border-2 bg-white rounded-full px-10 py-3 mb-5">
-                                        بستن
-                                    </div>
-                                </div>
+                          </div>
+      
+      
+                          <div class="text-gray-800 font-bold text-xl text-right px-4 pt-20">
+                            محصولات  دیجیتال
+                           </div>
+      
+                          <div  class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  relative isolate ">
+                            <div v-for="item in data" :key="item" class="group relative">
+                              <DigitalProduct :data="item" width=" " class=" text-center  "/>
                             </div>
+                            <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
+      
+                          </div>
+                          <div class="border-t-2 mt-8  py-1">
+                          </div>
+                          <div  class="flex items-center justify-center " style="margin-top:-35px">
+                             <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                            بیشتر
+                            </div>
+                          </div>
+      
+      
+                          <div class="text-gray-800 font-bold text-xl text-right px-4 pt-20">
+                            وبلاگ
+                           </div>
+      
+                          <div  class="mt-6 grid grid-cols-1  relative isolate">
+                            <div v-for="item in data" :key="item" class="group px-5 relative">
+                              <Blog :data="item" width=" " class=" text-center py-3 "/>
+                            </div>
+                            <div class="absolute z-[80] inset-0 mb-[-20px] bg-gradient-to-t  from-white from-10% via-white/30" />
+      
+                          </div>
+      
+                          <div class="border-t-2 mt-14  py-1">
+                          </div>
+                          <div  class="flex items-center justify-center " style="margin-top:-35px">
+                             <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                            بیشتر
+                            </div>
+                          </div>
+      
+      
+                        </div>
                         </div>
                     </section>
                 </div>
@@ -184,7 +164,7 @@
                                     </Dialog>
                                   </TransitionRoot>
                             
-                                  <main class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                                  <main class="mx-auto max-w-2xl px-4 py-5 lg:max-w-7xl lg:px-8">
                                     <div class="border-b border-gray-200 pb-10">
                                       <h1 class="text-4xl font-bold tracking-tight text-gray-900">فیلترها</h1>
                                       <!-- <p class="mt-4 text-base text-gray-500">Checkout out the latest release of Basic Tees, new and improved with four openings!</p> -->
@@ -200,7 +180,7 @@
                                         </button>
                             
                                         <div class="hidden lg:block">
-                                          <form class="space-y-10 divide-y divide-gray-200">
+                                          <form class="space-y-10 py-10 divide-y divide-gray-200">
                                             <div v-for="(section, sectionIdx) in filters" :key="section.name" :class="sectionIdx === 0 ? null : 'pt-10'">
                                               <fieldset>
                                                 <legend class="block text-sm font-medium text-gray-900">{{ section.name }}</legend>
@@ -212,11 +192,13 @@
                                                 </div>
                                               </fieldset>
                                             </div>
-                                                  <div class="relative ltr mb-6">
+                                                  <div class=" ltr mb-6 ">
                                                     <label for="labels-range-input" class="sr-only">Labels range</label>
-                                                    <input id="labels-range-input" type="range" value="1000" min="100" max="1500" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer ">
-                                                    <span class="text-xs  text-gray-500 absolute start-0 -bottom-6">ارزانترین (150,000 تومان)</span>
-                                                    <span class="text-xs text-gray-500 absolute end-0 -bottom-6">گرانترین (1,150,000 تومان)</span>
+                                                    <client-only>
+                                                      <Slider v-model="value" class="mb-10" />
+                                                    </client-only>
+                                                    <span class="text-xs  text-gray-500 mb-10 mt-10">ارزانترین (150,000 تومان)</span>
+                                                    <span class="text-xs text-gray-500 mb-10 mt-10">گرانترین (1,150,000 تومان)</span>
                                                 </div>
                                           </form>
                                         </div>
@@ -239,6 +221,7 @@
 
 <script>
 import { PaperClipIcon } from '@heroicons/vue/20/solid'
+import Slider from '@vueform/slider'
 import {
     Menu,
     MenuButton,
@@ -267,6 +250,7 @@ import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
 export default {
     components: { 
+      Slider,
     Product, 
     Blog,
     Blog_test,
@@ -288,6 +272,7 @@ export default {
     MagnifyingGlassIcon, 
     },
     data: () => ({
+      value: [10,30],
     show_products_list : [],
     show_products : false,
     show_digital_products_list : [],
@@ -296,6 +281,44 @@ export default {
     show_blogs : false,
     mobileFiltersOpen : ref(false),
     selectedTab: 'products',
+    data: [
+        {
+          image: '/images/2.jpeg',
+          title: 'samsung'
+          , price: 1000000
+          , percent: 10
+        },
+        {
+          image: '/images/3.jpg',
+          title: 'ایفون ۱۴'
+          , price: 1000000
+          , percent: 10
+  
+        },
+        {
+          image: '/images/6.jpg',
+          title: 'ایرپاد'
+          , price: 1000000
+          , percent: 0
+      
+  
+        },
+        {
+          image: '/images/4.jpg',
+          title: 'مک بوک'
+          , price: 1000000
+          , percent: 10
+  
+        },
+        {
+          image: '/images/5.jpg',
+          title: 'هدفون'
+          , price: 1000000
+          , percent: 10
+  
+        },
+      ],
+
     filters : [
     {
         id: 'color',
@@ -495,52 +518,10 @@ export default {
 
 </script>
 
-<style scoped>
-.carousel__slide {
-    padding: 5px;
-}
-
-.carousel__viewport {
-    perspective: 2000px;
-}
-
-.carousel__track {
-    transform-style: preserve-3d;
-}
-
-.carousel__slide--sliding {
-    transition: 0.5s;
-}
-
-.carousel__slide {
-    opacity: 0.5;
-    filter: blur(3px);
-
-    transform: rotateY(-10deg) scale(0.99);
-}
-
-
-
-.carousel__slide--prev {
-    opacity: 0.8;
-    filter: blur(1px);
-
-    transform: rotateY(-10deg) scale(0.99);
-}
-
-.carousel__slide--next {
-    opacity: 0.8;
-    filter: blur(1px);
-    
-
-
-    transform: rotateY(10deg) scale(0.99);
-}
-
-.carousel__slide--active {
-    opacity: 1;
-    filter: blur(0px);
-
-    transform: rotateY(0) scale(1.15);
+<style src="@vueform/slider/themes/default.css" lang="scss">
+:root {
+  --slider-connect-bg: #573bf6;
+  --slider-tooltip-bg: #7d3bf6;
+  --slider-handle-ring-color: #3B82F630;
 }
 </style>

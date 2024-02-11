@@ -3,29 +3,17 @@
    
     <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-blue-800/80 via-black/100" />
     <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
-    <div class=" absolute inset-0  -z-1000" >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="white" fill-opacity="1" d="M0,96L120,112C240,128,480,160,720,160C960,160,1200,128,1320,112L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
-      </svg>
-
-    </div>
-    <div class=" absolute inset-0 h-full  -z-1000" style="bottom: 0px;"  >
-     <div class="pt-[200px]">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="white" fill-opacity="1" d="M0,256L120,261.3C240,267,480,277,720,266.7C960,256,1200,224,1320,208L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
-      </svg>
-     </div>
-
-    </div>
+ 
+    
   <div class="absolute inset-0 -z-1000">
     <div class="flex pt-2 justify-between items-center">
       <div class="rtl px-3">
-        <a href="#" class="text-indigo-900 rtl  ">
+        <a href="#" class="text-gray-100 rtl  ">
           بیشتر
           <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
         </a>
       </div>
-      <div class="text-indigo-900 font-bold text-xl text-right px-4 pt-4">
+      <div class="text-gray-100 font-bold text-xl text-right px-4 pt-4">
         پر فروش ترین محصولات
   
   
@@ -33,7 +21,7 @@
       
      </div>
   </div>
-    <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500" class="pt-10">
+    <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-10">
       <Slide v-for="item in data" :key="item" >
         <Product :data="item" class="my-10" />
       </Slide>
@@ -135,7 +123,7 @@ export default {
 
 .carousel__slide {
   opacity: 0.5;
-  filter: blur(3px);
+  filter: blur(1px);
 
   transform: rotateY(-10deg) scale(0.99);
 }
@@ -143,26 +131,26 @@ export default {
 
 
 .carousel__slide--prev {
-  opacity: 0.8;
-  filter: blur(1px);
+  opacity: 1;
+  filter: blur(0px);
 
   transform: rotateY(-10deg) scale(0.99);
 }
 
 .carousel__slide--next {
-  opacity: 0.8;
-  filter: blur(1px);
+  opacity: 1;
+  filter: blur(0px);
   
 
 
-  transform: rotateY(10deg) scale(0.99);
+  transform: rotateY(10deg) scale(1);
 }
 
 .carousel__slide--active {
   opacity: 1;
   filter: blur(0px);
 
-  transform: rotateY(0) scale(1.15);
+  transform: rotateY(0) scale(1);
 }
 .bg-blue-circle-best-product{
    

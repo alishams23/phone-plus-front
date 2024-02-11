@@ -12,7 +12,7 @@
   </div>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-4 pb-20 rtl " :style="{ backgroundImage: 'url(/your-background-image.jpg)', backgroundSize: 'cover' }">
     <div v-for="person in data" :key="person.email" 
-         class=" relative isolate  flex items-center  rounded-[30px] border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
+         class=" relative isolate  flex items-center  rounded-[19px] border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
          :style="{ backgroundImage: 'url(' + person.imageUrl + ')', backgroundSize: 'cover' }">
          <div class="rounded-lg absolute inset-0 -z-10 bg-gradient-to-l  from-white from-20% via-white/40" />
          <div class=" bg-blue-circle-categories  absolute inset-0  " />
