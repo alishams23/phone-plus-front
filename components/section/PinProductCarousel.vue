@@ -1,131 +1,22 @@
-
 <template>
-    <div dir="rtl" class="w-full h-256 bg-indigo-600 flex py-10 flex-col justify-center items-center space-y-4">
-        <img class="h-24 w-24 rounded-full" :src="user.imageUrl" alt="" />
-        <div class="flex items-center space-x-reverse space-x-2">
-            <h1 class="text-white">نام فروشگاه</h1>
-            <!-- Using the ExclamationCircleIcon component -->
-            <ExclamationCircleIcon class="h-5 w-5 text-white"/>
-        </div>
+    <div class="text-gray-800 font-bold text-xl text-right pe-6 pt-6">
+        محصولات پین شده 
     </div>
-
-
-
-
-
-    <div class="min-h-full">
-        <main class="">
-            <div class="mx-auto max-w-full  lg:max-w-full ">
-            <h1 class="sr-only">Page title</h1>
-                <section aria-labelledby="section-1-title">
-                    <h2 class="sr-only" id="section-1-title">Section title</h2>
-                    <div class="overflow-hidden rounded-lg bg-white shadow">
-                    <div class="">
-                        <!-- Your content -->
-                    
-                        <PinProductCarousel/>
-                        
-                        <div class="text-gray-800 font-bold text-xl text-right  pe-6 pt-6">
-                            مقاله ها
-                        </div>
-                          <div class="   isolate overflow-hidden relative mb-10">
-                            <Carousel  :itemsToShow="1.4" :wrapAround="true" :transition="500" class="pt-5 pb-16">
-                                <Slide v-for="item in posts" :key="item">
-                                    <Blog class="my-10  " :data="item" />
-                                </Slide>
-                                <template #addons>
-                                    <Navigation />
-                                </template>
-                            </Carousel>
-                        </div>
-
-                        <div class="text-gray-800 font-bold text-xl text-right  pe-6 pt-6">
-                            آیفون ها
-                        </div>
-                        <div class="   isolate overflow-hidden relative mb-10">
-                            <div class="bg-white rtl pb-16 flex items-center ">
-                                <Swiper 
-                                @swiper="onSwiper" 
-                                :modules="modules" 
-                                :slides-per-view="'auto'" 
-                                :loop="false"  
-                                :autoplay="{
-                                    delay: 2000,
-                                    disableOnInteraction: false,
-                                }"
-                                :pagination="{
-                                    clickable: true,
-                                }"
-                                :space-between="10" 
-                                class="px-3 ">
-                                    <SwiperSlide v-for="item in data" :key="item.title" class="mb-10 mx-2 ">
-                                       <Product class="my-10 " :data="item" />
-                                    </SwiperSlide>
-                                
-                                </Swiper>
-                            </div>
-                        </div>
-                        
-                        <div class="text-gray-800 font-bold text-xl text-right  pe-6 pt-6">
-                            آیفون ها
-                        </div>
-                        <div class="   isolate overflow-hidden relative mb-10">
-                            <div class="bg-white rtl pb-16 flex items-center ">
-                                 <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false"  :autoplay="{
-            delay: 2000,
-            disableOnInteraction: false,
-          }" :pagination="{
-            clickable: true,
-           
-          }"
-          :space-between="20" class="px-3 ">
-            <SwiperSlide v-for="post in posts" :key="post.id" class="mb-10 mx-2 ">
-                <div class="  w-80 pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
-        
-                 <div class="">
-                    <img :src="post.imageUrl" alt=""
-                    class="absolute  w-full rounded-[30px] bg-gray-100 object-cover inset-0 -z-10 h-full w-full object-cover" />
-                <div class=" absolute inset-0 -z-10 gradient-banner" />
-                <div class="absolute inset-0 rounded-[30px] ring-1 ring-inset ring-gray-900/10" />
-                 </div>
-                </div>
-            </SwiperSlide>
-        
-        </Swiper>
-                            </div>
-                        </div>
-
-                        
-
-
-                    </div>
-                    </div>
-                </section>
-            <!-- Main 3 column grid -->
-            </div>
-        </main>
+    <div class="   isolate overflow-hidden relative">
+        <Carousel  :itemsToShow="2" :wrapAround="true" :transition="500" class="pt-5 pb-16">
+            <Slide v-for="item in data" :key="item">
+                <PinProduct class="my-10 " :data="item" />
+            </Slide>
+            <template #addons>
+                <Navigation />
+            </template>
+        </Carousel>
     </div>
 </template>
-  
+
 <script>
     import { PaperClipIcon } from '@heroicons/vue/20/solid'
-    import {
-        Menu,
-        MenuButton,
-        MenuItem,
-        MenuItems,
-        Popover,
-        PopoverButton,
-        PopoverOverlay,
-        PopoverPanel,
-        TransitionChild,
-        TransitionRoot,
-    } from '@headlessui/vue'
-    import { Bars3Icon, BellIcon, XMarkIcon ,ExclamationCircleIcon} from '@heroicons/vue/24/outline'
-    import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-    import Product from "@/components/shared/Product.vue"
-    import PinProductCarousel from "@/components/section/PinProductCarousel.vue"
-    import Blog from "@/components/shared/Blog.vue"
+
   
     // Import Swiper styles
     import 'swiper/css';
@@ -133,30 +24,11 @@
     import 'swiper/css/navigation';
     // import required modules
     import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-    import { ArrowRightIcon } from '@heroicons/vue/24/solid'
+    import PinProduct from "@/components/shared/PinProduct.vue"
 
   export default {
     components: { 
-      Product, 
-      Blog,
-      PinProductCarousel, 
-      PaperClipIcon,
-      Menu,
-      MenuButton,
-      MenuItem,
-      MenuItems,
-      Popover,
-      PopoverButton,
-      PopoverOverlay,
-      PopoverPanel,
-      TransitionChild,
-      TransitionRoot,
-      Bars3Icon,
-      BellIcon,
-      XMarkIcon,
-      MagnifyingGlassIcon, 
-      ExclamationCircleIcon,
-      ArrowRightIcon
+        PinProduct
     },
     setup() { 
         const swiper = ref(null);
@@ -171,23 +43,6 @@
     },
     data: () => ({
       selectedTab: 'products',
-      user : {
-        name: 'Tom Cook',
-        email: 'tom@example.com',
-        imageUrl:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      },
-      navigation : [
-        { name: 'Home', href: '#', current: true },
-        { name: 'Profile', href: '#', current: false },
-        { name: 'Resources', href: '#', current: false },
-        { name: 'Company Directory', href: '#', current: false },
-        { name: 'Openings', href: '#', current: false },
-      ],
-      userNavigation : [
-        { name: 'Your Profile', href: '#' },
-        { name: 'Settings', href: '#' },
-        { name: 'Sign out', href: '#' },
-      ],
       data: [
         {
           image: '/images/2.jpeg',
@@ -454,7 +309,5 @@
     
         transform: rotateY(0) scale(1.15);
     }
-    .swiper-slide {
-    width: auto;
-}
+
 </style>
