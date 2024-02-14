@@ -338,7 +338,7 @@
   
 </script>
   
-  <style scoped>
+<style scoped>
   .carousel__slide {
     padding: 5px;
   }

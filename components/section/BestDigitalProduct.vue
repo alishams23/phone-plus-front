@@ -2,33 +2,27 @@
   <div class="   isolate overflow-hidden relative">
     <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-indigo-800/80 via-black/100" />
     <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
- <div class="absolute inset-0 -z-1000">
-  <div class="flex pt-3 justify-between items-center">
-    <div class="rtl px-3">
-      <a href="#" class="text-gray-200 rtl  ">
-        بیشتر
-        <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
-      </a>
+    <div class="absolute inset-0 -z-1000">
+      <div class="flex pt-3 justify-between items-center">
+        <div class="rtl px-3">
+          <a href="#" class="text-gray-200 rtl  ">
+            بیشتر
+            <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+          </a>
+        </div>
+        <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
+          پر فروش ترین محصولات دیجیتال
+        </div>
+      </div>
     </div>
-    <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
-      پر فروش ترین محصولات دیجیتال
-    </div>
-    
-   </div>
- </div>
     <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500" class="pt-10">
       <Slide v-for="item in data" :key="item">
         <DigitalProduct class="my-10" :data="item" />
       </Slide>
-
       <template #addons>
         <Navigation />
       </template>
-
     </Carousel>
-    
-     
-
   </div>
 </template>
   
@@ -39,37 +33,38 @@ export default {
     data: [
       {
         image: '/images/2.jpeg',
-        title: 'samsung'
-        , price: 1000000
-        , percent: 10
+        title: 'samsung', 
+        price: 1000000, 
+        percent: 10
       },
       {
         image: '/images/3.jpg',
-        title: 'ایفون ۱۴'
-        , price: 1000000
-        , percent: 10
+        title: 'ایفون ۱۴', 
+        price: 1000000, 
+        percent: 10
 
       },
       {
         image: '/images/6.jpg',
-        title: 'ایرپاد'
-        , price: 1000000
-        , percent: 0
+        title: 'ایرپاد', 
+        price: 1000000, 
+        percent: 0
     
 
       },
       {
         image: '/images/4.jpg',
-        title: 'مک بوک'
-        , price: 1000000
-        , percent: 10
+        title: 'مک بوک', 
+        price: 1000000, 
+        percent: 10
+        
 
       },
       {
         image: '/images/5.jpg',
-        title: 'هدفون'
-        , price: 1000000
-        , percent: 10
+        title: 'هدفون', 
+        price: 1000000, 
+        percent: 10
 
       },
     ],
