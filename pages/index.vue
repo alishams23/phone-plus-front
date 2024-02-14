@@ -7,7 +7,7 @@
 
   <div class="bg-white">
     <div>
-      <Banner class="pt-10" />
+      <Banner class="mt-[-1px]" />
     </div>
    
  

@@ -9,7 +9,7 @@
            
           }"
           :space-between="20" class="px-3 ">
-            <SwiperSlide v-for="post in posts" :key="post.id" class="mb-10 ">
+            <SwiperSlide v-for="post in posts" :key="post.id" class="mb-10 mx-2 ">
                 <div class="  w-80 pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
         
                  <div class="">
@@ -22,9 +22,9 @@
             </SwiperSlide>
         
         </Swiper>
-        <div @click="swiper.slideNext()" class="rounded-full bg-indigo-900 p-3 m-4 mb-[3.3rem]">
+        <!-- <div @click="swiper.slideNext()" class="rounded-full bg-indigo-900 p-3 m-4 mb-[3.3rem]">
            <ArrowRightIcon class="h-5 text-white " />
-        </div>
+        </div> -->
     </div>
 </template>
 
