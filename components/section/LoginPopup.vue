@@ -21,14 +21,15 @@
                                     <div class="ltr">
                                         <label for="phone-number" class="block text-sm  font-medium leading-6 text-gray-900">شماره موبایل</label>
                                         <div class="relative mt-2 rounded-full shadow-sm">
-                                            <div class="absolute text-gray-500  inset-y-0 ps-3 flex items-center">
-                                                +98
+                                            <div class="absolute text-gray-500  inset-y-0 ps-6 flex items-center">
+                                                0
                                             </div>
-                                            <input type="text" name="phone-number" id="phone-number" class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " placeholder="9123456789" />
+                                            <input type="text" name="phone-number" id="phone-number" v-model="phoneNumber" class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " placeholder="9123456789" />
+
                                         </div>
                                     </div>
                                     <div>
-                                        <div @click="dialog_page = 'get_code'" class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">دریافت کد</div>
+                                        <div @click="sendLoginSms" class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">دریافت کد</div>
                                     </div>
                                 </form>
                                 <div class="mt-10 pb-6 flex rtl flex-items-center">
@@ -83,14 +84,15 @@
                                     <div class="ltr">
                                         <label for="phone-number" class="block text-sm font-medium leading-6 text-gray-900">شماره موبایل</label>
                                         <div class="relative mt-2 rounded-full shadow-sm">
-                                            <div class="absolute text-gray-500  inset-y-0 ps-3 flex items-center">
-                                                +98
+                                            <div class="absolute text-gray-500  inset-y-0 ps-6 flex items-center">
+                                                0
                                             </div>
-                                            <input type="text" name="phone-number" id="phone-number" class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " placeholder="9123456789" />
+                                            <input type="text" name="phone-number" id="phone-number" v-model="phoneNumber" class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " placeholder="9123456789" />
+                                            {{  phoneNumber }}
                                         </div>
                                     </div>
                                     <div>
-                                        <div @click="dialog_page = 'get_code'" class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">دریافت کد</div>
+                                        <div @click="sendLoginSms()" class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">دریافت کد</div>
                                     </div>
                                 </form>
                                 <div class="mt-10 pb-6 flex  flex-items-center">
@@ -114,15 +116,57 @@
 import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
+import axios from 'axios'
 export default {
     components: { ref, Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot, ExclamationTriangleIcon},
   data() {
     return {
         open : false,
-        dialog_page : 'get_number'
+        dialog_page : 'get_number',
+        phoneNumber: ''
     }},
+    methods: {
+        sendLoginSms() {
+            console.log('dddd')
+            // Ensure the phone number is not empty
+            if (this.phoneNumber) {
+                const apiUrl = 'http://192.168.1.109:8000/api/account/login-sms/';
+                const data = {
+                    number: '0' + this.phoneNumber // Assuming the API expects the full number with country code
+                };
+            
+
+                axios.post(apiUrl, data,{
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                              
+                            },
+                        })
+                    .then(response => {
+                        // Handle success response
+                        console.log('SMS sent successfully:', response);
+                        // You can change the dialog page or show a success message here
+                    })
+                    .catch(error => {
+                        // Handle error response
+                        console.error('Error sending SMS:', error);
+                        // You can show an error message to the user here
+                    });
+            } else {
+                // Phone number is empty, handle accordingly
+                console.error('Phone number is empty');
+                // You can show an error message to the user here
+            }
+        }
+    },
     mounted(){
         this.open = ref(true)
+    },
+    watch: {
+        // Watcher to update phoneNumber based on the input field value
+        'phoneNumber'(newVal) {
+            this.phoneNumber = newVal;
+        }
     }
     
 }
