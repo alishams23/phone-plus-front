@@ -5,7 +5,7 @@
     <div class="   isolate overflow-hidden relative">
         <Carousel  :itemsToShow="2" :wrapAround="true" :transition="500" class="pt-5 pb-16">
             <Slide v-for="item in data" :key="item">
-                <PinProduct class="my-10 " :data="item" />
+                <PinProduct class=" " :data="item" />
             </Slide>
             <template #addons>
                 <Navigation />
