@@ -1,20 +1,11 @@
 <template>
-<div class="flex pt-2 justify-between items-center">
-      <div class="rtl px-3 ">
-        <a href="#" class=" rtl  ">
-          بیشتر
-          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
-        </a>
-      </div>
-      <div class=" font-bold text-xl text-right px-4 pt-4">
-         مقاله ها
-      </div>
-     </div>
-
-      <div class="   isolate overflow-hidden relative mb-10">
-        <Carousel  :itemsToShow="1.4" :wrapAround="true" :transition="500" class="pt-5 pb-6">
-            <Slide v-for="item in posts" :key="item">
-                <Blog class="my-10 pb-[15px] " :data="item" />
+    <div class="text-gray-800 font-bold text-xl text-right pe-2 pt-2">
+        محصولات دیجیتال پین شده 
+    </div>
+    <div class="   isolate overflow-hidden relative">
+        <Carousel  :itemsToShow="3" :wrapAround="true" :transition="500" class="pt-5 pb-4">
+            <Slide v-for="item in data" :key="item">
+                <PinDigitalProduct class=" " :data="item" />
             </Slide>
             <template #addons>
                 <Navigation />
@@ -33,14 +24,11 @@
     import 'swiper/css/navigation';
     // import required modules
     import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-    import PinProduct from "@/components/shared/PinProduct.vue"
-    import Blog from "@/components/shared/Blog.vue"
-
+    import PinDigitalProduct from "@/components/shared/PinDigitalProduct.vue"
 
   export default {
     components: { 
-        PinProduct,
-        Blog,
+        PinDigitalProduct
     },
     setup() { 
         const swiper = ref(null);
@@ -78,7 +66,7 @@
             'blue',
             'orange',
           ],
-          description: 'این یک متن ساختگی برای توضیحات محصول است'
+          description: 'این یک متن ساختگی برای توضیحات محصول است این یک متن ساختگی برای توضیحات محصول است این یک متن ساختگی برای توضیحات محصول است'
   
         },
         {

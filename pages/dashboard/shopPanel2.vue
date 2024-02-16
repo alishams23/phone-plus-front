@@ -1,6 +1,6 @@
 
 <template>
-    <div dir="rtl" class="w-full h-256 bg-indigo-600 flex py-10 flex-col justify-center items-center space-y-4">
+    <div  class="w-full h-256 bg-indigo-600 flex py-10 flex-col justify-center items-center space-y-4">
         <img class="h-24 w-24 rounded-full" :src="user.imageUrl" alt="" />
         <div class="flex items-center space-x-reverse space-x-2">
             <h1 class="text-white">نام فروشگاه</h1>
@@ -34,9 +34,16 @@
 
               <PinProductCarousel />
 
+              <PinDigitalProductCarousel />
+
               <BlogCarousel />
 
-              <ProductCarousel />
+              <ProductCarousel title="آیفون ها"/>
+
+              <DigitalProductCarousel />
+              
+              <ProductCarousel title="محصولات "/>
+              
               
             </div>
           </div>
@@ -65,6 +72,8 @@ import { Bars3Icon, BellIcon, XMarkIcon, ExclamationCircleIcon } from '@heroicon
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import Product from "@/components/shared/Product.vue"
 import PinProductCarousel from "@/components/section/PinProductCarousel.vue"
+import PinDigitalProductCarousel from "@/components/section/PinDigitalProductCarousel.vue"
+import DigitalProductCarousel from "@/components/section/DigitalProductCarousel.vue"
 import ProductCarousel from "@/components/section/ProductCarousel.vue"
 import BlogCarousel from "@/components/section/BlogCarousel.vue"
 import Blog from "@/components/shared/Blog.vue"
@@ -82,6 +91,8 @@ export default {
     Product,
     Blog,
     PinProductCarousel,
+    PinDigitalProductCarousel,
+    DigitalProductCarousel,
     ProductCarousel,
     BlogCarousel,
     PaperClipIcon,

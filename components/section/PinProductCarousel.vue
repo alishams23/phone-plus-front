@@ -1,9 +1,10 @@
 <template>
-    <div class="text-gray-800 font-bold text-xl text-right pe-6 pt-6">
+  
+    <div class="text-gray-800 font-bold text-xl text-right pe-3 pt-3">
         محصولات پین شده 
     </div>
     <div class="   isolate overflow-hidden relative">
-        <Carousel  :itemsToShow="2" :wrapAround="true" :transition="500" class="pt-5 pb-16">
+        <Carousel  :itemsToShow="2" :wrapAround="true" :transition="500" class=" ">
             <Slide v-for="item in data" :key="item">
                 <PinProduct class=" " :data="item" />
             </Slide>

@@ -1,5 +1,5 @@
 <template>
-<div class="flex pt-2 justify-between items-center">
+  <div class="flex pt-2 justify-between items-center">
       <div class="rtl px-3 ">
         <a href="#" class=" rtl  ">
           بیشتر
@@ -7,20 +7,26 @@
         </a>
       </div>
       <div class=" font-bold text-xl text-right px-4 pt-4">
-         مقاله ها
+          محصولات دیجیتال
       </div>
      </div>
 
-      <div class="   isolate overflow-hidden relative mb-10">
-        <Carousel  :itemsToShow="1.4" :wrapAround="true" :transition="500" class="pt-5 pb-6">
-            <Slide v-for="item in posts" :key="item">
-                <Blog class="my-10 pb-[15px] " :data="item" />
-            </Slide>
-            <template #addons>
-                <Navigation />
-            </template>
-        </Carousel>
+  <div class="   isolate overflow-hidden relative mb-2">
+    <div class="bg-white pb-16 flex items-center ">
+      <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false" :autoplay="{
+        delay: 2000,
+        disableOnInteraction: false,
+      }" :pagination="{
+        clickable: true,
+      }" :space-between="10" class="px-3 ">
+        <SwiperSlide v-for="item in data" :key="item.title" class="mb-10 mx-2 ">
+          <DigitalProduct class="my-10  " :data="item" />
+        </SwiperSlide>
+
+      </Swiper>
     </div>
+  </div>
+
 </template>
 
 <script>
@@ -33,14 +39,11 @@
     import 'swiper/css/navigation';
     // import required modules
     import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-    import PinProduct from "@/components/shared/PinProduct.vue"
-    import Blog from "@/components/shared/Blog.vue"
-
+    import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 
   export default {
     components: { 
-        PinProduct,
-        Blog,
+        DigitalProduct
     },
     setup() { 
         const swiper = ref(null);
@@ -162,87 +165,6 @@
   
         },
         ],
-        posts: [
-      {
-        id: 1,
-        title:'تکنولوژی‌های نوین در گوشی‌های هوشمند: چهارچوب آینده',
-        href: '#',
-        description:
-         'این مقاله به بررسی تکنولوژی‌های نوینی می‌پردازد که در آینده گوشی‌های هوشمند ممکن است مورد استفاده قرار گیرند. از تازه‌ترین پیشرفت‌های صفحه نمایش و دوربین‌ها تا چگونگی اتصال گوشی به اینترنت اشیاء، این متن شما را با آینده گوشی‌های هوشمند آشنا می‌کند',
-        imageUrl:
-          '/images/blog/1.jpg',
-        date: '1402/06/04',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'علی صالحی',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      },
-      {
-        id: 1,
-        title: 'تاریخچه و تکامل گوشی‌های هوشمند: از نوکیا تا آیفون ',
-        href: '#',
-        description:
-         'این متن تاریخچه تکامل گوشی‌های هوشمند از دهه ۱۹۹۰ تا به امروز را بررسی می‌کند. از ابتدای این صنعت با نوکیا و سایر شرکت‌های پیشرو تا محبوبیت بی‌پایان آیفون و سامسونگ، شما با تغییرات اساسی در دنیای گوشی‌های هوشمند آشنا خواهید شد',
-        imageUrl:
-        '/images/blog/2.jpg',
-
-        date: '1402/05/23',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'علی شمس',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      },
-      {
-        id: 1,
-        title: 'نکات مهم در انتخاب گوشی هوشمند: راهنمایی برای خرید کامل',
-        href: '#',
-        description:
-          'خرید یک گوشی هوشمند ممکن است تصمیم مهمی باشد، و این مقاله به شما راهنمایی‌هایی در انتخاب گوشی مناسب بر اساس نیازها و بودجه‌تان ارائه می‌دهد. از مشخص کردن نیازهای خود تا بررسی مشخصات فنی و تفاوت‌های میانبرندی، این متن به شما کمک می‌کند تا بهترین تصمیم را بگیرید',
-        imageUrl:
-        '/images/blog/3.jpg',
-
-        date: '1402/05/05',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'سینا آزادفر',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      },{
-        id: 1,
-        title: 'نکات مهم در انتخاب گوشی هوشمند: راهنمایی برای خرید کامل',
-        href: '#',
-        description:
-          'خرید یک گوشی هوشمند ممکن است تصمیم مهمی باشد، و این مقاله به شما راهنمایی‌هایی در انتخاب گوشی مناسب بر اساس نیازها و بودجه‌تان ارائه می‌دهد. از مشخص کردن نیازهای خود تا بررسی مشخصات فنی و تفاوت‌های میانبرندی، این متن به شما کمک می‌کند تا بهترین تصمیم را بگیرید',
-        imageUrl:
-        '/images/blog/3.jpg',
-
-        date: '1402/05/05',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'سینا آزادفر',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      },
-      // More posts...
-    ],
         // carousel settings
         settings: {
             itemsToShow: 1,
@@ -276,6 +198,7 @@
         },
     }
 </script>
+  
   
 <style scoped>
     .carousel__slide {
@@ -321,5 +244,7 @@
     
         transform: rotateY(0) scale(1.15);
     }
-
+  .swiper-slide {
+  width: auto;
+}
 </style>

@@ -1,8 +1,17 @@
 <template>
-  <div class="text-gray-800 font-bold text-xl text-right  pe-6 pt-6">
-    آیفون ها
-  </div>
-  <div class="   isolate overflow-hidden relative mb-10">
+  <div class="flex pt-2 justify-between items-center">
+      <div class="rtl px-3 ">
+        <a href="#" class=" rtl  ">
+          بیشتر
+          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+        </a>
+      </div>
+      <div class=" font-bold text-xl text-right px-4 pt-4">
+          {{ title }}
+      </div>
+     </div>
+
+  <div class="   isolate overflow-hidden relative mb-2">
     <div class="bg-white rtl pb-16 flex items-center ">
       <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false" :autoplay="{
         delay: 2000,
@@ -36,6 +45,9 @@
     components: { 
         Product
     },
+  props: {
+    title: String, // Define the title prop expected to be a string
+  },
     setup() { 
         const swiper = ref(null);
         const onSwiper = (swiperInstance) => {
