@@ -123,17 +123,50 @@ export default {
     return {
         open : false,
         dialog_page : 'get_number',
-        phoneNumber: ''
+        phoneNumber: '',
+        code: 0,
     }},
     methods: {
         sendLoginSms() {
-            console.log('dddd')
             // Ensure the phone number is not empty
             if (this.phoneNumber) {
                 const apiUrl = 'http://192.168.1.109:8000/api/account/login-sms/';
                 const data = {
                     number: '0' + this.phoneNumber // Assuming the API expects the full number with country code
                 };
+            
+
+                axios.post(apiUrl, data,{
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                              
+                            },
+                        })
+                    .then(response => {
+                        // Handle success response
+                        console.log('SMS sent successfully:', response);
+                        // You can change the dialog page or show a success message here
+                    })
+                    .catch(error => {
+                        // Handle error response
+                        console.error('Error sending SMS:', error);
+                        // You can show an error message to the user here
+                    });
+            } else {
+                // Phone number is empty, handle accordingly
+                console.error('Phone number is empty');
+                // You can show an error message to the user here
+            }
+        },
+        sendCode() {
+            // Ensure the phone number is not empty
+            if (this.phoneNumber) {
+                const apiUrl = 'http://192.168.1.109:8000/api/account/code_check';
+                const data = {
+                    number: '0' + this.phoneNumber, // Assuming the API expects the full number with country code
+                    code  : this.code
+                };
+
             
 
                 axios.post(apiUrl, data,{
