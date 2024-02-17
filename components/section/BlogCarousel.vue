@@ -1,12 +1,12 @@
 <template>
 <div class="flex pt-2 justify-between items-center">
-      <div class="rtl px-3 ">
+      <div class="rtl mx-10 ">
         <a href="#" class=" rtl  ">
           بیشتر
           <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
         </a>
       </div>
-      <div class=" font-bold text-xl text-right px-4 pt-4">
+      <div class=" font-bold text-xl text-right px-10 pt-4">
          مقاله ها
       </div>
      </div>

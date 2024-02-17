@@ -32,17 +32,17 @@
             <div class="">
               <!-- Your content -->
 
-              <PinProductCarousel />
-
-              <PinDigitalProductCarousel />
-
-              <BlogCarousel />
-
-              <ProductCarousel title="آیفون ها"/>
-
-              <DigitalProductCarousel />
-              
-              <ProductCarousel title="محصولات "/>
+              <PinProductCarousel  />
+<div class=" shadow-xl py-2 mx-[30rem]"></div>
+              <PinDigitalProductCarousel  />
+<div class=" shadow-xl py-2 mx-[30rem]"></div>
+              <BlogCarousel  />
+<div class=" shadow-xl py-2 mx-[30rem]"></div>
+              <ProductCarousel  title="آیفون ها"/>
+<div class=" shadow-xl py-2 mx-[30rem]"></div>
+              <DigitalProductCarousel  />
+              <div class=" shadow-xl py-3 mx-[30rem]"></div>
+              <ProductCarousel  title="محصولات "/>
               
               
             </div>

@@ -1,5 +1,5 @@
 <template>
-    <div :class="width ? `${width}` : 'w-[35rem]'" class="h-[300px] bg-gray-100 shadow-xl isolate my-20 mx-24 justify-end rounded-2xl">
+    <div :class="width ? `${width}` : 'w-[39rem]'" class="h-[300px] bg-gray-100 shadow-xl mx-[3rem] isolate my-20  justify-end rounded-2xl">
         <img :src="data.image" alt="" class="absolute w-56 h-56 -ms-10 -mb-10 mt-10 shadow-lg rounded-3xl" />
         <h3 class="mt-3 text-right text-lg pe-4 py-7 font-semibold leading-6 text-black">
           <a>

@@ -1,9 +1,9 @@
 <template>
-    <div class="text-gray-800 font-bold text-xl text-right pe-2 pt-2">
+    <div class="text-gray-800 font-bold text-xl text-right pe-10 pt-2">
         محصولات دیجیتال پین شده 
     </div>
     <div class="   isolate overflow-hidden relative">
-        <Carousel  :itemsToShow="3" :wrapAround="true" :transition="500" class="pt-5 pb-4">
+        <Carousel  :itemsToShow="3.8" :wrapAround="true" :transition="500" class="pt-5 pb-4">
             <Slide v-for="item in data" :key="item">
                 <PinDigitalProduct class=" " :data="item" />
             </Slide>
@@ -66,7 +66,7 @@
             'blue',
             'orange',
           ],
-          description: 'این یک متن ساختگی برای توضیحات محصول است این یک متن ساختگی برای توضیحات محصول است این یک متن ساختگی برای توضیحات محصول است'
+          description: 'اینختگی برای توضیحات محصول است'
   
         },
         {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="width ? `${width}` : 'w-[30rem]'" class=" bg-gray-100 shadow-xl isolate my-20 mx-24 border border-sm rounded-2xl">
+  <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gray-100 shadow-xl isolate my-20  border border-sm rounded-2xl">
     <div class="flex justify-center text-center">
       <div>
         <img :src="data.image" alt="" class="-mt-10 w-48 h-48 shadow-lg rounded-3xl" />
