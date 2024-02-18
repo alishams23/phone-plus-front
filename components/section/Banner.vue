@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white pb-16 flex items-center ">
-   
+ 
         <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false"  :autoplay="{
             delay: 2000,
             disableOnInteraction: false,
@@ -21,7 +21,7 @@
                 </div>
             </SwiperSlide>
         
-        </Swiper>
+        </Swiper>  
         <!-- <div @click="swiper.slideNext()" class="rounded-full bg-indigo-900 p-3 m-4 mb-[3.3rem]">
            <ArrowRightIcon class="h-5 text-white " />
         </div> -->
@@ -39,11 +39,19 @@ import 'swiper/css/navigation';
 
 
 // import required modules
+import { useUserStore } from '~/store/user'; 
+
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 
 export default {
     components:{ArrowRightIcon},
+    computed: {
+    userToken() {
+        console.log(useUserStore().userToken)
+      return useUserStore().userToken;
+    },
+  },
   setup() { 
     const swiper = ref(null);
     const onSwiper = (swiperInstance) => {

@@ -145,6 +145,8 @@ import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
+import { useUserStore } from '~/store/user'; 
+
 export default {
     components: { ref, Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot, ExclamationTriangleIcon},
   data() {
@@ -209,6 +211,8 @@ export default {
                         })
                     .then(response => {
                         // Handle success response
+                        const userStore = useUserStore();
+                        userStore.setToken(response.data.token);
                         this.token = response.data.token
                         console.log('SMS sent successfully:', response);
                         // You can change the dialog page or show a success message here
