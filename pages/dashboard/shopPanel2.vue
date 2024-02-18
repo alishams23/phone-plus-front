@@ -36,7 +36,7 @@
 <div class=" shadow-xl py-2 mx-[30rem]"></div>
               <PinDigitalProductCarousel  />
 <div class=" shadow-xl py-2 mx-[30rem]"></div>
-              <BlogCarousel  />
+              <MainBlog title="مقالات" />
 <div class=" shadow-xl py-2 mx-[30rem]"></div>
               <ProductCarousel  title="آیفون ها"/>
 <div class=" shadow-xl py-2 mx-[30rem]"></div>
@@ -75,7 +75,7 @@ import PinProductCarousel from "@/components/section/PinProductCarousel.vue"
 import PinDigitalProductCarousel from "@/components/section/PinDigitalProductCarousel.vue"
 import DigitalProductCarousel from "@/components/section/DigitalProductCarousel.vue"
 import ProductCarousel from "@/components/section/ProductCarousel.vue"
-import BlogCarousel from "@/components/section/BlogCarousel.vue"
+import MainBlog from "@/components/section/MainBlog.vue"
 import Blog from "@/components/shared/Blog.vue"
 
 // Import Swiper styles
@@ -94,7 +94,7 @@ export default {
     PinDigitalProductCarousel,
     DigitalProductCarousel,
     ProductCarousel,
-    BlogCarousel,
+    MainBlog,
     PaperClipIcon,
     Menu,
     MenuButton,
