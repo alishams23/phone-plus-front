@@ -230,7 +230,7 @@ export default {
         }
     },
     mounted(){
-        this.open = ref(true)
+        this.open = ref(false)
     },
     watch: {
         // Watcher to update phoneNumber based on the input field value

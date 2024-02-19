@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center isolate overflow-hidden relative">
+  <div class=" isolate overflow-hidden relative">
     <div class="" v-if="loading" >
       <div role="status">
           <svg aria-hidden="false" class="w-8 h-8 text-gray-100 animate-spin fill-indigo-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
