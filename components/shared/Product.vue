@@ -1,5 +1,5 @@
 <template>
-
+  <nuxt-link to="/product/1">
     <div :class="width ? `${width}` : 'w-[15rem]'" class="relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-60 sm:pt-60 lg:pt-60">
         <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-white from-10% via-white/30" />
@@ -26,7 +26,8 @@
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg p-4">
             <div class="relative text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
-      </div>
+    </div>
+  </nuxt-link>
 
     <!-- <nuxt-link to="/product/1/" class=" my-10 mx-2  rounded-xl bg-white  px-5 w-64">
         <div class="relative pb-5">

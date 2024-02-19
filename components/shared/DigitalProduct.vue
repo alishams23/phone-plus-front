@@ -1,7 +1,7 @@
 <template>
 
     <div :class="width ? `${width}` : 'w-[15rem]'" class="relative isolate my-10 mx-2 justify-end overflow-hidden rounded-2xl  bg-gray-900 px-8 pb-8 pt-[10rem] sm:pt-60 lg:pt-[8rem]">
-        <img :src="data.image" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+        <img :src="data.image[0].photo" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-white from-10% via-white/30" />
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
         <div class="absolute inset-0 -z-10 rounded-2xl bg-blue-circle" />
@@ -22,9 +22,9 @@
           </a>
         </h3>
         <div class=" text-sm font-bold  rtl text-center rounded-full ">   {{ data.price}}  </div>
-        <div :class="data.percent != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.percent != 0 ? data.price : '&nbsp; ' }}  </div>
+        <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? data.price : '&nbsp; ' }}  </div>
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg p-4">
-          <div class="relative text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.percent != 0">   {{ data.percent}} % </div>
+          <div class="relative text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
         <div class="absolute top-0 flex right-0  items-end justify-end overflow-hidden  ">
           <div class="relative text-white shadow-xl text-xs font-semi bg-glass-3 text-left  rounded-es-2xl px-10 pt-3 pb-4"> محصولات دیجیتال </div>

@@ -1,5 +1,4 @@
 <template>
-  {{ digital_products }}asfsaf
   <div class="   bg-white rounded-[30px]  isolate overflow-hidden relative">
    <div class="flex pt-2 justify-between items-center">
     <div class="rtl px-3">
@@ -72,10 +71,9 @@ export default {
           this.loading = false
 
       })
-    },
-    mounted() {
-      this.getData()
-    }
+  }},
+  mounted() {
+    this.getData()
   }
 }
 
