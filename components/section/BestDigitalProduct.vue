@@ -1,6 +1,6 @@
 <template>
-  {{ digital_products }}safaf
-  <div class="   isolate overflow-hidden relative">
+  {{ digital_products }}
+  <div class="   isolate overflow-hidden relative" v-if="loading == false">
     <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-indigo-800/80 via-black/100" />
     <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
     <div class="absolute inset-0 -z-1000">
@@ -35,15 +35,12 @@ export default {
   data: () => ({
     digital_products: [],
     loading: true,
-      
-  
-    // carousel settings
+
     settings: {
       itemsToShow: 1,
       snapAlign: 'center',
     },
-    // breakpoints are mobile first
-    // any settings not specified will fallback to the carousel settings
+  
     breakpoints: {
       // 700px and up
       700: {
@@ -71,10 +68,11 @@ export default {
 
         })
       },
-      mounted() {
+     
+    },
+    mounted() {
         this.getData()
       },
-    },
 }
 
 
