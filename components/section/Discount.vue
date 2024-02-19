@@ -1,4 +1,5 @@
 <template>
+
   <div class="   isolate overflow-hidden relative">
     <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-red-800/80 via-black/100" />
     <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
@@ -16,8 +17,8 @@
      </div>
   </div>
     <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500" class="pt-10">
-      <Slide v-for="item in data" :key="item">
-        <Product class="my-10" :data="item" />
+      <Slide v-for="product in products" :key="product">
+        <Product class="my-10" :data="product" />
       </Slide>
       <template #addons>
         <Navigation />
@@ -39,9 +40,13 @@
 </template>
   
 <script>
+import axios from "axios";
 import Product from "@/components/shared/Product.vue"
 export default {
-  components: { Product }, data: () => ({
+  components: { Product }, 
+  data: () => ({
+    products: '',
+    loading: true,
     data: [
       {
         image: '/images/2.jpeg',
@@ -99,6 +104,23 @@ export default {
       },
     },
   }),
+  methods: {
+      getData() {
+          this.loading = true
+          axios.get(`http://192.168.149.128:8000/api/product/discount-product-list-main-page/`, {
+              headers: {
+                  "Content-type": "application/json",
+                  Accept: "application/json",
+              },
+          }).then((response) => {
+              this.products = response.data
+              this.loading = false
+
+          })
+      }
+  }, mounted() {
+      this.getData()
+  }
 }
 
 

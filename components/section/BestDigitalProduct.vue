@@ -1,4 +1,5 @@
 <template>
+  {{ digital_products }}safaf
   <div class="   isolate overflow-hidden relative">
     <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-indigo-800/80 via-black/100" />
     <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
@@ -16,8 +17,8 @@
       </div>
     </div>
     <Carousel  :itemsToShow="5" :wrapAround="true" :transition="500" class="pt-10">
-      <Slide v-for="item in data" :key="item">
-        <DigitalProduct class="my-10" :data="item" />
+      <Slide v-for="digital_product in digital_products" :key="digital_product.id">
+        <DigitalProduct class="my-10" :data="digital_product" />
       </Slide>
       <template #addons>
         <Navigation />
@@ -27,47 +28,15 @@
 </template>
   
 <script>
+import axios from 'axios'
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 export default {
-  components: { DigitalProduct }, data: () => ({
-    data: [
-      {
-        image: '/images/2.jpeg',
-        title: 'samsung', 
-        price: 1000000, 
-        percent: 10
-      },
-      {
-        image: '/images/3.jpg',
-        title: 'ایفون ۱۴', 
-        price: 1000000, 
-        percent: 10
-
-      },
-      {
-        image: '/images/6.jpg',
-        title: 'ایرپاد', 
-        price: 1000000, 
-        percent: 0
-    
-
-      },
-      {
-        image: '/images/4.jpg',
-        title: 'مک بوک', 
-        price: 1000000, 
-        percent: 10
-        
-
-      },
-      {
-        image: '/images/5.jpg',
-        title: 'هدفون', 
-        price: 1000000, 
-        percent: 10
-
-      },
-    ],
+  components: { DigitalProduct }, 
+  data: () => ({
+    digital_products: [],
+    loading: true,
+      
+  
     // carousel settings
     settings: {
       itemsToShow: 1,
@@ -88,6 +57,24 @@ export default {
       },
     },
   }),
+    methods: {
+      getData() {
+        this.loading = true
+        axios.get(`http://192.168.149.128:8000/api/product/best-digital-product-list-main-page/`, {
+            headers: {
+                "Content-type": "application/json",
+                Accept: "application/json",
+            },
+        }).then((response) => {
+            this.digital_products = response.data
+            this.loading = false
+
+        })
+      },
+      mounted() {
+        this.getData()
+      },
+    },
 }
 
 
