@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div 
     class="flex items-center flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
 
     <div class="bg-white border-t p-10 text-right pl-[200px] w-full rounded-2xl shadow-xl  ">
@@ -7,8 +7,10 @@
         <div class="font-bold text-xs text-indigo-500 text-md">{{ blog.created_at }}</div>
 
         <div class="text-gray-900 font-semibold text-lg mt-2">{{ blog.title }}</div>
-        <p class="text-gray-600  text-n text-[14px] px-10 py-2 font-light text-xs mt-2" v-html="blog.body"></p>
-        <!-- <p class="text-gray-600 text-[14px] py-2 font-light text-xs mt-2">این یک متن ساخنتگی برای بدنه وبلاگ است که به دست طراحان گرافیک نوشته شده است</p> -->
+<div class=" relative w-50 overflow-hidden isolate">
+  <p class="text-gray-600 test-n w-100 text-[14px] py-2  font-light text-xs mt-2 " v-html="truncatedBody"></p>
+
+</div>        <!-- <p class="text-gray-600 text-[14px] py-2 font-light text-xs mt-2">این یک متن ساخنتگی برای بدنه وبلاگ است که به دست طراحان گرافیک نوشته شده است</p> -->
 
         <div class="flex rtl">
           <button
@@ -39,6 +41,15 @@ export default {
   components: { 
     HeartIcon 
   },
+  computed: {
+    truncatedBody() {
+      if (!this.blog.body) return '';
+      // Adjust the character limit based on your text size and container width to approximate two lines
+      const charLimit = 130; // Example character limit for two lines
+      const ending = this.blog.body.length > charLimit ? '...' : '';
+      return this.blog.body.substring(0, charLimit) + ending;
+    },
+  },
   props :{
     blog : {},
   },
@@ -64,9 +75,6 @@ export default {
 }
 </script>
 <style scoped>
-.test-n {
- height: 30px;
- overflow: hidden;
-}
+
 
 </style>
