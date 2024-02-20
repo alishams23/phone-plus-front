@@ -5,10 +5,9 @@
             <div class="max-w-[65rem] flex flex-col shadow-lg rounded-[25px] overflow-hidden">
                <div class="relative isolate overflow-hidden ">
                 
-               <div class="grid grid-cols-4 gap-4 bg-white p-4">
-                     <div class="col-span-3 ">
-                         
-                         <div class="relative isolate  h-[30rem]">
+               <div class="grid grid-cols-4 gap-4 bg-white p-4 pb-10">
+                     <div class="col-span-3  ">
+                         <div class="relative isolate h-[30rem]">
                              
                              <img :src="blog.imageBlog.photo" :alt="blog.imageBlog.title_for_photo"
                                  class="absolute inset-0 -z-1000  h-[30rem] w-full rounded-[25px] object-cover" />
@@ -24,9 +23,8 @@
                            
                              
                          </div>
-                         
                      </div>
-                     <div class="bg-gray-200 rounded-[30px]">
+                     <div class="bg-gray-200 shadow-xl rounded-[30px]">
                          <div >
                             
                             <p class="flex justify-end pt-10 px-24 text-black text-5sm">
