@@ -1,6 +1,6 @@
 
 <template>
-    <div  class="w-full h-256 bg-indigo-600 flex py-10 flex-col justify-center items-center space-y-4">
+    <div  class="w-full h-56 bg-indigo-600 flex py-10 flex-col justify-center items-center space-y-4">
         <img class="h-24 w-24 rounded-full" :src="user.imageUrl" alt="" />
         <div class="flex items-center space-x-reverse space-x-2">
             <h1 class="text-white">نام فروشگاه</h1>
