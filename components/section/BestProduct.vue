@@ -91,53 +91,7 @@ export default {
 
 
 <style scoped>
-.carousel__slide {
-  padding: 5px;
-}
 
-.carousel__viewport {
-  perspective: 2000px;
-}
-
-.carousel__track {
-  transform-style: preserve-3d;
-}
-
-.carousel__slide--sliding {
-  transition: 0.5s;
-}
-
-.carousel__slide {
-  opacity: 0.5;
-  filter: blur(1px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-
-
-.carousel__slide--prev {
-  opacity: 1;
-  filter: blur(0px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-.carousel__slide--next {
-  opacity: 1;
-  filter: blur(0px);
-  
-
-
-  transform: rotateY(10deg) scale(1);
-}
-
-.carousel__slide--active {
-  opacity: 1;
-  filter: blur(0px);
-
-  transform: rotateY(0) scale(1);
-}
 .bg-blue-circle-best-product{
    
 

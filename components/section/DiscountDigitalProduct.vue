@@ -13,7 +13,7 @@
     </div>
     
    </div>
-    <Carousel  :itemsToShow="4.5" :wrapAround="true" :transition="500">
+    <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500">
       <Slide v-for="digital_product in digital_products" :key="digital_product.id">
         <DigitalProduct :data="digital_product" />
       </Slide>
@@ -82,53 +82,7 @@ export default {
 
 
 <style scoped>
-.carousel__slide {
-  padding: 5px;
-}
 
-.carousel__viewport {
-  perspective: 2000px;
-}
-
-.carousel__track {
-  transform-style: preserve-3d;
-}
-
-.carousel__slide--sliding {
-  transition: 0.5s;
-}
-
-.carousel__slide {
-  opacity: 0.5;
-  filter: blur(3px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-
-
-.carousel__slide--prev {
-  opacity: 0.8;
-  filter: blur(1px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-.carousel__slide--next {
-  opacity: 0.8;
-  filter: blur(1px);
-  
-
-
-  transform: rotateY(10deg) scale(0.99);
-}
-
-.carousel__slide--active {
-  opacity: 1;
-  filter: blur(0px);
-
-  transform: rotateY(0) scale(1.15);
-}
 .bg-blue-circle-best-product{
    
   

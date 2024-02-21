@@ -13,11 +13,11 @@
 </div>        <!-- <p class="text-gray-600 text-[14px] py-2 font-light text-xs mt-2">این یک متن ساخنتگی برای بدنه وبلاگ است که به دست طراحان گرافیک نوشته شده است</p> -->
 
         <div class="flex rtl">
-          <button
+          <nuxt-link :to="'/blog/'+blog.id" 
             class="text-sm  mt-4 bg-indigo-600 px-10 text-white font-bold py-2 px-4 rounded-full hover:bg-indigo-800 focus:outline-none focus:shadow-outline"
-            @click="readMore">
+            >
             ادامه
-          </button>
+          </nuxt-link>
           <button
             class="text-sm mx-3 mt-4 flex items-center bg-gray-100  text-gray-500 py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
             @click="readMore">
