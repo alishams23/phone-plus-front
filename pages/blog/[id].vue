@@ -1,5 +1,4 @@
 <template>
-    {{ blog }}
     <div v-if="blog != null" class="w-full h-full">
         <div class="w-full h-56 bg-indigo-600 flex py-10 flex-col shadow-xl justify-center items-center space-y-4" />
         <div class=" shadow-lg -mt-32 pb-10 flex justify-center">
@@ -26,14 +25,41 @@
                          </div>
                      </div>
                      <div class="bg-gray-200 shadow-xl rounded-[30px]">
-                         <div >
+                        <div class="flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex justify-end items-center pt-10 px-5 ">
+                                    <p class="text-black text-5sm font-bold pe-4">
+                                        {{ blog.author.get_full_name }}
+                                    </p>
+                                    <img src="/images/6.jpg" class="h-10 w-10 rounded-full bg-gray-200" alt="" />
+                                </div>
+                                <div class="pe-5 pt-5 text-gray-600 flex justify-end">
+                                    <p>:دسته بندی ها</p>
+                                </div>
+                                <div class="flex justify-end pe-5">
+                                    <div >
+                                        <div class="text-sm flex flex-row items-center bg-gray-100 my-2 text-gray-500 py-1 px-1 rounded-full hover:bg-gray-300 hover:text-gray-600" v-for="category in blog.category" :key="category.id">
+                                            <p class="px-2">{{category.title}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <p class="flex justify-end pt-10 px-24 text-black text-5sm">
-                                نویسنده: {{ blog.author.get_full_name }}
-                            </p>
-                            <p class="flex justify-end pt-10 px-24 text-black text-sm">
-                                {{ blog.created_at }}
-                            </p>
+                            <div class="pb-8 px-5 flex items-center justify-between">
+                                <div>
+                                    <p class=" text-black  text-sm">
+                                        {{ blog.created_at }}
+                                    </p>
+                                </div>
+                                <button
+                                    class="text-sm flex items-center bg-gray-100  text-gray-500 py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
+                                    @click="readMore">
+                                    <div class="pr-1">
+                                    {{blog.like_count}}
+                                    </div>
+                                    <HeartIcon class="h-4  " />
+                                </button>
+                            </div>
                          </div>
                      </div>
                  </div>
@@ -48,16 +74,17 @@
 </template>
 
 <script>
+import { HeartIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 export default {
     components: {
-
+        HeartIcon,
     },
     props: {
 
     },
     data: () => ({
-        blog: null,
+        blog: {},
     }),
     methods: {
         getData() {
