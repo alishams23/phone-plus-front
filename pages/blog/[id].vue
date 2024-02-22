@@ -2,7 +2,7 @@
     <div v-if="blog != null" class="w-full h-full">
         <div class="w-full h-56 bg-indigo-600 flex py-10 flex-col shadow-xl justify-center items-center space-y-4" />
         <div class=" shadow-lg -mt-32 pb-10 flex justify-center">
-            <div class="max-w-[65rem] flex flex-col shadow-lg rounded-[25px] overflow-hidden">
+            <div class="max-w-[75rem] flex flex-col shadow-lg rounded-[25px] overflow-hidden">
                <div class="relative isolate overflow-hidden ">
                 
                <div class="grid grid-cols-4 gap-4 bg-white p-4 pb-10">
@@ -36,9 +36,9 @@
                                 <div class="pe-5 pt-5 text-gray-600 flex justify-end">
                                     <p>:دسته بندی ها</p>
                                 </div>
-                                <div class="flex justify-end pe-5">
-                                    <div >
-                                        <div class="text-sm flex flex-row items-center bg-gray-100 my-2 text-gray-500 py-1 px-1 rounded-full hover:bg-gray-300 hover:text-gray-600" v-for="category in blog.category" :key="category.id">
+                                <div class="flex justify-end px-2">
+                                    <div class="flex flex-wrap rtl">
+                                        <div class="text-sm flex flex-row items-center bg-gray-100 my-2 text-gray-500 py-1 px-2 mx-1 rounded-full hover:bg-gray-300 hover:text-gray-600" v-for="category in blog.category" :key="category.id">
                                             <p class="px-2">{{category.title}}</p>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@ export default {
 
     },
     data: () => ({
-        blog: {},
+        blog: null,
     }),
     methods: {
         getData() {
