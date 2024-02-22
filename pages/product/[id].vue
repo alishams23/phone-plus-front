@@ -128,7 +128,7 @@
                                   :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
                                   <RadioGroupLabel as="span" class="sr-only">{{ color.title }}</RadioGroupLabel>
                                   <span aria-hidden="true"
-                                    :class="` h-8 w-8 rounded-full border border-2 border-opacity-10 bg-[${color.hexcolor}]`" />
+                                    :class="` h-8 w-8 rounded-full border border-2 border-opacity-10 `" :style="`background-color:${color.hexcolor}`" />
                                 </div>
                               </RadioGroupOption>
                             </span>
