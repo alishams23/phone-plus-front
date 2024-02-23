@@ -33,7 +33,7 @@
                       <legend class="w-full px-2">
                         <DisclosureButton
                           class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500">
-                          <span class="text-sm font-medium text-gray-900">{{ section.name }}</span>
+                          <span class=" font-bold mt-3 text-gray-900">{{ section.name }}</span>
                           <span class="ml-6 flex h-7 items-center">
                          
                           </span>
@@ -44,7 +44,6 @@
                           <div v-for="(option, optionIdx) in section.options" :key="option.value"
                             class="flex items-center">
                             <button>{{ option }}</button>
-                            sss
                           </div>
                         </div>
                       </DisclosurePanel>
@@ -75,12 +74,12 @@
                     {{ item.label }}
                 </button>
             </div>
-                <div class="pt-2 relative mx-auto text-gray-600">
-                  <label for="">دسته بندی ها</label>
+                <div class="pt-3 relative mx-auto text-gray-600">
+                  <label class="font-bold" for="">دسته بندی ها</label>
                   <div class="flex items-center">
-                    <input @input="getCategories()" v-model="text_search_categories" id="search_category" class="border-2 border-gray-300 bg-white w-full h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
-                      type="search" name="search" placeholder="Search">
-                    <button type="submit" class="absolute right-0 top-6 mt-5 mr-4">
+                    <input @input="getCategories()" v-model="text_search_categories" id="search_category" class="border-2 border-gray-300 bg-white w-full mt-2 h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
+                      type="search" name="search" placeholder="جستجو دسته بندی">
+                    <button type="submit" class="absolute right-0 top-6 mt-8 mr-4">
                       <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
                         viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
@@ -98,31 +97,17 @@
                     </div>
                   </div>
                 </div>
-                <div v-for="(section, sectionIdx) in filters" :key="section.name"
-                  :class="sectionIdx === 0 ? null : 'pt-10'">
-                  <fieldset>
-                    <legend class="block text-sm font-med ium text-gray-900">{{ section.name }}</legend>
-                    <div class="space-y-3 pt-6">
-
-                      <div v-for="(option, optionIdx) in section.options" :key="option.value" class="flex items-center">
-
-                      
-                        <input :id="`${section.id}-${optionIdx}`" :name="`${section.id}[]`" :value="option.value"
-                          type="checkbox"
-                          class="h-4 w-4 rounded border-gray-300 m-2 text-indigo-600 focus:ring-indigo-500" />
-                        <label :for="`${section.id}-${optionIdx}`" class="ml-3 text-sm text-gray-600">{{
-                          option.label }}</label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-                <div class=" ltr mb-6 ">
+                
+                <div class=" ltr mb-6x">
                   <label for="labels-range-input" class="sr-only">Labels range</label>
+                  <label class="font-bold flex justify-end mt-3" for="">محدوده قیمت</label>
                   <client-only>
-                    <Slider v-model="value" class="mb-10" />
+                    <Slider :min="0" :step="1000000" :max="100000000" v-model="price_range" class="mt-12 me-3" />
                   </client-only>
-                  <span class="text-xs  text-gray-500 mb-10 mt-10">ارزانترین (150,000 تومان)</span>
-                  <span class="text-xs text-gray-500 mb-10 mt-10">گرانترین (1,150,000 تومان)</span>
+                  <div class="flex justify-between">
+                    <span class="text-xs  text-gray-500 mb-10 mt-14">ارزانترین ({{ price_range[0] }} تومان)</span>
+                    <span class="text-xs text-gray-500 mb-10 mt-14">گرانترین ({{ price_range[1] }} تومان)</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -172,7 +157,7 @@ props:['text','page'],
     loading: true,
     text_search_categories : '',
     data : {},
-    value: [10, 30],
+    price_range: [0, 100000000],
     selected_categories : [],
     categories : null,
     mobileFiltersOpen: ref(false),
@@ -211,7 +196,7 @@ props:['text','page'],
   methods: {
     getData() {
       this.loading = true
-       axios.get(`http://192.168.1.109:8000/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort} `, {
+       axios.get(`http://192.168.1.109:8000/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -255,6 +240,12 @@ watch: {
         deep: true
     },
   'selected_sort': {
+        handler: function (val, oldVal) {
+           this.getData()
+        },
+        deep: true
+    },
+  'price_range': {
         handler: function (val, oldVal) {
            this.getData()
         },
