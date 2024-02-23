@@ -4,12 +4,11 @@
     <Popover as="header" class="bg-indigo-600 pb-24" v-slot="{ open }">
       <div class="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-7xl lg:px-8">
         <!-- Search -->
-
         <div class="relative w-full flex justify-center">
           <div class="relative w-1/2  ">
             <div class="flex p-2 bg-indigo-700 rounded-[28px] ">
               <div class=" flex-auto">
-                <input type="search" id="search-dropdown" v-model="text" class="text-white block p-4 w-full z-20 text-sm text-indigo-500 text-right rtl pr-5
+                <input type="search" id="search-dropdown" v-model="text" class=" block p-4 w-full z-20 text-sm text-indigo-500 text-right rtl pr-5
                                  rounded-sm rounded-e-[20px]  " placeholder="جستجو بین محصولات  هزاران فروشگاه ..."
                   required>
               </div>
@@ -62,7 +61,16 @@
                   <div v-if="selected_tab == 0">
 
                     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
-                      <div v-for="item in data" :key="item" class="group relative">
+                      <div v-for="item in products" :key="item" class="group my-2  relative">
+                        <Product :data="item" width=" " class=" text-center " />
+                      </div>
+                    </div>
+               
+                
+               
+                  </div>
+                    <!-- <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
+                      <div v-for="item in products" :key="item" class="group relative">
                         <Product :data="item" width=" " class=" text-center my-2 " />
                       </div>
                       <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
@@ -74,7 +82,7 @@
                         بیشتر
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
 
 
@@ -129,7 +137,7 @@
               <div class="overflow-hidden rounded-lg bg-white shadow rtl">
                 <div class="p-6">
                   <!-- Your content -->
-                  <SearchFilterProduct />
+                  <SearchFilterProduct :text="text" @get-data-product="(data) => { this.products = data.results} " :page="1" />
                 </div>
               </div>
             </section>
@@ -165,7 +173,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import Product from "@/components/shared/Product.vue"
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
-import SearchFilterProduct from "@/components/section/SearchFilterProduct.vue"
+import SearchFilterProduct from "@/components/section/filters/SearchFilterProduct.vue"
 import Blog_test from "@/components/shared/Blog_test.vue"
 import Blog from '~/components/shared/Blog.vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
@@ -198,6 +206,7 @@ export default {
     value: [10, 30],
     text: '',
     selected_tab: 0,
+    products:[],
     data: [
     ],
     tabs: [
@@ -211,9 +220,6 @@ export default {
     blogs: [
 
       // More posts...
-    ],
-    products: [
-
     ],
     // carousel settings
     settings: {

@@ -1,7 +1,6 @@
 <template>
   <div class="bg-white">
     <div>
-      {{ data }}
       <!-- Mobile filter dialog -->
       <TransitionRoot as="template" :show="mobileFiltersOpen">
         <Dialog as="div" class="relative z-40 lg:hidden" @close="mobileFiltersOpen = false">
@@ -36,8 +35,7 @@
                           class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500">
                           <span class="text-sm font-medium text-gray-900">{{ section.name }}</span>
                           <span class="ml-6 flex h-7 items-center">
-                            <ChevronDownIcon :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']"
-                              aria-hidden="true" />
+                         
                           </span>
                         </DisclosureButton>
                       </legend>
@@ -68,12 +66,12 @@
             <h2 class="sr-only">Filters</h2>
             <button type="button" class="inline-flex items-center lg:hidden" @click="mobileFiltersOpen = true">
               <span class="text-sm font-medium text-gray-700">Filters</span>
-              <PlusIcon class="ml-1 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+           
             </button>
             <div class="hidden lg:block">
               <div class="space-y-10 py-10 divide-y divide-gray-200">
             <div class="flex flex-wrap align-center">
-                  <button v-for="item in product_sort" :key="sort" @click="selected_sort = item.value" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                  <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                     {{ item.label }}
                 </button>
             </div>
@@ -94,7 +92,7 @@
                   </div>
                   <div class="flex flex-wrap mt-3 align-center">
                     <div v-if="categories != null">
-                      <button v-for="item in categories" :key="sort" @click=" selected_categories.includes(item.id)? selected_categories.splice(selected_categories.indexOf(item.id), 1) :selected_categories.push(item.id) " :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                      <button v-for="item in categories" :key="item" @click=" selected_categories.includes(item.id)? selected_categories.splice(selected_categories.indexOf(item.id), 1) :selected_categories.push(item.id) " :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                         {{ item.title }}
                       </button>
                     </div>
@@ -138,14 +136,8 @@
 <script>
 import Slider from '@vueform/slider'
 import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
   Popover,
-  PopoverButton,
-  PopoverOverlay,
-  PopoverPanel,
+
   TransitionChild,
   TransitionRoot,
   Dialog,
@@ -155,25 +147,25 @@ import {
   DisclosurePanel,
 
 } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import {  XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import axios from 'axios'
 export default {
 props:['text','page'],
   components: {
     Slider,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
+
     Popover,
-    PopoverButton,
-    PopoverOverlay,
-    PopoverPanel,
+    Dialog,
+  DialogPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  
+  
     TransitionChild,
     TransitionRoot,
-    Bars3Icon,
-    BellIcon,
+ 
     XMarkIcon,
   },
   data: () => ({
@@ -185,13 +177,6 @@ props:['text','page'],
     categories : null,
     mobileFiltersOpen: ref(false),
     product_sort: [
-          { value: '-pk', label: 'جدید ترین' },
-          { value: 'pk', label: 'قدیمی ترین' },
-          { value: '-price', label: 'گران ترین' },
-          { value: 'price', label: 'ارزان ترین' },
-          { value: '-rate', label: 'محبوب ترین' },
-        ],
-    category_sort: [
           { value: '-pk', label: 'جدید ترین' },
           { value: 'pk', label: 'قدیمی ترین' },
           { value: '-price', label: 'گران ترین' },
@@ -226,7 +211,7 @@ props:['text','page'],
   methods: {
     getData() {
       this.loading = true
-       axios.get(`http://192.168.1.109:8000/api/product/products-search-for-buyer/?search=${this.text}&category=${this.text_search_categories.length > 0 ? this.text_search_categories.join('&category='): '' }`, {
+       axios.get(`http://192.168.1.109:8000/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -234,12 +219,13 @@ props:['text','page'],
       }).then((response) => {
         this.data = response.data
         this.loading = false
+        this.$emit('get-data-product', this.data);
 
       })
     },
     getCategories() {
       this.loading = true
-      axios.get(`http://192.168.1.109:8000/api/product/ListCategories/?search=${this.text_search_categories}&is_main_page=${this.text_search_categories == null ?'':this.selected_categories}`, {
+      axios.get(`http://192.168.1.109:8000/api/product/ListCategories/?search=${this.text_search_categories}&is_main_page=${this.text_search_categories == null ?true:''}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -261,7 +247,19 @@ watch: {
     handler (val, oldVal) {
       this.getData()
     }
-  }
+  },
+  'selected_categories': {
+        handler: function (val, oldVal) {
+           this.getData()
+        },
+        deep: true
+    },
+  'selected_sort': {
+        handler: function (val, oldVal) {
+           this.getData()
+        },
+        deep: true
+    }
 }
 }
 
