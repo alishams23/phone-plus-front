@@ -26,7 +26,7 @@
           <div class="flex">
             <div class="relative w-full">
               <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+text);" v-model="searchQuery" @input="filterOptions"
-                class="text-white block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
+                class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
               <div v-if="filteredOptions.length > 0 && searchQuery" class="absolute  mt-2 w-full"
                 style="z-index:9999999999999999">
