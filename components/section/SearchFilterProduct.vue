@@ -1,6 +1,7 @@
 <template>
   <div class="bg-white">
     <div>
+      {{ data }}
       <!-- Mobile filter dialog -->
       <TransitionRoot as="template" :show="mobileFiltersOpen">
         <Dialog as="div" class="relative z-40 lg:hidden" @close="mobileFiltersOpen = false">
@@ -72,14 +73,14 @@
             <div class="hidden lg:block">
               <div class="space-y-10 py-10 divide-y divide-gray-200">
             <div class="flex flex-wrap align-center">
-                  <button v-for="item in sort" :key="sort" @click="selected_sort = item.value" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                  <button v-for="item in product_sort" :key="sort" @click="selected_sort = item.value" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                     {{ item.label }}
                 </button>
             </div>
                 <div class="pt-2 relative mx-auto text-gray-600">
                   <label for="">دسته بندی ها</label>
                   <div class="flex items-center">
-                    <input id="search_category" class="border-2 border-gray-300 bg-white w-full h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
+                    <input @input="getCategories()" v-model="text_search_categories" id="search_category" class="border-2 border-gray-300 bg-white w-full h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
                       type="search" name="search" placeholder="Search">
                     <button type="submit" class="absolute right-0 top-6 mt-5 mr-4">
                       <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -92,15 +93,17 @@
                     </button>
                   </div>
                   <div class="flex flex-wrap mt-3 align-center">
-                    <button v-for="item in categories" :key="sort" @click="selected_sort = item.value" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
-                      {{ item.label }}
-                    </button>
+                    <div v-if="categories != null">
+                      <button v-for="item in categories" :key="sort" @click=" selected_categories.includes(item.id)? selected_categories.splice(selected_categories.indexOf(item.id), 1) :selected_categories.push(item.id) " :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                        {{ item.title }}
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div v-for="(section, sectionIdx) in filters" :key="section.name"
                   :class="sectionIdx === 0 ? null : 'pt-10'">
                   <fieldset>
-                    <legend class="block text-sm font-medium text-gray-900">{{ section.name }}</legend>
+                    <legend class="block text-sm font-med ium text-gray-900">{{ section.name }}</legend>
                     <div class="space-y-3 pt-6">
 
                       <div v-for="(option, optionIdx) in section.options" :key="option.value" class="flex items-center">
@@ -156,6 +159,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import axios from 'axios'
 export default {
+props:['text','page'],
   components: {
     Slider,
     Menu,
@@ -174,10 +178,20 @@ export default {
   },
   data: () => ({
     loading: true,
+    text_search_categories : '',
+    data : {},
     value: [10, 30],
-    categories : [],
+    selected_categories : [],
+    categories : null,
     mobileFiltersOpen: ref(false),
-    sort: [
+    product_sort: [
+          { value: '-pk', label: 'جدید ترین' },
+          { value: 'pk', label: 'قدیمی ترین' },
+          { value: '-price', label: 'گران ترین' },
+          { value: 'price', label: 'ارزان ترین' },
+          { value: '-rate', label: 'محبوب ترین' },
+        ],
+    category_sort: [
           { value: '-pk', label: 'جدید ترین' },
           { value: 'pk', label: 'قدیمی ترین' },
           { value: '-price', label: 'گران ترین' },
@@ -212,7 +226,20 @@ export default {
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.1.109:8000/api/product/ListCategories/`, {
+       axios.get(`http://192.168.1.109:8000/api/product/products-search-for-buyer/?search=${this.text}&category=${this.text_search_categories.length > 0 ? this.text_search_categories.join('&category='): '' }`, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      }).then((response) => {
+        this.data = response.data
+        this.loading = false
+
+      })
+    },
+    getCategories() {
+      this.loading = true
+      axios.get(`http://192.168.1.109:8000/api/product/ListCategories/?search=${this.text_search_categories}&is_main_page=${this.text_search_categories == null ?'':this.selected_categories}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -225,19 +252,17 @@ export default {
     }
   },
   mounted() {
-    this.getData()
+    this.getCategories  ()
   },
-  computed: {
-    filteredData() {
-      // This computed property filters the data based on the selected country.
-      // Adjust the logic according to your needs.
-      if (this.selectedCountry === 'Canada') {
-        return this.data.filter((item) => item.country === 'Canada');
-      } else {
-        return this.data; // Return all data if no specific filter is applied
-      }
-    },
-  },
+watch: {
+  text: {
+    // the callback will be called immediately after the start of the observation
+    immediate: true, 
+    handler (val, oldVal) {
+      this.getData()
+    }
+  }
+}
 }
 
 </script>

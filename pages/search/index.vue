@@ -9,7 +9,7 @@
           <div class="relative w-1/2  ">
             <div class="flex p-2 bg-indigo-700 rounded-[28px] ">
               <div class=" flex-auto">
-                <input type="search" id="search-dropdown" v-model="searchQuery" @input="filterOptions" class="text-white block p-4 w-full z-20 text-sm text-indigo-500 text-right rtl pr-5
+                <input type="search" id="search-dropdown" v-model="text" class="text-white block p-4 w-full z-20 text-sm text-indigo-500 text-right rtl pr-5
                                  rounded-sm rounded-e-[20px]  " placeholder="جستجو بین محصولات  هزاران فروشگاه ..."
                   required>
               </div>
@@ -29,8 +29,8 @@
         </div>
       </div>
     </Popover>
-    
-    
+
+
 
     <main class="-mt-24 pb-8">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -39,16 +39,19 @@
         <div class="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
           <!-- Left column -->
           <div class="grid grid-cols-1 gap-4 lg:col-span-2">
-        <div>
-          <div class="hidden sm:block">
-            <nav class="isolate flex divide-x divide-gray-200 rounded-lg shadow" aria-label="Tabs">
-              <a v-for="(tab, tabIdx) in tabs" :key="tab.name" :href="tab.href" :class="[tab.current ? 'text-gray-900 bg-gray-100' : 'bg-white text-gray-500 hover:text-gray-700', tabIdx === 0 ? 'rounded-l-lg' : '', tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '', 'group relative min-w-0 flex-1 overflow-hidden  py-4 px-4 text-center text-sm font-medium hover:bg-gray-50 focus:z-10']" :aria-current="tab.current ? 'page' : undefined">
-                <span>{{ tab.name }}</span>
-                <span aria-hidden="true" :class="[tab.current ? 'bg-indigo-800' : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']" />
-              </a>
-            </nav>
-          </div>
-        </div>
+            <div>
+              <div class="hidden sm:block">
+                <nav class="cursor-pointer isolate flex divide-x divide-gray-200 rounded-lg shadow" aria-label="Tabs">
+                  <a v-for="(tab, tabIdx) in tabs" :key="tab.name" @click="selected_tab = tab.id"
+                    :class="[tab.id == selected_tab ? 'text-gray-900 bg-gray-100' : 'bg-white text-gray-500 hover:text-gray-700', tabIdx === 0 ? 'rounded-l-lg' : '', tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '', 'group relative min-w-0 flex-1 overflow-hidden  py-4 px-4 text-center text-sm font-medium hover:bg-gray-50 focus:z-10']"
+                    :aria-current="tab.current ? 'page' : undefined">
+                    <span>{{ tab.name }}</span>
+                    <span aria-hidden="true"
+                      :class="[tab.current ? 'bg-indigo-800' : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']" />
+                  </a>
+                </nav>
+              </div>
+            </div>
             <section aria-labelledby="section-1-title">
               <h2 class="sr-only" id="section-1-title">Section title</h2>
               <div class="overflow-hidden rounded-lg bg-white shadow">
@@ -56,62 +59,61 @@
                 <div class="p-6">
                   <!-- Your content -->
 
-                  <div class="text-gray-800 font-bold text-xl text-right px-4 pt-4">
-                    محصولات
-                  </div>
+                  <div v-if="selected_tab == 0">
 
-                  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
-                    <div v-for="item in data" :key="item" class="group relative">
-                      <Product :data="item" width=" " class=" text-center my-2 " />
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
+                      <div v-for="item in data" :key="item" class="group relative">
+                        <Product :data="item" width=" " class=" text-center my-2 " />
+                      </div>
+                      <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
                     </div>
-                    <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
-                  </div>
-                  <div class="border-t-2 mt-8  py-1">
-                  </div>
-                  <div class="flex items-center justify-center " style="margin-top:-35px">
-                    <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
-                      بیشتر
+                    <div class="border-t-2 mt-8  py-1">
                     </div>
-                  </div>
-
-
-                  <div class="text-gray-800 font-bold text-xl text-right px-4 pt-20">
-                    محصولات دیجیتال
-                  </div>
-
-                  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  relative isolate ">
-                    <div v-for="item in data" :key="item" class="group relative">
-                      <DigitalProduct :data="item" width=" " class=" text-center  " />
-                    </div>
-                    <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
-
-                  </div>
-                  <div class="border-t-2 mt-8  py-1">
-                  </div>
-                  <div class="flex items-center justify-center " style="margin-top:-35px">
-                    <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
-                      بیشتر
+                    <div class="flex items-center justify-center " style="margin-top:-35px">
+                      <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                        بیشتر
+                      </div>
                     </div>
                   </div>
 
 
-                  <div class="text-gray-800 font-bold text-xl text-right px-4 pt-20">
-                    وبلاگ
-                  </div>
 
-                  <div class="mt-6 grid grid-cols-1  relative isolate">
-                    <div v-for="item in data" :key="item" class="group px-5 relative">
-                      <Blog :data="item" width=" " class=" text-center py-3 " />
+                  <div v-if="selected_tab == 1">
+
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  relative isolate ">
+                      <div v-for="item in data" :key="item" class="group relative">
+                        <DigitalProduct :data="item" width=" " class=" text-center  " />
+                      </div>
+                      <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
+
                     </div>
-                    <div class="absolute z-[80] inset-0 mb-[-20px] bg-gradient-to-t  from-white from-10% via-white/30" />
+                    <div class="border-t-2 mt-8  py-1">
+                    </div>
+                    <div class="flex items-center justify-center " style="margin-top:-35px">
+                      <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                        بیشتر
+                      </div>
+                    </div>
 
                   </div>
 
-                  <div class="border-t-2 mt-14  py-1">
-                  </div>
-                  <div class="flex items-center justify-center " style="margin-top:-35px">
-                    <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
-                      بیشتر
+                  <div v-if="selected_tab == 2">
+
+                    <div class="mt-6 grid grid-cols-1  relative isolate">
+                      <div v-for="item in data" :key="item" class="group px-5 relative">
+                        <Blog :data="item" width=" " class=" text-center py-3 " />
+                      </div>
+                      <div
+                        class="absolute z-[80] inset-0 mb-[-20px] bg-gradient-to-t  from-white from-10% via-white/30" />
+
+                    </div>
+
+                    <div class="border-t-2 mt-14  py-1">
+                    </div>
+                    <div class="flex items-center justify-center " style="margin-top:-35px">
+                      <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
+                        بیشتر
+                      </div>
                     </div>
                   </div>
 
@@ -127,7 +129,7 @@
               <div class="overflow-hidden rounded-lg bg-white shadow rtl">
                 <div class="p-6">
                   <!-- Your content -->
-                  <SearchFilterProduct/>
+                  <SearchFilterProduct />
                 </div>
               </div>
             </section>
@@ -194,62 +196,18 @@ export default {
   },
   data: () => ({
     value: [10, 30],
-    show_products_list: [],
-    show_products: false,
-    show_digital_products_list: [],
-    show_digital_products: false,
-    show_blogs_list: [],
-    show_blogs: false,
-    mobileFiltersOpen: ref(false),
-    selectedTab: 'products',
+    text: '',
+    selected_tab: 0,
     data: [
     ],
-    tabs : [
-      { name: 'محصولات دیجیتال', href: '#', current: true },
-      { name: 'محصولات', href: '#', current: false },
-      { name: 'مقاله ها', href: '#', current: false },
+    tabs: [
+      { name: 'محصولات دیجیتال', href: '#', id: 0 },
+      { name: 'محصولات', href: '#', id: 1 },
+      { name: 'مقاله ها', href: '#', id: 2 },
     ],
-    filters: [
-      {
-        id: 'color',
-        name: 'دسته بندی‌ها',
-        options: [
-          { value: 'white', label: 'محصولات' },
-          { value: 'beige', label: 'محصولات دیجیتال' },
-          { value: 'blue', label: 'مقاله‌ها' },
-        ],
-      },
-      {
-        id: 'category',
-        name: 'رنگ بندی',
-        options: [
-          { value: 'new-arrivals', label: 'قرمز' },
-          { value: 'tees', label: 'آبی' },
-          { value: 'crewnecks', label: 'سبز' },
-          { value: 'sweatshirts', label: 'زرد' },
-          { value: 'pants-shorts', label: 'بنفش' },
-        ],
-      },
-      {
-        id: 'sizes',
-        name: 'محدوده قیمت',
-        options: [
 
-        ],
-      },
-    ],
-    navigation: [
-      { name: 'Home', href: '#', current: true },
-      { name: 'Profile', href: '#', current: false },
-      { name: 'Resources', href: '#', current: false },
-      { name: 'Company Directory', href: '#', current: false },
-      { name: 'Openings', href: '#', current: false },
-    ],
-    userNavigation: [
-      { name: 'Your Profile', href: '#' },
-      { name: 'Settings', href: '#' },
-      { name: 'Sign out', href: '#' },
-    ],
+
+
     blogs: [
 
       // More posts...
@@ -278,21 +236,11 @@ export default {
     },
   }),
   mounted() {
-    this.show_products_list = this.products.slice(0, 3);
-    this.show_digital_products_list = this.products.slice(0, 3);
-    this.show_blogs_list = this.blogs.slice(0, 3);
+    if (this.$route.query.search != null) this.text = this.$route.query.search
+    if (this.$route.query.tab != null) this.selected_tab = parseInt(this.$route.query.tab)
+
   },
-  computed: {
-    filteredData() {
-      // This computed property filters the data based on the selected country.
-      // Adjust the logic according to your needs.
-      if (this.selectedCountry === 'Canada') {
-        return this.data.filter((item) => item.country === 'Canada');
-      } else {
-        return this.data; // Return all data if no specific filter is applied
-      }
-    },
-  },
+
 }
 
 </script>
