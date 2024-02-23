@@ -9,7 +9,10 @@
         <div class=" me-5">
               <img :src="product.shop.image" class="h-24 w-24 rounded-full"/>
         </div>
-        <div class="text-sm leading-6">
+        <div class=" ">
+          <div class="text-sm text-gray-300">
+            فروشگاه:
+          </div>
           <div class="font-semibold text-3xl text-white">
             {{ product.shop.name }}
           </div>
@@ -223,7 +226,7 @@
                       </figcaption>
 
                       <blockquote class="mt-5 text-lg leading-8 tracking-tight text-gray-700 text-sm  sm:leading-9">
-                        <p>“{{comment.title}}”</p>
+                        <p><span class="text-2xl">”</span>{{comment.title}}<span class="text-2xl">“</span></p>
                       </blockquote>
                     </figure>
                     <div class="flex items-start space-x-4 mt-10">
