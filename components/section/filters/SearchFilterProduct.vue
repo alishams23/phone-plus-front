@@ -279,6 +279,7 @@ export default {
   async mounted() {
     if (this.$route.query.category_product != null) this.selected_categories.push(parseInt(this.$route.query.category_product))
     if (this.$route.query.sort_product != null) this.selected_sort = this.$route.query.sort_product
+    if (this.$route.query.is_discount != null) this.is_discount = this.$route.query.is_discount
 
     await this.getData()
     this.getCategories()

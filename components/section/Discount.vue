@@ -3,12 +3,12 @@
   <div class="   isolate overflow-hidden relative">
     <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-red-800/80 via-black/100" />
     <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
-  <div class="absolute inset-0 -z-1000">
-    <div class="flex pt-2 justify-between items-center">
+  <div class="relative">
+    <div class="flex mt-4 justify-between items-center">
       <div class="rtl px-3 ">
-        <a href="#" class="text-gray-200 rtl  ">
+        <a @click="$router.push('/search/?is_discount=' + 'true');" class="text-gray-200 cursor-pointer rtl  ">
           بیشتر
-          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+          <span aria-hidden="true" class="px-3 "> &larr;</span>
         </a>
       </div>
       <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
@@ -16,7 +16,7 @@
       </div>
      </div>
   </div>
-    <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-10">
+    <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-0">
       <Slide v-for="product in products" :key="product">
         <Product class="my-10" :data="product" />
       </Slide>
