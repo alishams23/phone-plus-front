@@ -124,7 +124,7 @@
                   <label for="labels-range-input" class="sr-only">Labels range</label>
                   <label class="font-bold flex justify-end mt-3" for="">محدوده قیمت</label>
                   <client-only>
-                    <Slider :min="0" :step="1000000" :max="100000000" v-model="price_range" class="mt-12 me-3" />
+                    <Slider :min="0" :step="100000" :max="1000000" v-model="price_range" class="mt-12 me-3" />
                   </client-only>
                   <div class="flex justify-between">
                     <span class="text-xs  text-gray-500 mb-10 mt-14">ارزانترین ({{ price_range[0] }} تومان)</span>
@@ -187,7 +187,7 @@ props:['text','page'],
     shops : null,
     selected_shop : null,
     
-    price_range: [0, 100000000],
+    price_range: [0, 1000000],
     mobileFiltersOpen: ref(false),
     product_sort: [
           { value: '-pk', label: 'جدید ترین' },

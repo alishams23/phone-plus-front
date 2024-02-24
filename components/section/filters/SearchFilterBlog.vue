@@ -24,32 +24,6 @@
                     <XMarkIcon class="h-6 w-6" aria-hidden="true" />
                   </button>
                 </div>
-
-                <!-- Filters -->
-                <form class="mt-1">
-                  <Disclosure as="div" v-for="section in filters" :key="section.name"
-                    class="border-t border-gray-200 pb-4 pt-4" v-slot="{ open }">
-                    <fieldset>
-                      <legend class="w-full px-2">
-                        <DisclosureButton
-                          class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500">
-                          <span class=" font-bold mt-3 text-gray-900">{{ section.name }}</span>
-                          <span class="ml-6 flex h-7 items-center">
-                         
-                          </span>
-                        </DisclosureButton>
-                      </legend>
-                      <DisclosurePanel class="px-4 pb-2 pt-4">
-                        <div class="space-y-6">
-                          <div v-for="(option, optionIdx) in section.options" :key="option.value"
-                            class="flex items-center">
-                            <button>{{ option }}</button>
-                          </div>
-                        </div>
-                      </DisclosurePanel>
-                    </fieldset>
-                  </Disclosure>
-                </form>
               </DialogPanel>
             </TransitionChild>
           </div>
@@ -120,7 +94,8 @@
                     </div>
                   </div>
                 </div>
-                <div class=" ltr mb-6x">
+                
+                <!-- <div class=" ltr mb-6x">
                   <label for="labels-range-input" class="sr-only">Labels range</label>
                   <label class="font-bold flex justify-end mt-3" for="">محدوده قیمت</label>
                   <client-only>
@@ -130,7 +105,7 @@
                     <span class="text-xs  text-gray-500 mb-10 mt-14">ارزانترین ({{ price_range[0] }} تومان)</span>
                     <span class="text-xs text-gray-500 mb-10 mt-14">گرانترین ({{ price_range[1] }} تومان)</span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </aside>
@@ -178,53 +153,27 @@ props:['text','page'],
   data: () => ({
     loading: true,
     data : {},
-    
+
     text_search_categories : '',
     categories : null,
     selected_categories : [],
-
+    
     text_search_shop : '',
     shops : null,
     selected_shop : null,
     
-    price_range: [0, 100000000],
     mobileFiltersOpen: ref(false),
     product_sort: [
           { value: '-pk', label: 'جدید ترین' },
           { value: 'pk', label: 'قدیمی ترین' },
-          { value: '-price', label: 'گران ترین' },
-          { value: 'price', label: 'ارزان ترین' },
-          { value: '-rate', label: 'محبوب ترین' },
+          // { value: '-like', label: 'محبوب ترین' },
         ],
-    selected_sort:null,
-    filters: [
-  
-     
-      {
-        id: 'sizes',
-        name: 'محدوده قیمت',
-        options: [
-
-        ],
-      },
-    ],
-    navigation: [
-      { name: 'Home', href: '#', current: true },
-      { name: 'Profile', href: '#', current: false },
-      { name: 'Resources', href: '#', current: false },
-      { name: 'Company Directory', href: '#', current: false },
-      { name: 'Openings', href: '#', current: false },
-    ],
-    userNavigation: [
-      { name: 'Your Profile', href: '#' },
-      { name: 'Settings', href: '#' },
-      { name: 'Sign out', href: '#' },
-    ],
+    selected_sort:'',
   }),
   methods: {
     getData() {
       this.loading = true
-       axios.get(`http://192.168.45.128:8000/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop? this.selected_shop : ''} `, {
+       axios.get(`http://192.168.45.128:8000/api/blog/search-blog-for-buyers/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&shop=${this.selected_shop? this.selected_shop : ''} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -232,13 +181,13 @@ props:['text','page'],
       }).then((response) => {
         this.data = response.data
         this.loading = false
-        this.$emit('get-data-product', this.data);
+        this.$emit('get-data-blog', this.data);
 
       })
     },
     getCategories() {
       this.loading = true
-      axios.get(`http://192.168.45.128:8000/api/product/ListCategories/?search=${this.text_search_categories}&is_main_page=${this.text_search_categories == null ?true:''}`, {
+      axios.get(`http://192.168.45.128:8000/api/blog/List_category/?search=${this.text_search_categories}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -292,12 +241,6 @@ watch: {
         },
         deep: true
     },
-  'price_range': {
-        handler: function (val, oldVal) {
-           this.getData()
-        },
-        deep: true
-    }
 }
 }
 

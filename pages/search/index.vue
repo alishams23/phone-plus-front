@@ -59,12 +59,12 @@
                   <!-- Your content -->
 
                   <div v-if="selected_tab == 0">
-
                     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
                       <div v-for="item in products" :key="item" class="group my-2  relative">
                         <Product :data="item" width=" " class=" text-center " />
                       </div>
                     </div>
+<<<<<<< HEAD
                     <div class="flex m-4 justify-center mt-10" v-if="false">
                       <!-- Previous Button -->
                       <a href="#" class="flex items-center justify-center  px-5 h-9 me-3 text-sm font-medium text-gray-300 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
@@ -83,6 +83,8 @@
                
                 
                
+=======
+>>>>>>> 22675a4f43b4049d4dfd023b9cd1dc7188bb308a
                   </div>
                     <!-- <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
                       <div v-for="item in products" :key="item" class="group relative">
@@ -102,40 +104,18 @@
 
 
                   <div v-if="selected_tab == 1">
-
-                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  relative isolate ">
-                      <div v-for="item in data" :key="item" class="group relative">
-                        <DigitalProduct :data="item" width=" " class=" text-center  " />
-                      </div>
-                      <div class="absolute inset-0  bg-gradient-to-t  from-white from-10% via-white/30" />
-
-                    </div>
-                    <div class="border-t-2 mt-8  py-1">
-                    </div>
-                    <div class="flex items-center justify-center " style="margin-top:-35px">
-                      <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
-                        بیشتر
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
+                      <div v-for="item in products" :key="item" class="group my-2  relative">
+                        <DigitalProduct :data="item" width=" " class=" text-center " />
                       </div>
                     </div>
-
                   </div>
 
                   <div v-if="selected_tab == 2">
 
-                    <div class="mt-6 grid grid-cols-1  relative isolate">
-                      <div v-for="item in data" :key="item" class="group px-5 relative">
-                        <Blog :data="item" width=" " class=" text-center py-3 " />
-                      </div>
-                      <div
-                        class="absolute z-[80] inset-0 mb-[-20px] bg-gradient-to-t  from-white from-10% via-white/30" />
-
-                    </div>
-
-                    <div class="border-t-2 mt-14  py-1">
-                    </div>
-                    <div class="flex items-center justify-center " style="margin-top:-35px">
-                      <div class="border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
-                        بیشتر
+                   <div class="mt-6  ">
+                      <div v-for="item in blogs" :key="item" class="group my-6  ">
+                        <Blog :blog="item" width=" " class=" text-center " />
                       </div>
                     </div>
                   </div>
@@ -152,7 +132,16 @@
               <div class="overflow-hidden rounded-lg bg-white shadow rtl">
                 <div class="p-6">
                   <!-- Your content -->
-                  <SearchFilterProduct :text="text" @get-data-product="(data) => { this.products = data.results} " :page="1" />
+
+                  <div v-if="selected_tab == 0">
+                    <SearchFilterProduct :text="text" @get-data-product="(data) => { this.products = data.results} " :page="1" />
+                  </div>
+                  <div v-if="selected_tab == 1">
+                    <SearchFilterDigitalProduct :text="text" @get-data-product="(data) => { this.products = data.results} " :page="1" />
+                  </div>
+                  <div v-if="selected_tab == 2">
+                    <SearchFilterBlog :text="text" @get-data-blog="(data) => { this.blogs = data.results} " :page="1" />
+                  </div>
                 </div>
               </div>
             </section>
@@ -189,6 +178,8 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import Product from "@/components/shared/Product.vue"
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 import SearchFilterProduct from "@/components/section/filters/SearchFilterProduct.vue"
+import SearchFilterDigitalProduct from "@/components/section/filters/SearchFilterDigitalProduct.vue"
+import SearchFilterBlog from "@/components/section/filters/SearchFilterBlog.vue"
 import Blog_test from "@/components/shared/Blog_test.vue"
 import Blog from '~/components/shared/Blog.vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
@@ -197,6 +188,8 @@ export default {
   components: {
     Slider,
     SearchFilterProduct,
+    SearchFilterDigitalProduct,
+    SearchFilterBlog,
     Product,
     Blog,
     Blog_test,
@@ -218,24 +211,19 @@ export default {
     MagnifyingGlassIcon,
   },
   data: () => ({
-    value: [10, 30],
     text: '',
     selected_tab: 0,
     products:[],
-    data: [
-    ],
+    blogs: [],
+    data: [],
     tabs: [
-      { name: 'محصولات دیجیتال', href: '#', id: 0 },
-      { name: 'محصولات', href: '#', id: 1 },
+      { name: 'محصولات', href: '#', id: 0 },
+      { name: 'محصولات دیجیتال', href: '#', id: 1},
       { name: 'مقاله ها', href: '#', id: 2 },
     ],
 
 
 
-    blogs: [
-
-      // More posts...
-    ],
     // carousel settings
     settings: {
       itemsToShow: 1,

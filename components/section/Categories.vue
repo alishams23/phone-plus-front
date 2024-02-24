@@ -78,7 +78,7 @@ export default {
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.1.109:8000/api/product/list-categories-main-page/`, {
+      axios.get(`http://192.168.45.128:8000/api/product/list-categories-main-page/`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
