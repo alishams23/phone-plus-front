@@ -2,10 +2,7 @@
   <div v-if="data != null">
       <div class="flex pt-20 pb-10 justify-between items-center">
       <div class="rtl px-3">
-        <a href="#" class="text-black rtl">
-          بیشتر
-          <span aria-hidden="true" class="px-3 "> &larr;</span>
-        </a>
+       
       </div>
       <div class="text-black font-bold text-xl text-right px-4">
         دسته بند‌ی‌ها
@@ -22,7 +19,7 @@
     
         </div>
         <div class="min-w-0 flex-1 ">
-          <a @click="$router.push('/search/?category_product'+category.id);" class="focus:outline-none">
+          <a @click="$router.push('/search/?category_product='+category.id);" class="focus:outline-none">
             <span class="absolute inset-0" aria-hidden="true" />
             <p class="text-sm font-medium text-gray-900 px-3">{{ category.title }}</p>
           </a>

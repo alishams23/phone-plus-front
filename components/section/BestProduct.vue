@@ -12,20 +12,20 @@
     <div > 
       <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-blue-800/80 via-black/100" />
       <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
-      <div class="absolute inset-0 -z-1000">
-        <div class="flex pt-2 justify-between items-center">
+      <div class="relative">
+        <div class="flex pt-3 justify-between items-center">
           <div class="rtl px-3">
-            <a href="#" class="text-gray-100 rtl  ">
+            <a @click="$router.push('/search/?sort_product=' + '-rate');" class="text-gray-100 rtl pt-3 cursor-pointer flex items-center  ">
               بیشتر
-              <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+              <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
             </a>
           </div>
           <div class="text-gray-100 font-bold text-xl text-right px-4 pt-4">
-            پر فروش ترین محصولات
+            محبوب ترین محصولات
           </div>
         </div>
       </div>
-        <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-10">
+        <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-0">
           <Slide v-for="product in best_products" :key="product" >
             <Product :data="product" class="my-10" />
           </Slide>

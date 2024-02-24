@@ -70,7 +70,7 @@
             <div class="hidden lg:block">
               <div class="space-y-10 py-10 divide-y divide-gray-200">
             <div class="flex flex-wrap align-center">
-                  <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                  <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value;getData()" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                     {{ item.label }}
                 </button>
             </div>
@@ -91,7 +91,7 @@
                   </div>
                   <div class="flex flex-wrap mt-3 align-center">
                     <div v-if="categories != null">
-                      <button v-for="item in categories" :key="item" @click=" selected_categories.includes(item.id)? selected_categories.splice(selected_categories.indexOf(item.id), 1) :selected_categories.push(item.id) " :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                      <button v-for="item in categories" :key="item" @click=" selected_categories.includes(item.id)? selected_categories.splice(selected_categories.indexOf(item.id), 1) :selected_categories.push(item.id) ;getData()" :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                         {{ item.title }}
                       </button>
                     </div>
@@ -114,7 +114,7 @@
                   </div>
                   <div class="flex flex-wrap mt-3 align-center">
                     <div v-if="shops != null">
-                      <button v-for="item in shops" :key="item.id" @click=" selected_shop == item.id ? selected_shop = null : selected_shop =  item.id" :class="[selected_shop == item.id ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                      <button v-for="item in shops" :key="item.id" @click=" selected_shop == item.id ? selected_shop = null : selected_shop =  item.id;getData()" :class="[selected_shop == item.id ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                         {{ item.name }}
                       </button>
                     </div>
@@ -222,9 +222,9 @@ props:['text','page'],
     ],
   }),
   methods: {
-    getData() {
+    async getData() {
       this.loading = true
-       axios.get(`http://192.168.45.128:8000/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop? this.selected_shop : ''} `, {
+       await axios.get(`http://192.168.45.128:8000/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop? this.selected_shop : ''} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -263,35 +263,26 @@ props:['text','page'],
       })
     }
   },
-  mounted() {
-    this.getCategories  ()
+  async mounted() {
+    if (this.$route.query.category_product != null) this.selected_categories.push(parseInt(this.$route.query.category_product))
+    if (this.$route.query.sort_product != null) this.selected_sort = this.$route.query.sort_product
+   
+    await this.getData()
+    this.getCategories()
   },
 watch: {
   text: {
     // the callback will be called immediately after the start of the observation
     immediate: true, 
     handler (val, oldVal) {
-      this.getData()
+      if (oldVal != undefined) {
+      this.getData()  
+      }
     }
   },
-  'selected_categories': {
-        handler: function (val, oldVal) {
-           this.getData()
-        },
-        deep: true
-    },
-  'selected_shop': {
-        handler: function (val, oldVal) {
-           this.getData()
-        },
-        deep: true
-    },
-  'selected_sort': {
-        handler: function (val, oldVal) {
-           this.getData()
-        },
-        deep: true
-    },
+ 
+
+
   'price_range': {
         handler: function (val, oldVal) {
            this.getData()

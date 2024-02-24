@@ -11,7 +11,7 @@
           </a>
         </div>
         <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
-          پر فروش ترین محصولات دیجیتال
+          محبوب ترین محصولات دیجیتال
         </div>
       </div>
     </div>
