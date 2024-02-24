@@ -64,7 +64,7 @@
                         <Product :data="item" width=" " class=" text-center " />
                       </div>
                     </div>
-<<<<<<< HEAD
+                    
                     <div class="flex m-4 justify-center mt-10" v-if="false">
                       <!-- Previous Button -->
                       <a href="#" class="flex items-center justify-center  px-5 h-9 me-3 text-sm font-medium text-gray-300 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
@@ -82,9 +82,7 @@
                     </div>
                
                 
-               
-=======
->>>>>>> 22675a4f43b4049d4dfd023b9cd1dc7188bb308a
+
                   </div>
                     <!-- <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
                       <div v-for="item in products" :key="item" class="group relative">
