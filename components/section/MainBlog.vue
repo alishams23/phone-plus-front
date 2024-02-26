@@ -1,6 +1,16 @@
 <template>
+  <div class="flex pt-2 justify-between items-center">
+    <div  class="rtl mx-10 ">
+      <a href="#" class=" rtl  ">
+        بیشتر
+        <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+      </a>
+    </div>
+    <div class=" font-bold text-xl text-right px-10 pt-4">
+      مقاله ها
+    </div>
+  </div>
   <div class="bg-white  py-24 sm:py-32">
-
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 pb-10 sm:text-4xl">{{title}}</h2>
