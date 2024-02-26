@@ -1,7 +1,18 @@
 <template>
     <div v-if="blog != null" class="w-full h-full">
         <div class="w-full h-56 bg-indigo-600 flex py-10 flex-col shadow-xl justify-center items-center space-y-4" />
-        <div class=" shadow-lg -mt-32 pb-10 flex justify-center">
+        <div class="mt-[-40px]">
+         
+      <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
+       
+        <g id="Layer_2-2" data-name="Layer 2">
+          <g id="Layer_1-2" data-name="Layer 1-2">
+            <path class="cls-1" d="M695.06,0V35.8H0V0S194.27,12.75,356.77,12.75,695.06,0,695.06,0Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+        <div class=" shadow-lg -mt-40 pb-10 flex justify-center">
             <div class="max-w-[75rem] flex flex-col shadow-lg rounded-[25px] overflow-hidden">
                <div class="relative isolate overflow-hidden ">
                 

@@ -4,8 +4,10 @@
   
     <div class="min-h-full">
       
-    <Popover as="header" class="bg-indigo-600 pb-24" v-slot="{ open }">
+    <Popover  as="header" class="bg-indigo-600 pb-24" v-slot="{ open }">
+    
       <div class="flex flex-row rtl pt-10 container items-center pb-5">
+        
         <div class=" me-5">
               <img :src="product.shop.image" class="h-24 w-24 rounded-full"/>
         </div>
@@ -18,6 +20,7 @@
           </div>
         </div>
       </div>
+      
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div class="relative flex items-center justify-center py-5 lg:justify-between">
 
@@ -44,7 +47,18 @@
 
 
     </Popover>
-    <main class="-mt-24 pb-8">
+    <div class="mt-[-40px]">
+         
+      <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
+       
+        <g id="Layer_2-2" data-name="Layer 2">              
+          <g id="Layer_1-2" data-name="Layer 1-2">
+            <path class="cls-1" d="M695.06,0V35.8H0V0S194.27,12.75,356.77,12.75,695.06,0,695.06,0Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <main class="-mt-36 pb-8">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 class="sr-only">Page title</h1>
         <!-- Main 3 column grid -->
