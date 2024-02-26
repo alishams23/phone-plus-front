@@ -4,7 +4,7 @@
     <Popover as="header" class="bg-indigo-600 pb-24" v-slot="{ open }">
       <div class="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:max-w-7xl lg:px-8">
         <!-- Search -->
-        <div class="relative w-full flex justify-center">
+        <!-- <div class="relative w-full flex justify-center">
           <div class="relative w-1/2  ">
             <div class="flex p-2 bg-indigo-700 rounded-[28px] ">
               <div class=" flex-auto">
@@ -25,9 +25,36 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+        <div class="flex justify-center">
+            <div class="relative w-[50rem]">
+              <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+text);" v-model="searchQuery" @input="filterOptions"
+                class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
+                placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
+              <button type="submit"
+                class="absolute  top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700  rounded-e-[20px]">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+                <span class="sr-only">Search</span>
+              </button>
+            </div>
+          </div>
       </div>
     </Popover>
+    <div class="mt-[-40px]">
+         
+      <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
+       
+        <g id="Layer_2-2" data-name="Layer 2">
+          <g id="Layer_1-2" data-name="Layer 1-2">
+            <path class="cls-1" d="M695.06,0V35.8H0V0S194.27,12.75,356.77,12.75,695.06,0,695.06,0Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
 
 
 

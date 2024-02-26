@@ -1,15 +1,15 @@
 <template>
-<div class="flex pt-2 justify-between items-center">
-      <div class="rtl mx-10 ">
-        <a href="#" class=" rtl  ">
-          بیشتر
-          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
-        </a>
-      </div>
-      <div class=" font-bold text-xl text-right px-10 pt-4">
-         مقاله ها
-      </div>
-     </div>
+  <div class="flex pt-2 justify-between items-center">
+    <div  class="rtl mx-10 ">
+      <a href="#" class=" rtl  ">
+        بیشتر
+        <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+      </a>
+    </div>
+    <div class=" font-bold text-xl text-right px-10 pt-4">
+      مقاله ها
+    </div>
+  </div>
 
       <div class="   isolate overflow-hidden relative mb-10">
         <Carousel  :itemsToShow="1.4" :wrapAround="true" :transition="500" class="pt-5 pb-6">
