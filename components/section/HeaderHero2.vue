@@ -15,7 +15,7 @@
           class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
       </div>
-      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-[8rem]">
+      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pb-[7rem] lg:pt-[4rem]">
         <div class="text-center">
           <h1 class="text-4xl font-bold tracking-tight text-white sm:text-4xl">بهترین فروشگاه‌ها رو اینجا پیدا کن</h1>
         </div>
@@ -199,48 +199,6 @@ export default {
 <style scoped>
 /* Add your Tailwind CSS classes here */
 
-.bg {
-  animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgba(66, 51, 204, 0.609) 50%, rgba(0, 17, 255, 0.202) 50%);
-  bottom:0;
-  left:-50%;
-  opacity:.3;
-  position:fixed;
-  right:-50%;
-  top:0;
-  z-index:-1;
-}
-
-.bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
-}
-
-.bg3 {
-  animation-duration:5s;
-}
-
-.content {
-  background-color:rgba(255,255,255,.8);
-  border-radius:.25em;
-  box-shadow:0 0 .25em rgba(0,0,0,.25);
-  box-sizing:border-box;
-  left:50%;
-  padding:10vmin;
-  position:fixed;
-  text-align:center;
-  top:50%;
-  transform:translate(-50%, -50%);
-}
-
-@keyframes slide {
-  0% {
-    transform:translateX(-25%);
-  }
-  100% {
-    transform:translateX(25%);
-  }
-}
 
 .swiper-slide {
   width: auto;
