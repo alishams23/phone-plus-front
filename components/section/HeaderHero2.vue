@@ -2,8 +2,7 @@
   <div class=" ">
     <div class="  relative ">
 
-        {{products}}
-        {{searchQuery}}
+       
       <div class="bg rounded-b-[50px]"></div>
 <div class="bg bg2 rounded-b-[50px]"></div>
 <div class="bg bg3 rounded-b-[50px]"></div>
@@ -26,14 +25,15 @@
         <div>
           <div class="flex">
             <div class="relative w-full">
-              <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+searchQuery);" v-model="searchQuery" @input="filterOptions"
+              <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+searchQuery);" v-model="searchQuery" 
                 class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
-              <div v-if="products.length > 0 && searchQuery" class="absolute  mt-2 w-full"
+              <div  class="absolute  mt-2 w-full"
+              v-show="searchQuery != null && searchQuery != ''"
                 style="z-index:9999999999999999">
                 <ul class="bg-gray-100 rtl rounded-xl  shadow-xl w-full">
                   <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
-                  <!-- <Swiper  
+                  <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
                     :loop="false" 
@@ -54,9 +54,9 @@
                         </div>
                       </div>
                     </SwiperSlide>
-                  </Swiper> -->
+                  </Swiper>
                   <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
-                  <!-- <Swiper  
+                  <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
                     :loop="false" 
@@ -77,7 +77,7 @@
                         </div>
                       </div>
                     </SwiperSlide>
-                  </Swiper> -->
+                  </Swiper>
                   <!-- <li class=" p-4 font-body-1 text-gray-500 border-t font-bold"> مقاله‌ها</li>
                   <Swiper  
                     :modules="modules" 
