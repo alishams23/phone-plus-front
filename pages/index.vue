@@ -36,6 +36,9 @@
         <DiscountDigitalProduct />
       </div>
 
+      <div class="container mx-auto">
+        <CategoriesDigitalProduct class="mx-2" />
+      </div>
       <!-- <Advertisement /> -->
     </div>
 
@@ -56,9 +59,10 @@ import MainBlog from "@/components/section/MainBlog.vue"
 import Advertisement from "@/components/section/Advertisement.vue"
 import Advertisement2 from "@/components/section/Advertisement2.vue"
 import Categories from "@/components/section/Categories.vue"
+import CategoriesDigitalProduct from "@/components/section/CategoriesDigitalProduct.vue"
 
 export default {
-  components: { Categories, LoginPopup, DiscountDigitalProduct, BestProduct, BestDigitalProduct, Discount, HeaderHero, Banner, PromoSection, MainBlog, Advertisement, Advertisement2,HeaderHero2 },
+  components: { CategoriesDigitalProduct, Categories, LoginPopup, DiscountDigitalProduct, BestProduct, BestDigitalProduct, Discount, HeaderHero, Banner, PromoSection, MainBlog, Advertisement, Advertisement2,HeaderHero2 },
   head() {
     return {
       // title: "ثبت نام"
