@@ -22,10 +22,10 @@
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
 
         </div>
-        <form>
+        <div>
           <div class="flex">
             <div class="relative w-full">
-              <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+text);" v-model="searchQuery" @input="filterOptions"
+              <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+searchQuery);" v-model="searchQuery" @input="filterOptions"
                 class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
               <div v-if="filteredOptions.length > 0 && searchQuery" class="absolute  mt-2 w-full"
@@ -113,7 +113,7 @@
               </button>
             </div>
           </div>
-        </form>
+        </div>
         <div class="mt-3 flex items-center ">
           <span
             class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">موبایل</span>
