@@ -2,7 +2,8 @@
   <div class=" ">
     <div class="  relative ">
 
-
+        {{products}}
+        {{searchQuery}}
       <div class="bg rounded-b-[50px]"></div>
 <div class="bg bg2 rounded-b-[50px]"></div>
 <div class="bg bg3 rounded-b-[50px]"></div>
@@ -28,56 +29,56 @@
               <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+searchQuery);" v-model="searchQuery" @input="filterOptions"
                 class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
-              <div v-if="filteredOptions.length > 0 && searchQuery" class="absolute  mt-2 w-full"
+              <div v-if="products.length > 0 && searchQuery" class="absolute  mt-2 w-full"
                 style="z-index:9999999999999999">
                 <ul class="bg-gray-100 rtl rounded-xl  shadow-xl w-full">
                   <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
-                  <Swiper  
+                  <!-- <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
                     :loop="false" 
                    
                     :space-between="20" >
-                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10 px-2"> 
+                    <SwiperSlide v-for="item in products" :key="item.id" class="mb-10 px-2"> 
                       <div class="rtl"> 
                         <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
                           <div class="px-5 py-3 flex-grow "> 
                             <div class=""> 
-                              {{ option.label }}
+                              {{ item.title }}
                             </div>
                             <div class="text-gray-500 text-xs mt-3" >
-                              {{ option.price }}
+                              {{ item.price }}
                             </div>
                           </div>
-                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
+                          <img :src="item.image.photo" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
-                  </Swiper>
+                  </Swiper> -->
                   <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
-                  <Swiper  
+                  <!-- <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
                     :loop="false" 
                   
                     :space-between="20" >
-                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10 px-2"> 
+                    <SwiperSlide v-for="item in digital_products" :key="item.id" class="mb-10 px-2"> 
                       <div class="rtl"> 
                         <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
                           <div class="px-5 py-3 flex-grow "> 
                             <div class=""> 
-                              {{ option.label }}
+                              {{ item.title }}
                             </div>
                             <div class="text-gray-500 text-xs mt-3" >
-                              {{ option.price }}
+                              {{ item.price }}
                             </div>
                           </div>
-                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
+                          <img :src="item.image.photo" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
-                  </Swiper>
-                  <li class=" p-4 font-body-1 text-gray-500 border-t font-bold"> مقاله‌ها</li>
+                  </Swiper> -->
+                  <!-- <li class=" p-4 font-body-1 text-gray-500 border-t font-bold"> مقاله‌ها</li>
                   <Swiper  
                     :modules="modules" 
                     :slides-per-view="'auto'" 
@@ -99,7 +100,7 @@
                         </div>
                       </div>
                     </SwiperSlide>
-                  </Swiper>
+                  </Swiper> -->
                 </ul>
               </div>
               <button type="submit"
@@ -157,7 +158,7 @@
   
 <script >
 
-
+import axios from 'axios'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export default {
@@ -169,6 +170,9 @@ export default {
   data() {
     return {
       searchQuery: '',
+      products: [],
+      digital_products: [],
+      blogs: [],
       options: [
         { id: 1, label: 'Option 1', price: 10000, imageUrl: '/images/3.jpg' },
         { id: 2, label: 'Option 2', price: 10000, imageUrl: '/images/3.jpg' },
@@ -181,18 +185,48 @@ export default {
       ],
     };
   },
-  computed: {
-    filteredOptions() {
-      return this.options.filter(option =>
-        option.label.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    },
-  },
   methods: {
-    filterOptions() {
-      // You can add additional logic here if needed
+    getProducts() {
+      this.loading = true
+       axios.get(`http://192.168.119.128:8000/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      }).then((response) => {
+        this.products = response.data
+        this.loading = false
+
+      })
+    },
+    getDigitalProducts() {
+      this.loading = true
+      axios.get(`http://192.168.119.128:8000/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      }).then((response) => {
+        this.digital_products = response.data
+        this.loading = false
+
+      })
     },
   },
+  mounted() {
+    // this.getProducts()
+    // this.getDigitalProducts()
+  },
+  watch: {
+  'searchQuery': {
+    // the callback will be called immediately after the start of the observation
+    immediate: true, 
+    handler (val, oldVal) {
+      this.getProducts()
+      this.getDigitalProducts()
+    }
+  }
+}
 };
 </script>
 
