@@ -1,14 +1,9 @@
 <template>
   <div class=" ">
     <div class="  relative ">
-
-       
       <div class="bg rounded-b-[50px]"></div>
-<div class="bg bg2 rounded-b-[50px]"></div>
-<div class="bg bg3 rounded-b-[50px]"></div>
-
-
-
+      <div class="bg bg2 rounded-b-[50px]"></div>
+      <div class="bg bg3 rounded-b-[50px]"></div>
       <img src="/images/header.avif" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover " />
       <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div
@@ -25,28 +20,23 @@
         <div>
           <div class="flex">
             <div class="relative w-full">
-              <input type="search" id="search-dropdown"  v-on:keyup.enter="$router.push('/search/?search='+searchQuery);" v-model="searchQuery" 
+              <input type="search" id="search-dropdown" v-on:keyup.enter="$router.push('/search/?search=' + searchQuery);"
+                v-model="searchQuery"
                 class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
-              <div  class="absolute  mt-2 w-full"
-              v-show="searchQuery != null && searchQuery != ''"
+              <div class="absolute  mt-2 w-full" v-show="searchQuery != null && searchQuery != ''"
                 style="z-index:9999999999999999">
                 <ul class="bg-gray-100 rtl rounded-xl  shadow-xl w-full">
                   <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
-                  <Swiper  
-                    :modules="modules" 
-                    :slides-per-view="'auto'" 
-                    :loop="false" 
-                   
-                    :space-between="20" >
-                    <SwiperSlide v-for="item in products" :key="item.id" class="mb-10 px-2"> 
-                      <div class="rtl"> 
-                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
-                          <div class="px-5 py-3 flex-grow "> 
-                            <div class=""> 
+                  <Swiper :modules="modules" :slides-per-view="'auto'" :loop="false" :space-between="20">
+                    <SwiperSlide v-for="item in products" :key="item.id" class="mb-10 px-2">
+                      <div class="rtl">
+                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden">
+                          <div class="px-5 py-3 flex-grow ">
+                            <div class="">
                               {{ item.title }}
                             </div>
-                            <div class="text-gray-500 text-xs mt-3" >
+                            <div class="text-gray-500 text-xs mt-3">
                               {{ item.price }}
                             </div>
                           </div>
@@ -56,20 +46,15 @@
                     </SwiperSlide>
                   </Swiper>
                   <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
-                  <Swiper  
-                    :modules="modules" 
-                    :slides-per-view="'auto'" 
-                    :loop="false" 
-                  
-                    :space-between="20" >
-                    <SwiperSlide v-for="item in digital_products" :key="item.id" class="mb-10 px-2"> 
-                      <div class="rtl"> 
-                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
-                          <div class="px-5 py-3 flex-grow "> 
-                            <div class=""> 
+                  <Swiper :modules="modules" :slides-per-view="'auto'" :loop="false" :space-between="20">
+                    <SwiperSlide v-for="item in digital_products" :key="item.id" class="mb-10 px-2">
+                      <div class="rtl">
+                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden">
+                          <div class="px-5 py-3 flex-grow ">
+                            <div class="">
                               {{ item.title }}
                             </div>
-                            <div class="text-gray-500 text-xs mt-3" >
+                            <div class="text-gray-500 text-xs mt-3">
                               {{ item.price }}
                             </div>
                           </div>
@@ -141,19 +126,15 @@
         <path fill="white" fill-opacity="1" d="M0,160L120,170.7C240,181,480,203,720,202.7C960,203,1200,181,1320,170.7L1440,160L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
       </svg> -->
       <svg id="Layer_2" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
-       
+
         <g id="Layer_2-2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1-2">
-            <path class="cls-1" d="M695.06,0V35.8H0V0S194.27,12.75,356.77,12.75,695.06,0,695.06,0Z"/>
+            <path class="cls-1" d="M695.06,0V35.8H0V0S194.27,12.75,356.77,12.75,695.06,0,695.06,0Z" />
           </g>
         </g>
       </svg>
     </div>
   </div>
-
-
-
-  
 </template>
   
 <script >
@@ -188,7 +169,7 @@ export default {
   methods: {
     getProducts() {
       this.loading = true
-       axios.get(`http://192.168.119.128:8000/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
+      axios.get(`http://192.168.1.109:8000/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -201,7 +182,7 @@ export default {
     },
     getDigitalProducts() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
+      axios.get(`http://192.168.1.109:8000/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -218,15 +199,15 @@ export default {
     // this.getDigitalProducts()
   },
   watch: {
-  'searchQuery': {
-    // the callback will be called immediately after the start of the observation
-    immediate: true, 
-    handler (val, oldVal) {
-      this.getProducts()
-      this.getDigitalProducts()
+    'searchQuery': {
+      // the callback will be called immediately after the start of the observation
+      immediate: true,
+      handler(val, oldVal) {
+        this.getProducts()
+        this.getDigitalProducts()
+      }
     }
   }
-}
 };
 </script>
 

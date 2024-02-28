@@ -173,7 +173,7 @@ props:['text','page'],
   methods: {
     getData() {
       this.loading = true
-       axios.get(`http://192.168.119.128:8000/api/blog/search-blog-for-buyers/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&shop=${this.selected_shop? this.selected_shop : ''} `, {
+       axios.get(`http://192.168.1.109:8000/api/blog/search-blog-for-buyers/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&shop=${this.selected_shop? this.selected_shop : ''} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -187,7 +187,7 @@ props:['text','page'],
     },
     getCategories() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/blog/List_category/?search=${this.text_search_categories}`, {
+      axios.get(`http://192.168.1.109:8000/api/blog/List_category/?search=${this.text_search_categories}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -200,7 +200,7 @@ props:['text','page'],
     },
     getShops() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/account/shop-search/?search=${this.text_search_shop }`, {
+      axios.get(`http://192.168.1.109:8000/api/account/shop-search/?search=${this.text_search_shop }`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",

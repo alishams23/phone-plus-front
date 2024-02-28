@@ -245,13 +245,25 @@
                     </figure>
                     <div class="flex items-start space-x-4 mt-10">
                       <div class="min-w-0 flex-1">
-                        <form action="#" class="relative">
+                        <form @submit.prevent="sendComment" class="relative">
                           <div
-                            class="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+                            class="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-gray-400">
+                            <div class="flex rtl items-center  pt-3">
+                                <StarIcon
+                                  v-for="rate in [0, 1, 2, 3, 4]"
+                                  :key="rate"
+                                  :class="[(comment_rate/20 > rate || comment_hover_rate/20 > rate) ? 'text-indigo-600' : 'text-gray-300', 'h-7 w-7 m-1 flex-shrink-0']"
+                                  @click="comment_rate=(rate+1)*20"
+                                  @mouseover="comment_hover_rate=(rate+1)*20"
+                                  @mouseleave="comment_hover_rate=comment_rate"
+                                  aria-hidden="true"
+                                />
+                              
+                            </div>
                             <label for="comment" class="sr-only ">نظر خود را بنویسید</label>
-                            <textarea rows="3" name="comment" id="comment"
-                              class="block w-full p-3 text-right resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                              placeholder="... نظر خود را بنویسید " />
+                            <textarea rows="3" required v-model="comment_title" name="comment" id="comment"
+                              class="block w-full p-3 text-right resize-none bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 outline-none"
+                              placeholder="... نظر خود را بنویسید "></textarea>
 
                             <!-- Spacer element to match the height of the toolbar -->
                             <div class="py-2" aria-hidden="true">
@@ -267,7 +279,7 @@
 
                             </div>
                             <div class="flex-shrink-0">
-                              <button type="submit"
+                              <button type="submit" 
                                 class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ارسال</button>
                             </div>
                           </div>
@@ -307,6 +319,8 @@ import {
 import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon, UserIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
+import { useUserStore } from '~/store/user';
+
 export default {
   components: {
     HeartIcon,
@@ -335,11 +349,14 @@ export default {
     product: null,
     selected_color: null,
     // selectedColor: ref(product.colors[0]),
+    comment_title: '',
+    comment_rate: 0,
+    comment_hover_rate: 0,
   }),
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
+      axios.get(`http://192.168.1.109:8000/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -350,7 +367,30 @@ export default {
         this.loading = false
 
       })
-    }
+    },
+    async sendComment() {
+            
+                 let Comment = new FormData();
+                    Comment.append('title', this.comment_title);
+                    Comment.append('rate', this.comment_rate);
+                    try {
+                        axios.post(`http://192.168.1.109:8000/api/product/add-comment/${this.$route.params.id}/`, Comment, {
+                            headers: {
+                             "Content-type": "application/json",
+          Accept: "application/json",
+          Authorization: `Token ${useUserStore().userToken}`
+                            },
+                        }).then((data) => {
+                       this.getData()
+
+                        })
+                    } catch (error) {
+                        console.error('Error uploading images:', error);
+                   
+                    }
+           
+            
+        },
   },
   mounted() {
     this.getData()
