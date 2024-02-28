@@ -1,6 +1,7 @@
 <template>
-
-    <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2">
+<div class="grid rtl grid-cols-1 gap-4 lg:col-span-2">
+    {{ orders }}
+    fgss
       <section aria-labelledby="section-1-title">
         <h2 class="sr-only" id="section-1-title">Section title</h2>
         <div class="overflow-hidden rounded-lg bg-white shadow">
@@ -136,110 +137,46 @@
         </div>
       </section>
     </div>
-  
 </template>
 
-
 <script >
-
-import { PaperClipIcon } from '@heroicons/vue/20/solid'
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Popover,
-  PopoverButton,
-  PopoverOverlay,
-  PopoverPanel,
-  TransitionChild,
-  TransitionRoot,
-} from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-
 export default {
+
     setup() {
-    definePageMeta({
-      layout: "user-dashboard",
-    })
-  },
-  components: {
-    PaperClipIcon, Bars3Icon, BellIcon, XMarkIcon, MagnifyingGlassIcon,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
-    Popover,
-    PopoverButton,
-    PopoverOverlay,
-    PopoverPanel,
-    TransitionChild,
-    TransitionRoot,
-  },
-  methods: {
-    currentRouteCheck(url) {
-      return this.$route.name.split("-").includes(url.split('/')[1]);
-    },},
-  data() {
-    return {
-      provinces: [
-        "انتخاب کنید",
-        "آذربایجان شرقی",
-        "آذربایجان غربی",
-        "اردبیل",
-        "اصفهان",
-        "البرز",
-        "ایلام",
-        "بوشهر",
-        "تهران",
-        "چهارمحال و بختیاری",
-        "خراسان جنوبی",
-        "خراسان رضوی",
-        "خراسان شمالی",
-        "خوزستان",
-        "زنجان",
-        "سمنان",
-        "سیستان و بلوچستان",
-        "فارس",
-        "قزوین",
-        "قم",
-        "کردستان",
-        "کرمان",
-        "کرمانشاه",
-        "کهگیلویه و بویراحمد",
-        "گلستان",
-        "گیلان",
-        "لرستان",
-        "مازندران",
-        "مرکزی",
-        "هرمزگان",
-        "همدان",
-        "یزد"
-      ],
-      items: [
-        { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/' },
-        { name: 'سفارشات من', href: '#' },
-        { name: 'خروج', href: '/auth/logOut/' },
-      ], 
-      user: {
-        name: 'Tom Cook',
-        email: 'tom@example.com',
-        imageUrl:
-          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      }, 
-      userNavigation :[
-        { name: 'Your Profile', href: '#' },
-        { name: 'Settings', href: '#' },
-        { name: 'Sign out', href: '#' },
-      ]
+        definePageMeta({
+            layout: "user-dashboard",
+        })
+    },
+    components: {
+
+    },
+    data() {
+        return {
+            orders:null,
+            loading:true
+        }
+    },
+    methods: {
+        getData() {
+            this.loading = true
+            axios.get(`http://192.168.1.109:8000/api/order/order-user-list/`, {
+                headers: {
+                "Content-type": "application/json",
+                Accept: "application/json",
+                },
+            }).then((response) => {
+                this.orders = response.data
+                this.loading = false
+
+            })
+        },
+        currentRouteCheck(url) {
+            return this.$route.name.split("-").includes(url.split('/')[1]);
+        },
+    },
+    mounted() {
+        this.getData()
     }
-  }
-
+    
 }
-
-
-
-
-
 </script>

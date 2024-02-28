@@ -200,9 +200,6 @@ export default {
                     number: '0' + this.phoneNumber, // Assuming the API expects the full number with country code
                     code  : this.code
                 };
-
-            
-
                 axios.post(apiUrl, data,{
                             headers: {
                                 'Content-Type': 'multipart/form-data',
@@ -230,7 +227,8 @@ export default {
         }
     },
     mounted(){
-        this.open = ref(false)
+        if (useUserStore().userToken == null) this.open = true
+       
     },
     watch: {
         // Watcher to update phoneNumber based on the input field value
