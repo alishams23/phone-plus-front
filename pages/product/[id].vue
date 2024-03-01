@@ -72,10 +72,21 @@
                     <!-- Image gallery -->
                     <TabGroup as="div" class="flex flex-col-reverse">
                       <!-- Image selector -->
-                      <div class="mx-auto mt-6  w-full max-w-2xl lg:max-w-none">
+                      <div class="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
                         <TabList class="grid grid-cols-4 gap-6">
+                          <!-- Video Tab -->
+                          <Tab v-if="product.video" class="relative flex h-24 cursor-pointer items-center justify-center rounded-xl  bg-gray-50 text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100"
+                              v-slot="{ selected }">
+                            <span :class="[selected ? 'ring-indigo-500  ' : 'ring-transparent  ', 'pointer-events-none absolute rounded-xl']"
+                                  aria-hidden="true"></span>
+                            <span class="flex items-center justify-center">
+                              <!-- Icon should always be visible; ensure it's not affected by selected styling unless intended -->
+                              <VideoCameraIcon class="h-9 w-9" :class="{ 'text-gray-800': !selected, 'text-indigo-500': selected }"/>
+                            </span>
+                          </Tab>
+                          <!-- Image Tabs -->
                           <Tab v-for="image in product.image" :key="image.id"
-                            class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
+                            class="relative flex h-24 cursor-pointer items-center justify-center rounded-xl  bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
                             v-slot="{ selected }">
                             <span class="sr-only">{{ image.photo }}</span>
                             <span
@@ -85,14 +96,23 @@
                               <img :src="image.photo" alt="image.title_for_photo" class="h-full w-full rounded-xl  object-cover" />
                             </span>
                           </Tab>
+                          
                         </TabList>
                       </div>
 
                       <TabPanels class="aspect-h-1 aspect-w-1 w-full">
+                        <!-- Video Panel -->
+                        <TabPanel v-if="product.video" class="h-[500px] flex justify-center items-center">
+                          <video controls class="rounded-[25px] max-h-full max-w-full">
+                            <source :src="product.video" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                        </TabPanel>
+                        <!-- Image Panels -->
                         <TabPanel v-for="image in product.image" :key="image.id" class="h-[500px]">
                           <img :src="image.photo" :alt="image.title_for_photo" class=" h-full rounded-[25px] object-cover " />
                         </TabPanel>
-
+                        
                       </TabPanels>
                     </TabGroup>
 
@@ -317,13 +337,14 @@ import {
   TabPanels,
 } from '@headlessui/vue'
 import { StarIcon } from '@heroicons/vue/20/solid'
-import { HeartIcon, MinusIcon, PlusIcon, UserIcon } from '@heroicons/vue/24/outline'
+import { HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon  } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
 
 export default {
   components: {
     HeartIcon,
+    VideoCameraIcon,
     UserIcon,
     StarIcon,
     HeartIcon,

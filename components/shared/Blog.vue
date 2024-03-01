@@ -51,15 +51,6 @@ export default {
   props: {
     blog: {},
   },
-  computed: {
-    truncatedBody() {
-      if (!this.blog.body) return '';
-      // Adjust the character limit based on your text size and container width to approximate two lines
-      const charLimit = 100; // Example character limit for two lines
-      const ending = this.blog.body.length > charLimit ? '...' : '';
-      return this.blog.body.substring(0, charLimit) + ending;
-    },
-  },
   data() {
     return {
 
