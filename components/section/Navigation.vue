@@ -126,7 +126,7 @@ import {
 } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
-import side from './chat/side.vue'
+import side from '@/components/section/chat/side.vue'
 import { Bars3Icon, HomeIcon, ShoppingCartIcon, UserIcon, BellAlertIcon, ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid'
 
 export default {
@@ -156,10 +156,7 @@ export default {
         { name: 'شگفت انگیز ', href: '#' },
         { name: 'دسته بندی', href: '#' },
       ],
-      tabs: [
-        { name: 'همه', href: '#', current: true },
-        { name: 'خوانده نشده ها', href: '#', current: false },
-      ],
+     
     };
   },
   methods: {

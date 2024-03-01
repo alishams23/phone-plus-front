@@ -1,51 +1,44 @@
 <template>
-  <div class="h-full" style="min-height: 100%; max-height: 100%; height: 100%">
-    <div
-      class="d-flex flex-row h-full lg:bg-white pt-4 p-0 m-0"
-      style="min-height: 100%; max-height: 100%; height: 100%"
-    >
+  
+  <div  class=" h-full " >
+  
+    
+    
       <!--  message-->
-      <div class="col-12 bg-white h-full">
-        <div class="pt-5 d-block d-sm-none" />
+      <div class="w-full bg-white h-full"    >
+        <div class="pt-5 hidden sm:block"></div>
         <div
-        v-if="loadingGetMessage == true"
-              class="d-flex flex-column align-items-center pt-5 mt-5"
-            >
-              <span class="loader" />
-            </div>
-        <div v-if="user == null" class="pt-5 mt-5 px-5">
-          <div class="d-flex align-items-center justify-content-center">
+          v-if="loadingGetMessage == true"
+          class="flex flex-col items-center pt-5 mt-5"
+        >
+          loading
+        </div>
+        <div v-if="username == null" class="pt-5 mt-5 px-5">
+          <div class="flex items-center justify-center">
             <div>گفت و گوی جدیدی را آغاز کنید</div>
           </div>
         </div>
-        <div class="h-full">
-          <div class="pt-lg-5 p-0 h-full">
             <!-- my message-->
             <div
-              id="messages-list"
-              style="height: 100%; overflow-y: scroll; padding-bottom: 30px"
-              class="d-flex scrollBarStyleSmall flex-column justify-content-between"
+              class="flex flex-col  pt-5 justify-between scrollBarStyleSmall"
             >
               <div>
-             
                 <div
-                  v-for="data in messages"
-                  
+                  v-for="data,index in messages"
                   :key="data.id + 'message-chat-'"
                   :class="data.username == userSelf ? 'flex-row-reverse' : ''"
                   class="flex m-3 lg:items-center"
                 >
-
-                  <div class="w-8 h-8 d-none d-sm-block" />
+                  <div class="w-8 h-8 hidden sm:block"></div>
                   <div
                     class="py-2 px-3 rounded-2xl relative h-full"
                     :class="
                       data.username == userSelf
-                        ? 'text-white bg-treaget shadow-lg text-right '
-                        : 'text-gray-700  shadow-lg border-t text-right relative '
+                        ? 'text-white bg-indigo-600 shadow-lg text-right'
+                        : 'text-gray-700 shadow-lg border-t text-right relative'
                     "
                   >
-                    <div>{{ data.content }}</div>
+                    <div v-if="data.content">{{ data.content }}</div>
                     <div>
                       <div v-if="data.read == 'True'">
                         <svg
@@ -84,57 +77,53 @@
                   </div>
                 </div>
               </div>
-              
-              <div
-                v-if="user != null && loadingGetMessage == false"
-                ref="inputSendMessage"
-                class="inputSendMessage px-3"
-                style="position: sticky; bottom: 0px"
-              >
-                <div
-                  v-show="user != ''"
-                  class="d-flex align-items-center flex-row justify-content-between"
-                >
-                  <input
-                    v-model="inputData"
-                    placeholder="Your Message.."
-                    type="text"
-                    style="
-                      word-break: break-all;
-                      border-radius: 30px !important;
-                      border-top: 1px solid #e2e8f0;
-                    "
-                    class="shadow-2 rtl bg-white"
-                    @keyup.enter="sendMessage()"
-                  >
-                  <div class="d-flex align-items-center px-2">
-                    <button
-                      id="text-submit"
-                      type="submit"
-                      class="bg-gradient-blue d-flex align-items-center justify-content-center rounded-full shadow-2 w-10 h-10 text-white"
-                      @click="sendMessage()"
-                    >
-                      <i class="fa fa-paper-plane text-white" />
-                    </button>
-                  </div>
-                </div>
-                <div class="pb-5 mb-1 d-block d-sm-none" />
-              </div>
-            </div>
-           
           </div>
+      </div>
+    <div class="pb-20"></div>
+    <div class="fixed bottom-0 right-0 w-full  ">
+
+      
+      <div
+      v-if="username != null && loadingGetMessage == false"
+       
+        class=" flex items-center flex-row px-10 pb-3 "
+      >
+      <div class="w-72"></div>
+        <input
+          v-model="inputData"
+          placeholder="Your Message.."
+          type="text"
+          style="
+            word-break: break-all;
+           
+          "
+          class="shadow-xl grow  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block h-15 p-3  "
+          @keyup.enter="sendMessage()"
+        />
+        <div class="flex items-center px-2">
+          <button
+            id="text-submit"
+            type="submit"
+            class="bg-indigo-800 flex items-center justify-center rounded-full shadow-2 w-12 h-12 text-white"
+            @click="sendMessage()"
+          >
+            <PaperAirplaneIcon class="text-white h-5"/>
+          </button>
         </div>
       </div>
-      
+   
+  
     </div>
-    
   </div>
 </template>
 
 <script>
+import {
+  PaperAirplaneIcon
+} from '@heroicons/vue/24/outline'
 import { useUserStore } from '~/store/user'; 
 export default {
-  
+  components:{PaperAirplaneIcon,},
   setup() {
     definePageMeta({
       layout: "chat",
@@ -146,7 +135,7 @@ export default {
       message: [],
       messages: [],
       inputData: '',
-      user: this.$route.params.user,
+
       username: this.$route.params.username,
       userSelf: 'alishams',
       scrollStatus: true,
@@ -164,8 +153,8 @@ export default {
   },
   mounted () {
     if (
-      this.$route.params.user == 'null' ||
-      this.$route.params.roomName == 'null'
+     
+      this.$route.params.roomName == null
     ) {
       if (this.$route.params.username != null) {        
         fetch(
@@ -212,19 +201,19 @@ export default {
 
     scrollMessage () {
       if (this.loadingGetMessage == false) {
-        const myDiv = document.getElementById('messages-list')
-        myDiv.scrollTop = myDiv.scrollHeight
+        window.scrollTo(0, document.body.scrollHeight);
+      
+     
       }
     },
     addMessage (data) {
       this.messages.push(data)
-    },slideBarActivator() {
-      document.getElementById('wrapper').classList.add("sidebar-active")
     },
-    connectToWebsocket (roomName) {
+    async connectToWebsocket (roomName) {
+      console.log('fffff')
       this.loadingGetMessage = true
       this.chatSocket = new WebSocket(
-        'wss://' + 'treaget.com' + '/ws/chat/' + roomName + '/' +  useUserStore().userToken + '/'
+        'ws://' + '192.168.1.109:8000' + '/ws/chat/' + roomName + '/' +  useUserStore().userToken + '/'
       )
 
       this.chatSocket.onopen = (e) => {
@@ -238,7 +227,7 @@ export default {
         if (data.command === 'fetch_message') {
           this.messages = data.message
           this.loadingGetMessage = false
-          this.$nextTick( ()=> {
+           this.$nextTick( ()=> {
             this.scrollMessage()})
         } else if (data.command === 'new_message') {
           this.addMessage(data)
@@ -267,8 +256,12 @@ export default {
       }
     },
  
-  }
+  },
+ 
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+
+</style>
