@@ -103,7 +103,7 @@
                       <TabPanels class="aspect-h-1 aspect-w-1 w-full">
                         <!-- Video Panel -->
                         <TabPanel v-if="product.video" class="h-[500px] flex justify-center items-center">
-                          <video controls class="rounded-[25px] max-h-full max-w-full">
+                          <video controls  class="rounded-[25px] max-h-full max-w-full">
                             <source :src="product.video" type="video/mp4">
                             Your browser does not support the video tag.
                           </video>
