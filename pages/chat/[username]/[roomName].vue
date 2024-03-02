@@ -1,17 +1,21 @@
 <template>
   
-  <div  class=" h-full " >
+  <div  class=" h-full "   >
   
     
     
       <!--  message-->
-      <div class="w-full bg-white h-full"    >
+      <div class="w-full  h-full"    >
+
         <div class="pt-5 hidden sm:block"></div>
         <div
           v-if="loadingGetMessage == true"
           class="flex flex-col items-center pt-5 mt-5"
         >
-          loading
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+        </span>
         </div>
         <div v-if="username == null" class="pt-5 mt-5 px-5">
           <div class="flex items-center justify-center">
@@ -20,9 +24,12 @@
         </div>
             <!-- my message-->
             <div
-              class="flex flex-col  pt-5 justify-between scrollBarStyleSmall"
+              class="flex flex-col  pt-5 justify-between "
             >
+            
               <div>
+    
+
                 <div
                   v-for="data,index in messages"
                   :key="data.id + 'message-chat-'"

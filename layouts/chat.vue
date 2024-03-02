@@ -87,9 +87,9 @@
   <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col ">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
 
-    <div class="flex grow flex-col  overflow-y-auto border-r border-gray-200 bg-white ">
+    <div class="flex grow flex-col  px-0 mx-0 overflow-y-auto ">
 
-      <side @get-selected-user="(data) => { user = data }" />
+      <side :user="user" class="bg-gray-100" @get-selected-user="(data) => {user =!null ?  user = data : '' }" />
 
     </div>
   </div>
@@ -97,7 +97,7 @@
   <div class="lg:pl-72">
 
     <div
-      class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+      class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4  sm:gap-x-6 sm:px-6 lg:px-8">
       <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
         <span class="sr-only">Open sidebar</span>
         <Bars3Icon class="h-6 w-6" aria-hidden="true" />
@@ -109,18 +109,20 @@
       <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
 
         <form class="relative flex items-center  flex-1" action="#" method="GET">
-          <Menu as="div" class="relative" v-if="user">
-            <MenuButton class="-m-1.5 flex items-center p-1.5">
-              <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full bg-gray-100" :src="user.contact.image" alt="" />
+          
+          <nuxt-link to="/" tag="div" class="relative" v-if="user">
+            <div class="-m-1.5 flex items-center p-1.5">
+       
+              <img class="h-8 w-8 rounded-full bg-gray-100" :src="address + user.contact.shop.image" alt="" />
               <span class="hidden lg:flex lg:items-center">
-                <span class="ml-4 text-sm font-semibold leading-6 text-gray-900"
+                <span v-if=" user.contact.shop" class="ml-4 text-sm font-semibold leading-6 text-gray-900" 
+                aria-hidden="true">{{ user.contact.shop.name }}</span>
+                <span v-else class="ml-4 text-sm font-semibold leading-6 text-gray-900"
                   aria-hidden="true">{{ user.contact.full_name }}</span>
-                <ChevronDownIcon class="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
               </span>
-            </MenuButton>
+            </div>
 
-          </Menu>
+          </nuxt-link>
         </form>
         <div class="flex items-center gap-x-4 lg:gap-x-6">
           <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
@@ -148,6 +150,8 @@
 import ChatUsers from '~/components/section/chat/ChatUsers.vue';
 import NavbarChat from '~/components/section/chat/NavbarChat.vue';
 import Side from '~/components/section/chat/side.vue';
+import { apiStore } from '~/store/api'; 
+
 import {
   Dialog,
   DialogPanel,
@@ -175,6 +179,11 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 
 import { useUserStore } from '~/store/user';
 export default {
+  computed: {
+      address() {
+        return apiStore().address
+      },
+    },
   components: {
     Bars3Icon,
     HomeIcon,
@@ -237,7 +246,7 @@ export default {
     getInfo() {
       try {
         fetch(
-          `http://127.0.0.1:8000/api/UserRetrieveApi/alishams/`,
+          `${this.address}/api/UserRetrieveApi/alishams/`,
           {
             headers: {
               "Content-type": "application/json",

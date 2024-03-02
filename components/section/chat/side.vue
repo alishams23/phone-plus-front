@@ -1,17 +1,34 @@
 <template>
-  <div class="flex h-full flex-col overflow-y-scroll bg-white rounded-2xl  shadow-xl">
-
-    <div class="p-6">
+  <div :class="class" class=" h-full px-0 mx-0 ">
+{{ user }}
+    <div class="pt-6 px-5">
       <div class="rtl flex items-start justify-between">
         <div class="text-base font-semibold leading-6  text-gray-900">فروشندگان</div>
         <div class="mr-3 flex h-7 items-center"> <!-- Adjusted from ml-3 to mr-3 -->
-          <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 ">
+          <!-- <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 ">
 
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
+
+
+  <form class=" flex align-center justify-around mb-5 mt-3">   
+    <label for="simple-search" class="sr-only">Search</label>
+  
+    <div class="relative w-full px-5">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-8 pointer-events-none">
+        <svg class="w-4 h-4 text-indigo-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+      </svg>
+      </div>
+      <input type="text" id="simple-search" class="bg-gray-50 bg-white text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 px-5" placeholder="Search ..." required />
+  </div>
+ 
+  </form>
+
+
     <div class="border-b border-gray-200">
       <div class="px-6">
         <nav class="-mb-px rtl flex space-x-6" x-descriptions="Tab component">
@@ -22,18 +39,20 @@
       </div>
     </div>
     <ul role="list" class="flex-1 divide-y divide-gray-200 overflow-y-auto">
-      <li v-for="person in contacts" :key="person.handle">
-        <div class="group relative flex items-center px-5 py-6" @click="$emit('get-selected-user', person)">
-          <nuxt-link  :to="'/chat/' +  person.contact.username + '/'+person.room_name " class="-m-1 block flex-1 p-1">
-            <div class="absolute inset-0 group-hover:bg-gray-50" aria-hidden="true" />
+      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 " :class="user && user.contact.username == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
+        <div class="group relative flex  items-center px-5 py-6" @click="$emit('get-selected-user', person);selected_user = person">
+          <nuxt-link  :to="'/chat/' +  person.contact.username + '/'+person.room_name " class="-m-1  block flex-1 p-1">
+        
             <div class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
-                <img class="h-10 w-10 rounded-full" :src="person.contact.image" alt="" />
+                <img class="h-10 w-10 rounded-full" :src="address + person.contact.shop.image" alt="" />
 
               </span>
               <div class="mr-4 truncate"> <!-- Adjusted from ml-4 to mr-4 -->
-                <p class="truncate px-4 text-sm font-medium text-gray-900">{{ person.contact.full_name }}</p>
-                <p class="truncate px-4 text-sm text-gray-500">{{ '@' + person.contact.username }}</p>
+                <p class="truncate px-4 text-sm font-medium text-gray-900" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
+                <p class="truncate px-4 text-sm font-medium text-gray-900" v-else>{{ person.contact.full_name }}</p>
+                <p class="truncate px-4 text-sm text-gray-500" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
+                <p class="truncate px-4 text-sm text-gray-500" v-else>{{ '@' + person.contact.username }}</p>
               </div>
             </div>
           </nuxt-link>
@@ -66,6 +85,7 @@
           </Menu>
         </div>
       </li>
+      
     </ul>
   </div>
 </template>
@@ -81,8 +101,15 @@ import {
 } from '@headlessui/vue'
 import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { apiStore } from '~/store/api'; 
 
 export default {
+  props:["class",'user'],
+  computed: {
+      address() {
+        return apiStore().address
+      },
+    },
   components: {
     DialogTitle,
     Menu,
