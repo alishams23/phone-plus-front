@@ -3,7 +3,7 @@
 
     <div class="min-h-full">
 
-       <!-- Top Animation -->
+      <!-- Top Animation -->
       <div class="relative">
         <div class="">
             <div class="bg rounded-b-[50px] "></div>
@@ -37,6 +37,7 @@
             </div>
         </div>
       </div>
+
       <div class="mt-[-40px]">
 
         <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg"
@@ -119,17 +120,16 @@
                         <div class="mt-3">
                           <h2 class="sr-only">Product information</h2>
                           <div v-if="product.discount != 0" class="flex items-center ">
-                            <div class="text-xl line-through text-gray-300  tracking-tight">{{ product.price +
-    selected_color.price }} </div>
+                            <div class="text-xl line-through text-gray-300  tracking-tight">{{ product.price }} </div>
                             <div class=" overflow-hidden rounded-lg p-4">
                               <div
                                 class=" text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1"
                                 v-if="product.discount != 0"> {{ product.discount }} % </div>
                             </div>
                           </div>
-                          <p class="text-3xl tracking-tight text-gray-900">{{ (product.price +
-    selected_color.price) * ((100 - product.discount) / 100) }} <span
-                              class="text-sm text-gray-600">تومان</span></p>
+                          <p class="text-3xl tracking-tight text-gray-900">{{
+                            parseInt((product.price) * ((100 - product.discount) / 100)) }} 
+                            <span class="text-sm text-gray-600">تومان</span></p>
                         </div>
 
                         <!-- Reviews -->
@@ -158,31 +158,12 @@
                         </div>
 
                         <form class="mt-6">
-                          <!-- Colors -->
-                          <div class="ltr flex items-end flex-col">
-                            <h3 class="text-sm text-gray-600 rtl">رنگ‌ها </h3>
-
-                            <RadioGroup v-model="selected_color" class="mt-2">
-                              <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
-                              <span class="flex items-center space-x-3">
-                                <RadioGroupOption as="template" v-for="color in product.colors" :key="color.id"
-                                  :value="color" v-slot="{ active, checked }">
-                                  <div
-                                    :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
-                                    <RadioGroupLabel as="span" class="sr-only">{{ color.title }}</RadioGroupLabel>
-                                    <span aria-hidden="true"
-                                      :class="` h-8 w-8 rounded-full border border-2 border-opacity-10 `"
-                                      :style="`background-color:${color.hexcolor}`" />
-                                  </div>
-                                </RadioGroupOption>
-                              </span>
-                            </RadioGroup>
-                          </div>
 
                           <div class="sm:flex-col1 mt-10 flex">
                             <button type="submit"
-                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">اضافه
-                              کردن به سبد خرید</button>
+                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
+                              خرید / دانلود
+                              </button>
 
 
                           </div>
@@ -280,7 +261,7 @@
                               <div class="flex rtl items-center  pt-3">
                                 <StarIcon v-for="rate in [0, 1, 2, 3, 4]" :key="rate"
                                   :class="[(comment_rate / 20 > rate || comment_hover_rate / 20 > rate) ? 'text-indigo-600' : 'text-gray-300', 'h-7 w-7 m-1 flex-shrink-0']"
-                                  @click="comment_rate = (rate+1)*20" @mouseover="comment_hover_rate=(rate+1)*20"
+                                  @click="comment_rate = (rate + 1) * 20" @mouseover="comment_hover_rate=(rate+1)*20"
                                   @mouseleave="comment_hover_rate=comment_rate" aria-hidden="true" />
 
                               </div>
@@ -381,13 +362,12 @@ export default {
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
+      axios.get(`http://192.168.119.128:8000/api/product/digital-product-retrieve-main-page/${this.$route.params.id}/`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
         },
       }).then((response) => {
-        this.selected_color = response.data.colors[0]
         this.product = response.data
         this.loading = false
 
@@ -399,7 +379,7 @@ export default {
       Comment.append('title', this.comment_title);
       Comment.append('rate', this.comment_rate);
       try {
-        axios.post(`http://192.168.119.128:8000/api/product/add-comment/${this.$route.params.id}/`, Comment, {
+        axios.post(`http://192.168.119.128:8000/api/product/add-digital-comment/${this.$route.params.id}/`, Comment, {
           headers: {
             "Content-type": "application/json",
             Accept: "application/json",
@@ -410,7 +390,7 @@ export default {
 
         })
       } catch (error) {
-        console.error('Error uploading images:', error);
+        console.error('Error uploading images:', error);s
 
       }
 
