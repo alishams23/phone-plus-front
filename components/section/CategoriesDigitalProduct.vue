@@ -45,6 +45,7 @@
 </template>
   
 <script >
+import { apiStore } from '~/store/api';
 import axios from 'axios'
 import {
   AcademicCapIcon,
@@ -75,7 +76,7 @@ export default {
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/product/list-digital-categories/?is_main_page=true`, {
+      axios.get(`${apiStore().address}/api/product/list-digital-categories/?is_main_page=true`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",

@@ -117,7 +117,7 @@
 <script >
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
-
+import { apiStore } from '~/store/api';
 export default {
 
     setup() {
@@ -138,7 +138,7 @@ export default {
         getData() {
             this.loading = true
             console.log(useUserStore().userToken)
-            axios.get(`http://192.168.119.128:8000/api/order/order-user-list/`, {
+            axios.get(`${apiStore().address}/api/order/order-user-list/`, {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json",
