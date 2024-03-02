@@ -377,7 +377,7 @@ export default {
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.1.109:8000/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
+      axios.get(`http://192.168.119.128:8000/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -395,7 +395,7 @@ export default {
                     Comment.append('title', this.comment_title);
                     Comment.append('rate', this.comment_rate);
                     try {
-                        axios.post(`http://192.168.1.109:8000/api/product/add-comment/${this.$route.params.id}/`, Comment, {
+                        axios.post(`http://192.168.119.128:8000/api/product/add-comment/${this.$route.params.id}/`, Comment, {
                             headers: {
                              "Content-type": "application/json",
           Accept: "application/json",

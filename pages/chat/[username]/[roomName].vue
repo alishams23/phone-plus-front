@@ -213,7 +213,7 @@ export default {
       console.log('fffff')
       this.loadingGetMessage = true
       this.chatSocket = new WebSocket(
-        'ws://' + '192.168.1.109:8000' + '/ws/chat/' + roomName + '/' +  useUserStore().userToken + '/'
+        'ws://' + '192.168.119.128:8000' + '/ws/chat/' + roomName + '/' +  useUserStore().userToken + '/'
       )
 
       this.chatSocket.onopen = (e) => {

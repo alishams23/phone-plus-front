@@ -138,7 +138,7 @@ export default {
         getData() {
             this.loading = true
             console.log(useUserStore().userToken)
-            axios.get(`http://192.168.1.109:8000/api/order/order-user-list/`, {
+            axios.get(`http://192.168.119.128:8000/api/order/order-user-list/`, {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json",
