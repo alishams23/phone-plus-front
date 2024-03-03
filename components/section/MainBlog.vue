@@ -27,6 +27,7 @@
 </template>
 
 <script >
+import { apiStore } from '~/store/api';
 import axios from 'axios'
 import Blog from '~/components/shared/Blog.vue' 
 export default {
@@ -43,7 +44,7 @@ export default {
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/blog/blog-list-main-page/`, {
+      axios.get(`${apiStore().address}/api/blog/blog-list-main-page/`, {
           headers: {
               "Content-type": "application/json",
               Accept: "application/json",

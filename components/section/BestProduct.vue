@@ -39,7 +39,7 @@
   
 <script>
 import axios from "axios";
-
+import { apiStore } from '~/store/api';
 import Product from "@/components/shared/Product.vue"
 export default {
   components: { Product }, 
@@ -70,7 +70,7 @@ export default {
 
         getData() {
             this.loading = true
-            axios.get(`http://192.168.119.128:8000/api/product/best-product-list-main-page/`, {
+            axios.get(`${apiStore().address}/api/product/best-product-list-main-page/`, {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json",

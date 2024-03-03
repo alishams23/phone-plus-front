@@ -162,7 +162,7 @@ export default {
         sendLoginSms() {
             // Ensure the phone number is not empty
             if (this.phoneNumber) {
-                const apiUrl = 'http://192.168.119.128:8000/api/account/login-sms/';
+                const apiUrl = `${apiStore().address}:8000/api/account/login-sms/`;
                 const data = {
                     number: '0' + this.phoneNumber // Assuming the API expects the full number with country code
                 };
@@ -195,7 +195,7 @@ export default {
             // Ensure the phone number is not empty
             this.loading = true
             if (this.code ) {
-                const apiUrl = 'http://192.168.119.128:8000/api/account/code_check/';
+                const apiUrl = `${apiStore().address}:8000/api/account/code_check/`;
                 const data = {
                     number: '0' + this.phoneNumber, // Assuming the API expects the full number with country code
                     code  : this.code

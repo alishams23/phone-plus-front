@@ -141,6 +141,7 @@
 
 import axios from 'axios'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { apiStore } from '~/store/api';
 
 export default {
   setup() {
@@ -169,7 +170,7 @@ export default {
   methods: {
     getProducts() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
+      axios.get(`${apiStore().address}:8000/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -182,7 +183,7 @@ export default {
     },
     getDigitalProducts() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
+      axios.get(`${apiStore().address}:8000/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",

@@ -31,7 +31,7 @@
   
 <script>
 import axios from "axios";
-
+import { apiStore } from '~/store/api';
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 export default {
   components: { DigitalProduct }, 
@@ -61,7 +61,7 @@ export default {
   methods: {
     getData() {
       this.loading = true
-      axios.get(`http://192.168.119.128:8000/api/product/discount-digital-product-list-main-page/`, {
+      axios.get(`${apiStore().address}/api/product/discount-digital-product-list-main-page/`, {
           headers: {
               "Content-type": "application/json",
               Accept: "application/json",

@@ -120,6 +120,7 @@
 </template>
 
 <script>
+import { apiStore } from '~/store/api';
 import { HeartIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 export default {
@@ -135,7 +136,7 @@ export default {
     methods: {
         getData() {
             this.loading = true
-            axios.get(`http://192.168.119.128:8000/api/blog/blog-retrieve-main-page/${this.$route.params.id}/`, {
+            axios.get(`${apiStore().address}/api/blog/blog-retrieve-main-page/${this.$route.params.id}/`, {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json",
