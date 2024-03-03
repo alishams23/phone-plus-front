@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     async ListUserMessageApi() {
-      await fetch('http://127.0.0.1:8000/api/chat/ChatList/', {
+      await fetch(`${apiStore().address}/api/chat/ChatList/`, {
         headers: this.headers
       })
         .then(response => response.json())
@@ -117,7 +117,7 @@ export default {
     }, async searchUser() {
       this.loadingListUserMessage = true
 
-      await fetch(`http://127.0.0.1:8000/api/chat/Search/?search=${this.searchInput}`, {
+      await fetch(`${apiStore().address}/api/chat/Search/?search=${this.searchInput}`, {
         headers: this.headers
       })
         .then(response => response.json())

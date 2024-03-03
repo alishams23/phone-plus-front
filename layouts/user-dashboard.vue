@@ -1,109 +1,27 @@
 
 <template>
   <div class="min-h-full">
-    <Popover as="header" class="bg-[indigo-600] pb-36" v-slot="{ open }">
-    
-      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div class="relative flex items-center justify-center py-5 lg:justify-between">
-        
-          <div class="hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5">
-      
-            <Menu as="div" class="relative ml-4 flex-shrink-0">
-              
-              <transition leave-active-class="transition ease-in duration-75"
-                leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                <MenuItems
-                  class="absolute -right-2 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                  <a :href="item.href" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">{{
-                    item.name }}</a>
-                  </MenuItem>
-                </MenuItems>
-              </transition>
-            </Menu>
-          </div>
-
-         
-          <div class="absolute right-0 flex-shrink-0 lg:hidden">
-            <!-- Mobile menu button -->
-            <PopoverButton
-              class="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-indigo-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
-              <span class="sr-only">Open main menu</span>
-              <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-              <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
-            </PopoverButton>
-          </div>
+  
+       <!-- Top Animation -->
+      <div class="relative">
+        <!-- <div class="">
+            <div class="bg rounded-b-[50px] "></div>
+            <div class="bg bg2 rounded-b-[50px]"></div>
+            <div class="bg bg3 rounded-b-[50px]"></div>
+        </div> -->
+        <img src="/images/header.avif" alt=""
+            class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
+        <div class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
+        </div>
+        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-[1rem] lg:pb-[8rem]">
+            <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+            </div>
         </div>
       </div>
-
-      <TransitionRoot as="template" :show="open">
-        <div class="lg:hidden">
-          <TransitionChild as="template" enter="duration-150 ease-out" enter-from="opacity-0" enter-to="opacity-100"
-            leave="duration-150 ease-in" leave-from="opacity-100" leave-to="opacity-0">
-            <PopoverOverlay class="fixed inset-0 z-20 bg-black bg-opacity-25" />
-          </TransitionChild>
-
-          <TransitionChild as="template" enter="duration-150 ease-out" enter-from="opacity-0 scale-95"
-            enter-to="opacity-100 scale-100" leave="duration-150 ease-in" leave-from="opacity-100 scale-100"
-            leave-to="opacity-0 scale-95">
-            <PopoverPanel focus
-              class="absolute inset-x-0 top-0 z-30 mx-auto w-full max-w-3xl origin-top transform p-2 transition">
-              <div class="divide-y divide-gray-200 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-                <div class="pb-2 pt-3">
-                  <div class="flex items-center justify-between px-4">
-                    <div>
-                      <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company" />
-                    </div>
-                    <div class="-mr-2">
-                      <PopoverButton
-                        class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span class="sr-only">Close menu</span>
-                        <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-                      </PopoverButton>
-                    </div>
-                  </div>
-                  <div class="mt-3 space-y-1 px-2">
-                    <a href="#"
-                      class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800">Home</a>
-                    <a href="#"
-                      class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800">Profile</a>
-                    <a href="#"
-                      class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800">Resources</a>
-                    <a href="#"
-                      class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800">Company
-                      Directory</a>
-                    <a href="#"
-                      class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800">Openings</a>
-                  </div>
-                </div>
-                <div class="pb-2 pt-4">
-                  <div class="flex items-center px-5">
-                    <div class="flex-shrink-0">
-                      <img class="h-10 w-10 rounded-full" :src="user.imageUrl" alt="" />
-                    </div>
-                    <div class="ml-3 min-w-0 flex-1">
-                      <div class="truncate text-base font-medium text-gray-800">{{ user.name }}</div>
-                      <div class="truncate text-sm font-medium text-gray-500">{{ user.email }}</div>
-                    </div>
-                    <button type="button"
-                      class="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                      <span class="sr-only">View notifications</span>
-                      <BellIcon class="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-                  <div class="mt-3 space-y-1 px-2">
-                    <a v-for="item in userNavigation" :key="item.name" :href="item.href"
-                      class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800">{{
-                        item.name }}</a>
-                  </div>
-                </div>
-              </div>
-            </PopoverPanel>
-          </TransitionChild>
-        </div>
-      </TransitionRoot>
-    </Popover>
     <div class="mt-[-40px]">
          
       <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
@@ -223,7 +141,7 @@ export default {
       ],
       items: [
         { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/' },
-        { name: 'سفارشات من', href: '#' },
+        { name: 'سفارشات من', href: '/dashboard/orders/' },
         { name: 'خروج', href: '/auth/logOut/' },
       ], 
       user: {
