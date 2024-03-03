@@ -18,9 +18,8 @@ export const useUserStore = defineStore('user', {
 
     // Function to save the token and username in a cookie
     saveTokenAndUsernameInCookie(token, username) {
-      console.log(username)
-      console.log('ddddddsss')
-      document.cookie = `usernameUser=${username};userToken=${token};  path=/; max-age=${60 * 60 * 24 * 100 }`;
+      document.cookie = `userToken=${token};  path=/; max-age=${60 * 60 * 24 * 100 }`;
+      document.cookie = `usernameUser=${username};  path=/; max-age=${60 * 60 * 24 * 100 }`;
     },
 
     // Function to load the token and username from a cookie
@@ -30,7 +29,6 @@ export const useUserStore = defineStore('user', {
       const username = cookies.find((row) => row.startsWith('usernameUser='))?.split('=')[1];
       this.userToken = token || null;
       this.username = username || null;
-      console.log(cookies)
     },
 
     isAuthenticated() {

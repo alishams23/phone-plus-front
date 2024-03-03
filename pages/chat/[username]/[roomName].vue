@@ -10,11 +10,11 @@
         <div class="pt-5 hidden sm:block"></div>
         <div
           v-if="loadingGetMessage == true"
-          class="flex flex-col items-center pt-5 mt-5"
+          class="flex flex-col items-center pt-10 mt-5"
         >
-        <span class="relative flex h-3 w-3">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+        <span class="relative flex h-8 w-8">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-8 w-8 bg-indigo-500"></span>
         </span>
         </div>
         <div v-if="username == null" class="pt-5 mt-5 px-5">
@@ -120,10 +120,13 @@
 </template>
 
 <script>
+import { apiStore } from '~/store/api'; 
+
 import {
   PaperAirplaneIcon
 } from '@heroicons/vue/24/outline'
 import { useUserStore } from '~/store/user'; 
+
 export default {
   components:{PaperAirplaneIcon,},
   setup() {
@@ -160,7 +163,7 @@ export default {
     ) {
       if (this.$route.params.username != null) {        
         fetch(
-          `http://127.0.0.1:8000/api/chat/ChatRetrieve/${this.$route.params.username}/`,
+          `${apiStore().address}/api/chat/ChatRetrieve/${this.$route.params.username}/`,
           {
             headers: this.headers
           }
@@ -215,7 +218,7 @@ export default {
       console.log('fffff')
       this.loadingGetMessage = true
       this.chatSocket = new WebSocket(
-        'ws://' + '192.168.119.128:8000' + '/ws/chat/' + roomName + '/' +  useUserStore().userToken + '/'
+       `${apiStore().ws}` + '/ws/chat/' + roomName + '/' +  useUserStore().userToken + '/'
       )
 
       this.chatSocket.onopen = (e) => {

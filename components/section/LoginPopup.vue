@@ -146,6 +146,7 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user'; 
+import { apiStore } from '~/store/api'; 
 
 export default {
     components: { ref, Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot, ExclamationTriangleIcon},
@@ -162,7 +163,7 @@ export default {
         sendLoginSms() {
             // Ensure the phone number is not empty
             if (this.phoneNumber) {
-                const apiUrl = `${apiStore().address}:8000/api/account/login-sms/`;
+                const apiUrl = `${apiStore().address}/api/account/login-sms/`;
                 const data = {
                     number: '0' + this.phoneNumber // Assuming the API expects the full number with country code
                 };
@@ -195,7 +196,7 @@ export default {
             // Ensure the phone number is not empty
             this.loading = true
             if (this.code ) {
-                const apiUrl = `${apiStore().address}:8000/api/account/code_check/`;
+                const apiUrl = `${apiStore().address}/api/account/code_check/`;
                 const data = {
                     number: '0' + this.phoneNumber, // Assuming the API expects the full number with country code
                     code  : this.code
