@@ -89,7 +89,7 @@
 
     <div class="flex grow flex-col  px-0 mx-0 overflow-y-auto ">
 
-      <side :user="user" class="bg-gray-100" @get-selected-user="(data) => {user =!null ?  user = data : '' }" />
+      <side class="bg-gray-100" @get-selected-user="(data) => {user =!null ?  user = data : '' }" />
 
     </div>
   </div>

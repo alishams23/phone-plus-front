@@ -209,9 +209,8 @@ export default {
                     .then(response => {
                         // Handle success response
                         const userStore = useUserStore();
-                        userStore.setToken(response.data.token);
-                        this.token = response.data.token
-                        console.log('SMS sent successfully:', response);
+                        userStore.setToken(response.data.token,response.data.username);
+                        this.open = false
                         // You can change the dialog page or show a success message here
                     })
                     .catch(error => {

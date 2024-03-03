@@ -39,50 +39,22 @@
       </div>
     </div>
     <ul role="list" class="flex-1 divide-y divide-gray-200 overflow-y-auto">
-      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 " :class="user && user.contact.username == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
-        <div class="group relative flex  items-center px-5 py-6" @click="$emit('get-selected-user', person);selected_user = person">
+      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 " :class=" selected_user == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
+        <div class="group relative flex  items-center px-5 py-4" @click="$emit('get-selected-user', person);selected_user = person.contact.username">
           <nuxt-link  :to="'/chat/' +  person.contact.username + '/'+person.room_name " class="-m-1  block flex-1 p-1">
-        
             <div class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
                 <img class="h-10 w-10 rounded-full" :src="address + person.contact.shop.image" alt="" />
-
               </span>
               <div class="mr-4 truncate"> <!-- Adjusted from ml-4 to mr-4 -->
-                <p class="truncate px-4 text-sm font-medium text-gray-900" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
-                <p class="truncate px-4 text-sm font-medium text-gray-900" v-else>{{ person.contact.full_name }}</p>
-                <p class="truncate px-4 text-sm text-gray-500" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
-                <p class="truncate px-4 text-sm text-gray-500" v-else>{{ '@' + person.contact.username }}</p>
+                <p class="truncate px-4 text-sm font-medium " v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
+                <p class="truncate px-4 text-sm font-medium " v-else>{{ person.contact.full_name }}</p>
+                <p class="truncate px-4 text-xs text-gray-400 pt-2" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
+                <p class="truncate px-4 text-xs text-gray-400 pt-2" v-else>{{ '@' + person.contact.username }}</p>
               </div>
             </div>
           </nuxt-link>
-          <Menu as="div" class="relative mr-2 inline-block flex-shrink-0 text-left">
-            <!-- Adjusted from ml-2 to mr-2 -->
-            <MenuButton
-              class="group relative inline-flex h-8 w-8 items-center justify-center rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-              <span class="sr-only">Open options menu</span>
-              <span class="flex h-full w-full items-center justify-center rounded-full">
-                <EllipsisVerticalIcon class="h-5 w-5 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
-              </span>
-            </MenuButton>
-            <transition enter-active-class="transition ease-out duration-100"
-              enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
-              leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100"
-              leave-to-class="transform opacity-0 scale-95">
-              <MenuItems
-                class="absolute right-9 top-0 z-10 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <!-- Adjusted from right-9 to left-9 -->
-                <div class="py-1">
-                  <MenuItem v-slot="{ active }">
-                  <a href="#"
-                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-center']">
-                    دیدن پروفایل</a>
-                  </MenuItem>
-
-                </div>
-              </MenuItems>
-            </transition>
-          </Menu>
+          
         </div>
       </li>
       
@@ -104,7 +76,8 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { apiStore } from '~/store/api'; 
 
 export default {
-  props:["class",'user'],
+  props:["class",],
+  
   computed: {
       address() {
         return apiStore().address
@@ -139,6 +112,7 @@ export default {
       ], setIntervalVar: null,
       loadingListUserMessage: false,
       contacts: [],
+      selected_user:null,
       searchContact: [],
       searchInput: '',
       headers: {

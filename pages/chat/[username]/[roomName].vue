@@ -2,7 +2,7 @@
   
   <div  class=" h-full "   >
   
-    
+   {{ userSelf }}
     
       <!--  message-->
       <div class="w-full  h-full"    >
@@ -29,7 +29,7 @@
             
               <div>
     
-
+              
                 <div
                   v-for="data,index in messages"
                   :key="data.id + 'message-chat-'"
@@ -88,11 +88,8 @@
       </div>
     <div class="pb-20"></div>
     <div class="fixed bottom-0 right-0 w-full  ">
-
-      
       <div
       v-if="username != null && loadingGetMessage == false"
-       
         class=" flex items-center flex-row px-10 pb-3 "
       >
       <div class="w-72"></div>
@@ -101,10 +98,8 @@
           placeholder="Your Message.."
           type="text"
           style="
-            word-break: break-all;
-           
-          "
-          class="shadow-xl grow  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block h-15 p-3  "
+            word-break: break-all;"
+          class="shadow-xl grow  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block h-15 p-3  "
           @keyup.enter="sendMessage()"
         />
         <div class="flex items-center px-2">
@@ -144,7 +139,7 @@ export default {
       inputData: '',
 
       username: this.$route.params.username,
-      userSelf: 'alishams',
+      userSelf: useUserStore().username,
       scrollStatus: true,
       counter: 0,
       headers: {
