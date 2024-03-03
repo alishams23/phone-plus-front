@@ -170,7 +170,7 @@ export default {
   methods: {
     getProducts() {
       this.loading = true
-      axios.get(`${apiStore().address}:8000/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
+      axios.get(`${apiStore().address}/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -183,7 +183,7 @@ export default {
     },
     getDigitalProducts() {
       this.loading = true
-      axios.get(`${apiStore().address}:8000/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
+      axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
