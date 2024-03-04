@@ -14,7 +14,7 @@
     </div>
 
 
-  <form class=" flex align-center justify-around mb-5 mt-3">   
+  <div class=" flex align-center justify-around mb-5 mt-3">   
     <label for="simple-search" class="sr-only">Search</label>
   
     <div class="relative w-full px-5">
@@ -23,23 +23,16 @@
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
       </svg>
       </div>
-      <input type="text" id="simple-search" class="bg-gray-50 bg-white text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 px-5" placeholder="Search ..." required />
+      <input v-model="searchInput" @input="ListUserMessageApi" type="text" id="simple-search" class="bg-gray-50 bg-white text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 px-5" placeholder="Search ..." required />
   </div>
  
-  </form>
+  </div>
 
 
-    <div class="border-b border-gray-200">
-      <div class="px-6">
-        <nav class="-mb-px rtl flex space-x-6" x-descriptions="Tab component">
-          <a v-for="tab in tabs" :key="tab.name" :href="tab.href"
-            :class="[tab.current ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'whitespace-nowrap border-b-2 px-4 pb-3 text-sm font-medium']">{{
-              tab.name }}</a>
-        </nav>
-      </div>
-    </div>
+    
     <ul role="list" class="flex-1 divide-y divide-gray-200 overflow-y-auto">
       <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 " :class=" selected_user == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
+        {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
         <div class="group relative flex  items-center px-5 py-4" @click="$emit('get-selected-user', person);selected_user = person.contact.username">
           <nuxt-link  :to="'/chat/' +  person.contact.username + '/'+person.room_name " class="-m-1  block flex-1 p-1">
             <div class="relative flex min-w-0 flex-1 items-center">
@@ -96,23 +89,11 @@ export default {
   
   data() {
     return {
-      tabs: [
-        { name: 'همه', href: '#', current: true },
-        { name: 'خوانده نشده ها', href: '#', current: false },
-      ],
-      team: [
-        {
-          name: 'phone plus',
-          handle: 'phoneplus',
-          href: '#',
-          imageUrl:
-            '/images/2.jpeg',
-          status: 'online',
-        },
-      ], setIntervalVar: null,
+   
+      setIntervalVar: null,
       loadingListUserMessage: false,
       contacts: [],
-      selected_user:null,
+      selected_user:this.$route.params.username,
       searchContact: [],
       searchInput: '',
       headers: {
@@ -124,13 +105,15 @@ export default {
   },
   methods: {
     async ListUserMessageApi() {
-      await fetch(`${apiStore().address}/api/chat/ChatList/`, {
+      await fetch(`${apiStore().address}/api/chat/ChatList/?search=${this.searchInput == null ? '' :this.searchInput}`, {
         headers: this.headers
       })
         .then(response => response.json())
         .then((data) => {
           this.contacts = data
           this.loadingListUserMessage = false
+       
+          
         })
     }, async searchUser() {
       this.loadingListUserMessage = true

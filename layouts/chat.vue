@@ -84,6 +84,7 @@
   </TransitionRoot> -->
 
   <!-- Static sidebar for desktop -->
+ 
   <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col ">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
 
@@ -125,10 +126,10 @@
           </nuxt-link>
         </form>
         <div class="flex items-center gap-x-4 lg:gap-x-6">
-          <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+          <nuxt-link to="/" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
             <span class="sr-only">View notifications</span>
             <HomeIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
+          </nuxt-link>
 
           <!-- Separator -->
           <!-- <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" /> -->
@@ -211,6 +212,7 @@ export default {
   data() {
     return {
       alow: true,
+
       sidebarOpen: true,
       loading: true,
       user: null,
@@ -268,9 +270,7 @@ export default {
     // this.loginPage();
   },
 
-  watch: {
 
-  },
 };
 </script>
 
