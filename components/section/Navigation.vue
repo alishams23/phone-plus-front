@@ -8,7 +8,7 @@
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
-      <div
+      <div v-if="showButton"
         class="col-span-2 mx-auto items-center bg-glass-2   rounded-full  justify-center shadow-lg  text-indigo-800 md:flex">
         <form class="shadow-lg rounded-full h-full px-4">
           <div class="relative pt-1 ">
@@ -26,28 +26,34 @@
         </form>
       </div>
 
-      <div class="col-span-6 bg-glass-3 px-8 rounded-full   flex  justify-between">
+      <div 
+      :class="showButton?'col-span-6':'col-span-8 ms-10'"
+      class="col-span-6 bg-glass-3 px-8 rounded-full   flex  justify-between">
         <div class="flex items-center  px-8 rounded-full ">
           <nuxt-link tag="button" to="/"  data-tooltip-target="tooltip-microphone" type="button"
-            class="p-2.5 transform hover:-translate-y-3  duration-500  group bg-white rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            :class="currentRouteCheck('')?'bg-white':'bg-indigo-200' "
+            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <HomeIcon class=" w-5 text-indigo-900" />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
 
           <nuxt-link tag="button" to="/dashboard/userPanel/" data-tooltip-target="tooltip-camera" type="button"
-            class="p-2.5 transform hover:-translate-y-3  duration-500 bg-indigo-200  group rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            :class="currentRouteCheck('userPanel')?'bg-white':'bg-indigo-200' "
+            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 text-indigo-600" />
           </nuxt-link>
 
-          <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-feedback" type="button"
-            class="p-2.5 transform hover:-translate-y-3  duration-500 bg-indigo-200  group rounded-full hover:bg-indigo-800 mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+          <nuxt-link tag="button" to="/dashboard/orders/" data-tooltip-target="tooltip-feedback" type="button"
+            :class="currentRouteCheck('orders')?'bg-white':'bg-indigo-200' "
+            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 text-indigo-600" />
           </nuxt-link>
 
-          <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
-            class="p-2.5 animate-pulse transform hover:-translate-y-3  duration-500 bg-indigo-200  group rounded-full mr-4 md:mr-0 hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+          <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
+            :class="currentRouteCheck('x')?'bg-white':'bg-indigo-200' "
+            class="p-2.5 animate-pulse transform hover:-translate-y-3  duration-500  group rounded-full mr-4 md:mr-0  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <BellAlertIcon class=" w-5 text-indigo-600" />
-          </nuxt-link>
+          </nuxt-link> -->
           <div id="tooltip-settings" role="tooltip"
             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-indigo-800 rounded-lg shadow-sm opacity-0 tooltip ">
             Video settings
@@ -66,7 +72,7 @@
         </div>
         <div class="flex  my-4">
           <div v-for="page in pages" :key="page.name"
-            class=" text-white rounded-full mx-1 duration-500 hover:bg-indigo-800 text-indigo-900 hover:text-white hover:border-indigo-600    py-3">
+            class=" text-white rounded-full mx-1 duration-500  text-indigo-900 hover:text-white hover:border-indigo-600    py-3">
             <a :href="page.href" class="-m-2 block px-6 text-sm font-medium ">{{ page.name }}</a>
           </div>
         </div>
@@ -149,7 +155,7 @@ export default {
   data() {
     return {
       open: false,
-    
+      showButton: true,
       inputValue: '',
       pages: [
         { name: 'پر فروش  ها', href: '#' },
@@ -159,13 +165,31 @@ export default {
      
     };
   },
+  mounted() {
+    this.checkScroll();
+    window.addEventListener('scroll', this.checkScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.checkScroll);
+  },
   methods: {
     onFocus() {
       // You can add any custom logic when the input is focused
     },
     onBlur() {
       // You can add any custom logic when the input loses focus
-    }
+    },
+    currentRouteCheck(page_name) {
+      if (page_name != '') {
+        return this.$route.name.split("-").includes(page_name);
+      }else if(this.$route.name=='index'){
+        return true
+      }
+    },
+    checkScroll() {
+      // Check if the scroll position is greater than 100px
+      this.showButton = window.scrollY > 400;
+    },
   }
 };
 </script>

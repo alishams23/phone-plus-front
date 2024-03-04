@@ -33,7 +33,7 @@
         </g>
       </svg>
     </div>
-    <main class="-mt-32 pb-8">
+    <main class="absolute w-full -mt-32 pb-8">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 class="sr-only">Page title</h1>
         <!-- Main 3 column grid -->
@@ -44,18 +44,19 @@
            </div>
 
           <!-- Right column -->
-          <div class="grid grid-cols-1 gap-4">
+          <div class="grid grid-cols-1 gap-4 ">
             <section aria-labelledby="section-2-title">
               <h2 class="sr-only" id="section-2-title">Section title</h2>
               <div class="overflow-hidden rounded-lg bg-white shadow">
                 <div class="">
-                  <div class="py-3">
-                    <div v-for="item in items" :key="item.name" class="flex hover:bg-gray-100" >
+                  <div class="py-3 ">
+                    <div v-for="item in items" :key="item.name" class=" flex hover:bg-gray-100" >
                       <nuxt-link :to="item.href"
-                      :class="currentRouteCheck(item.href)?'font-black':'', item.name=='خروج'?'text-red-600' : ''"
-                        class=" flex-auto rtl  border-b  block  px-4 py-8 text-sm text-gray-700 ">{{
-                          item.name }}</nuxt-link>
-                      <div  class="px-[0.01rem] my-4" :class="currentRouteCheck(item.href)?' border-l-8 rounded-l-lg bg-red  border-indigo-500 bg-indigo-500':''"></div>
+                      :class="currentRouteCheck(item.page_name)?'font-black':'', item.name=='خروج'?'text-red-600' : ''"
+                        class=" flex-auto rtl  border-b  block  px-4 py-8 text-sm text-gray-700 ">
+                        {{ item.name }}
+                      </nuxt-link>
+                      <div  class="px-[0.01rem] my-4" :class="currentRouteCheck(item.page_name)?' border-l-8 rounded-l-lg bg-red  border-indigo-500 bg-indigo-500':''"></div>
                     </div>
                   </div>
                 </div>
@@ -66,9 +67,11 @@
       </div>
     </main>
   </div>
+  <Navbar />
 </template>
   
 <script >
+import Navbar from "@/components/section/Navbar.vue"
 import { PaperClipIcon } from '@heroicons/vue/20/solid'
 import {
   Menu,
@@ -89,6 +92,7 @@ export default {
   components: {
     PaperClipIcon, Bars3Icon, BellIcon, XMarkIcon, MagnifyingGlassIcon,
     Menu,
+    Navbar,
     MenuButton,
     MenuItem,
     MenuItems,
@@ -100,9 +104,10 @@ export default {
     TransitionRoot,
   },
   methods: {
-    currentRouteCheck(url) {
-      return this.$route.name.split("-").includes(url.split('/')[1]);
-    },},
+    currentRouteCheck(page_name) {
+      return this.$route.name.split("-").includes(page_name);
+    },
+  },
   data() {
     return {
       provinces: [
@@ -140,9 +145,9 @@ export default {
         "یزد"
       ],
       items: [
-        { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/' },
-        { name: 'سفارشات من', href: '/dashboard/orders/' },
-        { name: 'خروج', href: '/auth/logOut/' },
+        { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/', page_name: 'userPanel' },
+        { name: 'سفارشات من', href: '/dashboard/orders/', page_name: 'orders' },
+        { name: 'خروج', href: '/auth/logOut/', page_name: 'logOut' },
       ], 
       user: {
         name: 'Tom Cook',

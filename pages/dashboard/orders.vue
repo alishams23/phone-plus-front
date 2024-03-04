@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-1">
+    <div class="grid grid-cols-1 pb-10">
         <div v-for="data in orders" :key="data.id">
             <div
             class="min-h-[300px] bg-gray-100 border shadow-xl mx-[3rem] flex flex-wrap my-2 items-center justify-end rounded-2xl">

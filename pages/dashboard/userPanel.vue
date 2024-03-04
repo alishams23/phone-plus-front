@@ -1,11 +1,11 @@
 <template>
-
     <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2">
       <section aria-labelledby="section-1-title">
         <h2 class="sr-only" id="section-1-title">Section title</h2>
         <div class="overflow-hidden rounded-lg bg-white shadow">
           <div class="p-6">
             <div class="px-4 sm:px-0">
+{{ user }}
               <h3 class="text-base font-semibold leading-7 text-gray-900">اطلاعات شخصی</h3>
             </div>
             <div class="mt-6 border-t border-gray-100">
@@ -127,7 +127,7 @@
                     </div>
                   </dd>
                 </div>
-                <button class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full px-10">
+                <button class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10">
                   ثبت تغییرات
                 </button>
               </dl>
@@ -141,7 +141,7 @@
 
 
 <script >
-
+import { useUserStore } from '~/store/user'; 
 import { PaperClipIcon } from '@heroicons/vue/20/solid'
 import {
   Menu,
@@ -157,7 +157,7 @@ import {
 } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-
+import axios from 'axios'
 export default {
     setup() {
     definePageMeta({
@@ -222,19 +222,28 @@ export default {
         { name: 'سفارشات من', href: '#' },
         { name: 'خروج', href: '/auth/logOut/' },
       ], 
-      user: {
-        name: 'Tom Cook',
-        email: 'tom@example.com',
-        imageUrl:
-          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      }, 
-      userNavigation :[
-        { name: 'Your Profile', href: '#' },
-        { name: 'Settings', href: '#' },
-        { name: 'Sign out', href: '#' },
-      ]
+      user: null, 
+
     }
-  }
+  },
+  methods: {
+    getData() {
+      this.loading = true
+      axios.get(`${apiStore().address}/api/account/user-settings-retrieve/${useUserStore().username}/`, {
+          headers: {
+              "Content-type": "application/json",
+              Accept: "application/json",
+              Authorization: `Token ${useUserStore().userToken}`
+          },
+      }).then((response) => {
+          this.user = response.data
+          this.loading = false
+
+      })
+  }},
+  mounted() {
+    this.getData()
+  } 
 
 }
 
