@@ -16,5 +16,6 @@ import Navbar from "@/components/section/Navbar.vue"
 export default {
  
 components:{Navbar,Footer}
+
 }
 </script>

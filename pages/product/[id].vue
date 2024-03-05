@@ -6,9 +6,9 @@
        <!-- Top Animation -->
       <div class="relative">
         <div class="">
-            <div class="bg rounded-b-[50px] "></div>
+            <!-- <div class="bg rounded-b-[50px] "></div>
             <div class="bg bg2 rounded-b-[50px]"></div>
-            <div class="bg bg3 rounded-b-[50px]"></div>
+            <div class="bg bg3 rounded-b-[50px]"></div> -->
         </div>
         <img :src="product.shop.image" alt=""
             class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
@@ -119,17 +119,36 @@
                         <div class="mt-3">
                           <h2 class="sr-only">Product information</h2>
                           <div v-if="product.discount != 0" class="flex items-center ">
-                            <div class="text-xl line-through text-gray-300  tracking-tight">{{ product.price +
-    selected_color.price }} </div>
+                            <div v-if="selected_color" class="text-xl line-through text-gray-300  tracking-tight">
+                              {{ product.price + selected_color.price }}
+                            </div>
+                            <div v-else class="text-xl line-through text-gray-300  tracking-tight">
+                              {{ product.price }}
+                            </div>
                             <div class=" overflow-hidden rounded-lg p-4">
                               <div
                                 class=" text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1"
-                                v-if="product.discount != 0"> {{ product.discount }} % </div>
+                                v-if="product.discount != 0"> 
+                                  {{ product.discount }} % 
+                                </div>
                             </div>
                           </div>
-                          <p class="text-3xl tracking-tight text-gray-900">{{ (product.price +
-    selected_color.price) * ((100 - product.discount) / 100) }} <span
-                              class="text-sm text-gray-600">تومان</span></p>
+                          <div v-if="selected_color">
+                            <p class="text-3xl tracking-tight text-gray-900">
+                              {{ (product.price + selected_color.price) * ((100 - product.discount) / 100) }} 
+                              <span class="text-sm text-gray-600">
+                                تومان
+                              </span>
+                            </p>
+                          </div>
+                          <div v-else>
+                            <p class="text-3xl tracking-tight text-gray-900">
+                              {{ (product.price) * ((100 - product.discount) / 100) }} 
+                              <span class="text-sm text-gray-600">
+                                تومان
+                              </span>
+                            </p>
+                          </div>
                         </div>
 
                         <!-- Reviews -->
@@ -157,9 +176,9 @@
                           <div class="space-y-6 text-base text-gray-700" v-html="product.description" />
                         </div>
 
-                        <form class="mt-6">
+                        <div class="mt-6">
                           <!-- Colors -->
-                          <div class="ltr flex items-end flex-col">
+                          <div v-if="selected_color" class="ltr flex items-end flex-col">
                             <h3 class="text-sm text-gray-600 rtl">رنگ‌ها </h3>
 
                             <RadioGroup v-model="selected_color" class="mt-2">
@@ -180,13 +199,16 @@
                           </div>
 
                           <div class="sm:flex-col1 mt-10 flex">
-                            <button type="submit"
-                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">اضافه
-                              کردن به سبد خرید</button>
+                        
+                            <button 
+                            @click="show = true"
+                          
+                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
+                               خرید محصول</button>
 
-
+                              <BuyProductPopup   @show-change="(data) => {show = data}" :show="show" :product="product" :color="selected_color" />
                           </div>
-                        </form>
+                        </div>
 
                         <section aria-labelledby="details-heading" class="mt-12">
                           <h2 id="details-heading" class="sr-only">Additional details</h2>
@@ -219,8 +241,8 @@
                                       <div v-for="item in product.Specification" :key="item.id"
                                         class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                         <dt class="text-sm font-medium leading-6 text-gray-900">{{ item.title }}</dt>
-                                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{
-    item.body }}
+                                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                          {{ item.body }}
                                         </dd>
                                       </div>
 
@@ -340,13 +362,15 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/vue'
+import BuyProductPopup from "@/components/section/BuyProductPopup.vue"
 import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
-
+import { apiStore } from '~/store/api';
 export default {
   components: {
+    BuyProductPopup,
     HeartIcon,
     VideoCameraIcon,
     UserIcon,
@@ -375,6 +399,7 @@ export default {
     selected_color: null,
     // selectedColor: ref(product.colors[0]),
     comment_title: '',
+    show:false,
     comment_rate: 0,
     comment_hover_rate: 0,
   }),
@@ -387,7 +412,7 @@ export default {
           Accept: "application/json",
         },
       }).then((response) => {
-        this.selected_color = response.data.colors[0]
+        this.selected_color = response.data.colors?response.data.colors[0]:null
         this.product = response.data
         this.loading = false
 

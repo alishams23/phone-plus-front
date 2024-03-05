@@ -27,7 +27,7 @@
       </div>
 
       <div 
-      :class="showButton?'col-span-6':'col-span-8 ms-10'"
+      :class="showButton?'col-span-6':'col-span-8 ms-10 py-2'"
       class="col-span-6 bg-glass-3 px-8 rounded-full   flex  justify-between">
         <div class="flex items-center  px-8 rounded-full ">
           <nuxt-link tag="button" to="/"  data-tooltip-target="tooltip-microphone" type="button"
@@ -71,9 +71,15 @@
 
         </div>
         <div class="flex  my-4">
-          <div v-for="page in pages" :key="page.name"
-            class=" text-white rounded-full mx-1 duration-500  text-indigo-900 hover:text-white hover:border-indigo-600    py-3">
-            <a :href="page.href" class="-m-2 block px-6 text-sm font-medium ">{{ page.name }}</a>
+          
+          <div v-for="button in buttons" :key="button.name">
+            <button v-if="button.func" @click="button.func"  
+            :class="button.color? button.color : 'bg-indigo-600'"
+            class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</button>
+            <nuxt-link v-if="button.href" :to="button.href"  
+            :class="button.color? button.color : 'bg-indigo-600'"
+            class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</nuxt-link>
+          
           </div>
         </div>
       </div>
@@ -136,6 +142,7 @@ import side from '@/components/section/chat/side.vue'
 import { Bars3Icon, HomeIcon, ShoppingCartIcon, UserIcon, BellAlertIcon, ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid'
 
 export default {
+  
   components: {
     side,
     UserIcon, HomeIcon, ShoppingCartIcon, BellAlertIcon, ChatBubbleLeftRightIcon,
@@ -152,17 +159,14 @@ export default {
     EllipsisVerticalIcon,
     XMarkIcon
   },
+  props :[
+    "buttons",
+  ],
   data() {
     return {
       open: false,
       showButton: true,
       inputValue: '',
-      pages: [
-        { name: 'پر فروش  ها', href: '#' },
-        { name: 'شگفت انگیز ', href: '#' },
-        { name: 'دسته بندی', href: '#' },
-      ],
-     
     };
   },
   mounted() {
