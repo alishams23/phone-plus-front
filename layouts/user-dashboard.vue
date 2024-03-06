@@ -108,7 +108,7 @@ export default {
   data() {
     return {
       buttons:[
-        {name:"ali", href:"/", func:null, color:'bg-red-300'},
+        
       ],
       provinces: [
         "انتخاب کنید",

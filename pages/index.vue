@@ -28,9 +28,7 @@
         <BestDigitalProduct />
       </div>
   
-      <div class=" rounded-b-[50px]">
-        <LoginPopup />
-      </div>
+   
           
       <div class=" mt-5 pb-10 ">
         <DiscountDigitalProduct />
@@ -46,6 +44,7 @@
 
 <script>
 import axios from "axios";
+import { useUserStore } from '~/store/user';
 import LoginPopup from "@/components/section/LoginPopup.vue"
 import DiscountDigitalProduct from "@/components/section/DiscountDigitalProduct.vue"
 import BestDigitalProduct from "@/components/section/BestDigitalProduct.vue"
@@ -60,9 +59,28 @@ import Advertisement from "@/components/section/Advertisement.vue"
 import Advertisement2 from "@/components/section/Advertisement2.vue"
 import Categories from "@/components/section/Categories.vue"
 import CategoriesDigitalProduct from "@/components/section/CategoriesDigitalProduct.vue"
-
+import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 export default {
-  components: { CategoriesDigitalProduct, Categories, LoginPopup, DiscountDigitalProduct, BestProduct, BestDigitalProduct, Discount, HeaderHero, Banner, PromoSection, MainBlog, Advertisement, Advertisement2,HeaderHero2 },
+  components: { 
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    TransitionRoot,
+    TransitionChild,
+    CategoriesDigitalProduct,
+    Categories,
+    LoginPopup,
+    DiscountDigitalProduct,
+    BestProduct,
+    BestDigitalProduct,
+    Discount,
+    HeaderHero,
+    Banner,
+    PromoSection,
+    MainBlog,
+    Advertisement,
+    Advertisement2,
+    HeaderHero2 },
   head() {
     return {
       // title: "ثبت نام"
@@ -71,12 +89,10 @@ export default {
   layout: "landing",
   data() {
     return {
-
+     
     };
   },
-  mounted() {
 
-  },
   methods: {
 
   },

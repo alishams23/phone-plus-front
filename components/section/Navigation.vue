@@ -3,14 +3,14 @@
  
  >
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 grid w-full  grid-cols-1 px-8 md:grid-cols-9  ">
-      <div @click="open = true"
-     
+      <div  @click="isLogin ? open_support = true : open = true"
         class="col-span-1 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-sm font-bold ">
           پشتیبانی
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
+    
       <div v-if="showButton"
       data-aos="fade-left"
       data-aos-duration="500" 
@@ -24,7 +24,7 @@
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
               </svg>
             </div>
-            <input type="search" v-model="inputValue" @focus="onFocus" @blur="onBlur" id="default-search"
+            <input type="search" v-model="inputValue"  id="default-search"
               class="w-full p-4 pl-10 text-sm text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-indigo-800   border-transparent"
               placeholder="Search..." required>
           </div>
@@ -43,17 +43,19 @@
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
 
-          <nuxt-link tag="button"   to="/dashboard/userPanel/" data-tooltip-target="tooltip-camera" type="button"
-            :class="currentRouteCheck('userPanel')?'bg-white':'bg-indigo-200' "
-            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-            <UserIcon class=" w-5 text-indigo-600" />
-          </nuxt-link>
 
-          <nuxt-link tag="button"   to="/dashboard/orders/" data-tooltip-target="tooltip-feedback" type="button"
+          <button  @click="isLogin ? $router.push('/dashboard/userPanel/') : open = true"
+           :class="currentRouteCheck('userPanel')?'bg-white':'bg-indigo-200' "
+            class="p-2.5   transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            <UserIcon class=" w-5 text-indigo-600" />
+           
+          </button>
+          <button   @click="isLogin ? $router.push('/dashboard/orders/') : open = true" data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('orders')?'bg-white':'bg-indigo-200' "
             class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 text-indigo-600" />
-          </nuxt-link>
+          </button>
+          
 
           <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
             :class="currentRouteCheck('x')?'bg-white':'bg-indigo-200' "
@@ -87,6 +89,7 @@
             class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</nuxt-link>
           
           </div>
+
         </div>
       </div>
 
@@ -109,8 +112,8 @@
   </div>
 
 
-  <TransitionRoot :show="open">
-    <Dialog as="div" class="relative z-10" @close="open = false">
+  <TransitionRoot :show="open_support">
+    <Dialog as="div" class="relative z-10" @close="open_support = false">
       <div class="fixed inset-0" />
 
       <div class="fixed inset-0 overflow-hidden">
@@ -129,8 +132,14 @@
       </div>
     </Dialog>
   </TransitionRoot>
+   <TransitionRoot as="template" :show="open">
+            <Dialog as="div" class="relative z-10" @close="open = false">
+              <LoginPopup @close="() => {open = false}" />
+            </Dialog>
+    </TransitionRoot>
 </template>
 <script>
+
 import {
   Dialog,
   DialogPanel,
@@ -143,15 +152,16 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { useUserStore } from '~/store/user'; 
 import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
 import side from '@/components/section/chat/side.vue'
 import { Bars3Icon, HomeIcon, ShoppingCartIcon, UserIcon, BellAlertIcon, ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid'
-
+import LoginPopup from "@/components/section/LoginPopup.vue"
 export default {
   
   components: {
     side,
-    UserIcon, HomeIcon, ShoppingCartIcon, BellAlertIcon, ChatBubbleLeftRightIcon,
+    UserIcon, HomeIcon, ShoppingCartIcon, BellAlertIcon, ChatBubbleLeftRightIcon,LoginPopup,
 
     Dialog,
     DialogPanel,
@@ -170,12 +180,20 @@ export default {
   ],
   data() {
     return {
+    
+      open_support: false,
       open: false,
       showButton: true,
       inputValue: '',
     };
   },
+  computed:{
+    isLogin(){
+      return useUserStore().userToken != null
+    }
+  },
   mounted() {
+    
     this.checkScroll();
     window.addEventListener('scroll', this.checkScroll);
   },
@@ -183,12 +201,7 @@ export default {
     window.removeEventListener('scroll', this.checkScroll);
   },
   methods: {
-    onFocus() {
-      // You can add any custom logic when the input is focused
-    },
-    onBlur() {
-      // You can add any custom logic when the input loses focus
-    },
+   
     currentRouteCheck(page_name) {
       if (page_name != '') {
         return this.$route.name.split("-").includes(page_name);
