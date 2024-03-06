@@ -2,19 +2,20 @@
   <div class="flex justify-center "    
  
  >
-    <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 grid w-full  grid-cols-1 px-8 md:grid-cols-9  ">
+    <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full  px-8  ">
       <div  @click="isLogin ? open_support = true : open = true"
-        class="col-span-1 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
+        class="flex-1/8 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-sm font-bold ">
           پشتیبانی
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
-    
+      <transition name="fade">
       <div v-if="showButton"
       data-aos="fade-left"
       data-aos-duration="500" 
-        class="col-span-2 mx-auto items-center bg-glass-2   rounded-full  justify-center shadow-lg  text-indigo-800 md:flex">
+      data-aos-delay="500" 
+        class="flex-1/8 ml-3 items-center bg-glass-2   rounded-full  justify-center shadow-lg  text-indigo-800 md:flex">
         <form class="shadow-lg rounded-full h-full px-4">
           <div class="relative pt-1 ">
             <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -30,11 +31,11 @@
           </div>
         </form>
       </div>
-
+      </transition>
+     
       <div 
-    
-      :class="showButton?'col-span-6':'col-span-8 ms-10 py-2'"
-      class="col-span-6 bg-glass-3 px-8 rounded-full   flex  justify-between">
+      class=" grow bg-glass-3 ml-3  px-8 py-2 flex flex-row items-center rounded-full  ">
+       
         <div class="flex items-center  px-8 rounded-full ">
           <nuxt-link tag="button"   to="/"  data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('')?'bg-white':'bg-indigo-200' "
@@ -91,6 +92,7 @@
           </div>
 
         </div>
+       
       </div>
 
       <!-- <button data-tooltip-target="tooltip-volume" type="button" class="p-2.5 group  text-indigo-600 hover:text-white rounded-full hover:bg-indigo-700 mr-1 focus:outline-none focus:ring-4 focus:ring-indigo-200">
@@ -224,4 +226,17 @@ input {
   outline: none;
   /* Remove the outline (focus ring) */
   /* Add other styling as needed */
-}</style>
+
+  
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0
+}
+</style>

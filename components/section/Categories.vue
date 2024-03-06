@@ -10,11 +10,11 @@
       </div>
     </div> -->
   </div>
-  <div data-aos="fade-left" v-else>
+  <div  v-else>
     <div v-if="data != null">
         <div class="flex pt-20 pb-10 justify-between items-center">
         <div class="rtl px-3">
-         
+
         </div>
         <div class="text-black font-bold text-xl text-right px-4">
           دسته بند‌ی‌ها

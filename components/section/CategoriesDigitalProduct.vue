@@ -20,7 +20,7 @@
           دسته بند‌ی‌ محصولات دیجیتال
         </div>
       </div>
-      <div data-aos="fade-left"  data-aos-duration="1000"  class="grid grid-cols-1 gap-4 sm:grid-cols-4 pb-20 rtl "
+      <div   class="grid grid-cols-1 gap-4 sm:grid-cols-4 pb-20 rtl "
         :style="{ backgroundImage: '', backgroundSize: 'cover' }">
         <div v-for="category in data" :key="category.id"
           class=" relative isolate  flex items-center  rounded-[19px] border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
