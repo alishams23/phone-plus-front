@@ -1,7 +1,10 @@
 <template>
-  <div class="flex justify-center ">
+  <div class="flex justify-center "    
+ 
+ >
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 grid w-full  grid-cols-1 px-8 md:grid-cols-9  ">
       <div @click="open = true"
+     
         class="col-span-1 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-sm font-bold ">
           پشتیبانی
@@ -9,6 +12,8 @@
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
       <div v-if="showButton"
+      data-aos="fade-left"
+      data-aos-duration="500" 
         class="col-span-2 mx-auto items-center bg-glass-2   rounded-full  justify-center shadow-lg  text-indigo-800 md:flex">
         <form class="shadow-lg rounded-full h-full px-4">
           <div class="relative pt-1 ">
@@ -27,23 +32,24 @@
       </div>
 
       <div 
+    
       :class="showButton?'col-span-6':'col-span-8 ms-10 py-2'"
       class="col-span-6 bg-glass-3 px-8 rounded-full   flex  justify-between">
         <div class="flex items-center  px-8 rounded-full ">
-          <nuxt-link tag="button" to="/"  data-tooltip-target="tooltip-microphone" type="button"
+          <nuxt-link tag="button"   to="/"  data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('')?'bg-white':'bg-indigo-200' "
             class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <HomeIcon class=" w-5 text-indigo-900" />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
 
-          <nuxt-link tag="button" to="/dashboard/userPanel/" data-tooltip-target="tooltip-camera" type="button"
+          <nuxt-link tag="button"   to="/dashboard/userPanel/" data-tooltip-target="tooltip-camera" type="button"
             :class="currentRouteCheck('userPanel')?'bg-white':'bg-indigo-200' "
             class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 text-indigo-600" />
           </nuxt-link>
 
-          <nuxt-link tag="button" to="/dashboard/orders/" data-tooltip-target="tooltip-feedback" type="button"
+          <nuxt-link tag="button"   to="/dashboard/orders/" data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('orders')?'bg-white':'bg-indigo-200' "
             class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 text-indigo-600" />

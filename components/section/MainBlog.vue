@@ -29,8 +29,8 @@
          
         </div>
         <div class="mx-auto  grid w-2xl grid-cols-1 gap-x-10 gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          <div v-for="blog in blogs" :key="blog.id">
-              <Blog  :blog="blog"/>
+          <div v-for="blog ,index in blogs" :key="blog.id">
+              <Blog  :blog="blog" data-aos="fade-left"  :data-aos-delay="index * 200"  />
           </div>
     
         </div>

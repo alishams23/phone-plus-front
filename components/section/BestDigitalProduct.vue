@@ -27,8 +27,8 @@
           </div>
         </div>
       </div>
-      <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-10">
-        <Slide v-for="digital_product in digital_products" :key="digital_product.id">
+      <Carousel   :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-10">
+        <Slide data-aos="zoom-in"  :data-aos-delay="index * 100" v-for="digital_product ,index in digital_products" :key="digital_product.id">
           <DigitalProduct class="my-10" :data="digital_product" />
         </Slide>
         <template #addons>

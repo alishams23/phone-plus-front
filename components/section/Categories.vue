@@ -10,7 +10,7 @@
       </div>
     </div> -->
   </div>
-  <div v-else>
+  <div data-aos="fade-left" v-else>
     <div v-if="data != null">
         <div class="flex pt-20 pb-10 justify-between items-center">
         <div class="rtl px-3">

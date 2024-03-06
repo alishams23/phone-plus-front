@@ -13,13 +13,13 @@
 
   <div class=" rtl  isolate overflow-hidden relative mb-2">
     <div class="bg-white pb-16 flex items-center ">
-      <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false" :autoplay="{
+      <Swiper  @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false" :autoplay="{
         delay: 2000,
         disableOnInteraction: false,
       }" :pagination="{
         clickable: true,
       }" :space-between="10" class="px-3 ">
-        <SwiperSlide v-for="item in data" :key="item.title" class="mb-10 mx-2 ">
+        <SwiperSlide data-aos="zoom-in"  :data-aos-delay="index * 100"  v-for="item ,index in data" :key="item.title" class="mb-10 mx-2 ">
           <DigitalProduct class="my-10 ltr  " :data="item" />
         </SwiperSlide>
 

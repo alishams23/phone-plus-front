@@ -13,7 +13,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     'vue3-carousel-nuxt',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    'nuxt-aos'
+
     // 'nuxt-swiper'
   ],
   
