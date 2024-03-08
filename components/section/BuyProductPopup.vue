@@ -10,58 +10,56 @@
                 </TransitionChild>
 
                 <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div class="flex min-h-full items-end justify-center p-4 text-center items-center p-0">
                         <TransitionChild as="template" enter="ease-out duration-300"
-                            enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                            enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200"
-                            leave-from="opacity-100 translate-y-0 sm:scale-100"
-                            leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                            enter-from="opacity-0 translate-y-4 translate-y-0 scale-95"
+                            enter-to="opacity-100 translate-y-0 scale-100" leave="ease-in duration-200"
+                            leave-from="opacity-100 translate-y-0 scale-100"
+                            leave-to="opacity-0 translate-y-4 translate-y-0 scale-95">
                             <DialogPanel
-                                class="relative text-right rtl transform overflow-hidden rounded-[25px] bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl">
+                                class="relative text-right rtl transform overflow-hidden rounded-[25px] bg-white text-left shadow-xl transition-all my-8 w-full max-w-3xl">
                                 <!-- Your content -->
                                 <form @submit.prevent="sendData">
                                     <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
 
                                         <div class="mt-6 border-t border-gray-100">
                                             <dl class="divide-y divide-gray-100">
-                                                <div
-                                                    class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
+                                                <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
                                                     محصول:
                                                 </div>
-                                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                                    <dt class="text-sm font-medium leading-6 text-gray-900">نام محصول
+                                                <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                    <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">نام محصول
                                                     </dt>
-                                                    <dd
-                                                        class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                                        <p class="text-xl  tracking-tight text-gray-900">
+                                                    <dd class="mt-1 flex text-sm text-right justify-end md:justify-center leading-6 text-gray-700 col-span-1 mt-0">
+                                                        <p class="md:text-xl  tracking-tight text-gray-900">
                                                             {{ product.title }}
                                                         </p>
 
                                                     </dd>
                                                 </div>
-                                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                                    <dt class="text-sm font-medium leading-6 text-gray-900">قیمت </dt>
+                                                <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                    <dt class="text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">قیمت </dt>
                                                     <dd
-                                                        class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                                        <p class="text-xl tracking-tight text-gray-900">
+                                                        class="mt-1 flex text-xs md:text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
+                                                        <p class="text-md md:text-xl tracking-tight text-gray-900">
                                                             <div v-if="color">
                                                                 {{ ((product.price + color.price) * ((100 - product.discount) / 100)) * qty }}
-                                                                <span class="text-sm text-gray-600">تومان</span>
+                                                                <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                             </div>
                                                             <div v-else>
                                                                 {{ ((product.price ) * ((100 - product.discount) / 100)) * qty }}
-                                                                <span class="text-sm text-gray-600">تومان</span>
+                                                                <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                             </div>
                                                         </p>
 
                                                     </dd>
                                                 </div>
-                                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                                    <dt class="text-sm font-medium leading-6 text-gray-900">تعداد </dt>
+                                                <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                    <dt class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">تعداد </dt>
                                                     <dd
-                                                        class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                                        class="mt-1 flex text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
 
-                                                        <div class=" flex-grow">
+                                                        <div class="  ">
                                                             <div v-if="color" class="flex">
                                                                 <input type="number" id="first_name" min="1" :max="color.count"
                                                                     v-model="qty"
@@ -78,10 +76,13 @@
 
                                                     </dd>
                                                 </div>
-                                                <div v-if="color" class="x-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                                    <h3 class="text-sm font-medium leading-6 text-gray-900">رنگ‌</h3>
-                                                    <div class="flex items-center flex-row">
-                                                        <span class="flex items-center space-x-3">
+                                                <div v-if="color" class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                    <dt class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">رنگ‌ </dt>
+                                                    <dd
+                                                        class="mt-1 flex text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
+
+                                                        <div class="flex justify-end md:justify-center  items-center flex-row">
+                                                        <span class="flex justify-end md:justify-center  items-center space-x-3">
                                                             <div
                                                                 :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex items-center justify-center rounded-full p-0.5 focus:outline-none']">
                                                                 <span aria-hidden="true"
@@ -91,15 +92,18 @@
                                                         </span>
                                                         <p class="text-xs ms-3 text-gray-500">{{ color.title }}</p>
                                                     </div>
+
+                                                    </dd>
                                                 </div>
+                                                
                                                 <div
                                                     class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
                                                     دریافت کننده:
                                                 </div>
-                                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                                    <dt class="text-sm font-medium leading-6 text-gray-900">نام </dt>
+                                                <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                    <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">نام </dt>
                                                     <dd
-                                                        class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                                        class="mt-1 flex text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
 
                                                         <div class=" flex-grow">
                                                             <div class="flex">
@@ -111,11 +115,11 @@
 
                                                     </dd>
                                                 </div>
-                                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                                    <dt class="text-sm font-medium leading-6 text-gray-900">نام خانوادگی
+                                                <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                    <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">نام خانوادگی
                                                     </dt>
                                                     <dd
-                                                        class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                                        class="mt-1 flex text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
 
                                                         <div class=" flex-grow">
                                                             <div class="flex">
@@ -128,10 +132,10 @@
                                                     </dd>
                                                 </div>
 
-                                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                                    <dt class="text-sm font-medium leading-6 text-gray-900">آدرس</dt>
+                                                <div class="px-4 py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
+                                                    <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-top leading-6 text-gray-900">آدرس</dt>
                                                     <dd
-                                                        class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                                        class="mt-1 flex text-sm leading-6 text-gray-700 col-span-2  mt-0">
                                                         <div class="flex flex-wrap -mx-3 mb-2">
                                                             <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                                                 <label

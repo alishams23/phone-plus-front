@@ -11,7 +11,7 @@
             <div class="bg bg3 rounded-b-[50px]"></div> -->
         </div>
         <img :src="product.shop.image" alt=""
-            class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
+            class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
         <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
         <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
@@ -19,7 +19,7 @@
                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
         </div>
         <!-- Shop Name and Picture -->
-        <div class="flex flex-row rtl pt-16 container items-center pb-2">
+        <div class="flex flex-row rtl pt-16 container justify-center md:justify-start items-center pb-2">
           <div class=" me-5">
             <img :src="product.shop.image" class="h-24 w-24 rounded-full" />
           </div>
@@ -49,7 +49,7 @@
           </g>
         </svg>
       </div>
-      <main class="-mt-36 pb-8">
+      <main class="-mt-56 md:-mt-36 pb-8">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <h1 class="sr-only">Page title</h1>
           <!-- Main 3 column grid -->
@@ -64,23 +64,22 @@
                       <TabGroup as="div" class="flex flex-col-reverse">
                         <!-- Image selector -->
                         <div class="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
-                          <TabList class="grid grid-cols-5 gap-6 pe-16">
+                          <TabList class="grid grid-cols-6 md:grid-cols-5 lg:gap-6 ">
                             <!-- Video Tab -->
                             <Tab v-if="product.video"
-                              class="relative flex h-20 cursor-pointer items-center justify-center rounded-xl  bg-gray-50 text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100"
+                              class="relative flex h-10 w-10 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-gray-50 text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100"
                               v-slot="{ selected }">
                               <span
-                                :class="[selected ? 'ring-indigo-500  ' : 'ring-transparent  ', 'pointer-events-none absolute rounded-xl']"
+                                :class="[selected ? 'ring-indigo-500' : 'ring-transparent', 'pointer-events-none absolute rounded-xl']"
                                 aria-hidden="true"></span>
                               <span class="flex items-center justify-center">
-                                <!-- Icon should always be visible; ensure it's not affected by selected styling unless intended -->
                                 <VideoCameraIcon class="h-9 w-9"
                                   :class="{ 'text-gray-800': !selected, 'text-indigo-500': selected }" />
                               </span>
                             </Tab>
                             <!-- Image Tabs -->
                             <Tab v-for="image in product.image" :key="image.id"
-                              class="relative flex h-20 cursor-pointer items-center justify-center rounded-xl  bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
+                              class="relative flex h-10 w-10 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
                               v-slot="{ selected }">
                               <span class="sr-only">{{ image.photo }}</span>
                               <span
@@ -88,27 +87,25 @@
                                 aria-hidden="true" />
                               <span class="absolute inset-0 overflow-hidden rounded-md flex justify-center">
                                 <img :src="image.photo" alt="image.title_for_photo"
-                                  class="h-full w-full rounded-xl  object-cover" />
+                                  class="h-full w-full rounded-xl object-cover" />
                               </span>
                             </Tab>
-
                           </TabList>
                         </div>
 
                         <TabPanels class="aspect-h-1 aspect-w-1 w-full">
                           <!-- Video Panel -->
-                          <TabPanel v-if="product.video" class="h-[500px] flex justify-start items-center">
-                            <video controls class="rounded-[25px] max-h-full max-w-[90%]">
-                              <source :src="product.video" type="video/mp4">
-                              Your browser does not support the video tag.
-                            </video>
+                          <TabPanel v-if="product.video" class="h-full flex justify-center rounded-xl  items-center">
+                            <div class="overflow-hidden rounded-[25px]" style="width: 90%; height: 100%; max-height: 500px; position: relative;">
+                              <div v-html="product.video" >
+                              </div>
+                            </div>
                           </TabPanel>
                           <!-- Image Panels -->
-                          <TabPanel v-for="image in product.image" :key="image.id" class="h-[500px]">
+                          <TabPanel v-for="image in product.image" :key="image.id" class="w-full">
                             <img :src="image.photo" :alt="image.title_for_photo"
                               class=" h-full rounded-[25px] object-cover " />
                           </TabPanel>
-
                         </TabPanels>
                       </TabGroup>
 
@@ -239,9 +236,9 @@
                                   <div class="mt-6 border-t border-gray-100">
                                     <dl class="divide-y divide-gray-100">
                                       <div v-for="item in product.Specification" :key="item.id"
-                                        class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                        class="grid grid-cols-2 py-2">
                                         <dt class="text-sm font-medium leading-6 text-gray-900">{{ item.title }}</dt>
-                                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                        <dd class="mt-1 text-sm pe-3 text-left leading-6 text-gray-700 sm:mt-0">
                                           {{ item.body }}
                                         </dd>
                                       </div>
