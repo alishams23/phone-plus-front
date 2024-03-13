@@ -35,7 +35,7 @@
 <script>
 import { HeartIcon } from '@heroicons/vue/20/solid'
 export default {
-  name: 'CardComponent',
+
   components:{HeartIcon},
   data() {
     return {

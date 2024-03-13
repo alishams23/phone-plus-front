@@ -27,14 +27,16 @@
           </div>
         </div>
       </div>
-      <Carousel   :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-10">
-        <Slide data-aos="zoom-in"  :data-aos-delay="index * 100" v-for="digital_product ,index in digital_products" :key="digital_product.id">
-          <DigitalProduct class="my-10" :data="digital_product" />
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+   <div data-aos="fade-right" data-aos-duration="1000">
+       <Carousel   :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="pt-10">
+         <Slide  v-for="digital_product ,index in digital_products" :key="digital_product.id">
+           <DigitalProduct class="my-10" :data="digital_product" />
+         </Slide>
+         <template #addons>
+           <Navigation />
+         </template>
+       </Carousel>
+   </div>
     </div>
   </div>
 </template>
@@ -56,14 +58,26 @@ export default {
   
     breakpoints: {
       // 700px and up
+      200: {
+        itemsToShow: 1.5,
+        snapAlign: 'center',
+      },
       700: {
-        itemsToShow: 3.5,
+        itemsToShow: 2.5,
+        snapAlign: 'center',
+      },
+      1150: {
+        itemsToShow: 4.5,
         snapAlign: 'center',
       },
       // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
+      1340: {
+        itemsToShow: 5.5,
+        snapAlign: 'center',
+      },
+      1490: {
+        itemsToShow: 6,
+        snapAlign: 'center',
       },
     },
   }),

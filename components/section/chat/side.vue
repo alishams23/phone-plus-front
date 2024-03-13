@@ -135,5 +135,8 @@ export default {
       this.ListUserMessageApi()
     }, 4000)
   },
+  beforeDestroy(){
+    clearInterval(this.setIntervalVar)
+  }
 }
 </script>

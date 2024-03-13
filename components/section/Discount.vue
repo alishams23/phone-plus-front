@@ -11,11 +11,11 @@
       </div>
     </div> -->
   </div>
-  <div  v-else>
+  <div  v-else >
     <div class="   isolate overflow-hidden relative">
       <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-red-800/80 via-black/100" />
       <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
-    <div class="relative">
+    <div class="relative" >
       <div class="flex mt-4 justify-between items-center">
         <div class="rtl px-3 ">
           <a @click="$router.push('/search/?is_discount=' + 'true');" class="text-gray-200 cursor-pointer rtl  ">
@@ -28,14 +28,16 @@
         </div>
        </div>
     </div>
-      <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500" class="pt-0">
-        <Slide data-aos="zoom-in"  :data-aos-delay="index * 100" v-for="product ,index in products" :key="product">
-          <Product class="my-10" :data="product" />
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+   <div data-aos="fade-right" data-aos-duration="1000">
+       <Carousel  :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="pt-0">
+         <Slide  v-for="product ,index in products" :key="product">
+           <Product  class="my-10" :data="product" />
+         </Slide>
+         <template #addons>
+           <Navigation />
+         </template>
+       </Carousel>
+   </div>
       <div class="h-50">
         <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2" >
           <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
@@ -108,14 +110,26 @@ export default {
     // any settings not specified will fallback to the carousel settings
     breakpoints: {
       // 700px and up
+      200: {
+        itemsToShow: 1.5,
+        snapAlign: 'center',
+      },
       700: {
-        itemsToShow: 3.5,
+        itemsToShow: 2.5,
+        snapAlign: 'center',
+      },
+      1150: {
+        itemsToShow: 4.5,
         snapAlign: 'center',
       },
       // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
+      1340: {
+        itemsToShow: 5.5,
+        snapAlign: 'center',
+      },
+      1490: {
+        itemsToShow: 6,
+        snapAlign: 'center',
       },
     },
   }),
@@ -150,4 +164,7 @@ export default {
   background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #5109d591 20.9%, #00000000 90%);
 
 }
+
+
+
 </style>

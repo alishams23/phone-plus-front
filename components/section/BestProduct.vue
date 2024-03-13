@@ -2,7 +2,7 @@
   <div v-if="loading">
 
   </div>
-  <div data-aos="fade-right" data-aos-duration="1000" v-else>
+  <div  v-else>
     <div class=" isolate overflow-hidden relative" >
       <div > 
         <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-blue-800/80 via-black/100" />
@@ -20,14 +20,16 @@
             </div>
           </div>
         </div>
-          <Carousel :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="pt-0">
-            <Slide v-for="product in best_products" :key="product" >
-              <Product :data="product" class="my-10" />
-            </Slide>
-            <template #addons>
-              <Navigation />
-            </template>
-          </Carousel>
+         <div data-aos="fade-right" data-aos-duration="1000">
+           <Carousel :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="pt-0">
+             <Slide v-for="product in best_products" :key="product" >
+               <Product :data="product" class="my-10" />
+             </Slide>
+             <template #addons>
+               <Navigation />
+             </template>
+           </Carousel>
+         </div>
       </div>  
   </div>
   </div>
@@ -64,8 +66,12 @@ export default {
         snapAlign: 'center',
       },
       // 1024 and up
-      1427: {
+      1340: {
         itemsToShow: 5.5,
+        snapAlign: 'center',
+      },
+      1490: {
+        itemsToShow: 6,
         snapAlign: 'center',
       },
     },

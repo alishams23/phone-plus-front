@@ -12,7 +12,7 @@
       </div>
       <div data-aos="flip-up" class="mx-auto max-w-2xl py-32 sm:py-48 lg:pb-[7rem] lg:pt-[4rem]">
         <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-4xl">بهترین فروشگاه‌ها رو اینجا پیدا کن</h1>
+          <h1 class="text-2xl md:text-4xl mb-5 md:mb-0 font-bold  tracking-tight text-white ">بهترین فروشگاه‌ها رو اینجا پیدا کن</h1>
         </div>
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
 
@@ -63,29 +63,6 @@
                       </div>
                     </SwiperSlide>
                   </Swiper>
-                  <!-- <li class=" p-4 font-body-1 text-gray-500 border-t font-bold"> مقاله‌ها</li>
-                  <Swiper  
-                    :modules="modules" 
-                    :slides-per-view="'auto'" 
-                    :loop="false" 
-                  
-                    :space-between="20" >
-                    <SwiperSlide v-for="option in filteredOptions" :key="option.id" class="mb-10 px-2"> 
-                      <div class="rtl"> 
-                        <div class="flex items-start border  rounded-xl text-sm overflow-hidden"> 
-                          <div class="px-5 py-3 flex-grow "> 
-                            <div class="font-bold"> 
-                              {{ option.label }}
-                            </div>
-                            <div class="text-gray-500 text-xs mt-3" >
-                              {{ option.price }}
-                            </div>
-                          </div>
-                          <img :src="option.imageUrl" alt="Option image" class="w-32 h-20 object-cover rounded-e-lg" />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  </Swiper> -->
                 </ul>
               </div>
               <button type="submit"
@@ -100,7 +77,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-3 flex items-center ">
+        <!-- <div class="mt-3 flex items-center ">
           <span
             class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">موبایل</span>
           <span
@@ -110,7 +87,7 @@
             تاپ</span>
           <span
             class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30 mx-1">تبلت</span>
-        </div>
+        </div> -->
       </div>
 
       <div

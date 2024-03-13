@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
+    class="flex items-center pl-10 lg:pl-0 flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
     <div class="bg-white border-t p-10 text-right pl-[200px] w-full rounded-2xl shadow-xl  ">
       <div calss="w-full">
         <div class="font-bold text-xs text-indigo-500 text-md">{{ blog.created_at }}</div>
@@ -26,8 +26,7 @@
         </div>
       </div>
     </div>
-    <img :src="blog.imageBlog.photo" class="z-[9] h-[12rem] w-[12rem]  w-100 rounded-[30px] mr-[-160px] shadow-xl"
-      style="" />
+    <img :src="blog.imageBlog.photo" class="z-[9] h-[10rem] w-[7rem] md:h-[12rem] md:w-[12rem]  object-cover w-100 rounded-[30px] mr-[-80px] md:mr-[-160px]  shadow-xl" />
 
   </div>
 </template>
@@ -35,7 +34,6 @@
 <script>
 import { HeartIcon } from '@heroicons/vue/20/solid'
 export default {
-  name: 'CardComponent',
   components: {
     HeartIcon
   },
