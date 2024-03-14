@@ -54,7 +54,7 @@ export default {
               Accept: "application/json",
           },
       }).then((response) => {
-          this.blogs = response.data
+          this.blogs = response.data.slice(0,4)
           this.loading = false
 
       })

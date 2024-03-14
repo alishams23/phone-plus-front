@@ -51,7 +51,7 @@
             <UserIcon class=" w-5 text-indigo-600" />
            
           </button>
-          <button   @click="isLogin ? $router.push('/dashboard/orders/') : open = true" data-tooltip-target="tooltip-feedback" type="button"
+          <button   @click="isLogin ? $router.push('/dashboard/product_orders/') : open = true" data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('orders')?'bg-white':'bg-indigo-200' "
             class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 text-indigo-600" />

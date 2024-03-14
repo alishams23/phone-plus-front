@@ -39,19 +39,21 @@
         </div>
       </div>
     </div>
-    <div class="border-t-2  py-2 ">
-    
-    </div>
-    <div v-if="!show_categories" class="flex items-center justify-center mb-10" style="margin-top:-35px">
-      <div @click="data = categories, show_categories = !show_categories"
-        class="text-sm border-2 bg-white rounded-full px-10 py-2 mb-5">
-        بیشتر
+    <div v-if="data.length >= 4">
+      <div class="border-t-2  py-2 ">
+      
       </div>
-    </div>
-    <div v-else class="flex items-center justify-center  mb-10" style="margin-top:-35px">
-      <div @click="data = categories.slice(0, 4), show_categories = !show_categories"
-        class="text-sm border-2 bg-white rounded-full px-10 py-2 mb-5">
-        بستن
+      <div v-if="!show_categories" class="flex items-center justify-center mb-10" style="margin-top:-35px">
+        <div @click="data = categories, show_categories = !show_categories"
+          class="text-sm border-2 bg-white rounded-full px-10 py-2 mb-5">
+          بیشتر
+        </div>
+      </div>
+      <div v-else class="flex items-center justify-center  mb-10" style="margin-top:-35px">
+        <div @click="data = categories.slice(0, 4), show_categories = !show_categories"
+          class="text-sm border-2 bg-white rounded-full px-10 py-2 mb-5">
+          بستن
+        </div>
       </div>
     </div>
   </div>
