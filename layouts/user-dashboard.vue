@@ -33,7 +33,7 @@
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 class="sr-only">Page title</h1>
         <!-- Main 3 column grid -->
-        <div class="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
+        <div class="grid grid-cols-1  items-start gap-4 lg:grid-cols-3 lg:gap-8">
           <!-- Left column -->
            <div class="col-span-2">
               <slot />
@@ -107,59 +107,13 @@ export default {
   },
   data() {
     return {
-      buttons:[
-        
-      ],
-      provinces: [
-        "انتخاب کنید",
-        "آذربایجان شرقی",
-        "آذربایجان غربی",
-        "اردبیل",
-        "اصفهان",
-        "البرز",
-        "ایلام",
-        "بوشهر",
-        "تهران",
-        "چهارمحال و بختیاری",
-        "خراسان جنوبی",
-        "خراسان رضوی",
-        "خراسان شمالی",
-        "خوزستان",
-        "زنجان",
-        "سمنان",
-        "سیستان و بلوچستان",
-        "فارس",
-        "قزوین",
-        "قم",
-        "کردستان",
-        "کرمان",
-        "کرمانشاه",
-        "کهگیلویه و بویراحمد",
-        "گلستان",
-        "گیلان",
-        "لرستان",
-        "مازندران",
-        "مرکزی",
-        "هرمزگان",
-        "همدان",
-        "یزد"
-      ],
+      
       items: [
         { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/', page_name: 'userPanel' },
-        { name: 'سفارشات من', href: '/dashboard/orders/', page_name: 'orders' },
+        { name: 'سفارشات من', href: '/dashboard/product_orders/', page_name: 'product_orders' },
+        { name: 'فایل های خریداری شده', href: '/dashboard/digital_product_orders/', page_name: 'digital_product_orders' },
         { name: 'خروج', href: '/auth/logOut/', page_name: 'logOut' },
       ], 
-      user: {
-        name: 'Tom Cook',
-        email: 'tom@example.com',
-        imageUrl:
-          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      }, 
-      userNavigation :[
-        { name: 'Your Profile', href: '#' },
-        { name: 'Settings', href: '#' },
-        { name: 'Sign out', href: '#' },
-      ]
     }
   }
 

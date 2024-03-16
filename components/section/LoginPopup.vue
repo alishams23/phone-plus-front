@@ -303,6 +303,7 @@ export default {
         return {
             error: null,
             isCooldownActive: false,
+            cooldownInterval: null,
             cooldownTime: 120, // 2 minutes in seconds
             dialog_page: 'get_number',
             first_name: '',
@@ -316,7 +317,7 @@ export default {
     },
     methods: {
         startCooldown() {
-            const intervalId = setInterval(() => {
+            this.cooldownInterval = setInterval(() => {
                 if (this.cooldownTime > 0) {
                     // Decrease the cooldown time
                     this.cooldownTime -= 1;
@@ -324,7 +325,7 @@ export default {
                     // Reset cooldown state and time, then clear interval
                     this.isCooldownActive = false;
                     this.cooldownTime = 120; // Reset to 2 minutes
-                    clearInterval(intervalId);
+                    clearInterval(this.cooldownInterval);
                 }
             }, 1000); // Update every second
         },
@@ -349,6 +350,8 @@ export default {
                         console.log('SMS sent successfully:', response);
                         this.dialog_page = 'get_code_signup'
                         this.loading = false
+                        this.cooldownTime = 120; // Reset to 2 minutes
+                        clearInterval(this.cooldownInterval);
                         this.isCooldownActive = true;
                         this.startCooldown();
                         // You can change the dialog page or show a success message here
@@ -419,6 +422,8 @@ export default {
                         console.log('SMS sent successfully:', response);
                         this.dialog_page = 'get_code'
                         this.loading = false
+                        this.cooldownTime = 120; // Reset to 2 minutes
+                        clearInterval(this.cooldownInterval);
                         this.isCooldownActive = true;
                         this.startCooldown();
                         // You can change the dialog page or show a success message here

@@ -1,14 +1,25 @@
 <template>
-  <div v-if="product != null">
+  <div v-if="loading">
+    <div  class="p-16 flex items-center justify-center" >
+      <div role="status">
+          <svg aria-hidden="false" class="w-8 h-8 text-gray-100 animate-spin fill-indigo-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+              <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+          </svg>
+          <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div v-else v-if="product != null">
 
     <div class="min-h-full">
 
       <!-- Top Animation -->
       <div class="relative">
         <div class="">
-            <div class="bg rounded-b-[50px] "></div>
+            <!-- <div class="bg rounded-b-[50px] "></div>
             <div class="bg bg2 rounded-b-[50px]"></div>
-            <div class="bg bg3 rounded-b-[50px]"></div>
+            <div class="bg bg3 rounded-b-[50px]"></div> -->
         </div>
         <img :src="product.shop.image" alt=""
             class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
@@ -175,20 +186,7 @@
                           <div class="divide-y divide-gray-200 border-t">
                             <!-- <Disclosure as="div" v-for="detail in product.Specification" :key="detail.id" v-slot="{ open }"></Disclosure> -->
                             <Disclosure as="div" v-slot="{ open }">
-                              <h3>
-                                <DisclosureButton
-                                  class="group relative flex w-full items-center justify-between py-6 text-left">
-                                  <span :class="[open ? 'text-indigo-600' : 'text-gray-900', 'text-sm font-medium']">
-                                    مشخصات
-                                  </span>
-                                  <span class="ml-6 flex items-center">
-                                    <PlusIcon v-if="!open" class="block h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                                      aria-hidden="true" />
-                                    <MinusIcon v-else class="block h-6 w-6 text-indigo-400 group-hover:text-indigo-500"
-                                      aria-hidden="true" />
-                                  </span>
-                                </DisclosureButton>
-                              </h3>
+
                               <DisclosurePanel as="div" class="prose prose-sm pb-6">
 
                                 <div>
@@ -201,7 +199,7 @@
                                         class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                         <dt class="text-sm font-medium leading-6 text-gray-900">{{ item.title }}</dt>
                                         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{
-    item.body }}
+                                          item.body }}
                                         </dd>
                                       </div>
 
@@ -233,7 +231,7 @@
                             </div>
                             <div class="text-sm leading-6">
                               <div class="font-semibold text-gray-600">{{ comment.author.first_name }} {{
-    comment.author.last_name }}</div>
+                                comment.author.last_name }}</div>
                               <div class="">
                                 <h3 class="sr-only">Reviews</h3>
                                 <div class="flex items-center">
@@ -325,6 +323,7 @@ import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
+import { apiStore } from '~/store/api';
 
 export default {
   components: {
@@ -352,6 +351,7 @@ export default {
 
   },
   data: () => ({
+    loading: true,
     product: null,
     selected_color: null,
     // selectedColor: ref(product.colors[0]),
@@ -368,6 +368,7 @@ export default {
           Accept: "application/json",
         },
       }).then((response) => {
+        console.log('data', response.data);
         this.product = response.data
         this.loading = false
 
