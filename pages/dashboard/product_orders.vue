@@ -1,6 +1,6 @@
 <template>
     <div v-if="loading">
-        <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2">
+        <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
             <section aria-labelledby="section-1-title">
                 <h2 class="sr-only" id="section-1-title">Section title</h2>
                 <div class="overflow-hidden rounded-lg bg-white shadow">
@@ -19,7 +19,7 @@
     </div>
     <div v-else>
         <div v-if="orders==null">
-            <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2">
+            <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
                 <section aria-labelledby="section-1-title">
                     <h2 class="sr-only" id="section-1-title">Section title</h2>
                     <div class="overflow-hidden rounded-lg bg-white shadow">
@@ -35,7 +35,7 @@
             <div class="grid grid-cols-1 pb-10">
                 <div v-for="data in orders" :key="data.id">
                     <div
-                    class="min-h-[300px] bg-gray-100 border shadow-xl mx-[3rem] flex flex-wrap my-2 items-center justify-end rounded-2xl">
+                    class="min-h-[300px] bg-gray-100 border shadow-xl lg:mx-[3rem]  flex flex-wrap my-2 items-center justify-end rounded-2xl">
                         <div class="grid flex items-center grid-cols-6">
                             <div class="col-span-2">
                                 <img :src="data.product.image[0].photo" alt=""

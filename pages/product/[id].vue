@@ -352,11 +352,19 @@
       </main>
     </div>
   </div>
+  <TransitionRoot as="template" :show="open">
+    <Dialog as="div" class="relative z-10" @close="open = false">
+      <LoginPopup @close="() => {open = false}" />
+    </Dialog>
+  </TransitionRoot>
 </template>
 
 <script>
 import { ref } from 'vue'
+
 import {
+  Dialog,
+  TransitionRoot,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
@@ -370,6 +378,7 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/vue'
+import LoginPopup from "@/components/section/LoginPopup.vue"
 import BuyProductPopup from "@/components/section/BuyProductPopup.vue"
 import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
@@ -378,7 +387,10 @@ import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
 export default {
   components: {
+    LoginPopup,
     BuyProductPopup,
+    Dialog,
+    TransitionRoot,
     HeartIcon,
     VideoCameraIcon,
     UserIcon,
@@ -402,8 +414,15 @@ export default {
   props: {
 
   },
+  beforeMount(){
+    if (useUserStore().userToken == null){
+      // this.$router.push('/')
+      this.open=true
+    }
+  },
   data: () => ({
     product: null,
+    open: false,
     selected_color: null,
     // selectedColor: ref(product.colors[0]),
     comment_title: '',

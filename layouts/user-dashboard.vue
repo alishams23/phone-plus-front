@@ -18,7 +18,7 @@
             </div>
         </div>
       </div>
-    <div class="mt-[-40px]">
+    <div class="mt-[-20px] lg:mt-[-40px]">
          
       <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
        
@@ -33,33 +33,39 @@
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 class="sr-only">Page title</h1>
         <!-- Main 3 column grid -->
-        <div class="grid grid-cols-1  items-start gap-4 lg:grid-cols-3 lg:gap-8">
+        <div class=" items-start flex flex-row flex-wrap flex-row-reverse ">
+           <!-- Right column -->
+          <div class="w-full lg:w-1/3  ">
+           <div class="grid grid-cols-1 gap-4">
+             <section aria-labelledby="section-2-title">
+               <h2 class="sr-only" id="section-2-title">Section title</h2>
+               <div class="overflow-hidden rounded-lg bg-gray-100 shadow">
+                 <div class="">
+                   <div class="py-3 ">
+                     <div v-for="item in items" :key="item.name" class=" flex hover:bg-gray-50"
+                       :class="currentRouteCheck(item.page_name)?'font-black bg-white':''" >
+                       <nuxt-link :to="item.href"
+                       :class="currentRouteCheck(item.page_name)?'font-black bg-white':'', item.name=='خروج'?'text-red-600' : ''"
+                         class=" flex-auto rtl  border-b  block  px-4 py-8 text-sm text-gray-700 ">
+                         {{ item.name }}
+                       </nuxt-link>
+                       <div  class="px-[0.01rem] my-4" :class="currentRouteCheck(item.page_name)?'border-l-8 rounded-l-lg border-indigo-500 ':''"></div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </section>
+           </div>
+          </div>
+          
           <!-- Left column -->
-           <div class="col-span-2">
-              <slot />
+           <div class="w-full lg:w-2/3 ">
+              <div>
+                <slot />
+              </div>
            </div>
 
-          <!-- Right column -->
-          <div class="grid grid-cols-1 gap-4 ">
-            <section aria-labelledby="section-2-title">
-              <h2 class="sr-only" id="section-2-title">Section title</h2>
-              <div class="overflow-hidden rounded-lg bg-gray-100 shadow">
-                <div class="">
-                  <div class="py-3 ">
-                    <div v-for="item in items" :key="item.name" class=" flex hover:bg-gray-50"
-                      :class="currentRouteCheck(item.page_name)?'font-black bg-white':''" >
-                      <nuxt-link :to="item.href"
-                      :class="currentRouteCheck(item.page_name)?'font-black bg-white':'', item.name=='خروج'?'text-red-600' : ''"
-                        class=" flex-auto rtl  border-b  block  px-4 py-8 text-sm text-gray-700 ">
-                        {{ item.name }}
-                      </nuxt-link>
-                      <div  class="px-[0.01rem] my-4" :class="currentRouteCheck(item.page_name)?'border-l-8 rounded-l-lg border-indigo-500 ':''"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
+         
         </div>
       </div>
     </main>
