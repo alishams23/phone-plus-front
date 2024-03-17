@@ -2,7 +2,7 @@
   <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gray-100 shadow-xl isolate my-20  border border-sm rounded-2xl">
     <div class="flex justify-center text-center">
       <div>
-        <img :src="data.image" alt="" class="-mt-10 w-48 h-48 shadow-lg rounded-3xl" />
+        <img :src="data.image[0].photo" alt="" class="-mt-10 w-48 h-48 shadow-lg rounded-3xl" />
       </div>
     </div>
     <div>
@@ -11,18 +11,16 @@
           {{ data.title }}
         </a>
       </h3>
-      <div :class="data.percent != 0 ? 'line-through ' : '' " class="pe-4 text-xs text-gray-300 font-semibold">
-        {{ data.percent != 0 ? data.price : '&nbsp; ' }}
+      <div :class="data.discount != 0 ? 'line-through ' : '' " class="pe-4 text-xs text-gray-300 font-semibold">
+        {{ data.discount != 0 ? data.price : '&nbsp; ' }}
       </div>
-      <div class="pe-4 ">
+      <div class="pe-4 pb-4">
         {{ data.price }}
       </div>
-      <div class="text-xs p-4 ">
-        {{ data.description }}
-      </div>
+
       <div class="flex items-end justify-end overflow-hidden rounded-lg pe-4 pb-2">
-        <div class="relative text-red-700 shadow-md text-sm font-semibold bg-glass-red rounded-full px-3 py-1" v-if="data.percent != 0">
-          {{ data.percent}} % 
+        <div class="relative text-red-700 shadow-md text-sm font-semibold bg-glass-red rounded-full px-3 py-1" v-if="data.discount != 0">
+          {{ data.discount}} % 
         </div>
       </div> 
     </div>

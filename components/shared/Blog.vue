@@ -2,7 +2,7 @@
   <div
     class="flex items-center pl-10 lg:pl-0 flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
     <div class="bg-white border-t p-10 text-right pl-[200px] w-full rounded-2xl shadow-xl  ">
-      <div calss="w-full">
+      <div class="w-full">
         <div class="font-bold text-xs text-indigo-500 text-md">{{ blog.created_at }}</div>
 
         <div class="text-gray-900 font-semibold text-lg mt-2">{{ blog.title }}</div>
