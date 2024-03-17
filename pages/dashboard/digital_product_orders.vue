@@ -42,7 +42,6 @@
                                     class=" w-56 h-56 -ms-10 flex items-center object-cover shadow-lg rounded-3xl" />
                             </div>
                             <div class="col-span-4">
-                                
                                 <h3 class="mt-3 text-right text-lg pe-4 py-3 font-semibold leading-6 text-black">
                                     <a>
                                         {{ data.digital_product.title }}
@@ -59,14 +58,12 @@
                                 <div v-if="data.subset_Digital">
                                     <div class="flex items-center justify-center flex-wrap py-3 ">
                                         <div v-for="cell in data.subset_Digital.data" class="px-5 flex flex-col items-center" :key="cell.id" >
-                                          
                                                 <p class="font-bold">
                                                     {{ cell.title }}
                                                 </p>
                                                 <p>
                                                     {{ cell.body }}
                                                 </p>
-                                         
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +80,6 @@
                                 </div>                                      
                             </div>
                         </div>
-            
                     </div>
                 </div>
             </div>

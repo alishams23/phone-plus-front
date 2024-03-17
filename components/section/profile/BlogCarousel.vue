@@ -13,8 +13,8 @@
                 {{title}} 
             </div>
         </div>
-        <div class="bg-white  py-4 sm:py-3">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="  py-4 sm:py-3 ">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8 pb-10">
                 <div class="mx-auto max-w-2xl text-center">
 
                 </div>

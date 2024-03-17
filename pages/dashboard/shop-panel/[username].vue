@@ -1,12 +1,12 @@
 <template>
-    <div class="relative" v-if="results.image">
+  <div class="relative" v-if="results && results.image">
     <div class="">
-      <!-- <div class="bg rounded-b-[50px] "></div>
-            <div class="bg bg2 rounded-b-[50px]"></div>
-            <div class="bg bg3 rounded-b-[50px]"></div> -->
     </div>
     <img :src="results.image" alt=""
       class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
+      <div class="bg rounded-b-[50px] "></div>
+      <div class="bg bg2 rounded-b-[50px]"></div>
+      <div class="bg bg3 rounded-b-[50px]"></div>
     <div class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
     <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
       <div
@@ -27,10 +27,11 @@
       </div>
     </div>
   </div>
-  <div class="w-full h-56 bg-indigo-600 flex py-10 flex-col justify-center items-center space-y-4" v-else v-if="results">
-    <div class="h-24 w-24 rounded-full bg-white"  alt="" />
+  <div class="w-full h-56 bg-indigo-600 flex py-10 flex-col justify-center items-center space-y-4" v-else
+    v-if="results">
+    <div class="h-24 w-24 rounded-full bg-white" alt="" />
     <div class="flex items-center space-x-reverse space-x-2">
-      <h1 class="text-white font-bold text-xl">{{results.name}}</h1>
+      <h1 class="text-white font-bold text-xl">{{ results.name }}</h1>
       <!-- Using the ExclamationCircleIcon component -->
       <ExclamationCircleIcon class="h-5 w-5 text-white" />
     </div>
@@ -49,7 +50,7 @@
     </svg>
   </div>
 
-  
+
   <div class="min-h-full">
     <main class="">
       <div class="mx-auto max-w-full  lg:max-w-full ">
@@ -60,20 +61,20 @@
             <div class="">
               <!-- Your content -->
               <div v-if="results">
-                <PinProductCarousel :idShop="results.id"/>
-                <PinDigitalProductCarousel :idShop="results.id"/>
-              </div>  
-              <div v-if="results" v-for="item in results.order">
+                <PinProductCarousel :idShop="results.id" />
+                <PinDigitalProductCarousel :idShop="results.id" />
+              </div>
+              <div v-if="results" v-for="(item, index) in order" :class="index % 2 == 0 ? 'bg-gradient-to-l bg-black from-black from-10% via-blue-800/80 via-black/100 text-white my-11' : ''">
                 <component :is="BlogCarousel" :idObject="item.id_object" :idShop="results.id" :title="item.title"
                   v-if="item.type == 'blog'" />
                 <component :is="ProductCarousel" :idObject="null" :idShop="results.id" :title="item.title"
                   v-if="item.type == 'product'" />
                 <component :is="ProductCarousel" :idObject="item.id_object" :idShop="results.id" :title="item.title"
                   v-if="item.type == 'productCategory'" />
-                <component :is="DigitalProductCarousel" :idObject="null" :idShop="results.id" :title="item.title" 
+                <component :is="DigitalProductCarousel" :idObject="null" :idShop="results.id" :title="item.title"
                   v-if="item.type == 'digital'" />
-                <component :is="DigitalProductCarousel" :idObject="item.id_object" :idShop="results.id" :title="item.title"
-                  v-if="item.type == 'productDigitalCategory'" />
+                <component :is="DigitalProductCarousel" :idObject="item.id_object" :idShop="results.id"
+                  :title="item.title" v-if="item.type == 'productDigitalCategory'" />
               </div>
 
               <!-- <div class=" shadow-xl py-2 mx-[30rem]"></div>
@@ -173,233 +174,19 @@ export default {
     DigitalProductCarousel: DigitalProductCarousel,
     ProductCarousel: ProductCarousel,
     BlogCarousel: BlogCarousel,
-
+    order: [
+        { id_object: 1, title: "محصولات فیزیکی", type: 'product' },
+        { id_object: 2, title: "محصولات دیجیتال", type: 'digital' },
+        { id_object: 3, title: "بلاگ", type: 'blog' },
+      ],
     selectedTab: 'products',
     results: null,
-    user: {
-      name: 'Tom Cook',
-      email: 'tom@example.com',
-      imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    navigation: [
-      { name: 'Home', href: '#', current: true },
-      { name: 'Profile', href: '#', current: false },
-      { name: 'Resources', href: '#', current: false },
-      { name: 'Company Directory', href: '#', current: false },
-      { name: 'Openings', href: '#', current: false },
-    ],
-    userNavigation: [
-      { name: 'Your Profile', href: '#' },
-      { name: 'Settings', href: '#' },
-      { name: 'Sign out', href: '#' },
-    ],
     data: [
-      {
-        image: '/images/2.jpeg',
-        title: 'samsung',
-        price: 1000000,
-        percent: 10,
-        colors: [
-          'red',
-          'black',
-          'yellow',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-      },
-      {
-        image: '/images/3.jpg',
-        title: 'ایفون ۱۴',
-        price: 1000000,
-        percent: 10,
-        colors: [
-          'red',
-          'blue',
-          'orange',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-
-      },
-      {
-        image: '/images/6.jpg',
-        title: 'ایرپاد',
-        price: 1000000,
-        percent: 0,
-        colors: [
-          'cyan',
-          'purple',
-          'white',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-
-
-      },
-      {
-        image: '/images/2.jpeg',
-        title: 'samsung',
-        price: 1000000,
-        percent: 10,
-        colors: [
-          'red',
-          'black',
-          'yellow',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-      },
-      {
-        image: '/images/3.jpg',
-        title: 'ایفون ۱۴',
-        price: 1000000,
-        percent: 10,
-        colors: [
-          'red',
-          'blue',
-          'orange',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-
-      },
-      {
-        image: '/images/6.jpg',
-        title: 'ایرپاد',
-        price: 1000000,
-        percent: 0,
-        colors: [
-          'cyan',
-          'purple',
-          'white',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-
-
-      },
-      {
-        image: '/images/4.jpg',
-        title: 'مک بوک',
-        price: 1000000,
-        percent: 10,
-        colors: [
-          'red',
-          'black',
-          'yellow',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-
-      },
-      {
-        image: '/images/5.jpg',
-        title: 'هدفون',
-        price: 1000000,
-        percent: 10,
-        colors: [
-          'red',
-          'yellow',
-          'cyan',
-          'purple',
-        ],
-        description: 'این یک متن ساختگی برای توضیحات محصول است'
-
-      },
+    
     ],
-    posts: [
-      {
-        id: 1,
-        title: 'تکنولوژی‌های نوین در گوشی‌های هوشمند: چهارچوب آینده',
-        href: '#',
-        description:
-          'این مقاله به بررسی تکنولوژی‌های نوینی می‌پردازد که در آینده گوشی‌های هوشمند ممکن است مورد استفاده قرار گیرند. از تازه‌ترین پیشرفت‌های صفحه نمایش و دوربین‌ها تا چگونگی اتصال گوشی به اینترنت اشیاء، این متن شما را با آینده گوشی‌های هوشمند آشنا می‌کند',
-        imageUrl:
-          '/images/blog/1.jpg',
-        date: '1402/06/04',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'علی صالحی',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      },
-      {
-        id: 1,
-        title: 'تاریخچه و تکامل گوشی‌های هوشمند: از نوکیا تا آیفون ',
-        href: '#',
-        description:
-          'این متن تاریخچه تکامل گوشی‌های هوشمند از دهه ۱۹۹۰ تا به امروز را بررسی می‌کند. از ابتدای این صنعت با نوکیا و سایر شرکت‌های پیشرو تا محبوبیت بی‌پایان آیفون و سامسونگ، شما با تغییرات اساسی در دنیای گوشی‌های هوشمند آشنا خواهید شد',
-        imageUrl:
-          '/images/blog/2.jpg',
-
-        date: '1402/05/23',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'علی شمس',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      },
-      {
-        id: 1,
-        title: 'نکات مهم در انتخاب گوشی هوشمند: راهنمایی برای خرید کامل',
-        href: '#',
-        description:
-          'خرید یک گوشی هوشمند ممکن است تصمیم مهمی باشد، و این مقاله به شما راهنمایی‌هایی در انتخاب گوشی مناسب بر اساس نیازها و بودجه‌تان ارائه می‌دهد. از مشخص کردن نیازهای خود تا بررسی مشخصات فنی و تفاوت‌های میانبرندی، این متن به شما کمک می‌کند تا بهترین تصمیم را بگیرید',
-        imageUrl:
-          '/images/blog/3.jpg',
-
-        date: '1402/05/05',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'سینا آزادفر',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      }, {
-        id: 1,
-        title: 'نکات مهم در انتخاب گوشی هوشمند: راهنمایی برای خرید کامل',
-        href: '#',
-        description:
-          'خرید یک گوشی هوشمند ممکن است تصمیم مهمی باشد، و این مقاله به شما راهنمایی‌هایی در انتخاب گوشی مناسب بر اساس نیازها و بودجه‌تان ارائه می‌دهد. از مشخص کردن نیازهای خود تا بررسی مشخصات فنی و تفاوت‌های میانبرندی، این متن به شما کمک می‌کند تا بهترین تصمیم را بگیرید',
-        imageUrl:
-          '/images/blog/3.jpg',
-
-        date: '1402/05/05',
-        datetime: '2020-03-16',
-        category: { title: 'تکنولوژی', href: '#' },
-        author: {
-          name: 'سینا آزادفر',
-          role: 'نویسنده',
-          href: '#',
-          imageUrl:
-            'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-      },
-      // More posts...
-    ],
-    // carousel settings
-    settings: {
-      itemsToShow: 1,
-      snapAlign: 'center',
-    },
-    // breakpoints are mobile first
-    // any settings not specified will fallback to the carousel settings
-    breakpoints: {
-      // 700px and up
-      700: {
-        itemsToShow: 3.5,
-        snapAlign: 'center',
-      },
-      // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
-      },
-    },
+    
+   
+  
   }),
   methods: {
 
@@ -414,6 +201,7 @@ export default {
       }).then((response) => {
         console.log('getData', response.data);
         this.results = response.data
+        this.order = response.data.order
         // this.loading = false
 
       })
@@ -422,17 +210,7 @@ export default {
   mounted() {
     this.getData()
   },
-  computed: {
-    filteredData() {
-      // This computed property filters the data based on the selected country.
-      // Adjust the logic according to your needs.
-      if (this.selectedCountry === 'Canada') {
-        return this.data.filter((item) => item.country === 'Canada');
-      } else {
-        return this.data; // Return all data if no specific filter is applied
-      }
-    },
-  },
+  
 }
 </script>
 
@@ -485,5 +263,13 @@ export default {
 
 .swiper-slide {
   width: auto;
+}
+
+
+
+.bg-blue-circle-best-product{
+   
+
+  background-image:radial-gradient(ellipse 100% 90% at 50% -30%, #5109d591 20.9%, #00000000 90%);
 }
 </style>

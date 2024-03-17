@@ -1,6 +1,6 @@
 <template>
 
-  <div class="flex pt-2 justify-between items-center">
+  <div class="flex pt-2 justify-between items-center ">
     <div class="rtl mx-10 ">
       <a href="#" class=" rtl  ">
         بیشتر
@@ -11,9 +11,8 @@
       {{ title }}
     </div>
   </div>
-
-  <div class=" rtl  isolate overflow-hidden relative mb-2">
-    <div class="bg-white pb-16 flex items-center ">
+  <div class=" rtl  isolate overflow-hidden relative mb-2 ">
+    <div class="  ">
       <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false" :autoplay="{
         delay: 2000,
         disableOnInteraction: false,
@@ -22,9 +21,8 @@
       }" :space-between="10" class="px-3 ">
         <SwiperSlide data-aos="zoom-in" v-for="item in data.results" :key="item"
           class="mb-10 mx-2 ">
-          <DigitalProduct class="my-10 ltr  " :data="item" />
+          <DigitalProduct class="my-10 ltr" :data="item" />
         </SwiperSlide>
-
       </Swiper>
     </div>
   </div>
