@@ -15,8 +15,8 @@
         
           </div>
         </div>
-        <h3 class="mt-3 text-lg pb-5 font-semibold leading-6 text-black">
-          <a v-if=" data.title">
+        <h3 class="mt-3 rtl text-sm pb-5 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+          <a v-if="data.title">
             <span class="absolute inset-0" />
             {{ data.title }}
           </a>

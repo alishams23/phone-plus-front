@@ -1,27 +1,35 @@
 <template>
+  
     <div :class="width ? `${width}` : 'w-[39rem]'" class="h-[300px] bg-gray-100 shadow-xl mx-[3rem] isolate my-20  justify-end rounded-2xl">
-        <img :src="data.image[0].photo" alt="" class="absolute w-56 h-56 -ms-10 -mb-10 mt-10 shadow-lg rounded-3xl" />
-        <h3 class="mt-3 text-right text-lg pe-4 py-7 font-semibold leading-6 text-black">
-          <a>
-            {{ data.title }}
-          </a>
-        </h3>
-        <div :class="data.discount != 0 ? 'line-through ' : '' " class="pe-4 text-right text-xs text-gray-300 font-semibold">
-          {{ data.discount != 0 ? data.price : '&nbsp; ' }}
-        </div>
-        <div class="text-right pe-4 pb-4">
-          {{ data.price }}
-        </div>
-        <p class="text-right text-xs pe-4 pb-4" v-html="data.description">
-        </p>
-        <div class="flex flex-wrap justify-end pe-4 pb-4">
-          <div v-for="color in data.colors" :key="color" class="w-4 h-4 rounded-full shadow-lg m-1" :style="{ backgroundColor: color.hexcolor }"></div>
-        </div>
-        <div class="flex items-end justify-end overflow-hidden rounded-lg pe-4 pb-10 pt-4">
-          <div class="relative text-red-700 shadow-md text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">
-            {{ data.discount}} % 
+        <nuxt-link :to="'/product/'+ data.id">
+          <img :src="data.image[0].photo" alt="" class="absolute w-56 h-56 -ms-10 -mb-10 mt-10 shadow-lg rounded-3xl" />
+          <div class="flex justify-end w-full">
+            <h3 class="mt-3 rtl text-right text-xs max-w-[65%] ps-4 py-7 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+              <a>
+                {{ data.title }}
+              </a>
+            </h3>
           </div>
-        </div> 
+          <div :class="data.discount != 0 ? 'line-through ' : '' " class="pe-4 text-right text-xs text-gray-300 font-semibold">
+            {{ data.discount != 0 ? data.price : '&nbsp; ' }}
+          </div>
+          <div class="text-right pe-4 pb-4">
+            {{ data.discount != 0 ? data.price*(100-data.discount)/100 : data.price }}
+          </div>
+          <div class="flex justify-end w-full">
+            <p class="text-right max-h-[50px] max-w-[65%] overflow-hidden text-xs pe-4 pb-4" v-html="data.description">
+            </p>
+          </div>
+          <div class="flex flex-wrap justify-end pe-4 pb-4">
+            <div v-for="color in data.colors" :key="color" class="w-4 h-4 rounded-full shadow-lg m-1" :style="{ backgroundColor: color.hexcolor }"></div>
+          </div>
+            
+            <div class="flex items-end justify-end overflow-hidden rounded-lg pe-4 pb-10 pt-4">
+              <div class="relative text-red-700 shadow-md text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">
+                {{ data.discount}} % 
+              </div>
+            </div> 
+        </nuxt-link>
     </div>
 </template>
 

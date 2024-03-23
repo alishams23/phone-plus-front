@@ -1,6 +1,11 @@
 <template>
-  <div v-if="data.length == 0">
-    خالیه {{ data }}
+  <div v-if="data.results.length == 0">
+    <div class="container rtl px-10 mt-6">
+      <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
+        role="alert">
+        <p class="font-bold">محصولی با دسته بندی {{ title }} یافت نشد</p>
+      </div>
+    </div>
   </div>
   <div v-else>
     <div class="flex pt-2 justify-between items-center">

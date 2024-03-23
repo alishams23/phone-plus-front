@@ -6,9 +6,11 @@
         <div class="font-bold text-xs text-indigo-500 text-md">{{ blog.created_at }}</div>
 
         <div class="text-gray-900 font-semibold text-lg mt-2">{{ blog.title }}</div>
-        <div class=" relative w-50 overflow-hidden isolate">
-          <p class="text-gray-600 test-n w-100 text-[14px] py-2  font-light text-xs mt-2 " v-html="truncatedBody"></p>
-
+        <div class="flex justify-end w-full">
+          <div class=" relative overflow-hidden isolate overflow-hidden whitespace-nowrap text-ellipsis rtl  ">
+            <p class="text-gray-600 test-n w-100 text-[14px] py-2 max-w-[90%] font-light text-xs mt-2 " v-html="truncatedBody"></p>
+          
+          </div>
         </div>
         <div class="flex rtl">
           <nuxt-link :to="'/blog/' + blog.id"

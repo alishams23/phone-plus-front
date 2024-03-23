@@ -1,29 +1,31 @@
 <template>
   <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gray-100 shadow-xl isolate my-20  border border-sm rounded-2xl">
-    <div class="flex justify-center text-center">
-      <div>
-        <img :src="data.image[0].photo" alt="" class="-mt-10 w-48 h-48 shadow-lg rounded-3xl" />
-      </div>
-    </div>
-    <div>
-      <h3 class="mt-3 text-lg pe-4 py-2 font-semibold leading-6 text-black">
-        <a>
-          {{ data.title }}
-        </a>
-      </h3>
-      <div :class="data.discount != 0 ? 'line-through ' : '' " class="pe-4 text-xs text-gray-300 font-semibold">
-        {{ data.discount != 0 ? data.price : '&nbsp; ' }}
-      </div>
-      <div class="pe-4 pb-4">
-        {{ data.price }}
-      </div>
-
-      <div class="flex items-end justify-end overflow-hidden rounded-lg pe-4 pb-2">
-        <div class="relative text-red-700 shadow-md text-sm font-semibold bg-glass-red rounded-full px-3 py-1" v-if="data.discount != 0">
-          {{ data.discount}} % 
+    <nuxt-link :to="'/digital_product/'+ data.id">
+      <div class="flex justify-center text-center">
+        <div>
+          <img :src="data.image[0].photo" alt="" class="-mt-10 w-56 h-56 shadow-lg rounded-3xl" />
         </div>
-      </div> 
-    </div>
+      </div>
+      <div>
+        <h3 class="mt-3 rtl text-lg pe-4 py-2 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+          <a>
+            {{ data.title }}
+          </a>
+        </h3>
+        <div :class="data.discount != 0 ? 'line-through ' : '' " class="pe-4 text-xs text-gray-300 font-semibold">
+          {{ data.discount != 0 ? data.price : '&nbsp; ' }}
+        </div>
+        <div class="pe-4 pb-4">
+          {{ data.discount != 0 ? data.price*(100-data.discount)/100 : data.price }}
+        </div>
+      
+        <div class="flex items-end justify-end overflow-hidden rounded-lg pe-4 pb-2">
+          <div class="relative text-red-700 shadow-md text-sm font-semibold bg-glass-red rounded-full px-3 py-1" v-if="data.discount != 0">
+            {{ data.discount}} % 
+          </div>
+        </div> 
+      </div>
+    </nuxt-link>
   </div>
 </template>
 

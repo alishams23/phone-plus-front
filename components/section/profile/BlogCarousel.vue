@@ -1,6 +1,12 @@
 <template>
-    <div v-if="loading">
+    <div v-if="blogs == []">
+    <div class="container rtl px-10 my-6">
+      <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
+        role="alert">
+        <p class="font-bold">مقاله‌ای یافت نشد </p>
+      </div>
     </div>
+  </div>
     <div v-else>
         <div class="flex pt-2 justify-between items-center">
             <div class="rtl mx-10 ">
@@ -18,8 +24,8 @@
                 <div class="mx-auto max-w-2xl text-center">
 
                 </div>
-                <div class="mx-auto grid  w-2xl grid-cols-1 gap-x-10 gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-                    <div v-for="blog, index in blogs.results" :key="blog.id" class="col-start-2">
+                <div class="mx-auto grid  w-2xl grid-cols-2 gap-x-10 gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+                    <div v-for="blog, index in blogs.results" :key="blog.id" class="col-span-1 ">
                         <Blog :blog="blog" data-aos="fade-up" :data-aos-delay="index * 200" />
                     </div>
 

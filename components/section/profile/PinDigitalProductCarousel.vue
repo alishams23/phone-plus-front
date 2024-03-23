@@ -1,16 +1,18 @@
 <template>
-  <div class="text-gray-800 font-bold text-xl text-right pe-10 pt-2">
-    محصولات دیجیتال پین شده
-  </div>
-  <div class="   isolate overflow-hidden relative">
-    <Carousel :itemsToShow="3.8" :wrapAround="true" :transition="500" class="pt-5 pb-4">
-      <Slide v-for="item in data.results" :key="item">
-        <PinDigitalProduct class=" " :data="item" />
-      </Slide>
-      <template #addons>
-        <Navigation />
-      </template>
-    </Carousel>
+  <div v-if="data != []">
+    <div class="text-gray-800 font-bold text-xl text-right pe-10 pt-2">
+      محصولات دیجیتال پین شده
+    </div>
+    <div class="   isolate overflow-hidden relative">
+      <Carousel :itemsToShow="3.8" :wrapAround="true" :transition="500" class="pt-5 pb-4">
+        <Slide v-for="item in data.results" :key="item">
+          <PinDigitalProduct class=" " :data="item" />
+        </Slide>
+        <template #addons>
+          <Navigation />
+        </template>
+      </Carousel>
+    </div>
   </div>
 </template>
 

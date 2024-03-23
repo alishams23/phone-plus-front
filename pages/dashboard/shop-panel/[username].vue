@@ -201,7 +201,7 @@ export default {
       }).then((response) => {
         console.log('getData', response.data);
         this.results = response.data
-        this.order = response.data.order
+        response.data.order.length > 0 ?  this.order = response.data.order : ''
         // this.loading = false
 
       })

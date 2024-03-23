@@ -16,13 +16,13 @@
           
             </div>
           </div>
-          <h3 class="mt-3 text-lg pb-5 font-semibold leading-6 text-black">
+          <h3 class="mt-3 text-center rtl text-sm pb-5 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
             <a >
-              <span class="absolute inset-0" />
+              <span class="absolute inset-0 " />
               {{ data.title }}
             </a>
           </h3>
-          <div class=" text-sm font-bold  rtl text-center rounded-full ">   {{ data.price}}  </div>
+          <div class=" text-sm font-bold   text-center rounded-full ">   {{ data.price}}  </div>
           <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? data.price : '&nbsp; ' }}  </div>
           <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg p-4">
             <div class="relative text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
@@ -38,7 +38,6 @@
 <script >
 export default {
     props: ["data","width"],
-
 }
 
 

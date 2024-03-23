@@ -135,11 +135,11 @@
                   <label for="labels-range-input" class="sr-only">Labels range</label>
                   <label class="font-bold flex justify-end mt-3" for="">محدوده قیمت</label>
                   <client-only>
-                    <Slider :min="0" :step="1000000" :max="100000000" v-model="price_range" class="mt-12 me-3" />
+                    <Slider :min="0" :step="500000" :max="200000000" v-model="price_range" class="mt-12 me-3" />
                   </client-only>
                   <div class="flex justify-between">
-                    <span class="text-xs  text-gray-500 mb-10 mt-14">ارزانترین ({{ price_range[0] }} تومان)</span>
-                    <span class="text-xs text-gray-500 mb-10 mt-14">گرانترین ({{ price_range[1] }} تومان)</span>
+                    <span class="text-xs text-gray-500 mb-10 mt-14">ارزانترین ({{ formatPrice(price_range[0]) }} تومان)</span>
+                    <span class="text-xs text-gray-500 mb-10 mt-14">گرانترین ({{ formatPrice(price_range[1]) }} تومان)</span>
                   </div>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default {
 
     is_discount: false,
 
-    price_range: [0, 100000000],
+    price_range: [0, 200000000],
     mobileFiltersOpen: ref(false),
     product_sort: [
       { value: '-pk', label: 'جدید ترین' },
@@ -236,6 +236,10 @@ export default {
     ],
   }),
   methods: {
+    formatPrice(value) {
+      // Assuming `value` is a number
+      return new Intl.NumberFormat('fa-IR').format(value);
+    },
     async getData() {
       this.loading = true
       await axios.get(`${apiStore().address}/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category=') : ''}&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop ? this.selected_shop : ''}&is_discount=${this.is_discount} `, {
