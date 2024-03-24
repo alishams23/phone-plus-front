@@ -188,7 +188,7 @@ props:['text','page'],
     },
     getCategories() {
       this.loading = true
-      axios.get(`${apiStore().address}/api/blog/List_category/?search=${this.text_search_categories}`, {
+      axios.get(`${apiStore().address}/api/blog/list-category/?search=${this.text_search_categories}`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",

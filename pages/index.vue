@@ -2,7 +2,7 @@
   <!-- <Blog /> -->
   
   <div class=" rounded-b-[50px]">
-    <HeaderHero2 />
+    <HeaderHero />
   </div>
 
   <div class="bg-white">
@@ -12,24 +12,22 @@
    
  
       <div class=" mt-5">
-        <BestProduct />
+        <PopularProduct />
   
       </div>
       <div class="container mx-auto">
-        <Categories class="mx-2" />
+        <CategoriesProduct class="mx-2" />
       </div>
       <div class="">
-        <Discount />
+        <DiscountProduct />
   
       </div>
       <div class="container mx-auto"><MainBlog  /></div>
 
       <div class=" mt-5 pb-10 ">
-        <BestDigitalProduct />
+        <PopularDigitalProduct />
       </div>
-  
-   
-          
+    
       <div class=" mt-5 pb-10 ">
         <DiscountDigitalProduct />
       </div>
@@ -37,7 +35,6 @@
       <div class="container mx-auto">
         <CategoriesDigitalProduct class="mx-2" />
       </div>
-      <!-- <Advertisement /> -->
     </div>
 
 </template>
@@ -46,19 +43,16 @@
 import axios from "axios";
 import { useUserStore } from '~/store/user';
 import LoginPopup from "@/components/section/LoginPopup.vue"
-import DiscountDigitalProduct from "@/components/section/DiscountDigitalProduct.vue"
-import BestDigitalProduct from "@/components/section/BestDigitalProduct.vue"
-import BestProduct from "@/components/section/BestProduct.vue"
-import Discount from "@/components/section/Discount.vue"
-import HeaderHero2 from "@/components/section/HeaderHero2.vue"
-import HeaderHero from "@/components/section/HeaderHero.vue"
-import Banner from "@/components/section/Banner.vue"
+import DiscountDigitalProduct from "@/components/section/mainPage/DiscountDigitalProduct.vue"
+import PopularDigitalProduct from "@/components/section/mainPage/PopularDigitalProduct.vue"
+import PopularProduct from "@/components/section/mainPage/PopularProduct.vue"
+import DiscountProduct from "@/components/section/mainPage/DiscountProduct.vue"
+import HeaderHero from "@/components/section/mainPage/HeaderHero.vue"
+import Banner from "@/components/section/mainPage/Banner.vue"
 import PromoSection from "@/components/section/PromoSection.vue"
 import MainBlog from "@/components/section/MainBlog.vue"
-import Advertisement from "@/components/section/Advertisement.vue"
-import Advertisement2 from "@/components/section/Advertisement2.vue"
-import Categories from "@/components/section/Categories.vue"
-import CategoriesDigitalProduct from "@/components/section/CategoriesDigitalProduct.vue"
+import CategoriesProduct from "@/components/section/mainPage/CategoriesProduct.vue"
+import CategoriesDigitalProduct from "@/components/section/mainPage/CategoriesDigitalProduct.vue"
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 export default {
   components: { 
@@ -68,19 +62,16 @@ export default {
     TransitionRoot,
     TransitionChild,
     CategoriesDigitalProduct,
-    Categories,
+    CategoriesProduct,
     LoginPopup,
     DiscountDigitalProduct,
-    BestProduct,
-    BestDigitalProduct,
-    Discount,
-    HeaderHero,
+    PopularProduct,
+    PopularDigitalProduct,
+    DiscountProduct,
     Banner,
     PromoSection,
     MainBlog,
-    Advertisement,
-    Advertisement2,
-    HeaderHero2 },
+    HeaderHero },
   head() {
     return {
       // title: "ثبت نام"

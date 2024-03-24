@@ -305,7 +305,6 @@ import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 import SearchFilterProduct from "@/components/section/filters/SearchFilterProduct.vue"
 import SearchFilterDigitalProduct from "@/components/section/filters/SearchFilterDigitalProduct.vue"
 import SearchFilterBlog from "@/components/section/filters/SearchFilterBlog.vue"
-import Blog_test from "@/components/shared/Blog_test.vue"
 import Blog from '~/components/shared/Blog.vue'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
@@ -317,7 +316,6 @@ export default {
     SearchFilterBlog,
     Product,
     Blog,
-    Blog_test,
     DigitalProduct,
     PaperClipIcon,
     Menu,

@@ -4,8 +4,7 @@
     <div class="bg-white border-t p-10 text-right pl-[200px] w-full rounded-2xl shadow-xl  ">
       <div class="w-full">
         <div class="font-bold text-xs text-indigo-500 text-md">{{ blog.created_at }}</div>
-
-        <div class="text-gray-900 font-semibold text-lg mt-2">{{ blog.title }}</div>
+        <div class="text-gray-900 font-semibold text-lg mt-2 line-clamp-1 rtl">{{ blog.title }}</div>
         <div class="flex justify-end w-full">
           <div class=" relative overflow-hidden isolate overflow-hidden whitespace-nowrap text-ellipsis rtl  ">
             <p class="text-gray-600 test-n w-100 text-[14px] py-2 max-w-[90%] font-light text-xs mt-2 " v-html="truncatedBody"></p>
@@ -19,7 +18,7 @@
           </nuxt-link>
           <button
             class="text-sm mx-3 mt-4 flex items-center bg-gray-100  text-gray-500 py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
-            @click="readMore">
+            >
             <div class="pl-2">
               {{ blog.like_count }}
             </div>
@@ -51,16 +50,8 @@ export default {
   props: {
     blog: {},
   },
-  data() {
-    return {
 
-    }
-  },
-  methods: {
-    readMore() {
-      // Define what happens when the "READ MORE" button is clicked.
-    },
-  },
+  
 }
 </script>
 <style scoped></style>

@@ -20,14 +20,17 @@
           }"
           :space-between="20" class="px-3 ">
             <SwiperSlide v-for="post in banners" :key="post.id" class="mb-10 mx-2 ">
-                <div class="  w-80 pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
+               
+                <div  class="  w-80 pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
         
-                 <div class="">
-                    <img :src="post.photo" alt=""
-                    class="absolute  w-full rounded-[30px] bg-gray-100 object-cover inset-0 -z-10 h-full w-full object-cover" />
-                <div class=" absolute inset-0 -z-10 gradient-banner" />
-                <div class="absolute inset-0 rounded-[30px] ring-1 ring-inset ring-gray-900/10" />
-                 </div>
+               <a :href="post.link">
+                  <div class="">
+                     <img :src="post.photo" alt=""
+                     class="absolute  w-full rounded-[30px] bg-gray-100 object-cover inset-0 -z-10 h-full w-full object-cover" />
+                 <div class=" absolute inset-0 -z-10 gradient-banner" />
+                 <div class="absolute inset-0 rounded-[30px] ring-1 ring-inset ring-gray-900/10" />
+                  </div>
+               </a>
                 </div>
             </SwiperSlide>
         

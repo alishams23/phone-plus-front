@@ -116,8 +116,8 @@ export default {
       
       items: [
         { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/', page_name: 'userPanel' },
-        { name: 'سفارشات من', href: '/dashboard/product_orders/', page_name: 'product_orders' },
-        { name: 'فایل های خریداری شده', href: '/dashboard/digital_product_orders/', page_name: 'digital_product_orders' },
+        { name: 'سفارشات من', href: '/dashboard/productOrders/', page_name: 'productOrders' },
+        { name: 'فایل های خریداری شده', href: '/dashboard/digitalProductOrders.vue/', page_name: 'digitalProductOrders.vue' },
         { name: 'خروج', href: '/auth/logOut/', page_name: 'logOut' },
       ], 
     }

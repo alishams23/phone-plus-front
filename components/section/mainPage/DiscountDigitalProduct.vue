@@ -25,16 +25,18 @@
       </div>
       
      </div>
-      <Carousel  :itemsToShow="5.5" :wrapAround="true" :transition="500">
-        <Slide data-aos="zoom-in"  :data-aos-delay="index * 100" v-for="digital_product,index in digital_products" :key="digital_product.id">
-          <DigitalProduct :data="digital_product" />
-        </Slide>
-    
-        <template #addons>
-          <Navigation />
-        </template>
-    
-      </Carousel>
+  <div data-aos="fade-left" data-aos-duration="1000">
+        <Carousel  :breakpoints="breakpoints" :wrapAround="true" :transition="500">
+          <Slide  v-for="digital_product,index in digital_products" :key="digital_product.id">
+            <PinDigitalProduct :data="digital_product" />
+          </Slide>
+      
+          <template #addons>
+            <Navigation />
+          </template>
+      
+        </Carousel>
+  </div>
     
        
     
@@ -46,8 +48,9 @@
 import axios from "axios";
 import { apiStore } from '~/store/api';
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
+import PinDigitalProduct from "@/components/shared/PinDigitalProduct.vue"
 export default {
-  components: { DigitalProduct }, 
+  components: { DigitalProduct,PinDigitalProduct }, 
   data: () => ({
     digital_products: [],
     loading: true,
@@ -59,17 +62,29 @@ export default {
     // breakpoints are mobile first
     // any settings not specified will fallback to the carousel settings
     breakpoints: {
-      // 700px and up
-      700: {
-        itemsToShow: 3.5,
-        snapAlign: 'center',
+        // 700px and up
+        200: {
+          itemsToShow: 1.5,
+          snapAlign: 'center',
+        },
+        700: {
+          itemsToShow: 2.5,
+          snapAlign: 'center',
+        },
+        1150: {
+          itemsToShow: 4.5,
+          snapAlign: 'center',
+        },
+        // 1024 and up
+        1340: {
+          itemsToShow: 5.5,
+          snapAlign: 'center',
+        },
+        1490: {
+          itemsToShow: 6,
+          snapAlign: 'center',
+        },
       },
-      // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
-      },
-    },
   }),
   methods: {
     getData() {

@@ -1,6 +1,6 @@
 <template>
 
-    <nuxt-link :to="'/digital_product/'+ data.id">
+    <nuxt-link :to="'/digitalProduct/'+ data.id">
       <div :class="width ? `${width}` : 'w-[15rem]'" class="relative isolate my-10 mx-2 justify-end overflow-hidden rounded-2xl  bg-gray-900 px-8 pb-8 pt-[10rem] sm:pt-60 lg:pt-[8rem]">
           <img :src="data.image[0].photo" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-white from-10% via-white/30" />

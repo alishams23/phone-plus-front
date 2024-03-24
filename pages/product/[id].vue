@@ -17,11 +17,11 @@
        <!-- Top Animation -->
       <div class="relative">
         <div class="">
-            <!-- <div class="bg rounded-b-[50px] "></div>
+            <div class="bg rounded-b-[50px] "></div>
             <div class="bg bg2 rounded-b-[50px]"></div>
-            <div class="bg bg3 rounded-b-[50px]"></div> -->
+            <div class="bg bg3 rounded-b-[50px]"></div>
         </div>
-        <img :src="product.shop.image" alt=""
+        <img :src="product.image[0].photo" 
             class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
         <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
         <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

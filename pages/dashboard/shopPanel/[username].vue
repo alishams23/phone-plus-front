@@ -76,19 +76,6 @@
                 <component :is="DigitalProductCarousel" :idObject="item.id_object" :idShop="results.id"
                   :title="item.title" v-if="item.type == 'productDigitalCategory'" />
               </div>
-
-              <!-- <div class=" shadow-xl py-2 mx-[30rem]"></div>
-
-<div class=" shadow-xl py-2 mx-[30rem]"></div>
-              <MainBlog title="مقالات" />
-<div class=" shadow-xl py-2 mx-[30rem]"></div>
-              <ProductCarousel  title="آیفون ها"/>
-<div class=" shadow-xl py-2 mx-[30rem]"></div>
-              <DigitalProductCarousel  />
-              <div class=" shadow-xl py-3 mx-[30rem]"></div>
-              <ProductCarousel  title="محصولات "/> -->
-
-
             </div>
           </div>
         </section>
