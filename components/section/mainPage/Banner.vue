@@ -9,7 +9,7 @@
         </div>
       </div>
 
-    <div data-aos="fade-left" data-aos-duration="1000" class="bg-white pb-16 pt-10 lg:pt-0  flex items-center " v-else>
+    <div data-aos="fade-left" data-aos-duration="1000" class=" bg-white pb-16 pt-10 lg:pt-0  " v-else>
    
         <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false"  :autoplay="{
             delay: 2000,
