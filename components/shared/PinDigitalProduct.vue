@@ -3,7 +3,7 @@
     <nuxt-link :to="'/digitalProduct/'+ data.id">
       <div class="flex justify-center text-center">
         <div>
-          <img :src="data.image[0].photo" alt="" class="-mt-10 w-56 h-56 shadow-lg rounded-3xl" />
+          <img :src="data.image[0].photo" alt="" class="-mt-10 w-56 h-56 shadow-lg object-cover rounded-3xl" />
         </div>
       </div>
       <div>

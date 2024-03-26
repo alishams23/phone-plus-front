@@ -18,7 +18,7 @@
             <div class="hidden lg:block">
               <div class="space-y-10 py-10 divide-y divide-gray-200">
             <div class="flex flex-wrap align-center">
-                  <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                  <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value;getData()" :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                     {{ item.label }}
                 </button>
             </div>
@@ -39,7 +39,7 @@
                   </div>
                   <div class="flex flex-wrap mt-3 align-center">
                     <div v-if="categories != null">
-                      <button v-for="item in categories" :key="item" @click=" selected_categories.includes(item.id)? selected_categories.splice(selected_categories.indexOf(item.id), 1) :selected_categories.push(item.id) " :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                      <button v-for="item in categories" :key="item" @click=" selected_categories.includes(item.id)? selected_categories.splice(selected_categories.indexOf(item.id), 1) :selected_categories.push(item.id) ;getData()" :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                         {{ item.title }}
                       </button>
                     </div>
@@ -62,12 +62,16 @@
                   </div>
                   <div class="flex flex-wrap mt-3 align-center">
                     <div v-if="shops != null">
-                      <button v-for="item in shops" :key="item.id" @click=" selected_shop == item.id ? selected_shop = null : selected_shop =  item.id" :class="[selected_shop == item.id ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                      <button v-for="item in shops" :key="item.id" @click=" selected_shop == item.id ? selected_shop = null : selected_shop =  item.id ; getData()" :class="[selected_shop == item.id ? 'bg-indigo-600 text-white' :'bg-gray-200' , 'px-4 text-xs py-2 rounded-xl m-1 border']">
                         {{ item.name }}
                       </button>
                     </div>
                   </div>
                 </div>
+                <div class="flex items-center pt-10">
+                  <input  v-model="is_discount" @click="is_discount = !is_discount ;getData()" id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-black bg-gray-100 border-gray-300 rounded ">
+                  <label for="checked-checkbox" class="ms-2 text-sm font-bold text-gray-900 ">دارای تخفیف</label>
+              </div>
                 <div class=" ltr mb-6x">
                   <label for="labels-range-input" class="sr-only">Labels range</label>
                   <label class="font-bold flex justify-end mt-3" for="">محدوده قیمت</label>
@@ -136,7 +140,7 @@ props:['text','page'],
     text_search_shop : '',
     shops : null,
     selected_shop : null,
-    
+    is_discount: false,
     price_range: [0, 15000000],
     mobileFiltersOpen: ref(false),
     product_sort: [
@@ -178,7 +182,7 @@ props:['text','page'],
     },
     getData() {
       this.loading = true
-       axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop? this.selected_shop : ''} `, {
+       axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category='): '' }&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop? this.selected_shop : ''}&is_discount=${this.is_discount} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -217,8 +221,12 @@ props:['text','page'],
       })
     }
   },
-  mounted() {
-    this.getCategories  ()
+  async mounted() {
+    if (this.$route.query.category_digital_product != null) this.selected_categories.push(parseInt(this.$route.query.category_digital_product))
+    if (this.$route.query.sort_digital_product != null) this.selected_sort = this.$route.query.sort_digital_product
+    if (this.$route.query.is_discount_digital_product != null) this.is_discount = this.$route.query.is_discount_digital_product
+     await this.getData()
+    await this.getCategories  ()
   },
 watch: {
   text: {
@@ -228,25 +236,7 @@ watch: {
       this.getData()
     }
   },
-  'selected_categories': {
-        handler: function (val, oldVal) {
-           this.getData()
-        },
-        deep: true
-    },
-  'selected_shop': {
-        handler: function (val, oldVal) {
-           this.getData()
-        },
-        deep: true
-    },
-  'selected_sort': {
-        handler: function (val, oldVal) {
-           this.getData()
-        },
-        deep: true
-    },
-  'price_range': {
+ 'price_range': {
         handler: function (val, oldVal) {
            this.getData()
         },

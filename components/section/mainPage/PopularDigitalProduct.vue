@@ -14,13 +14,13 @@
       <div class="   isolate overflow-hidden relative" v-if="loading == false">
         <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-indigo-800/80 via-black/100" />
         <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
-        <div class="absolute inset-0 -z-1000">
+        <div class="relative">
           <div class="flex pt-3 justify-between items-center">
             <div class="rtl px-3">
-              <a href="#" class="text-gray-200 rtl  ">
+              <button @click="$router.push('/search/?sort_digital_product=-rate&tab=1');" class="text-gray-200 rtl cursor-pointer ">
                 بیشتر
                 <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
-              </a>
+              </button>
             </div>
             <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
               محبوب ترین محصولات دیجیتال
@@ -28,9 +28,9 @@
           </div>
         </div>
      <div data-aos="fade-right" data-aos-duration="1000">
-         <Carousel   :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="pt-10">
+         <Carousel   :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="">
            <Slide  v-for="digital_product ,index in digital_products" :key="digital_product.id">
-             <DigitalProduct class="my-10" :data="digital_product" />
+             <DigitalProduct class="" :data="digital_product" />
            </Slide>
            <template #addons>
              <Navigation />
