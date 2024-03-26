@@ -16,7 +16,7 @@
               <DialogPanel
                 class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
                 <div class="flex items-center justify-between px-4">
-                  <h2 class="text-lg font-medium text-gray-900">Filters</h2>
+                  <h2 class="text-lg font-medium w-full text-right  text-gray-900">فیلترها</h2>
                   <button type="button"
                     class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-gray-400 hover:text-gray-500"
                     @click="mobileFiltersOpen = false">
@@ -26,30 +26,81 @@
                 </div>
 
                 <!-- Filters -->
-                <form class="mt-1">
-                  <Disclosure as="div" v-for="section in filters" :key="section.name"
-                    class="border-t border-gray-200 pb-4 pt-4" v-slot="{ open }">
-                    <fieldset>
-                      <legend class="w-full px-2">
-                        <DisclosureButton
-                          class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500">
-                          <span class=" font-bold mt-3 text-gray-900">{{ section.name }}</span>
-                          <span class="ml-6 flex h-7 items-center">
-
-                          </span>
-                        </DisclosureButton>
-                      </legend>
-                      <DisclosurePanel class="px-4 pb-2 pt-4">
-                        <div class="space-y-6">
-                          <div v-for="(option, optionIdx) in section.options" :key="option.value"
-                            class="flex items-center">
-                            <button>{{ option }}</button>
-                          </div>
-                        </div>
-                      </DisclosurePanel>
-                    </fieldset>
-                  </Disclosure>
-                </form>
+                <div class="space-y-10 py-10 divide-y px-10 divide-gray-200">
+                  <div class="flex flex-wrap justify-end">
+                    <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value; getData()"
+                      :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                      {{ item.label }}
+                    </button>
+                  </div>
+                  <div class="pt-3 relative w-full text-right mx-auto text-gray-600">
+                    <label class="font-bold" for="">دسته بندی ها</label>
+                    <div class="flex items-center">
+                      <input @input="getCategories()" v-model="text_search_categories" id="search_category"
+                        class="border-2 border-gray-300 bg-white w-full mt-2 h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
+                        type="search" name="search" placeholder="جستجو دسته بندی">
+                      <button type="submit" class="absolute right-0 top-6 mt-8 mr-4">
+                        <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                          viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                          width="512px" height="512px">
+                          <path
+                            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="flex flex-wrap mt-3 align-center">
+                      <div v-if="categories != null">
+                        <button v-for="item in categories" :key="item"
+                          @click=" selected_categories.includes(item.id) ? selected_categories.splice(selected_categories.indexOf(item.id), 1) : selected_categories.push(item.id); getData()"
+                          :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                          {{ item.title }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pt-3 relative mx-auto text-right w-full text-gray-600">
+                    <label class="font-bold " for="">فروشگاه‌ها</label>
+                    <div class="flex items-center">
+                      <input @input="getShops()" v-model="text_search_shop" id="search_shop"
+                        class="border-2 border-gray-300 bg-white w-full mt-2 h-10 px-5 pr-16 rounded-full text-sm focus:outline-none"
+                        type="search" name="search" placeholder="جستجو فروشگاه‌">
+                      <button type="submit" class="absolute right-0 top-6 mt-8 mr-4">
+                        <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                          viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                          width="512px" height="512px">
+                          <path
+                            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="flex flex-wrap mt-3 align-center">
+                      <div v-if="shops != null">
+                        <button v-for="item in shops" :key="item.id"
+                          @click=" selected_shop == item.id ? selected_shop = null : selected_shop = item.id; getData()"
+                          :class="[selected_shop == item.id ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
+                          {{ item.name }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center pt-10">
+                      <input  v-model="is_discount" @click="is_discount = !is_discount ;getData()" id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-black bg-gray-100 border-gray-300 rounded ">
+                      <label for="checked-checkbox" class="ms-2 text-sm font-bold text-gray-900 ">دارای تخفیف</label>
+                  </div>
+                  <div class=" ltr mb-6x">
+                    <label for="labels-range-input" class="sr-only">Labels range</label>
+                    <label class="font-bold flex justify-end mt-3" for="">محدوده قیمت</label>
+                    <client-only>
+                      <Slider :min="0" :step="500000" :max="200000000" v-model="price_range" class="mt-12 me-3" />
+                    </client-only>
+                    <div class="flex justify-between">
+                      <span class="text-xs text-gray-500 mb-10 mt-14">ارزانترین ({{ formatPrice(price_range[0]) }} تومان)</span>
+                      <span class="text-xs text-gray-500 mb-10 mt-14">گرانترین ({{ formatPrice(price_range[1]) }} تومان)</span>
+                    </div>
+                  </div>
+                </div>
               </DialogPanel>
             </TransitionChild>
           </div>
