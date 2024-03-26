@@ -11,6 +11,7 @@
                 </div>
 
 
+                
 
                 <img :src="blog.imageBlog.photo" alt=""
                     class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
