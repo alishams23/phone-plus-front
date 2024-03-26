@@ -49,7 +49,7 @@
                             <div
                               class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg px-3 py-1">
                               <div
-                                class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1"
+                                class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-[10px] px-3 py-1"
                                 v-if="item.discount != 0"> {{ item.discount }} % 
                               </div>
                             </div>
@@ -79,7 +79,7 @@
                             <div
                               class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg px-3 py-1">
                               <div
-                                class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1"
+                                class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-[10px] px-3 py-1"
                                 v-if="item.discount != 0"> {{ item.discount }} % 
                               </div>
                             </div>
