@@ -58,7 +58,7 @@
 
 
       </div>
-      <div @click="selected_tab == 0 ? open_filter_product = true :''">
+      <div @click="selected_tab == 0 ? open_filter_product = true :selected_tab == 1 ? open_filter_digitalProduct = true :selected_tab == 2 ? open_filter_blog = true :''">
         باز
       </div>
     </Popover>
@@ -264,11 +264,11 @@
                       :page="1" />
                   </div>
                   <div v-show="selected_tab == 1">
-                    <SearchFilterDigitalProduct :text="text"
+                    <SearchFilterDigitalProduct :open="open_filter_digitalProduct" @close="() => {open_filter_digitalProduct = false}" :text="text"
                       @get-data-product="(data) => { this.digitalProducts = data.results }" :page="1" />
                   </div>
                   <div v-show="selected_tab == 2">
-                    <SearchFilterBlog :text="text" @get-data-blog="(data) => { this.blogs = data.results }" :page="1" />
+                    <SearchFilterBlog :open="open_filter_blog" @close="() => {open_filter_blog = false}" :text="text" @get-data-blog="(data) => { this.blogs = data.results }" :page="1" />
                   </div>
                 </div>
               </div>
@@ -344,6 +344,8 @@ export default {
     blogs: [],
     data: [],
     open_filter_product:false , 
+    open_filter_digitalProduct:false , 
+    open_filter_blog:false , 
     tabs: [
       { name: 'محصولات', href: '#', id: 0 },
       { name: 'محصولات دیجیتال', href: '#', id: 1 },
