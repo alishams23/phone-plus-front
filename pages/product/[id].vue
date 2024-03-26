@@ -14,7 +14,7 @@
 
     <div class="min-h-full">
 
-       <!-- Top Animation -->
+      <!-- Top Animation -->
       <div class="relative">
         <div class="">
             <div class="bg rounded-b-[50px] "></div>
@@ -48,7 +48,7 @@
             </div>
         </div>
       </div>
-      <div class="mt-[-40px]">
+      <div class="mt-[-40px]  hidden md:block">
 
         <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 695.06 35.8">
