@@ -9,6 +9,7 @@
           <span aria-hidden="true" class="px-3 pt-10"> &larr;</span>
         </a>
       </div>
+      
       <div class=" font-bold text-xl text-right px-10 pt-10">
         مقاله ها
       </div>
@@ -33,6 +34,7 @@
 <script >
 import { apiStore } from '~/store/api';
 import axios from 'axios'
+import { useUserStore } from '~/store/user'; 
 import Blog from '~/components/shared/Blog.vue' 
 export default {
   components: { 
@@ -45,6 +47,12 @@ export default {
     blogs : [],
     loading : true
   }),
+  computed: {
+
+    isLogin() {
+      return useUserStore().userToken != null
+    }
+  },
   methods: {
     getData() {
       this.loading = true
@@ -52,6 +60,7 @@ export default {
           headers: {
               "Content-type": "application/json",
               Accept: "application/json",
+              Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : '',
           },
       }).then((response) => {
           this.blogs = response.data.slice(0,4)

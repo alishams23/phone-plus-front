@@ -22,7 +22,7 @@
         <DiscountProduct />
   
       </div>
-      <div class="container mx-auto"><MainBlog  /></div>
+      <div class="container mx-auto"><Blog  /></div>
 
       <div class=" mt-5 pb-10 ">
         <PopularDigitalProduct />
@@ -50,7 +50,7 @@ import DiscountProduct from "@/components/section/mainPage/DiscountProduct.vue"
 import HeaderHero from "@/components/section/mainPage/HeaderHero.vue"
 import Banner from "@/components/section/mainPage/Banner.vue"
 import PromoSection from "@/components/section/PromoSection.vue"
-import MainBlog from "@/components/section/MainBlog.vue"
+import Blog from "@/components/section/mainPage/Blog.vue"
 import CategoriesProduct from "@/components/section/mainPage/CategoriesProduct.vue"
 import CategoriesDigitalProduct from "@/components/section/mainPage/CategoriesDigitalProduct.vue"
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
@@ -70,7 +70,7 @@ export default {
     DiscountProduct,
     Banner,
     PromoSection,
-    MainBlog,
+    Blog,
     HeaderHero },
   head() {
     return {

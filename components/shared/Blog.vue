@@ -17,7 +17,10 @@
             ادامه
           </nuxt-link>
           <button
-            class="text-sm mx-3 mt-4 flex items-center bg-gray-100  text-gray-500 py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
+          
+          @click="isLogin == false ? $router.push('/auth/signIn') : like()"
+            class="text-sm mx-3 mt-4 flex items-center py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
+            :class="blog.likeAuthor == true ? 'text-white bg-red-600' : ' bg-gray-100  text-gray-500 '"
             >
             <div class="pl-2">
               {{ blog.like_count }}
@@ -34,7 +37,14 @@
 
 <script>
 import { HeartIcon } from '@heroicons/vue/20/solid'
+import { apiStore } from '~/store/api';
+import { useUserStore } from '~/store/user'; 
+
+
 export default {
+  props: {
+    blog: {},
+  },
   components: {
     HeartIcon
   },
@@ -46,10 +56,32 @@ export default {
       const ending = this.blog.body.length > charLimit ? '...' : '';
       return this.blog.body.substring(0, charLimit) + ending;
     },
+    isLogin() {
+      return useUserStore().userToken != null
+    }
   },
-  props: {
-    blog: {},
+  methods:{
+      async like() {
+      await fetch(
+        `${apiStore().address}/api/blog/add-like-view/?id=${this.blog.id}`,
+        {
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+            Authorization: `Token ${useUserStore().userToken}`
+          },
+        }
+      );
+      if (this.blog.likeAuthor == true) {
+        this.blog.likeAuthor = false;
+        this.blog.like_count--;
+      } else {
+        this.blog.likeAuthor = true;
+        this.blog.like_count++;
+      }
+    },
   },
+  
 
   
 }

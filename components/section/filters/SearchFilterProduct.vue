@@ -2,8 +2,8 @@
   <div class="bg-white">
     <div>
       <!-- Mobile filter dialog -->
-      <TransitionRoot as="template" :show="mobileFiltersOpen">
-        <Dialog as="div" class="relative z-40 lg:hidden" @close="mobileFiltersOpen = false">
+      <TransitionRoot as="template" :show="open">
+        <Dialog as="div" class="relative z-40 lg:hidden" @close="open = false">
           <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0"
             enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100"
             leave-to="opacity-0">
@@ -19,7 +19,7 @@
                   <h2 class="text-lg font-medium w-full text-right  text-gray-900">فیلترها</h2>
                   <button type="button"
                     class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-gray-400 hover:text-gray-500"
-                    @click="mobileFiltersOpen = false">
+                    @click="open = false">
                     <span class="sr-only">Close menu</span>
                     <XMarkIcon class="h-6 w-6" aria-hidden="true" />
                   </button>
@@ -114,7 +114,7 @@
         <div class="">
           <aside>
             <h2 class="sr-only">Filters</h2>
-            <button type="button" class="inline-flex items-center lg:hidden" @click="mobileFiltersOpen = true">
+            <button type="button" class="inline-flex items-center lg:hidden" @click="open = true">
               <span class="text-sm font-medium text-gray-700">Filters</span>
 
             </button>
@@ -221,7 +221,8 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import axios from 'axios'
 export default {
-  props: ['text', 'page'],
+  props: ['text', 'page','open'],
+  emits:["close","get-data-product"],
   components: {
     Slider,
 
@@ -253,7 +254,6 @@ export default {
     is_discount: false,
 
     price_range: [0, 200000000],
-    mobileFiltersOpen: ref(false),
     product_sort: [
       { value: '-pk', label: 'جدید ترین' },
       { value: 'pk', label: 'قدیمی ترین' },
@@ -356,6 +356,12 @@ export default {
     'price_range': {
       handler: function (val, oldVal) {
         this.getData()
+      },
+      deep: true
+    },
+    'open': {
+      handler: function (val, oldVal) {
+        val == false ? this.$emit('close') : ''
       },
       deep: true
     }
