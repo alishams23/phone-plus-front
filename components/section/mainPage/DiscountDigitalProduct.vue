@@ -14,7 +14,7 @@
     <div class="   bg-white rounded-[30px]  isolate overflow-hidden relative">
      <div class="flex pt-2 justify-between items-center">
       <div class="rtl px-3">
-        <a href="#" class="text-gray-900 rtl  ">
+        <a @click="$router.push('/search/?is_discount_digital_product=true&tab=1');" class="text-gray-900 rtl  ">
           بیشتر
           <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
         </a>
