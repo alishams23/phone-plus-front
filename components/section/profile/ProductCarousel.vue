@@ -1,8 +1,7 @@
 <template>
-  {{ data }}
   <div v-if="data.length == 0">
-    <div class="container rtl px-10 mt-6">
-      <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
+    <div class="container rtl mx-auto px-10 mt-6">
+      <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
         role="alert">
         <p class="font-bold">محصولی با دسته بندی {{ title }} یافت نشد</p>
       </div>
@@ -116,9 +115,8 @@ export default {
         },
       }).then((response) => {
         console.log('product carousel get data', response.data);
-        this.data = response.data
+        this.data = response.data.results
         this.loading = false
-        this.$emit('get-data-product', this.data);
 
       })
     },

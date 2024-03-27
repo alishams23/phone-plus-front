@@ -2,9 +2,13 @@
   <div v-if="data != []">
     <div class="text-gray-800 font-bold text-xl text-right pe-10 pt-2">
       محصولات دیجیتال پین شده
+
+      <div class="mx-5 h-12 w-12 bg-indigo-600 flex justify-center  items-center rounded-xl">
+        <StarIcon class="h-7 text-white"/>
+      </div>
     </div>
     <div class="   isolate overflow-hidden relative">
-      <Carousel :itemsToShow="3.8" :wrapAround="true" :transition="500" class="pt-5 pb-4">
+      <Carousel :breakpoints="breakpoints" :wrapAround="true" :transition="500" class="pt-5 pb-4">
         <Slide v-for="item in data.results" :key="item">
           <PinDigitalProduct class=" " :data="item" />
         </Slide>
@@ -28,12 +32,16 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import PinDigitalProduct from "@/components/shared/PinDigitalProduct.vue"
 import axios from 'axios'
+import {
+    StarIcon
+  } from '@heroicons/vue/24/outline'
+  
 import { apiStore } from '~/store/api';
 import { useUserStore } from '~/store/user';
 export default {
   props: ['idShop'],
   components: {
-    PinDigitalProduct
+    PinDigitalProduct,StarIcon
   },
   setup() {
     const swiper = ref(null);
@@ -58,17 +66,29 @@ export default {
     // breakpoints are mobile first
     // any settings not specified will fallback to the carousel settings
     breakpoints: {
-      // 700px and up
-      700: {
-        itemsToShow: 3.5,
-        snapAlign: 'center',
+        // 700px and up
+        200: {
+          itemsToShow: 1.5,
+          snapAlign: 'center',
+        },
+        700: {
+          itemsToShow: 2.3,
+          snapAlign: 'center',
+        },
+        1150: {
+          itemsToShow: 2.3,
+          snapAlign: 'center',
+        },
+        // 1024 and up
+        1340: {
+          itemsToShow: 4,
+          snapAlign: 'center',
+        },
+        1490: {
+          itemsToShow: 4,
+          snapAlign: 'center',
+        },
       },
-      // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
-      },
-    },
   }),
   computed: {
     filteredData() {

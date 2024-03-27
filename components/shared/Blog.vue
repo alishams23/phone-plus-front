@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex w-full items-center pl-10 lg:pl-0 flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
-    <div class="bg-white border-t p-10 text-right pl-[100px] lg:pl-[200px] w-full rounded-2xl shadow-xl  ">
+    <div class="bg-gradient-to-b from-gray-50 to-white border-t-[0.7px]  p-10 text-right pl-[100px] lg:pl-[200px] w-full rounded-2xl shadow-3  ">
       <div class="w-full">
         <div class="font-bold text-xs text-indigo-500 text-md">{{ blog.created_at }}</div>
         <div class="text-gray-900 font-semibold text-md lg:text-lg mt-2 line-clamp-1  rtl">{{ blog.title }}</div>

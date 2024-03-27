@@ -1,17 +1,20 @@
 <template>
-  <div v-if="data != []">
+  <div v-if="data.length != 0" class=" ">
     <div class="text-gray-800   font-bold text-xl text-right pe-10 pt-3">
       محصولات پین شده
     </div>
-    <div class="  isolate overflow-hidden relative">
-      <Carousel :itemsToShow="2.3" :wrapAround="true" :transition="500" class=" ">
-        <Slide v-for="item in data.results" :key="item">
-          <PinProduct class=" " :data="item" />
-        </Slide>
-        <template #addons>
-          <Navigation />
-        </template>
-      </Carousel>
+    <div class="container mx-auto isolate overflow-hidden relative">
+      <div
+          class="mx-auto grid w-2xl grid-cols-1  gap-x-10 lg:gap-y-5 lg:mx-0  lg:max-w-none lg:grid-cols-2"
+        >
+      <div v-for="item in data" :key="item">
+        <PinProduct class=" mb-10 lg:mb-20" :data="item" />
+      </div>
+     
+      <div>
+      </div>
+     
+      </div>
     </div>
   </div>
 </template>
@@ -51,24 +54,10 @@ export default {
     data: [],
     
     // carousel settings
-    settings: {
-      itemsToShow: 1,
-      snapAlign: 'center',
-    },
+   
     // breakpoints are mobile first
     // any settings not specified will fallback to the carousel settings
-    breakpoints: {
-      // 700px and up
-      700: {
-        itemsToShow: 3.5,
-        snapAlign: 'center',
-      },
-      // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
-      },
-    },
+ 
   }),
   computed: {
     filteredData() {
@@ -91,9 +80,8 @@ export default {
         },
       }).then((response) => {
         console.log('product carousel get data', response.data);
-        this.data = response.data
+        this.data = response.data.results
         this.loading = false
-        this.$emit('get-data-product', this.data);
 
       })
     },
@@ -105,7 +93,10 @@ export default {
 </script>
 
 <style scoped>
-.carousel__slide {
+.swiper-slide {
+  width: auto;
+}
+/* .carousel__slide {
   padding: 5px;
 }
 
@@ -149,5 +140,5 @@ export default {
   filter: blur(0px);
 
   transform: rotateY(0) scale(1.15);
-}
+} */
 </style>

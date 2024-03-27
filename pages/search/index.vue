@@ -151,7 +151,7 @@
                       </div>
                     </div>
                     <div v-else class="container rtl px-10 mt-6">
-                      <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4" role="alert">
+                      <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4" role="alert">
                         <p class="font-bold">محصولی یافت نشد</p>
                       </div>
                     </div>
@@ -168,7 +168,7 @@
 
                     </div>
                     <div v-else class="container rtl px-10 mt-6">
-                      <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4" role="alert">
+                      <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4" role="alert">
                         <p class="font-bold">مقاله‌ای یافت نشد</p>
                       </div>
                     </div>
@@ -191,7 +191,7 @@
                         </div>
                       </div>
                       <div v-else class="container rtl px-10 mt-6">
-                        <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
+                        <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
                           role="alert">
                           <p class="font-bold">محصولی یافت نشد</p>
                         </div>
@@ -213,7 +213,7 @@
                         </div>
                       </div>
                       <div v-else class="container rtl px-10 mt-6">
-                        <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
+                        <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
                           role="alert">
                           <p class="font-bold">محصول دیجیتالی یافت نشد</p>
                         </div>
@@ -236,7 +236,7 @@
                       </div>
 
                       <div v-else class="container rtl px-10 mt-6">
-                        <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
+                        <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
                           role="alert">
                           <p class="font-bold">مقاله‌ای یافت نشد</p>
                         </div>

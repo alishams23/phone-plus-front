@@ -1,7 +1,7 @@
 <template>
   <div v-if="data.length == 0">
-    <div class="container rtl px-10 mt-6">
-      <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
+    <div class="container rtl mx-auto px-10 mt-6">
+      <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
         role="alert">
         <p class="font-bold">محصولی با دسته بندی {{ title }} یافت نشد</p>
       </div>
@@ -26,7 +26,7 @@
       }" :pagination="{
         clickable: true,
       }" :space-between="10" class="px-3 ">
-        <SwiperSlide data-aos="zoom-in" v-for="item in data" :key="item"
+        <SwiperSlide  v-for="item in data" :key="item"
           class="mb-10 mx-2 ">
           <DigitalProduct class="my-10 ltr" :data="item" />
         </SwiperSlide>
@@ -78,17 +78,29 @@ export default {
     // breakpoints are mobile first
     // any settings not specified will fallback to the carousel settings
     breakpoints: {
-      // 700px and up
-      700: {
-        itemsToShow: 3.5,
-        snapAlign: 'center',
+        // 700px and up
+        200: {
+          itemsToShow: 1.5,
+          snapAlign: 'center',
+        },
+        700: {
+          itemsToShow: 2.3,
+          snapAlign: 'center',
+        },
+        1150: {
+          itemsToShow: 2.3,
+          snapAlign: 'center',
+        },
+        // 1024 and up
+        1340: {
+          itemsToShow: 3,
+          snapAlign: 'center',
+        },
+        1490: {
+          itemsToShow: 4,
+          snapAlign: 'center',
+        },
       },
-      // 1024 and up
-      1024: {
-        itemsToShow: 5,
-        snapAlign: 'start',
-      },
-    },
   }),
   computed: {
     filteredData() {
@@ -111,9 +123,9 @@ export default {
         },
       }).then((response) => {
         console.log('product carousel get data', response.data);
-        this.data = response.data
+        this.data = response.data.results
         this.loading = false
-        this.$emit('get-data-product', this.data);
+      
 
       })
     },

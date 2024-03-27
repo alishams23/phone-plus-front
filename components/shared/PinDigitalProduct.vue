@@ -1,9 +1,9 @@
 <template>
-  <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gray-100 shadow-xl isolate my-20  border border-sm rounded-2xl">
+  <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gradient-to-b from-gray-100 to-white shadow-3 isolate my-20    rounded-2xl">
     <nuxt-link :to="'/digitalProduct/'+ data.id">
       <div class="flex justify-center text-center">
         <div>
-          <img :src="data.image[0].photo" alt="" class="-mt-10 w-56 h-56 shadow-lg object-cover rounded-3xl" />
+          <img :src="data.image[0].photo" alt="" class="-mt-10 w-[200px] h-[200px] shadow-1 border object-cover rounded-3xl" />
         </div>
       </div>
       <div>

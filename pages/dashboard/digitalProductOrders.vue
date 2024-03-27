@@ -23,7 +23,7 @@
                 <section aria-labelledby="section-1-title">
                     <h2 class="sr-only" id="section-1-title">Section title</h2>
                     <div class="overflow-hidden rounded-lg bg-white shadow">
-                        <div class="bg-indigo-100 border-r-4 border-indigo-500 mt-10 mb-[12rem] mx-10 rounded-lg text-indigo-700 p-4"
+                        <div class="bg-indigo-100 border-r-[9px] border-indigo-500 mt-10 mb-[12rem] mx-10 rounded-lg text-indigo-700 p-4"
                             role="alert">
                             <p class="font-bold">سفارشی یافت نشد</p>
                         </div>

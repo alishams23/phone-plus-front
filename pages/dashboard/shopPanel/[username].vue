@@ -1,20 +1,19 @@
 <template>
-  <div class="relative" v-if="results && results.image">
-    <div class="">
-    </div>
+  <div class="relative " v-if="results && results.image">
+  
     <img :src="results.image" alt=""
-      class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
+      class="absolute overflow-hidden   objects-cover inset-0 -z-10  h-full w-full object-cover " />
       <div class="bg rounded-b-[50px] "></div>
       <div class="bg bg2 rounded-b-[50px]"></div>
       <div class="bg bg3 rounded-b-[50px]"></div>
-    <div class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
+    <div class="absolute overflow-hidden inset-0 -z-10  h-full w-full  " />
     <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
       <div
         class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
         style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
     </div>
     <div class="flex flex-col justify-center items-center " v-if="results">
-      <img class="h-24 w-24 mt-10 rounded-full" :src="results.image" alt="" />
+      <img class="h-24 w-24 mt-10 object-cover rounded-full" :src="results.image" alt="" />
       <div class="flex items-center mt-4 space-x-reverse space-x-2">
         <h1 class="text-white font-bold text-xl">{{ results.name }}</h1>
         <!-- Using the ExclamationCircleIcon component -->
@@ -57,14 +56,14 @@
         <h1 class="sr-only">Page title</h1>
         <section aria-labelledby="section-1-title">
           <h2 class="sr-only" id="section-1-title">Section title</h2>
-          <div class="overflow-hidden rounded-lg bg-white shadow">
+          <div class="overflow-hidden -mt-2 bg-white shadow">
             <div class="">
               <!-- Your content -->
               <div v-if="results">
                 <PinProductCarousel :idShop="results.id" />
                 <PinDigitalProductCarousel :idShop="results.id" />
               </div>
-              <div v-if="results" v-for="(item, index) in order" :class="index % 2 == 0 ? 'bg-gradient-to-l bg-black from-black from-10% via-blue-800/80 via-black/100 text-white my-11' : ''">
+              <div v-if="results" v-for="(item, index) in order" :class="index % 2 == 0 ? 'bg-gradient-to-l bg-blue-500 from-black from-0% via-blue-800/100  text-white my-11' : ''">
                 <component :is="BlogCarousel" :idObject="item.id_object" :idShop="results.id" :title="item.title"
                   v-if="item.type == 'blog'" />
                 <component :is="ProductCarousel" :idObject="null" :idShop="results.id" :title="item.title"
