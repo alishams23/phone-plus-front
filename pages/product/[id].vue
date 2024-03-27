@@ -34,14 +34,14 @@
           <div class=" me-5">
             <img :src="product.shop.image" class="h-24 w-24 rounded-full" />
           </div>
-          <div class=" ">
+          <nuxt-link :to="'/dashboard/shopPanel/' + product.shop.username">
             <div class="text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]">
               فروشگاه:
             </div>
             <div class="font-semibold text-3xl text-white drop-shadow-[0_10.2px_10.2px_rgba(125,125,125,0.9)]">
               {{ product.shop.name }}
             </div>
-          </div>
+          </nuxt-link>
         </div>
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-[1rem] lg:pb-[5rem]">
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
@@ -115,7 +115,7 @@
                           <!-- Image Panels -->
                           <TabPanel v-for="image in product.image" :key="image.id" class="w-full">
                             <img :src="image.photo" :alt="image.title_for_photo"
-                              class=" h-full rounded-[25px] object-cover " />
+                              class=" aspect-square rounded-[25px] object-cover " />
                           </TabPanel>
                         </TabPanels>
                       </TabGroup>

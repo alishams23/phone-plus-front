@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.results.length == 0">
+  <div v-if="data.length == 0">
     <div class="container rtl px-10 mt-6">
       <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
         role="alert">
@@ -26,7 +26,7 @@
       }" :pagination="{
         clickable: true,
       }" :space-between="10" class="px-3 ">
-        <SwiperSlide data-aos="zoom-in" v-for="item in data.results" :key="item"
+        <SwiperSlide data-aos="zoom-in" v-for="item in data" :key="item"
           class="mb-10 mx-2 ">
           <DigitalProduct class="my-10 ltr" :data="item" />
         </SwiperSlide>

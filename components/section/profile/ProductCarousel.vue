@@ -1,5 +1,6 @@
 <template>
-  <div v-if="data.results.length == 0">
+  {{ data }}
+  <div v-if="data.length == 0">
     <div class="container rtl px-10 mt-6">
       <div class="bg-indigo-100 border-r-4 border-indigo-500 rounded-lg text-indigo-700 p-4"
         role="alert">
@@ -28,7 +29,7 @@
         }" :pagination="{
           clickable: true,
         }" :space-between="10" class="px-3 ">
-           <SwiperSlide v-for="item in data.results" :key="item + 'product xxx'" class="mb-10 mx-2 ">
+           <SwiperSlide v-for="item in data" :key="item + 'product xxx'" class="mb-10 mx-2 ">
              <Product class="my-10 " :data="item" />
            </SwiperSlide>
         </Swiper>

@@ -11,7 +11,7 @@
                 </div>
 
 
-                
+
 
                 <img :src="blog.imageBlog.photo" alt=""
                     class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
@@ -98,10 +98,10 @@
                                             {{ blog.created_at }}
                                         </p>
                                     </div>
-                                    <button
-                                        class="text-sm flex items-center bg-gray-100  text-gray-500 py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
-                                        @click="readMore">
-                                        <div class="pr-1">
+                                    <button @click="isLogin == false ? $router.push('/auth/signIn') : like()"
+                                        class="text-sm mx-3 mt-4 flex items-center py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
+                                        :class="blog.likeAuthor == true ? 'text-white bg-red-600' : ' bg-gray-100  text-gray-500 '">
+                                        <div class="pr-2 ">
                                             {{ blog.like_count }}
                                         </div>
                                         <HeartIcon class="h-4  " />
@@ -124,12 +124,17 @@
 import { apiStore } from '~/store/api';
 import { HeartIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
+import { useUserStore } from '~/store/user';
+
 export default {
     components: {
         HeartIcon,
     },
-    props: {
+    computed: {
 
+        isLogin() {
+            return useUserStore().userToken != null
+        }
     },
     data: () => ({
         blog: null,
@@ -141,13 +146,32 @@ export default {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json",
+                    Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : '',
                 },
             }).then((response) => {
                 this.blog = response.data
                 this.loading = false
 
             })
-        }
+        }, async like() {
+            await fetch(
+                `${apiStore().address}/api/blog/add-like-view/?id=${this.blog.id}`,
+                {
+                    headers: {
+                        "Content-type": "application/json",
+                        Accept: "application/json",
+                        Authorization: `Token ${useUserStore().userToken}`
+                    },
+                }
+            );
+            if (this.blog.likeAuthor == true) {
+                this.blog.likeAuthor = false;
+                this.blog.like_count--;
+            } else {
+                this.blog.likeAuthor = true;
+                this.blog.like_count++;
+            }
+        },
     },
     mounted() {
         this.getData()
