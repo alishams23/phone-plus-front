@@ -16,7 +16,7 @@
               <DialogPanel
                 class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
                 <div class="flex items-center justify-between px-4">
-                  <h2 class="text-lg font-medium w-full text-right  text-gray-900">فیلترها</h2>
+                  <h2 class="text-lg font-medium w-full text-right mx-4 text-gray-900">فیلترها</h2>
                   <button type="button"
                     class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-gray-400 hover:text-gray-500"
                     @click="open = false">
