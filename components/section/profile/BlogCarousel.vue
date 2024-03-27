@@ -1,22 +1,25 @@
 <template>
     <div v-if="blogs == []">
-    <div class="container rtl px-10 my-6">
-      <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
-        role="alert">
-        <p class="font-bold">مقاله‌ای یافت نشد </p>
-      </div>
+        <div class="container rtl px-10 my-6">
+            <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4" role="alert">
+                <p class="font-bold">مقاله‌ای یافت نشد </p>
+            </div>
+        </div>
     </div>
-  </div>
     <div v-else>
-        <div class="flex pt-2 justify-between items-center">
-            <div class="rtl mx-10 ">
+        <div class="flex py-5 justify-between items-center">
+            <div class="rtl lg:mx-10 ">
                 <a href="#" class=" rtl  ">
                     بیشتر
                     <span aria-hidden="true" class="px-3 pt-10"> &larr;</span>
                 </a>
             </div>
-            <div class=" font-bold text-xl text-right px-10 pt-10">
-                {{title}} 
+            <div class=" font-bold text-xl text-right px-6  flex items-center justify-end">
+                {{ title }}
+                <div
+                    class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+                    <DocumentTextIcon class="h-5 text-white" />
+                </div>
             </div>
         </div>
         <div class="  py-4 sm:py-3 ">
@@ -39,9 +42,11 @@
 import { apiStore } from '~/store/api';
 import axios from 'axios'
 import Blog from '~/components/shared/Blog.vue'
+import { DocumentTextIcon } from '@heroicons/vue/20/solid'
+
 export default {
     components: {
-        Blog
+        Blog, DocumentTextIcon
     },
     props: ["title", "idObject", "idShop"],
     data: () => ({

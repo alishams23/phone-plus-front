@@ -1,6 +1,6 @@
 <template>
   <div v-if="data.length == 0">
-    <div class="container rtl mx-auto px-10 mt-6">
+    <div class="container rtl mx-auto px-6 mt-6">
       <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
         role="alert">
         <p class="font-bold">محصولی با دسته بندی {{ title }} یافت نشد</p>
@@ -9,14 +9,17 @@
   </div>
   <div v-else>
     <div class="flex pt-2 justify-between items-center">
-      <div class="rtl  mx-10 ">
-        <a href="#" class=" rtl  ">
+      <div class="rtl   lg:mx-10 ">
+        <a href="#" class=" rtl  flex items-center">
           بیشتر
-          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+          <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
         </a>
       </div>
-      <div class=" font-bold text-xl text-right px-10 pt-4">
+      <div class=" font-bold text-xl text-right px-6 pt-4 flex items-center justify-end">
         {{ title }}
+        <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+        <ShoppingBagIcon class="h-5 text-white"/>
+      </div>
       </div>
     </div>
     
@@ -52,11 +55,13 @@ import Product from "@/components/shared/Product.vue"
 import axios from 'axios'
 import { apiStore } from '~/store/api';
 import { useUserStore } from '~/store/user';
+import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
+
 
 export default {
   props: ["title", "idObject", "idShop"],
   components: {
-    Product
+    Product,ShoppingBagIcon
   },
 
   setup() {

@@ -15,14 +15,14 @@
         <PopularProduct />
   
       </div>
-      <div class="container mx-auto">
+      <div >
         <CategoriesProduct class="mx-2" />
       </div>
       <div class="">
         <DiscountProduct />
   
       </div>
-      <div class="container mx-auto"><Blog  /></div>
+      <div ><Blog  /></div>
 
       <div class=" mt-5 pb-10 ">
         <PopularDigitalProduct />
@@ -32,7 +32,7 @@
         <DiscountDigitalProduct />
       </div>
 
-      <div class="container mx-auto">
+      <div >
         <CategoriesDigitalProduct class="mx-2" />
       </div>
     </div>

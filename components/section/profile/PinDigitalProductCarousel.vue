@@ -1,10 +1,10 @@
 <template>
   <div v-if="data != []">
-    <div class="text-gray-800 font-bold text-xl text-right pe-10 pt-2">
+    <div class="text-gray-800 font-bold text-xl text-right pe-6 pt-2 flex items-center justify-end">
       محصولات دیجیتال پین شده
 
-      <div class="mx-5 h-12 w-12 bg-indigo-600 flex justify-center  items-center rounded-xl">
-        <StarIcon class="h-7 text-white"/>
+      <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+        <StarIcon class="h-5 text-white"/>
       </div>
     </div>
     <div class="   isolate overflow-hidden relative">
@@ -34,7 +34,7 @@ import PinDigitalProduct from "@/components/shared/PinDigitalProduct.vue"
 import axios from 'axios'
 import {
     StarIcon
-  } from '@heroicons/vue/24/outline'
+  } from '@heroicons/vue/20/solid'
   
 import { apiStore } from '~/store/api';
 import { useUserStore } from '~/store/user';

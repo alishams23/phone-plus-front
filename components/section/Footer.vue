@@ -19,7 +19,7 @@
 
 
           <div>
-            <h3 class="text-sm font-semibold leading-6 text-white">پشتیبانی</h3>
+            <h3 class="text-sm font-semibold leading-6 text-white">صفحات محبوب</h3>
             <ul role="list" class="mt-6 space-y-4">
               <li v-for="item in navigation.support" :key="item.name">
                 <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
@@ -27,14 +27,14 @@
             </ul>
           </div>
 
-          <div>
-            <h3 class="text-sm font-semibold leading-6 text-white">فون پلاس</h3>
+          <!-- <div>
+            <h3 class="text-sm font-semibold leading-6 text-white"> پلاس</h3>
             <ul role="list" class="mt-6 space-y-4">
               <li v-for="item in navigation.company" :key="item.name">
                 <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
               </li>
             </ul>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -49,17 +49,11 @@
 import { defineComponent, h } from 'vue'
 
 const navigation = {
-  solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
-  ],
   support: [
-    { name: 'پشتیبانی فروش', href: '#' },
-    { name: 'پشتیبانی پس از فروش', href: '#' },
-    { name: 'راهنمایی', href: '#' },
-    { name: 'پشتیبانی فروشندگان', href: '#' },
+    { name: 'صفحه ی یک ', href: '#' },
+    { name: 'صفحه ی دو ', href: '#' },
+    { name: 'صفحه ی سه ', href: '#' },
+   
   ],
   company: [
     { name: 'درباره ما', href: '#' },
@@ -68,11 +62,7 @@ const navigation = {
     { name: 'تماس با ما', href: '#' },
     { name: 'آدرس', href: '#' },
   ],
-  legal: [
-    { name: 'Claim', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
-  ],
+
   social: [
 
     {

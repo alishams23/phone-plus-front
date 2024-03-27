@@ -7,15 +7,19 @@
       </div>
     </div>
   </div>
-  <div v-else class="flex pt-2 justify-between items-center ">
-    <div class="rtl mx-10 ">
-      <a href="#" class=" rtl  ">
+  <div v-else class="flex pt-2 justify-between items-center pt-4 ">
+    <div class="rtl lg:mx-10 ">
+      <a href="#" class=" rtl  flex items-center">
         بیشتر
-        <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+        <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
       </a>
     </div>
-    <div class=" font-bold text-xl text-right px-10 pt-4">
+    <div class=" font-bold text-xl text-right px-6  flex items-center justify-end">
       {{ title }}
+
+      <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+        <DocumentIcon class="h-5 text-white"/>
+      </div>
     </div>
   </div>
   <div class=" rtl  isolate overflow-hidden relative mb-2 ">
@@ -37,7 +41,7 @@
 </template>
 
 <script>
-import { PaperClipIcon } from '@heroicons/vue/20/solid'
+import { DocumentIcon } from '@heroicons/vue/20/solid'
 
 
 // Import Swiper styles
@@ -54,7 +58,7 @@ import { useUserStore } from '~/store/user';
 export default {
   props: ["title", "idObject", "idShop"],
   components: {
-    DigitalProduct
+    DigitalProduct,DocumentIcon
   },
   setup() {
     const swiper = ref(null);

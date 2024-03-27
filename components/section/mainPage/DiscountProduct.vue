@@ -23,8 +23,11 @@
             <span aria-hidden="true" class="px-3 "> &larr;</span>
           </a>
         </div>
-        <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
+        <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4 flex items-center justify-end">
           محصولات شگفت انگیز
+          <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-gray-300 to-white   flex justify-center  items-center rounded-xl">
+        <ShoppingBagIcon class="h-5 text-indigo-600"/>
+      </div>
         </div>
        </div>
     </div>
@@ -58,9 +61,11 @@
 import axios from "axios";
 import Product from "@/components/shared/Product.vue"
 import { apiStore } from '~/store/api'; 
+import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
+
 
 export default {
-  components: { Product }, 
+  components: { Product,ShoppingBagIcon }, 
   data: () => ({
     products: '',
     loading: true,

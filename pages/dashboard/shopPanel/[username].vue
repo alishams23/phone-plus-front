@@ -1,8 +1,11 @@
 <template>
   <div class="relative " v-if="results && results.image">
   
-    <img :src="results.image" alt=""
-      class="absolute overflow-hidden   objects-cover inset-0 -z-10  h-full w-full object-cover " />
+
+      <img :src="results.image" alt=""
+        class="absolute  inset-0 -z-10  h-full w-full object-cover " />
+        <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
+  
       <div class="bg rounded-b-[50px] "></div>
       <div class="bg bg2 rounded-b-[50px]"></div>
       <div class="bg bg3 rounded-b-[50px]"></div>

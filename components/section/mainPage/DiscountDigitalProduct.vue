@@ -13,15 +13,17 @@
   <div v-else>
     <div class="   bg-white rounded-[30px]  isolate overflow-hidden relative">
      <div class="flex pt-2 justify-between items-center">
-      <div class="rtl px-3">
-        <a @click="$router.push('/search/?is_discount_digital_product=true&tab=1');" class="text-gray-900 rtl  ">
+      <div class="rtl lg:px-3">
+        <a @click="$router.push('/search/?is_discount_digital_product=true&tab=1');" class="text-gray-900 rtl  flex items-center">
           بیشتر
-          <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+          <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
         </a>
       </div>
-      <div class="text-gray-900 font-bold text-xl text-right px-4 pt-4">
+      <div class="text-gray-900 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
         محصولات دیجیتال شگفت‌انگیز
-    
+        <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+        <CloudArrowDownIcon class="h-5 text-white"/>
+      </div>
       </div>
       
      </div>
@@ -49,8 +51,10 @@ import axios from "axios";
 import { apiStore } from '~/store/api';
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 import PinDigitalProduct from "@/components/shared/PinDigitalProduct.vue"
+import { CloudArrowDownIcon } from '@heroicons/vue/20/solid'
+
 export default {
-  components: { DigitalProduct,PinDigitalProduct }, 
+  components: { DigitalProduct,PinDigitalProduct,CloudArrowDownIcon }, 
   data: () => ({
     digital_products: [],
     loading: true,

@@ -1,7 +1,12 @@
 <template>
   <div v-if="data.length != 0" class=" ">
-    <div class="text-gray-800   font-bold text-xl text-right pe-10 pt-3">
+    <div class="text-gray-800   font-bold text-xl text-right pe-6 pt-3 flex items-center justify-end">
       محصولات پین شده
+
+      <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+        <StarIcon class="h-5 text-white"/>
+      </div>
+
     </div>
     <div class="container mx-auto isolate overflow-hidden relative">
       <div
@@ -33,10 +38,14 @@ import PinProduct from "@/components/shared/PinProduct.vue"
 import axios from 'axios'
 import { apiStore } from '~/store/api';
 import { useUserStore } from '~/store/user';
+import {
+    StarIcon
+  } from '@heroicons/vue/20/solid'
+  
 export default {
   props: ['idShop'],
   components: {
-    PinProduct
+    PinProduct,StarIcon
   },
   setup() {
     const swiper = ref(null);

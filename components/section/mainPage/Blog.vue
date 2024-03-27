@@ -9,7 +9,13 @@
         </a>
       </div>
 
-      <div class="font-bold text-xl text-right px-10 pt-10">مقاله ها</div>
+      <div class="font-bold text-xl text-right px-10 pt-10 flex items-center justify-end">مقاله ها
+
+        <div
+                    class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+                    <DocumentTextIcon class="h-5 text-white" />
+                </div>
+      </div>
     </div>
     <div class="bg-white py-4 sm:py-3">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -42,9 +48,11 @@ import { apiStore } from "~/store/api";
 import axios from "axios";
 import { useUserStore } from "~/store/user";
 import Blog from "~/components/shared/Blog.vue";
+import { DocumentTextIcon } from '@heroicons/vue/20/solid'
+
 export default {
   components: {
-    Blog,
+    Blog,DocumentTextIcon
   },
   props: {
     title: "مقالات برتر",

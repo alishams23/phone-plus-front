@@ -16,11 +16,15 @@
         <div class="rtl px-3">
          
         </div>
-        <div class="text-black font-bold text-xl text-right px-4">
+        <div class="text-black font-bold text-xl text-right px-4 flex items-center justify-end">
           دسته بند‌ی‌ محصولات دیجیتال
+          <div
+            class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+            <TagIcon class="h-5 text-white" />
+          </div>
         </div>
       </div>
-      <div   class="grid grid-cols-1 gap-4 sm:grid-cols-4 pb-20 rtl "
+      <div   class="container mx-auto grid grid-cols-1 gap-4 sm:grid-cols-4 pb-20 rtl "
         :style="{ backgroundImage: '', backgroundSize: 'cover' }">
         <div v-for="category in data" :key="category.id"
           class=" relative isolate  flex items-center  rounded-[19px] border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
@@ -62,23 +66,11 @@
 <script >
 import { apiStore } from '~/store/api';
 import axios from 'axios'
-import {
-  AcademicCapIcon,
-  BanknotesIcon,
-  CheckBadgeIcon,
-  ClockIcon,
-  ReceiptRefundIcon,
-  UsersIcon,
-} from '@heroicons/vue/24/outline'
+import { TagIcon } from '@heroicons/vue/20/solid'
 
 export default {
   components: {
-    AcademicCapIcon,
-    BanknotesIcon,
-    CheckBadgeIcon,
-    ClockIcon,
-    ReceiptRefundIcon,
-    UsersIcon,
+    TagIcon
   },
   data() {
     return {

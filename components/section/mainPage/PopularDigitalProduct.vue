@@ -22,8 +22,12 @@
                 <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
               </button>
             </div>
-            <div class="text-gray-200 font-bold text-xl text-right px-4 pt-4">
-              محبوب ترین محصولات دیجیتال
+            <div class="text-gray-200 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
+              محصولات دیجیتال محبوب
+
+              <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-gray-300 to-white   flex justify-center  items-center rounded-xl">
+        <CloudArrowDownIcon class="h-5 text-indigo-600"/>
+      </div>
             </div>
           </div>
         </div>
@@ -45,8 +49,10 @@
   import { apiStore } from '~/store/api';
   import axios from 'axios'
   import DigitalProduct from "@/components/shared/DigitalProduct.vue"
+  import { CloudArrowDownIcon } from '@heroicons/vue/20/solid'
+
   export default {
-    components: { DigitalProduct }, 
+    components: { DigitalProduct ,CloudArrowDownIcon}, 
     data: () => ({
       digital_products: [],
       loading: true,
