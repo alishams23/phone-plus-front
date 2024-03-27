@@ -16,7 +16,7 @@
               <DialogPanel
                 class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
                 <div class="flex items-center justify-between px-4">
-                  <h2 class="text-lg font-medium w-full text-right  text-gray-900">فیلترها</h2>
+                  <h2 class="text-lg font-medium w-full text-right mx-4 text-gray-900">فیلترها</h2>
                   <button type="button"
                     class="-mr-2 flex h-10 w-10 items-center justify-center p-2 text-gray-400 hover:text-gray-500"
                     @click="open = false">
@@ -106,8 +106,8 @@
           </div>
         </Dialog>
       </TransitionRoot>
-      <main class="mx-auto max-w-2xl px-4 py-5 lg:max-w-7xl lg:px-3">
-        <div class="border-b border-gray-200 pb-10">
+      <main class="mx-auto max-w-2xl px-4 py-5 lg:max-w-7xl lg:px-3 hidden lg:block">
+        <div class="border-b border-gray-200 pb-10 ">
           <h1 class="text-4xl font-bold tracking-tight text-gray-900">فیلترها</h1>
           <!-- <p class="mt-4 text-base text-gray-500">Checkout out the latest release of Basic Tees, new and improved with four openings!</p> -->
         </div>

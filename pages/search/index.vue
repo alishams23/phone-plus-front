@@ -17,7 +17,7 @@
             class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
         </div>
-        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-[1rem] lg:pb-[12rem]">
+        <div class="mx-5 lg:mx-auto mb-14  max-w-2xl pb-32 pt-28 sm:py-48 lg:pt-[1rem] lg:pb-[12rem]">
           <div class="hidden sm:mb-8 sm:flex sm:justify-center">
           </div>
           <form>
@@ -39,13 +39,9 @@
               </div>
             </div>
           </form>
-
         </div>
-
-
       </div>
-      <div class="mt-[-30px]">
-
+      <div class="mt-[2px] lg:mt-[-30px]">
         <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 695.06 35.8">
 
@@ -55,40 +51,40 @@
             </g>
           </g>
         </svg>
-
-
       </div>
-      <div @click="selected_tab == 0 ? open_filter_product = true :''">
-        باز
-      </div>
+      
     </Popover>
     <div class="mt-[-270px] bg-white">
-
-
     </div>
 
 
 
-    <main class="-mt-24 pb-8">
+    <main class="-mt-20 lg:-mt-24 pb-8">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 
         <!-- Main 3 column grid -->
-        <div class="grid grid-cols-1  items-start justify-center gap-4 lg:grid-cols-3 lg:gap-8">
+        <div class="grid grid-cols-1 items-start justify-center gap-4 lg:grid-cols-3 lg:gap-8">
           <!-- Left column -->
           <div class="grid grid-cols-1 gap-4 " :class="selected_tab == 3 ? 'lg:col-span-3' : 'lg:col-span-2'">
             <div>
-              <div class="hidden sm:block">
-                <nav class="cursor-pointer backdrop-blur-sm isolate flex divide-x divide-gray-200 rounded-lg shadow"
+              <div class="">
+                <nav class="cursor-pointer backdrop-blur-sm isolate flex flex-col items-end rounded-lg shadow"
                   aria-label="Tabs">
-                  <a v-for="(tab, tabIdx) in tabs" :key="tab.name" @click="selected_tab = tab.id"
-                    :class="[tab.id == selected_tab ? 'text-gray-900 bg-gray-100' : 'bg-white text-gray-500 hover:text-gray-700', tabIdx === 0 ? 'rounded-l-lg' : '', tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '', 'group relative min-w-0 flex-1 overflow-hidden  py-4 px-4 text-center text-sm font-medium hover:bg-gray-50 focus:z-10']"
-                    :aria-current="tab.current ? 'page' : undefined">
-                    <span>{{ tab.name }}</span>
-                    <span aria-hidden="true"
-                      :class="[tab.current ? 'bg-indigo-800' : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']" />
-                  </a>
+                  <div class="flex items-center w-full">
+                    <a v-for="(tab, tabIdx) in tabs" :key="tab.name" @click="selected_tab = tab.id"
+                      :class="[tab.id == selected_tab ? 'text-gray-900 bg-gray-100' : 'bg-white text-gray-500 hover:text-gray-700', tabIdx === 0 ? 'rounded-l-lg' : '', tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '', 'group relative min-w-0 flex-1 overflow-hidden  py-4 px-5 text-center text-xs lg:text-sm h-16 flex items-center justify-center font-medium hover:bg-gray-50 focus:z-10']"
+                      :aria-current="tab.current ? 'page' : undefined">
+                      <span>{{ tab.name }}</span>
+                      <span aria-hidden="true"
+                        :class="[tab.current ? 'bg-indigo-800' : 'bg-transparent', 'absolute inset-x-0 bottom-0 h-0.5']" />
+                    </a>
+                  </div>
+                  <div :class="selected_tab==3? 'hidden':''" class="absolute mt-24 lg:hidden my-3 me-5 p-2 shadow-lg bg-white rounded-full">
+                    <AdjustmentsHorizontalIcon @click="selected_tab == 0 ? open_filter_product = true :selected_tab == 1 ? open_filter_digitalProduct = true :selected_tab == 2 ? open_filter_blog = true :''" class="w-5 h-5 text-gray-900" />
+                  </div>
                 </nav>
               </div>
+              
             </div>
             <section aria-labelledby="section-1-title">
               <h2 class="sr-only" id="section-1-title">Section title</h2>
@@ -264,11 +260,11 @@
                       :page="1" />
                   </div>
                   <div v-show="selected_tab == 1">
-                    <SearchFilterDigitalProduct :text="text"
+                    <SearchFilterDigitalProduct :open="open_filter_digitalProduct" @close="() => {open_filter_digitalProduct = false}" :text="text"
                       @get-data-product="(data) => { this.digitalProducts = data.results }" :page="1" />
                   </div>
                   <div v-show="selected_tab == 2">
-                    <SearchFilterBlog :text="text" @get-data-blog="(data) => { this.blogs = data.results }" :page="1" />
+                    <SearchFilterBlog :open="open_filter_blog" @close="() => {open_filter_blog = false}" :text="text" @get-data-blog="(data) => { this.blogs = data.results }" :page="1" />
                   </div>
                 </div>
               </div>
@@ -309,7 +305,7 @@ import SearchFilterProduct from "@/components/section/filters/SearchFilterProduc
 import SearchFilterDigitalProduct from "@/components/section/filters/SearchFilterDigitalProduct.vue"
 import SearchFilterBlog from "@/components/section/filters/SearchFilterBlog.vue"
 import Blog from '~/components/shared/Blog.vue'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import { ChevronDownIcon, AdjustmentsHorizontalIcon } from '@heroicons/vue/20/solid'
 
 export default {
   components: {
@@ -335,6 +331,7 @@ export default {
     BellIcon,
     XMarkIcon,
     MagnifyingGlassIcon,
+    AdjustmentsHorizontalIcon
   },
   data: () => ({
     text: '',
@@ -344,6 +341,8 @@ export default {
     blogs: [],
     data: [],
     open_filter_product:false , 
+    open_filter_digitalProduct:false , 
+    open_filter_blog:false , 
     tabs: [
       { name: 'محصولات', href: '#', id: 0 },
       { name: 'محصولات دیجیتال', href: '#', id: 1 },
