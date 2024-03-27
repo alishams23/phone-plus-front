@@ -25,6 +25,7 @@
         >
           <div v-for="(blog, index) in blogs" :key="blog.id">
             <Blog
+              class="lg:px-7"
               :blog="blog"
               data-aos="fade-up"
               :data-aos-delay="index * 200"
