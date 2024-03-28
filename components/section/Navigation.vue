@@ -105,7 +105,7 @@
                 <MenuItem v-slot="{ active }">
                 <div v-for="button in buttons" :key="button.name"
                   :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">
-                  <div v-if="button.func" @click="button.func">{{ button.name }}</div>
+                  <div v-if="button.func != null" @click="button.func">{{ button.name }}</div>
                   <nuxt-link tag="div" v-if="button.href" :to="button.href">
                     {{ button.name }}
                   </nuxt-link>
@@ -123,8 +123,8 @@
         <div class="flex  my-4">
 
           <div v-for="button in buttons" :key="button.name">
-            <button v-if="button.func" @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
-              class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</button>
+            <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
+              class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }} </button>
             <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
               class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</nuxt-link>
 

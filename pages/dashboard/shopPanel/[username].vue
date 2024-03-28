@@ -22,7 +22,7 @@
       </div>
 
     </div>
-    <div class="mx-auto max-w-2xl  sm:py-48 lg:pt-[1rem] lg:pb-[1rem]">
+    <div class="mx-auto max-w-2xl  py-10 md:pt-[1rem] md:pb-[1rem]">
       <div class="hidden sm:mb-8 sm:flex sm:justify-center">
       </div>
     </div>
@@ -170,6 +170,7 @@ export default {
     DigitalProductCarousel: DigitalProductCarousel,
     ProductCarousel: ProductCarousel,
     BlogCarousel: BlogCarousel,
+
     order: [
         { id_object: 1, title: "محصولات فیزیکی", type: 'product' },
         { id_object: 2, title: "محصولات دیجیتال", type: 'digital' },
@@ -184,6 +185,11 @@ export default {
    
   
   }),
+  computed: {
+    isLogin() {
+      return useUserStore().userToken != null;
+    },
+  },
   methods: {
 
     getData() {
@@ -192,7 +198,8 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data',
           Accept: "application/json",
-          Authorization: `Token ${useUserStore().userToken}`
+          Authorization:
+              this.isLogin == true ? `Token ${useUserStore().userToken}` : "",
         },
       }).then((response) => {
         console.log('getData', response.data);
@@ -201,14 +208,14 @@ export default {
         this.loading = false
 
       })
-    },
+    }
   },
   mounted() {
     this.getData()
     NavigationStore().setButtons([{
         'name':'محبوب ترین محصولات',
         'func':null,
-        'href':'/search/?sort_product=-rate',
+        'href':`/`,
       }])
   
   },
