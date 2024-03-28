@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null" data-aos="flip-left">
+  <div v-else v-if="product != null" data-aos="zoom-out-right">
 
     <div class="min-h-full">
 

@@ -3,7 +3,7 @@
 
   <Navbar :buttons="buttons" />
 
-  <slot />  
+  <slot  />  
 
   <Footer />
 

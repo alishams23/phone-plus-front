@@ -103,7 +103,7 @@
                 </div>
                 </MenuItem>
 
-                <MenuItem v-slot="{ active }" v-if="buttons.length > 0" v-for="button in buttons" >
+                <MenuItem v-slot="{ active }" v-if="buttons.length > 0" v-for="button in buttons"  >
                 <div 
                   :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">
                   <div v-if="button.func != null" @click="button.func">{{ button.name }}</div>
@@ -123,12 +123,17 @@
 
         <div class="lg:flex hidden lg:block my-2">
 
-          <div v-for="button in buttons" :key="button.name">
-            <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
-              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }} </button>
-            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : ''"
-              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
-
+          <div  v-for="button in buttons" :key="button.name" >
+           
+           
+              <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
+                class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }} </button>
+          
+            
+             <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : ''"
+               class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
+            
+          
           </div>
 
         </div>
@@ -291,5 +296,19 @@ input {
 .show-enter,
 .show-leave-to {
   opacity: 1
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>

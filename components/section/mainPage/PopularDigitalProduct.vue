@@ -25,7 +25,7 @@
             <div class="text-gray-200 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
               محصولات دیجیتال محبوب
 
-              <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-gray-300 to-white   flex justify-center  items-center rounded-xl">
+              <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-gray-400 to-white   flex justify-center  items-center rounded-xl">
         <CloudArrowDownIcon class="h-5 text-indigo-600"/>
       </div>
             </div>
