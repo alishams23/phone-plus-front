@@ -9,7 +9,7 @@
         </a>
       </div>
 
-      <div class="font-bold text-xl text-right px-10 pt-10 flex items-center justify-end">مقاله ها
+      <div class="font-bold text-md lg:text-xl text-right px-10 pt-10 flex items-center justify-end">مقاله ها
 
         <div
                     class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
@@ -34,6 +34,7 @@
               class="lg:px-7"
               :blog="blog"
               data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom"
               :data-aos-delay="index * 200"
             />
           </div>

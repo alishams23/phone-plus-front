@@ -22,7 +22,7 @@
       <div class="grid rtl mt-12 lg:mt-0 grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
         <section aria-labelledby="section-1-title">
           <h2 class="sr-only" id="section-1-title">Section title</h2>
-          <div class="overflow-hidden rounded-lg bg-gray-100 shadow">
+          <div class="overflow-hidden rounded-lg bg-white shadow">
             <div class="p-6">
               <div class="px-4 sm:px-0">
                 <h3 class="text-base font-semibold leading-7 text-gray-900">اطلاعات شخصی</h3>

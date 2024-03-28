@@ -11,12 +11,12 @@
       </div> -->
   </div>
   <div v-else>
-    <div v-if="data != null">
+    <div v-if="data != null" data-aos="fade-up" data-aos-duration="1000">
       <div class="flex pt-20 pb-10 justify-between items-center">
         <div class="rtl px-3">
 
         </div>
-        <div class="text-black font-bold text-xl text-right px-4 flex items-center justify-end">
+        <div class="text-black font-bold text-md lg:text-xl text-right px-4 flex items-center justify-end">
           دسته بند‌ی‌ها
           <div
             class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">

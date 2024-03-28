@@ -8,9 +8,9 @@
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
-   
       <transition name="fade">
-        <div v-if="showButton" :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500" data-aos-delay="500"
+        <div v-if="showButton" :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500"
+          data-aos-delay="500"
           class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center shadow-lg  text-indigo-800 md:flex">
           <form class="shadow-lg rounded-full h-full px-4">
             <div class="relative  ">
@@ -28,9 +28,7 @@
           </form>
         </div>
       </transition>
-
       <div class=" grow bg-glass-3 ml-0 md:ml-3  px-8 py-2 flex flex-row items-center justify-between rounded-[23px]  ">
-
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? 'bg-white' : 'bg-indigo-200'"
@@ -42,7 +40,6 @@
             :class="currentRouteCheck('userPanel') ? 'bg-white' : 'bg-indigo-200'"
             class="p-2.5   transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 text-indigo-600" />
-
           </button>
           <button @click="isLogin ? $router.push('/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
@@ -50,7 +47,6 @@
             class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 text-indigo-600" />
           </button>
-
         </div>
         <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
             :class="currentRouteCheck('x')?'bg-white':'bg-indigo-200' "
@@ -61,7 +57,6 @@
           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-indigo-800 rounded-lg shadow-sm opacity-0 tooltip ">
           Video settings
           <div class="tooltip-arrow" data-popper-arrow>
-
           </div>
         </div>
         <div class="w-full flex justify-end ">
@@ -87,14 +82,12 @@
                 <span class="sr-only">Show options</span>
               </MenuButton>
             </div>
-
             <transition enter-active-class="transition ease-out duration-500"
               enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
               leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100"
               leave-to-class="transform opacity-0 scale-95">
               <MenuItems
                 class="absolute right-0 z-10 bottom-full mb-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-
                 <MenuItem v-slot="{ active }">
                 <div @click="isLogin ? open_support = true : changeStateLogin(true)"
                   :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex justify-end items-center px-6 py-2 text-sm text-right']">
@@ -102,9 +95,8 @@
                   <!-- <ChatBubbleLeftRightIcon class="w-5 mx-2 text-indigo-600" /> -->
                 </div>
                 </MenuItem>
-
-                <MenuItem v-slot="{ active }" v-if="buttons.length > 0" v-for="button in buttons"  >
-                <div 
+                <MenuItem v-slot="{ active }" v-if="buttons.length > 0" v-for="button in buttons">
+                <div
                   :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">
                   <div v-if="button.func != null" @click="button.func">{{ button.name }}</div>
                   <nuxt-link tag="div" v-if="button.href" :to="button.href">
@@ -112,35 +104,21 @@
                   </nuxt-link>
                 </div>
                 </MenuItem>
-
-
               </MenuItems>
             </transition>
           </Menu>
-
         </div>
-
-
         <div class="lg:flex hidden lg:block my-2">
-
-          <div  v-for="button in buttons" :key="button.name" >
-           
-           
-              <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
-                class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }} </button>
-          
-            
-             <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : ''"
-               class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
-            
-          
+          <div v-for="button in buttons" :key="button.name">
+            <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
+              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{
+        button.name }} </button>
+            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : ''"
+              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{
+        button.name }}</nuxt-link>
           </div>
-
         </div>
-
       </div>
-
-
     </div>
   </div>
 
@@ -255,9 +233,9 @@ export default {
     checkScroll() {
       // Check if the scroll position is greater than 100px
       this.showButton = true
-      if (this.currentRouteCheck('index')){
+      if (this.currentRouteCheck('index')) {
         this.showButton = window.scrollY > 400;
-      }else if(this.currentRouteCheck('search')){
+      } else if (this.currentRouteCheck('search')) {
         this.showButton = false
       }
     },

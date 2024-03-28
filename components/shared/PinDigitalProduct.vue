@@ -1,5 +1,5 @@
 <template>
-  <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gradient-to-b from-gray-100 to-white shadow-3 isolate my-20    rounded-2xl">
+  <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gradient-to-b from-gray-100 to-white shadow-1 isolate my-20  mx-2  rounded-2xl">
     <nuxt-link :to="'/digitalProduct/'+ data.id">
       <div class="flex justify-center text-center">
         <div>

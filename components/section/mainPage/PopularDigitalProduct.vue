@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-     <div data-aos="fade-right" data-aos-duration="1000">
+     <div data-aos="fade-up" data-aos-duration="1000">
          <Carousel   :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="">
            <Slide  v-for="digital_product ,index in digital_products" :key="digital_product.id">
              <DigitalProduct class="" :data="digital_product" />

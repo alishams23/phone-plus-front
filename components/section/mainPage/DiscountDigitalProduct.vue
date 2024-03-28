@@ -27,10 +27,10 @@
       </div>
       
      </div>
-  <div data-aos="fade-left" data-aos-duration="1000">
+  <div data-aos="fade-down" data-aos-duration="1000">
         <Carousel  :breakpoints="breakpoints" :wrapAround="true" :transition="500">
-          <Slide  v-for="digital_product,index in digital_products" :key="digital_product.id">
-            <PinDigitalProduct :data="digital_product" />
+          <Slide  v-for="digital_product,index in digital_products"  :key="digital_product.id">
+            <PinDigitalProduct  :data="digital_product" />
           </Slide>
       
           <template #addons>
@@ -72,20 +72,20 @@ export default {
           snapAlign: 'center',
         },
         700: {
-          itemsToShow: 2.5,
+          itemsToShow: 1.5,
           snapAlign: 'center',
         },
         1150: {
-          itemsToShow: 4.5,
+          itemsToShow: 3.5,
           snapAlign: 'center',
         },
         // 1024 and up
         1340: {
-          itemsToShow: 5.5,
+          itemsToShow: 4.5,
           snapAlign: 'center',
         },
         1490: {
-          itemsToShow: 6,
+          itemsToShow: 5,
           snapAlign: 'center',
         },
       },

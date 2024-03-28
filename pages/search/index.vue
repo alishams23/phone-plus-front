@@ -97,7 +97,7 @@
                 <div class="p-6">
                   <!-- Your content -->
 
-                  <div v-if="selected_tab == 0" data-aos="fade-down">
+                  <div v-if="selected_tab == 0" class="pt-8 md:pt-0" data-aos="fade-down">
                     <div v-if="products.length > 0 && loading_product == false" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
                       <div v-for="item in products" :key="item" class="group my-2  relative">
                         <Product :data="item" width=" " class=" text-center " />
@@ -178,7 +178,7 @@
                     </div>
                   </div>
 
-                  <div v-if="selected_tab == 2" data-aos="fade-down">
+                  <div v-if="selected_tab == 2" class="pt-9 md:pt-0" data-aos="fade-down">
                     <div v-if="blogs.length > 0 && loading_blog == false">
                       <div class="mt-6  ">
                         <div v-for="item in blogs" :key="item" class="group my-6  ">
@@ -277,7 +277,7 @@
           <div class="grid grid-cols-1 gap-4" v-show="selected_tab != 3">
             <section aria-labelledby="section-2-title">
               <h2 class="sr-only" id="section-2-title">Section title</h2>
-              <div class="overflow-hidden rounded-lg bg-white shadow rtl">
+              <div class="overflow-hidden rounded-lg bg-white md:shadow rtl">
                 <div class="p-6">
                   <!-- Your content -->
 

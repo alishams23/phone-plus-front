@@ -17,7 +17,7 @@
                 <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
               </a>
             </div>
-            <div class="text-gray-100 font-bold text-xl text-right px-4 pt-4 flex items-center justify-end">
+            <div class="text-gray-100 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
               محبوب ترین محصولات
 
               <div
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div data-aos="fade-right" data-aos-duration="1000">
+        <div data-aos="fade-up" data-aos-duration="1000">
           <Carousel :breakpoints="breakpoints" :wrapAround="true" :transition="500" class="pt-0">
             <Slide v-for="product in best_products" :key="product">
               <Product :data="product" class="my-10" />
