@@ -2,17 +2,11 @@
     <div v-if="blog != null" class="w-full h-full ">
         <div class="mt-[-40px]">
             <div class="  relative  ">
-
-
                 <div class="">
                     <div class="bg rounded-b-[50px] "></div>
                     <div class="bg bg2 rounded-b-[50px]"></div>
                     <div class="bg bg3 rounded-b-[50px]"></div>
                 </div>
-
-
-
-
                 <img :src="blog.imageBlog.photo" alt=""
                     class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
                 <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
