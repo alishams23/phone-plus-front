@@ -212,11 +212,13 @@ export default {
   },
   mounted() {
     this.getData()
-    NavigationStore().setButtons([{
+    NavigationStore().setButtons([
+      {
         'name':'محبوب ترین محصولات',
         'func':null,
         'href':`/`,
-      }])
+      },
+      ])
   
   },
   

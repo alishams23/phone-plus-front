@@ -120,13 +120,13 @@
         </div>
 
 
-        <div class="flex  my-4">
+        <div class="flex hidden lg:block my-4">
 
           <div v-for="button in buttons" :key="button.name">
             <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
-              class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }} </button>
+              class="-m-2 text-white mx-2 py-1 rounded-full block px-6 text-sm font-medium text-[9px] whitespace-nowrap">{{ button.name }} </button>
             <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
-              class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</nuxt-link>
+              class="-m-2 text-white mx-2 py-1 rounded-full block px-6 text-sm font-medium text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
 
           </div>
 
