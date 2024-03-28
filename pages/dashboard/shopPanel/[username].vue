@@ -87,8 +87,17 @@
     </main>
   </div>
 
-  <div v-if="loading == true">
-
+  <div >
+    <div class="pb-16 py-[200px] pb-[800px]  flex items-center justify-center" v-if="loading == true">
+        <div role="status">
+            <span class="relative flex h-8 w-8">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-8 w-8 bg-indigo-500"></span>
+            </span>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -168,7 +177,7 @@ export default {
     DigitalProductCarousel: DigitalProductCarousel,
     ProductCarousel: ProductCarousel,
     BlogCarousel: BlogCarousel,
-
+    loading : true,
     order: [
         { id_object: 1, title: "محصولات فیزیکی", type: 'product' },
         { id_object: 2, title: "محصولات دیجیتال", type: 'digital' },

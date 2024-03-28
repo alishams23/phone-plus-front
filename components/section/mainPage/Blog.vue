@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading"></div>
   <div v-else>
-    <div class="flex pt-2 justify-between items-center">
+    <div class="flex pt-2  justify-between items-center">
       <div class="rtl mx-10">
         <a href="#" class="rtl">
           بیشتر
@@ -17,7 +17,7 @@
                 </div>
       </div>
     </div>
-    <div class="bg-white py-4 sm:py-3">
+    <div class="bg-white py-4 sm:py-3 mb-20">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
           <h2

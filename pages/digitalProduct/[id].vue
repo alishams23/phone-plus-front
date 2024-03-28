@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null">
+  <div v-else v-if="product != null" data-aos="flip-left">
 
     <div class="min-h-full">
 

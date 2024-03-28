@@ -97,7 +97,7 @@
                 <div class="p-6">
                   <!-- Your content -->
 
-                  <div v-if="selected_tab == 0">
+                  <div v-if="selected_tab == 0" data-aos="fade-down">
                     <div v-if="products.length > 0 && loading_product == false" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
                       <div v-for="item in products" :key="item" class="group my-2  relative">
                         <Product :data="item" width=" " class=" text-center " />
@@ -156,7 +156,7 @@
                     </div>
                   </div> -->
 
-                  <div v-if="selected_tab == 1">
+                  <div v-if="selected_tab == 1" data-aos="fade-down">
                     <div v-if="digitalProducts.length > 0 && loading_digital_product == false">
                       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
                         <div v-for="item in digitalProducts" :key="item" class="group my-2  relative">
@@ -178,7 +178,7 @@
                     </div>
                   </div>
 
-                  <div v-if="selected_tab == 2">
+                  <div v-if="selected_tab == 2" data-aos="fade-down">
                     <div v-if="blogs.length > 0 && loading_blog == false">
                       <div class="mt-6  ">
                         <div v-for="item in blogs" :key="item" class="group my-6  ">
@@ -199,7 +199,7 @@
                       </div>
                     </div>
                   </div>
-                  <div v-if="selected_tab == 3">
+                  <div v-if="selected_tab == 3" data-aos="fade-down">
                     <div class="rtl font-bold text-2xl px-10 ">محصولات</div>
                     <div v-if="products.length > 0">
                       <div class="pb-7 mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative isolate ">
