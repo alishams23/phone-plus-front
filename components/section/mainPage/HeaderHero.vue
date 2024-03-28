@@ -25,7 +25,7 @@
               <input data-aos="flip-up" type="search" id="search-dropdown"
                 v-on:keyup.enter="$router.push('/search/?search=' + searchQuery);" v-model="searchQuery"
                 class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
-                placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
+                placeholder="جستجو بین محصولات ..." required>
 
               <div class="absolute  mt-2 w-full" v-show="searchQuery != null && searchQuery != ''"
                 style="z-index:9999999999999999">

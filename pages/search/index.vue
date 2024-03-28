@@ -26,7 +26,7 @@
               <div class="relative w-full">
                 <input type="search" id="search-dropdown" v-model="text"
                   class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
-                  placeholder="جستجو بین محصولات  هزاران فروشگاه ..." required>
+                  placeholder="جستجو بین محصولات ..." required>
 
                 <button type="submit"
                   class="absolute  top-0 end-0 p-4 text-sm font-medium h-full text-white bg-blue-700  rounded-e-[20px]">
