@@ -9,7 +9,7 @@
     <div v-else>
         <div class="flex py-5 justify-between items-center">
             <div class="rtl lg:mx-10 ">
-                <a @click="$router.push('/search/?tab=2&shop_blog=' + this.idShop );" class=" rtl  ">
+                <a @click="$router.push('/search/?tab=2&shop_blog=' + this.idShop );" class=" rtl cursor-pointer ">
                     بیشتر
                     <span aria-hidden="true" class="px-3 pt-10"> &larr;</span>
                 </a>

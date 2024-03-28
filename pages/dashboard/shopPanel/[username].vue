@@ -203,7 +203,7 @@ export default {
 
       })
     },
-    changeStateLogin() {
+    openLogin() {
       NavigationStore().changeLoginState(true)
     },
   },
@@ -211,7 +211,7 @@ export default {
     await this.getData()
     NavigationStore().setButtons([{
         'name':'چت کردن',
-        'func':this.isLogin == true ?null :this.changeStateLogin ,
+        'func':this.isLogin == true ?null :this.openLogin ,
         'href': this.isLogin == true ? `/chat/${this.results.username}/${this.results.username}_${useUserStore().username}` : '',
       }])
   
