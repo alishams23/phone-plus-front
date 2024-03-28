@@ -126,8 +126,6 @@ import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 import { apiStore } from '~/store/api';
 import { useUserStore } from '~/store/user';
 import { NavigationStore } from '~/store/navigation'; 
-
-
 export default {
   components: {
     Product,
@@ -179,11 +177,7 @@ export default {
     selectedTab: 'products',
     results: null,
     data: [
-    
     ],
-    
-   
-  
   }),
   computed: {
     isLogin() {
@@ -192,9 +186,9 @@ export default {
   },
   methods: {
 
-    getData() {
+    async getData() {
       this.loading = true
-      axios.get(`${apiStore().address}/api/account/shop-profile-info/${this.$route.params.username}/`, {
+      await axios.get(`${apiStore().address}/api/account/shop-profile-info/${this.$route.params.username}/`, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Accept: "application/json",
@@ -208,14 +202,17 @@ export default {
         this.loading = false
 
       })
-    }
+    },
+    changeStateLogin() {
+      NavigationStore().changeLoginState(true)
+    },
   },
-  mounted() {
-    this.getData()
+  async mounted() {
+    await this.getData()
     NavigationStore().setButtons([{
-        'name':'محبوب ترین محصولات',
-        'func':null,
-        'href':`/`,
+        'name':'چت کردن',
+        'func':this.isLogin == true ?null :this.changeStateLogin ,
+        'href': this.isLogin == true ? `/chat/${this.results.username}/${this.results.username}_${useUserStore().username}` : '',
       }])
   
   },
