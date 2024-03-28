@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading">
-    <div class="p-16 flex items-center justify-center">
+    <div class="p-16 py-[400px] flex items-center justify-center">
       <div role="status">
         <svg aria-hidden="false" class="w-8 h-8 text-gray-100 animate-spin fill-indigo-600" viewBox="0 0 100 101"
           fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +39,7 @@
 
         <div class="flex flex-row rtl pt-16 container items-center pb-2">
           <div class=" me-5">
-            <img :src="product.shop.image" class="h-24 w-24 rounded-full" />
+            <img :src="product.shop.image" class="h-24 w-24 object-cover rounded-full" />
           </div>
           <nuxt-link :to="'/dashboard/shopPanel/' + product.shop.username" class=" ">
             <div class="text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]">

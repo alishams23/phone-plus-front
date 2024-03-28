@@ -114,7 +114,7 @@
           <nuxt-link to="/" tag="div" class="relative" v-if="user">
             <div class="-m-1.5 flex items-center p-1.5">
        
-              <img class="h-8 w-8 rounded-full bg-gray-100" :src="address + user.contact.shop.image" alt="" />
+              <img class="h-8 w-8 rounded-full bg-gray-100 object-cover" :src="address + user.contact.shop.image" alt="" />
               <span class="hidden lg:flex lg:items-center">
                 <span v-if=" user.contact.shop" class="ml-4 text-sm font-semibold leading-6 text-gray-900" 
                 aria-hidden="true">{{ user.contact.shop.name }}</span>

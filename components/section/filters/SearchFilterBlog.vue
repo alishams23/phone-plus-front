@@ -30,7 +30,7 @@
 
                 <div class="space-y-10 py-10 divide-y px-10 divide-gray-200">
                   <div class="flex flex-wrap justify-end ">
-                    <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value"
+                    <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value;getData()"
                       :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
                       {{ item.label }}
                     </button>
@@ -54,7 +54,7 @@
                     <div class="flex flex-wrap mt-3 align-center">
                       <div v-if="categories != null">
                         <button v-for="item in categories" :key="item"
-                          @click=" selected_categories.includes(item.id) ? selected_categories.splice(selected_categories.indexOf(item.id), 1) : selected_categories.push(item.id)"
+                          @click=" selected_categories.includes(item.id) ? selected_categories.splice(selected_categories.indexOf(item.id), 1) : selected_categories.push(item.id);getData()"
                           :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
                           {{ item.title }}
                         </button>
@@ -116,7 +116,7 @@
             <div class="hidden lg:block">
               <div class="space-y-10 py-10 divide-y divide-gray-200">
                 <div class="flex flex-wrap align-center">
-                  <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value"
+                  <button v-for="item in product_sort" :key="item" @click="selected_sort = item.value;getData()"
                     :class="[selected_sort == item.value ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
                     {{ item.label }}
                   </button>
@@ -140,7 +140,7 @@
                   <div class="flex flex-wrap mt-3 align-center">
                     <div v-if="categories != null">
                       <button v-for="item in categories" :key="item"
-                        @click=" selected_categories.includes(item.id) ? selected_categories.splice(selected_categories.indexOf(item.id), 1) : selected_categories.push(item.id)"
+                        @click=" selected_categories.includes(item.id) ? selected_categories.splice(selected_categories.indexOf(item.id), 1) : selected_categories.push(item.id);getData()"
                         :class="[selected_categories.includes(item.id) ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
                         {{ item.title }}
                       </button>
@@ -214,7 +214,7 @@ import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import axios from 'axios'
 export default {
   props: ['text', 'page', 'open'],
-  emits:["close","get-data-product"],
+  emits:["close","get-data-product","loading"],
   components: {
     Slider,
 
@@ -254,6 +254,7 @@ export default {
   methods: {
     getData() {
       this.loading = true
+      this.$emit("loading",true)
       axios.get(`${apiStore().address}/api/blog/search-blog-for-buyers/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category=') : ''}&ordering=${this.selected_sort}&shop=${this.selected_shop ? this.selected_shop : ''} `, {
         headers: {
           "Content-type": "application/json",
@@ -262,6 +263,8 @@ export default {
       }).then((response) => {
         this.data = response.data
         this.loading = false
+      this.$emit("loading",false)
+
         this.$emit('get-data-blog', this.data);
 
       })
@@ -297,28 +300,20 @@ export default {
     if (this.$route.query.shop_blog != null) this.selected_shop = this.$route.query.shop_blog
 
     this.getCategories()
+    this.getData()
   },
   watch: {
     text: {
       // the callback will be called immediately after the start of the observation
       immediate: true,
       handler(val, oldVal) {
-        this.getData()
+        if (oldVal != undefined) {
+          this.getData()
+        }
       }
     },
-    'selected_categories': {
-      handler: function (val, oldVal) {
-        this.getData()
-      },
-      deep: true
-    },
 
-    'selected_sort': {
-      handler: function (val, oldVal) {
-        this.getData()
-      },
-      deep: true
-    },
+   
     'open': {
       handler: function (val, oldVal) {
         val == false ? this.$emit('close') : ''

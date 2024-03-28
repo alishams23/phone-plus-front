@@ -222,7 +222,7 @@ import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import axios from 'axios'
 export default {
   props: ['text', 'page','open'],
-  emits:["close","get-data-product"],
+  emits:["close","get-data-product","loading"],
   components: {
     Slider,
 
@@ -293,6 +293,8 @@ export default {
     },
     async getData() {
       this.loading = true
+      this.$emit("loading",true)
+
       await axios.get(`${apiStore().address}/api/product/products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category=') : ''}&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop ? this.selected_shop : ''}&is_discount=${this.is_discount} `, {
         headers: {
           "Content-type": "application/json",
@@ -301,6 +303,8 @@ export default {
       }).then((response) => {
         this.data = response.data
         this.loading = false
+      this.$emit("loading",false)
+
         this.$emit('get-data-product', this.data);
 
       })
