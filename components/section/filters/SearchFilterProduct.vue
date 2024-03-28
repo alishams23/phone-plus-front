@@ -336,6 +336,7 @@ export default {
     if (this.$route.query.category_product != null) this.selected_categories.push(parseInt(this.$route.query.category_product))
     if (this.$route.query.sort_product != null) this.selected_sort = this.$route.query.sort_product
     if (this.$route.query.is_discount != null) this.is_discount = this.$route.query.is_discount
+    if (this.$route.query.shop_product != null) this.selected_shop = this.$route.query.shop_product
 
     await this.getData()
     this.getCategories()

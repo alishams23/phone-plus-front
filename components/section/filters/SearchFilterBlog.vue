@@ -80,7 +80,7 @@
                     <div class="flex flex-wrap mt-3 align-center">
                       <div v-if="shops != null">
                         <button v-for="item in shops" :key="item.id"
-                          @click=" selected_shop == item.id ? selected_shop = null : selected_shop = item.id"
+                          @click=" selected_shop == item.id ? selected_shop = null : selected_shop = item.id ; getData()"
                           :class="[selected_shop == item.id ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
                           {{ item.name }}
                         </button>
@@ -166,7 +166,7 @@
                   <div class="flex flex-wrap mt-3 align-center">
                     <div v-if="shops != null">
                       <button v-for="item in shops" :key="item.id"
-                        @click=" selected_shop == item.id ? selected_shop = null : selected_shop = item.id"
+                        @click=" selected_shop == item.id ? selected_shop = null : selected_shop = item.id;getData()"
                         :class="[selected_shop == item.id ? 'bg-indigo-600 text-white' : 'bg-gray-200', 'px-4 text-xs py-2 rounded-xl m-1 border']">
                         {{ item.name }}
                       </button>
@@ -294,6 +294,8 @@ export default {
     }
   },
   mounted() {
+    if (this.$route.query.shop_blog != null) this.selected_shop = this.$route.query.shop_blog
+
     this.getCategories()
   },
   watch: {
@@ -310,12 +312,7 @@ export default {
       },
       deep: true
     },
-    'selected_shop': {
-      handler: function (val, oldVal) {
-        this.getData()
-      },
-      deep: true
-    },
+
     'selected_sort': {
       handler: function (val, oldVal) {
         this.getData()

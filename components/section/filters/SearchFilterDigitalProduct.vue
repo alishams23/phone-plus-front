@@ -338,6 +338,7 @@ export default {
     if (this.$route.query.category_digital_product != null) this.selected_categories.push(parseInt(this.$route.query.category_digital_product))
     if (this.$route.query.sort_digital_product != null) this.selected_sort = this.$route.query.sort_digital_product
     if (this.$route.query.is_discount_digital_product != null) this.is_discount = this.$route.query.is_discount_digital_product
+    if (this.$route.query.shop_digital_product != null) this.selected_shop = this.$route.query.shop_digital_product
     await this.getData()
     await this.getCategories()
   },

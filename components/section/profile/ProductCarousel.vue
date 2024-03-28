@@ -10,7 +10,7 @@
   <div v-else>
     <div class="flex pt-2 justify-between items-center">
       <div class="rtl   lg:mx-10 ">
-        <a href="#" class=" rtl  flex items-center">
+        <a @click="$router.push('/search/?shop_product=' + this.idShop + `${this.idObject == null ? '' : ('&category_product=' + this.idObject)}`);" class=" rtl cursor-pointer flex items-center">
           بیشتر
           <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
         </a>
