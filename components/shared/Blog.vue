@@ -6,7 +6,7 @@
         <div class="font-bold text-xs text-indigo-500 text-md">{{ blog.created_at }}</div>
         <div class="text-gray-900 font-semibold text-md lg:text-lg mt-2 line-clamp-1  rtl">{{ blog.title }}</div>
         <div class="flex justify-end w-full">
-          <div class=" text-gray-900 font-semibold text-md lg:text-lg mt-2 line-clamp-2  rtl relative  isolate  text-ellipsis ">
+          <div class=" text-gray-900 font-semibold text-md lg:text-lg lg:mt-2 rtl ">
             <p class="text-gray-600 test-n w-100  text-[14px] py-2 max-w-[90%] lg:max-w-[90%] font-light text-xs mt-2 " v-html="truncatedBody"></p>
           
           </div>

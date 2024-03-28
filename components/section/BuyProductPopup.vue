@@ -145,7 +145,7 @@
                                                                 </label>
                                                                 <div class="relative">
                                                                     <select v-model="state"
-                                                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                        class="block appearance-none w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                         id="grid-state">
                                                                         <option v-for="province in provinces"
                                                                             :key="province" :value="province">{{
@@ -171,7 +171,7 @@
                                                                     شهر
                                                                 </label>
                                                                 <input required
-                                                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="city">
                                                             </div>
                                                             <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -181,7 +181,7 @@
                                                                     خیابان اصلی
                                                                 </label>
                                                                 <input required
-                                                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="street">
                                                             </div>
                                                             <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -191,7 +191,7 @@
                                                                     خیابان فرعی
                                                                 </label>
                                                                 <input required
-                                                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="alley">
                                                             </div>
 
@@ -202,7 +202,7 @@
                                                                     کدپستی
                                                                 </label>
                                                                 <input required
-                                                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-zip" type="text" v-model="zipCode">
                                                             </div>
                                                         </div>

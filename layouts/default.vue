@@ -11,11 +11,15 @@
    
   </template>
   <script>
-import Navbar from "@/components/section/Navbar.vue"
+import Navbar from "@/components/section/Navigation.vue"
  import Footer from "@/components/section/Footer.vue"
 export default {
- 
-components:{Navbar,Footer}
-
+  components:{
+    Navbar,
+    Footer
+  },
+  data: () => ({
+    
+  }),
 }
 </script>

@@ -116,7 +116,7 @@ export default {
       
       items: [
         { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/', page_name: 'userPanel' },
-        { name: 'سفارشات من', href: '/dashboard/productOrders/', page_name: 'productOrders' },
+        { name: 'محصولات خریداری شده', href: '/dashboard/productOrders/', page_name: 'productOrders' },
         { name: 'فایل های خریداری شده', href: '/dashboard/digitalProductOrders/', page_name: 'digitalProductOrders' },
         { name: 'خروج', href: '/auth/logOut/', page_name: 'logOut' },
       ], 

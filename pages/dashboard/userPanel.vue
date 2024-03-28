@@ -19,10 +19,10 @@
   </div>
   <div v-else>
     <div v-if="user != null">
-      <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
+      <div class="grid rtl mt-12 lg:mt-0 grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
         <section aria-labelledby="section-1-title">
           <h2 class="sr-only" id="section-1-title">Section title</h2>
-          <div class="overflow-hidden rounded-lg bg-white shadow">
+          <div class="overflow-hidden rounded-lg bg-gray-100 shadow">
             <div class="p-6">
               <div class="px-4 sm:px-0">
                 <h3 class="text-base font-semibold leading-7 text-gray-900">اطلاعات شخصی</h3>
@@ -69,7 +69,7 @@
                             </label>
                             <div class="relative">
                               <select v-model="state"
-                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                class="block appearance-none w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-state">
                                 <option v-for="province in provinces" :key="province" :value="province">{{ province }}
                                 </option>
@@ -89,7 +89,7 @@
                               شهر
                             </label>
                             <input
-                              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-city" type="text" v-model="city">
                           </div>
                           <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -98,7 +98,7 @@
                               خیابان اصلی
                             </label>
                             <input
-                              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-city" type="text" v-model="street">
                           </div>
                           <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -107,7 +107,7 @@
                               خیابان فرعی
                             </label>
                             <input
-                              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-city" type="text" v-model="alley">
                           </div>
                 
@@ -117,7 +117,7 @@
                               کدپستی
                             </label>
                             <input
-                              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-zip" type="text" v-model="zipCode">
                           </div>
                         </div>

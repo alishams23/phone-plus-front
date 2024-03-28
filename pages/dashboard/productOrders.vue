@@ -32,16 +32,18 @@
             </div>
         </div>
         <div v-else>
-            <div class="grid grid-cols-1 pb-10">
+            <div class="grid grid-cols-1 px-3 pb-10">
                 <div v-for="data in orders" :key="data.id">
                     <div
-                    class="min-h-[300px] bg-gray-100 border shadow-xl lg:mx-[3rem]  flex flex-wrap my-2 items-center justify-end rounded-2xl">
+                    class="min-h-[300px] mt-12 lg:mt-0 bg-gray-100 border shadow-xl lg:mx-[3rem]  flex flex-wrap my-2 items-center justify-end rounded-2xl">
                         <div class="grid flex items-center justify-start w-full grid-cols-6">
-                            <div class="col-span-2">
+                            <div class="col-span-1 lg:hidden"/>
+                            
+                            <div class="col-span-4 lg:col-span-2">
                                 <img :src="data.product.image[0].photo" alt=""
-                                    class=" w-56 h-56 -ms-10 flex items-center object-cover shadow-lg rounded-3xl" />
+                                    class=" w-56 lg:w-56 h-56 lg:h-56 -mt-10 lg:mt-0 lg:-ms-10 flex items-center object-cover shadow-lg rounded-3xl" />
                             </div>
-                            <div class="col-span-4">
+                            <div class="col-span-6 lg:col-span-4">
                                 <div class="w-full flex justify-end ">
                                     <div class=" w-[95%] pe-4">
                                         <div class="flex flex-wrap pt-7 ">
