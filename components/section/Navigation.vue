@@ -2,8 +2,8 @@
   <div class="flex justify-center ">
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full  px-8  ">
       <div @click="isLogin ? open_support = true : changeStateLogin(true)"
-        class="flex-1/8 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
-        <div class=" block px-1 text-sm font-bold ">
+        class="flex-1/8 px-5  items-center bg-indigo-600 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
+        <div class=" block px-1 text-xs  ">
           پشتیبانی
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
@@ -11,9 +11,9 @@
    
       <transition name="fade">
         <div v-if="showButton" :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500" data-aos-delay="500"
-          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-full  justify-center shadow-lg  text-indigo-800 md:flex">
+          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center shadow-lg  text-indigo-800 md:flex">
           <form class="shadow-lg rounded-full h-full px-4">
-            <div class="relative pt-1 ">
+            <div class="relative  ">
               <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg class="w-4 h-4 text-indigo-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 20 20">
@@ -22,32 +22,32 @@
                 </svg>
               </div>
               <input type="search" v-model="inputValue" id="default-search"
-                class="w-full p-4 pl-10 text-sm text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-indigo-800   border-transparent"
-                placeholder="Search..." required>
+                class="w-full p-4 pl-10 text-sm rtl text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-indigo-800   border-transparent"
+                placeholder="جستجو..." required>
             </div>
           </form>
         </div>
       </transition>
 
-      <div class=" grow bg-glass-3 ml-0 md:ml-3  px-8 py-2 flex flex-row items-center justify-between rounded-full  ">
+      <div class=" grow bg-glass-3 ml-0 md:ml-3  px-8 py-2 flex flex-row items-center justify-between rounded-[23px]  ">
 
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? 'bg-white' : 'bg-indigo-200'"
-            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <HomeIcon class=" w-5 text-indigo-900" />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
           <button @click="isLogin ? $router.push('/dashboard/userPanel/') : changeStateLogin(true)"
             :class="currentRouteCheck('userPanel') ? 'bg-white' : 'bg-indigo-200'"
-            class="p-2.5   transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5   transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 text-indigo-600" />
 
           </button>
           <button @click="isLogin ? $router.push('/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
-            :class="currentRouteCheck('orders') ? 'bg-white' : 'bg-indigo-200'"
-            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            :class="currentRouteCheck('productOrders') ? 'bg-white' : 'bg-indigo-200'"
+            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 text-indigo-600" />
           </button>
 
@@ -124,10 +124,10 @@
         <div class="lg:flex hidden lg:block my-2">
 
           <div v-for="button in buttons" :key="button.name">
-            <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : 'bg-white'"
-              class="-m-2 text-indigo-800  mx-2 py-2 rounded-full block px-6 text-sm font-medium bg-glass  text-[9px] whitespace-nowrap">{{ button.name }} </button>
-            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-white'"
-              class="-m-2 text-indigo-800  mx-2 py-2 rounded-full block px-6 text-sm font-medium bg-glass  text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
+            <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
+              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }} </button>
+            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : ''"
+              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
 
           </div>
 
