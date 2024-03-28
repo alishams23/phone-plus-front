@@ -181,7 +181,7 @@
                   <div v-if="selected_tab == 2" class="pt-9 md:pt-0" data-aos="fade-down">
                     <div v-if="blogs.length > 0 && loading_blog == false">
                       <div class="mt-6  ">
-                        <div v-for="item in blogs" :key="item" class="group my-6  ">
+                        <div v-for="item in blogs" :key="item" class="group my-6 lg:mx-10  ">
                           <Blog :blog="item" width=" " class=" text-center " />
                         </div>
                       </div>
@@ -247,7 +247,7 @@
                     <div class="rtl font-bold text-2xl px-10 mt-20">مقاله‌ها</div>
                     <div v-if="blogs.length > 0">
                       <div class="pb-7 mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 relative isolate ">
-                        <div v-for="item in blogs" :key="item" class="group py-3 relative">
+                        <div v-for="item in blogs" :key="item" class="group py-3 lg:px-10 relative">
                           <Blog :blog="item" width=" " class=" text-center my-2  " />
                         </div>
                       </div>

@@ -14,9 +14,9 @@
         <div class="mt-[-40px]">
             <div class="  relative  ">
                 <div class="">
-                    <div class="bg rounded-b-[50px] "></div>
+                    <!-- <div class="bg rounded-b-[50px] "></div>
                     <div class="bg bg2 rounded-b-[50px]"></div>
-                    <div class="bg bg3 rounded-b-[50px]"></div>
+                    <div class="bg bg3 rounded-b-[50px]"></div> -->
                 </div>
                 <img :src="blog.imageBlog.photo" alt=""
                     class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
@@ -57,16 +57,16 @@
                 <div class="relative isolate overflow-hidden ">
 
                     <div class="grid grid-cols-4 gap-4 bg-white p-4 pb-10">
-                        <div class="col-span-3  ">
-                            <div class="relative isolate shadow-xl rounded-[25px] pb-10 h-[30rem]">
+                        <div class="col-span-4 lg:col-span-3  ">
+                            <div class="relative isolate shadow-xl rounded-[25px] pb-10  h-[10rem] lg:h-[30rem]">
 
                                 <img :src="blog.imageBlog.photo" :alt="blog.imageBlog.title_for_photo"
-                                    class="absolute inset-0 -z-1000  h-[30rem] w-full rounded-[25px] object-cover" />
+                                    class="absolute inset-0 -z-1000  h-[10rem] lg:h-[30rem] w-full rounded-[25px] object-cover" />
                                 <div
-                                    class="absolute inset-0 -z-9999 bg-gradient-to-tr from-gray-700 to-gray-900 opacity-80 rounded-[25px] h-[30rem] w-full" />
+                                    class="absolute inset-0 -z-9999 bg-gradient-to-tr from-gray-700 to-gray-900 opacity-80 rounded-[25px] h-[10rem] lg:h-[30rem] w-full" />
 
-                                <div class="absolute inset-0 -z-1000  h-[30rem] w-full ">
-                                    <h1 class="font-bold rtl px-16 pt-16 text-white text-5xl">
+                                <div class="absolute inset-0 -z-1000   h-[10rem] lg:h-[30rem] w-full ">
+                                    <h1 class="font-bold rtl px-8 lg:px-16 pt-8 lg:pt-16 text-white text-xl lg:text-4xl">
                                         {{ blog.title }}
                                     </h1>
 
@@ -75,7 +75,7 @@
 
                             </div>
                         </div>
-                        <div class="bg-gray-200 shadow-xl rounded-[30px]">
+                        <div class="bg-gray-200 col-span-4 lg:col-span-1 shadow-xl rounded-[30px]">
                             <div class="flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex justify-end items-center pt-10 px-5 ">
@@ -84,7 +84,7 @@
                                         </p>
                                         <img src="/images/6.jpg" class="h-10 w-10 rounded-full bg-gray-200" alt="" />
                                     </div>
-                                    <div class="pe-5 pt-5 text-gray-600 flex justify-end">
+                                    <div class="pe-5 pt-5 text-gray-400 flex justify-end">
                                         <p>:دسته بندی ها</p>
                                     </div>
                                     <div class="flex justify-end px-2">
@@ -97,14 +97,14 @@
                                     </div>
                                 </div>
 
-                                <div class="pb-8 px-5 flex items-center justify-between">
+                                <div class="pb-8 px-5 flex mt-4 items-center justify-between">
                                     <div>
                                         <p class=" text-black  text-sm">
                                             {{ blog.created_at }}
                                         </p>
                                     </div>
                                     <button @click="isLogin == false ? $router.push('/auth/signIn') : like()"
-                                        class="text-sm mx-3 mt-4 flex items-center py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
+                                        class="text-sm mx-3  flex items-center py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
                                         :class="blog.likeAuthor == true ? 'text-white bg-red-600' : ' bg-gray-100  text-gray-500 '">
                                         <div class="pr-2 ">
                                             {{ blog.like_count }}
