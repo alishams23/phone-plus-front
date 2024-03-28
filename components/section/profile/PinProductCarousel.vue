@@ -1,4 +1,14 @@
 <template>
+   <div class="pb-16 py-[200px] pb-[800px]  flex items-center justify-center" v-if="loading == true">
+        <div role="status">
+            <span class="relative flex h-8 w-8">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-8 w-8 bg-indigo-500"></span>
+            </span>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
   <div v-if="data.length != 0" class=" ">
     <div class="text-gray-800   font-bold text-xl text-right pe-6 pt-3 flex items-center justify-end">
       محصولات پین شده
@@ -12,7 +22,7 @@
       <div
           class="mx-auto grid w-2xl grid-cols-1  gap-x-10 lg:gap-y-5 lg:mx-0  lg:max-w-none lg:grid-cols-2"
         >
-      <div v-for="item in data" :key="item">
+      <div data-aos="flip-up" v-for="item in data" :key="item">
         <PinProduct class=" mb-10 lg:mb-20" :data="item" />
       </div>
      
@@ -63,7 +73,7 @@ export default {
   data: () => ({
     selectedTab: 'products',
     data: [],
-    
+    loading:true,
     // carousel settings
    
     // breakpoints are mobile first

@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null">
+  <div v-else v-if="product != null" data-aos="flip-left">
 
     <div class="min-h-full">
 
@@ -122,15 +122,15 @@
 
                       <!-- Product info -->
                       <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 rtl">
-                        <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ product.title }}</h1>
+                        <h1 class="text-2xl font-bold leading-loose  text-gray-900">{{ product.title }}</h1>
 
                         <div class="mt-3">
                           <h2 class="sr-only">Product information</h2>
                           <div v-if="product.discount != 0" class="flex items-center ">
-                            <div v-if="selected_color" class="text-xl line-through text-gray-300  tracking-tight">
+                            <div v-if="selected_color" class="text-xl line-through text-gray-300  tr">
                               {{ product.price + selected_color.price }}
                             </div>
-                            <div v-else class="text-xl line-through text-gray-300  tracking-tight">
+                            <div v-else class="text-xl line-through text-gray-300  tr">
                               {{ product.price }}
                             </div>
                             <div class=" overflow-hidden rounded-lg p-4">
@@ -142,7 +142,7 @@
                             </div>
                           </div>
                           <div v-if="selected_color">
-                            <p class="text-3xl tracking-tight text-gray-900">
+                            <p class="text-3xl  text-gray-900">
                               {{ (product.price + selected_color.price) * ((100 - product.discount) / 100) }} 
                               <span class="text-sm text-gray-600">
                                 تومان
@@ -150,7 +150,7 @@
                             </p>
                           </div>
                           <div v-else>
-                            <p class="text-3xl tracking-tight text-gray-900">
+                            <p class="text-3xl  text-gray-900">
                               {{ (product.price) * ((100 - product.discount) / 100) }} 
                               <span class="text-sm text-gray-600">
                                 تومان
@@ -178,11 +178,7 @@
                           </div>
                         </div>
 
-                        <div class="mt-6">
-                          <h3 class="sr-only">Description</h3>
-
-                          <div class="space-y-6 text-base text-gray-700" v-html="product.description" />
-                        </div>
+                        
 
                         <div class="mt-6">
                           <!-- Colors -->
@@ -264,7 +260,11 @@
                       </div>
                     </div>
 
+                    <div class="mt-6">
+                          <h3 class="sr-only">Description</h3>
 
+                          <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700" v-html="product.description" />
+                        </div>
 
                     <section class="bg-white px-6 py-24 sm:py-32 lg:px-8">
                       <div class=" font-bold text-right text-3xl pb-10">
