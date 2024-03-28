@@ -93,23 +93,25 @@
                 leave-from-class="transform opacity-100 scale-100"
                 leave-to-class="transform opacity-0 scale-95">
                 <MenuItems class="absolute right-0 z-10 bottom-full mb-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <div class="py-1">
+           
                     <MenuItem v-slot="{ active }">
                       <div @click="isLogin ? open_support = true : open = true" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex justify-end items-center px-6 py-2 text-sm text-right']">
                         پشتیبانی
                         <!-- <ChatBubbleLeftRightIcon class="w-5 mx-2 text-indigo-600" /> -->
                       </div>
                     </MenuItem>
-                    <div v-for="button in buttons" :key="button.name">
+               
                       <MenuItem v-slot="{ active }">
-                        <div v-if="button.func" @click="button.func" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">{{button.name}}</div>
-                        <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
-                          class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">
-                          {{ button.name }}
-                        </nuxt-link>
+                        <div  v-for="button in buttons"  :key="button.name" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">
+                          <div v-if="button.func" @click="button.func" >{{button.name}}</div>
+                          <nuxt-link tag="div" v-if="button.href" :to="button.href" 
+                          >
+                            {{ button.name }}
+                          </nuxt-link>
+                        </div>
                       </MenuItem>
-                    </div>
-                  </div>
+                  
+                 
                 </MenuItems>
               </transition>
             </Menu>
@@ -119,10 +121,10 @@
         
         <div class="flex  my-4">
 
-          <div v-for="button in buttons" :key="button.name">
-            <button v-if="button.func" @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
+          <div v-for="button in buttons"  :key="button.name">
+            <button v-if="button.func"  @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
               class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</button>
-            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
+            <nuxt-link v-if="button.href"   :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
               class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</nuxt-link>
 
           </div>
@@ -181,6 +183,8 @@ import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
 import side from '@/components/section/chat/side.vue'
 import { Bars3Icon, HomeIcon, ShoppingCartIcon, UserIcon, BellAlertIcon, ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid'
 import LoginPopup from "@/components/section/LoginPopup.vue"
+import { NavigationStore } from '~/store/navigation'; 
+
 export default {
 
   components: {
@@ -199,9 +203,7 @@ export default {
     EllipsisVerticalIcon,
     XMarkIcon
   },
-  props: [
-    "buttons",
-  ],
+
   data() {
     return {
 
@@ -214,6 +216,9 @@ export default {
   computed: {
     isLogin() {
       return useUserStore().userToken != null
+    },
+    buttons() {
+      return NavigationStore().buttons 
     }
   },
   mounted() {

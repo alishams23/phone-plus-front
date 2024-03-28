@@ -123,6 +123,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 import { apiStore } from '~/store/api';
 import { useUserStore } from '~/store/user';
+import { NavigationStore } from '~/store/navigation'; 
+
 
 export default {
   components: {
@@ -201,6 +203,12 @@ export default {
   },
   mounted() {
     this.getData()
+    NavigationStore().setButtons([{
+        'name':'محبوب ترین محصولات',
+        'func':null,
+        'href':'/search/?sort_product=-rate',
+      }])
+  
   },
   
 }

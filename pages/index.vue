@@ -54,6 +54,8 @@ import Blog from "@/components/section/mainPage/Blog.vue"
 import CategoriesProduct from "@/components/section/mainPage/CategoriesProduct.vue"
 import CategoriesDigitalProduct from "@/components/section/mainPage/CategoriesDigitalProduct.vue"
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { NavigationStore } from '~/store/navigation'; 
+
 export default {
   components: { 
     Dialog,
@@ -87,5 +89,12 @@ export default {
   methods: {
 
   },
+  mounted(){
+    NavigationStore().setButtons([{
+        'name':' ssss ',
+        'func':null,
+        'href':'/search/?sort_product=-rate',
+      }])
+  }
 };
 </script>
