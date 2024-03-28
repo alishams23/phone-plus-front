@@ -21,6 +21,8 @@
      
       </div>
     </div>
+    <div class="container border-t py-2 mx-auto" ></div>
+
   </div>
 </template>
 

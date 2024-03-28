@@ -30,6 +30,7 @@
               </div>
             </div> 
         </nuxt-link>
+        
     </div>
 </template>
 
