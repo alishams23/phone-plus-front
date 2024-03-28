@@ -291,7 +291,11 @@ export default {
   mounted() {
     this.getData()
     NavigationStore().setButtons([
-      
+      {
+        'name':'خروج',
+        'func':null,
+        'href':'/auth/logOut'
+      }
     ])
   }
 

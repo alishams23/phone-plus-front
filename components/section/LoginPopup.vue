@@ -6,18 +6,18 @@
         <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity" />
     </TransitionChild>
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <TransitionChild as="template" enter="ease-out duration-300"
                 enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200"
                 leave-from="opacity-100 translate-y-0 sm:scale-100"
                 leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
                 <DialogPanel
-                    class="relative text-right rtl transform overflow-hidden rounded-[25px] bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    class="relative text-right rtl transform overflow-hidden rounded-[25px] bg-white text-left shadow-xl transition-all w-full lg:my-8 lg:w-full lg:max-w-lg">
                     <!-- Your content -->
                     <div v-if="dialog_page == 'get_number'"
                         class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
-                        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                        <div class="sm:mx-auto lg:w-full lg:max-w-sm">
                             <h2
                                 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                                 وارد اکانت خود شوید</h2>
