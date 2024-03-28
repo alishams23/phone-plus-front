@@ -1,5 +1,5 @@
 <template>
-    <div v-if="loading" data-aos="fade-down">
+    <div v-if="loading">
         <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
             <section aria-labelledby="section-1-title">
                 <h2 class="sr-only" id="section-1-title">Section title</h2>
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div v-else>
-        <div v-if="orders.length==0 " data-aos="fade-up">
+        <div v-if="orders.length==0 " data-aos="zoom-out" data-aos-duration="500">
             <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
                 <section aria-labelledby="section-1-title">
                     <h2 class="sr-only" id="section-1-title">Section title</h2>

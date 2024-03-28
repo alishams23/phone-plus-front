@@ -90,7 +90,7 @@
                             </Tab>
                             <!-- Image Tabs -->
                             <Tab v-for="image in product.image" :key="image.id"
-                              class="relative flex h-10 w-10 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
+                              class="relative flex h-14 w-14 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
                               v-slot="{ selected }">
                               <span class="sr-only">{{ image.photo }}</span>
                               <span

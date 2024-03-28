@@ -1,15 +1,17 @@
 <template>
   <div class="flex justify-center ">
+    
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full  px-8  ">
       <div @click="isLogin ? open_support = true : changeStateLogin(true)"
         class="flex-1/8 px-5  items-center bg-indigo-600 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-xs  ">
+         
           پشتیبانی
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
       <transition name="fade">
-        <div v-if="showButton" :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500"
+        <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500"
           data-aos-delay="500"
           class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center shadow-lg  text-indigo-800 md:flex">
           <form class="shadow-lg rounded-full h-full px-4">
@@ -32,19 +34,19 @@
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? 'bg-white' : 'bg-indigo-200'"
-            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <HomeIcon class=" w-5 text-indigo-900" />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
           <button @click="isLogin ? $router.push('/dashboard/userPanel/') : changeStateLogin(true)"
             :class="currentRouteCheck('userPanel') ? 'bg-white' : 'bg-indigo-200'"
-            class="p-2.5   transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5   transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 text-indigo-600" />
           </button>
           <button @click="isLogin ? $router.push('/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('productOrders') ? 'bg-white' : 'bg-indigo-200'"
-            class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 text-indigo-600" />
           </button>
         </div>
@@ -109,7 +111,8 @@
           </Menu>
         </div>
         <div class="lg:flex hidden lg:block my-2">
-          <div v-for="button in buttons" :key="button.name">
+          <div data-aos="fade-left"
+     data-aos-anchor-placement="bottom-bottom" v-for="button in buttons" :key="button.name">
             <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
               class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{
         button.name }} </button>
@@ -196,6 +199,7 @@ export default {
 
       showButton: true,
       inputValue: '',
+ heightPage:null
     };
   },
   computed: {
@@ -208,11 +212,13 @@ export default {
     open() {
       return NavigationStore().loginState
 
-    }
+    },routeName(){
+      return this.$route.name
+    },
   },
   mounted() {
 
-    this.checkScroll();
+   
     window.addEventListener('scroll', this.checkScroll);
   },
   beforeDestroy() {
@@ -222,8 +228,8 @@ export default {
 
     currentRouteCheck(page_name) {
       if (page_name != '') {
-        return this.$route.name.split("-").includes(page_name);
-      } else if (this.$route.name == 'index') {
+        return this.routeName.split("-").includes(page_name);
+      } else if (this.routeName== 'index') {
         return true
       }
     },
@@ -232,14 +238,12 @@ export default {
     },
     checkScroll() {
       // Check if the scroll position is greater than 100px
-      this.showButton = true
-      if (this.currentRouteCheck('index')) {
-        this.showButton = window.scrollY > 400;
-      } else if (this.currentRouteCheck('search')) {
-        this.showButton = false
-      }
+      this.heightPage = window.scrollY
+      this.showButton = window.scrollY > 400;
     },
-  }
+    
+  },
+
 };
 </script>
 

@@ -3,9 +3,9 @@
   <div v-else>
     <div class="flex pt-2  justify-between items-center">
       <div class="rtl mx-10">
-        <a href="#" class="rtl">
+        <a href="#" class="rtl text-sm mg:text-lg pt-10 flex items-center">
           بیشتر
-          <span aria-hidden="true" class="px-3 pt-10"> &larr;</span>
+          <span aria-hidden="true" class="px-3 pt-1 "> &larr;</span>
         </a>
       </div>
 
@@ -35,6 +35,7 @@
               :blog="blog"
               data-aos="fade-up"
      data-aos-anchor-placement="bottom-bottom"
+     data-aos-duration="1000"
               :data-aos-delay="index * 200"
             />
           </div>
