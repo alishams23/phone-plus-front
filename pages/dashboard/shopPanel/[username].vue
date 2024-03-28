@@ -1,7 +1,5 @@
 <template>
   <div class="relative " v-if="results && results.image">
-  
-
       <img :src="results.image" alt=""
         class="absolute  inset-0 -z-10  h-full w-full object-cover " />
         <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
@@ -87,6 +85,10 @@
         <!-- Main 3 column grid -->
       </div>
     </main>
+  </div>
+
+  <div v-if="loading == true">
+
   </div>
 </template>
 
@@ -196,7 +198,7 @@ export default {
         console.log('getData', response.data);
         this.results = response.data
         response.data.order.length > 0 ?  this.order = response.data.order : ''
-        // this.loading = false
+        this.loading = false
 
       })
     },

@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center ">
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full  px-8  ">
-      <div @click="isLogin ? open_support = true : open = true"
+      <div @click="isLogin ? open_support = true : changeStateLogin(true)"
         class="flex-1/8 px-5  items-center bg-indigo-600 rounded-full px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-sm font-bold ">
           پشتیبانی
@@ -37,13 +37,13 @@
             <HomeIcon class=" w-5 text-indigo-900" />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
-          <button @click="isLogin ? $router.push('/dashboard/userPanel/') : open = true"
+          <button @click="isLogin ? $router.push('/dashboard/userPanel/') : changeStateLogin(true)"
             :class="currentRouteCheck('userPanel') ? 'bg-white' : 'bg-indigo-200'"
             class="p-2.5   transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 text-indigo-600" />
 
           </button>
-          <button @click="isLogin ? $router.push('/dashboard/productOrders/') : open = true"
+          <button @click="isLogin ? $router.push('/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('orders') ? 'bg-white' : 'bg-indigo-200'"
             class="p-2.5 transform hover:-translate-y-3  duration-500  group rounded-full  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
@@ -51,20 +51,20 @@
           </button>
 
         </div>
-          <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
+        <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
             :class="currentRouteCheck('x')?'bg-white':'bg-indigo-200' "
             class="p-2.5 animate-pulse transform hover:-translate-y-3  duration-500  group rounded-full mr-4 md:mr-0  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <BellAlertIcon class=" w-5 text-indigo-600" />
           </nuxt-link> -->
-          <div id="tooltip-settings" role="tooltip"
-            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-indigo-800 rounded-lg shadow-sm opacity-0 tooltip ">
-            Video settings
-            <div class="tooltip-arrow" data-popper-arrow>
-              
-            </div>
+        <div id="tooltip-settings" role="tooltip"
+          class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-indigo-800 rounded-lg shadow-sm opacity-0 tooltip ">
+          Video settings
+          <div class="tooltip-arrow" data-popper-arrow>
+
           </div>
-          <div class="w-full flex justify-end ">
-            <!-- <button id="moreOptionsDropdownButton" data-dropdown-toggle="moreOptionsDropdown" type="button"
+        </div>
+        <div class="w-full flex justify-end ">
+          <!-- <button id="moreOptionsDropdownButton" data-dropdown-toggle="moreOptionsDropdown" type="button"
               class="pe-2 md:hidden group rounded-full  ">
               <svg class="w-4 h-4 text-gray-500 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white"
                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
@@ -73,58 +73,59 @@
               </svg>
               <span class="sr-only">Show options</span>
             </button> -->
-            <Menu as="div" class="relative md:hidden inline-block text-left">
-              <div>
-                <MenuButton class="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white"
-                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
-                <path
-                  d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-              </svg>
-              <span class="sr-only">Show options</span>
-                </MenuButton>
-              </div>
+          <Menu as="div" class="relative md:hidden inline-block text-left">
+            <div>
+              <MenuButton
+                class="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ">
+                <svg
+                  class="w-4 h-4 text-gray-500 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white"
+                  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+                  <path
+                    d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                </svg>
+                <span class="sr-only">Show options</span>
+              </MenuButton>
+            </div>
 
-              <transition
-                enter-active-class="transition ease-out duration-500"
-                enter-from-class="transform opacity-0 scale-95"
-                enter-to-class="transform opacity-100 scale-100"
-                leave-active-class="transition ease-in duration-100"
-                leave-from-class="transform opacity-100 scale-100"
-                leave-to-class="transform opacity-0 scale-95">
-                <MenuItems class="absolute right-0 z-10 bottom-full mb-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-           
-                    <MenuItem v-slot="{ active }">
-                      <div @click="isLogin ? open_support = true : open = true" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex justify-end items-center px-6 py-2 text-sm text-right']">
-                        پشتیبانی
-                        <!-- <ChatBubbleLeftRightIcon class="w-5 mx-2 text-indigo-600" /> -->
-                      </div>
-                    </MenuItem>
-               
-                      <MenuItem v-slot="{ active }">
-                        <div  v-for="button in buttons"  :key="button.name" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">
-                          <div v-if="button.func" @click="button.func" >{{button.name}}</div>
-                          <nuxt-link tag="div" v-if="button.href" :to="button.href" 
-                          >
-                            {{ button.name }}
-                          </nuxt-link>
-                        </div>
-                      </MenuItem>
-                  
-                 
-                </MenuItems>
-              </transition>
-            </Menu>
+            <transition enter-active-class="transition ease-out duration-500"
+              enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95">
+              <MenuItems
+                class="absolute right-0 z-10 bottom-full mb-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 
-          </div>
+                <MenuItem v-slot="{ active }">
+                <div @click="isLogin ? open_support = true : changeStateLogin(true)"
+                  :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex justify-end items-center px-6 py-2 text-sm text-right']">
+                  پشتیبانی
+                  <!-- <ChatBubbleLeftRightIcon class="w-5 mx-2 text-indigo-600" /> -->
+                </div>
+                </MenuItem>
 
-        
+                <MenuItem v-slot="{ active }">
+                <div v-for="button in buttons" :key="button.name"
+                  :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">
+                  <div v-if="button.func" @click="button.func">{{ button.name }}</div>
+                  <nuxt-link tag="div" v-if="button.href" :to="button.href">
+                    {{ button.name }}
+                  </nuxt-link>
+                </div>
+                </MenuItem>
+
+
+              </MenuItems>
+            </transition>
+          </Menu>
+
+        </div>
+
+
         <div class="flex  my-4">
 
-          <div v-for="button in buttons"  :key="button.name">
-            <button v-if="button.func"  @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
+          <div v-for="button in buttons" :key="button.name">
+            <button v-if="button.func" @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
               class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</button>
-            <nuxt-link v-if="button.href"   :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
+            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
               class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">{{ button.name }}</nuxt-link>
 
           </div>
@@ -159,8 +160,8 @@
     </Dialog>
   </TransitionRoot>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-10" @close="open = false">
-      <LoginPopup @close="() => { open = false }" />
+    <Dialog as="div" class="relative z-10" @close="changeStateLogin(false)">
+      <LoginPopup @close="() => { changeStateLogin(false) }" />
     </Dialog>
   </TransitionRoot>
 </template>
@@ -183,7 +184,7 @@ import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
 import side from '@/components/section/chat/side.vue'
 import { Bars3Icon, HomeIcon, ShoppingCartIcon, UserIcon, BellAlertIcon, ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid'
 import LoginPopup from "@/components/section/LoginPopup.vue"
-import { NavigationStore } from '~/store/navigation'; 
+import { NavigationStore } from '~/store/navigation';
 
 export default {
 
@@ -208,7 +209,7 @@ export default {
     return {
 
       open_support: false,
-      open: false,
+
       showButton: true,
       inputValue: '',
     };
@@ -218,7 +219,11 @@ export default {
       return useUserStore().userToken != null
     },
     buttons() {
-      return NavigationStore().buttons 
+      return NavigationStore().buttons
+    },
+    open() {
+      return NavigationStore().loginState
+
     }
   },
   mounted() {
@@ -237,6 +242,9 @@ export default {
       } else if (this.$route.name == 'index') {
         return true
       }
+    },
+    changeStateLogin(state) {
+      NavigationStore().changeLoginState(state)
     },
     checkScroll() {
       // Check if the scroll position is greater than 100px
