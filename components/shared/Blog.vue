@@ -18,7 +18,7 @@
           </nuxt-link>
           <button
           
-          @click="isLogin == false ? $router.push('/auth/signIn') : like()"
+          @click="isLogin == false ? changeStateLogin(true) : like()"
             class="text-sm mx-3 mt-4 flex items-center py-2 px-3 rounded-full  hover:text-white focus:outline-none focus:shadow-outline"
             :class="blog.likeAuthor == true ? 'text-white bg-red-600' : ' bg-gray-100 hover:bg-red-200 text-gray-500 '"
             >
@@ -39,6 +39,7 @@
 import { HeartIcon } from '@heroicons/vue/20/solid'
 import { apiStore } from '~/store/api';
 import { useUserStore } from '~/store/user'; 
+import { NavigationStore } from '~/store/navigation';
 
 
 export default {
@@ -79,6 +80,9 @@ export default {
         this.blog.likeAuthor = true;
         this.blog.like_count++;
       }
+    },
+    changeStateLogin(state) {
+      NavigationStore().changeLoginState(state)
     },
   },
   
