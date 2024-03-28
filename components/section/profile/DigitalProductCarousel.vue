@@ -1,6 +1,6 @@
 <template>
   <div v-if="data.length == 0">
-    <div class="container rtl mx-auto px-10 mt-6">
+    <div class="container py-20 rtl mx-auto px-10 mt-6">
       <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
         role="alert">
         <p class="font-bold">محصولی با دسته بندی {{ title }} یافت نشد</p>

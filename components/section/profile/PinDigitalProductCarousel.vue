@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data != []">
+  <div v-if="data.length != 0">
     <div class="text-gray-800 font-bold text-xl text-right pe-6 pt-2 flex items-center justify-end">
       محصولات دیجیتال پین شده
 
@@ -9,7 +9,7 @@
     </div>
     <div class="   isolate overflow-hidden relative">
       <Carousel :breakpoints="breakpoints" :wrapAround="true" :transition="500" class="pt-5 pb-4">
-        <Slide v-for="item in data.results" :key="item">
+        <Slide v-for="item in data" :key="item">
           <PinDigitalProduct class=" " :data="item" />
         </Slide>
         <template #addons>
@@ -17,6 +17,8 @@
         </template>
       </Carousel>
     </div>
+    <div class="container border-t py-2 mx-auto" ></div>
+
   </div>
 </template>
 
@@ -111,9 +113,9 @@ export default {
         },
       }).then((response) => {
         console.log('product carousel get data', response.data);
-        this.data = response.data
+        this.data = response.data.results
         this.loading = false
-        this.$emit('get-data-product', this.data);
+     
 
       })
     },
