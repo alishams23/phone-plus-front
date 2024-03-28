@@ -210,7 +210,7 @@ export default {
   async mounted() {
     await this.getData()
     NavigationStore().setButtons([{
-        'name':'چت کردن',
+        'name':'گفتگو با فروشگاه',
         'func': this.isLogin == true ?null :this.openLogin ,
         'href': this.isLogin == true ? `/chat/${this.results.username}/${this.results.username}_${useUserStore().username}` : null,
       }])

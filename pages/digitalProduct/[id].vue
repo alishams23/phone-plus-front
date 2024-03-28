@@ -173,17 +173,17 @@
                           <div class="space-y-6 text-base text-gray-700" v-html="product.description" />
                         </div>
 
-                        <form class="mt-6">
+                        <div class="mt-6">
 
                           <div class="sm:flex-col1 mt-10 flex">
-                            <button type="submit"
+                            <button @click="isLogin==true?'':openLogin()"
                               class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
                               خرید / دانلود
                             </button>
 
 
                           </div>
-                        </form>
+                        </div>
 
                         <section aria-labelledby="details-heading" class="mt-12">
                           <h2 id="details-heading" class="sr-only">Additional details</h2>
@@ -355,6 +355,11 @@ export default {
   props: {
 
   },
+  computed: {
+    isLogin() {
+      return useUserStore().userToken != null;
+    },
+  },
   data: () => ({
     loading: true,
     product: null,
@@ -402,14 +407,17 @@ export default {
 
 
     },
+    openLogin() {
+      NavigationStore().changeLoginState(true)
+    },
   },
   mounted() {
     this.getData()
     NavigationStore().setButtons([
         {
-          'name':'خرید محصول',
-          'func': null,
-          'href': '/',
+          'name':'خرید / دانلود',
+          'func': this.isLogin==true? null : this.openLogin,
+          'href': this.isLogin==true? '/' : null,
         }
       ])
   },

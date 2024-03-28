@@ -125,6 +125,7 @@ import { apiStore } from '~/store/api';
 import { HeartIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
+import { NavigationStore } from '~/store/navigation'; 
 
 export default {
     components: {
@@ -175,6 +176,9 @@ export default {
     },
     mounted() {
         this.getData()
+        NavigationStore().setButtons([
+
+        ])
     }
 }
 </script>

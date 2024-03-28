@@ -209,7 +209,7 @@
                           <div class="sm:flex-col1 mt-10 flex">
                         
                             <button 
-                            @click="show = true"
+                            @click="isLogin==true?show = true:openLogin()"
                           
                               class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
                                خرید محصول</button>
@@ -352,11 +352,6 @@
       </main>
     </div>
   </div>
-  <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-10" @close="open = false">
-      <LoginPopup @close="() => {open = false}" />
-    </Dialog>
-  </TransitionRoot>
 </template>
 
 <script>
@@ -420,15 +415,8 @@ export default {
       return useUserStore().userToken != null;
     },
   },
-  beforeMount(){
-    if (useUserStore().userToken == null){
-      // this.$router.push('/')
-      this.open=true
-    }
-  },
   data: () => ({
     product: null,
-    open: false,
     selected_color: null,
     // selectedColor: ref(product.colors[0]),
     comment_title: '',
@@ -486,7 +474,7 @@ export default {
     NavigationStore().setButtons([
       {
         'name':'خرید محصول',
-        'func': ()=>{this.show = true},
+        'func': this.isLogin==true? ()=>{this.show = true} : this.openLogin,
         'href': null,
       }
     ])

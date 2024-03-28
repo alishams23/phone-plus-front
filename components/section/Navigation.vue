@@ -8,8 +8,9 @@
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
+   
       <transition name="fade">
-        <div v-if="showButton" data-aos="fade-left" data-aos-duration="500" data-aos-delay="500"
+        <div v-if="showButton" :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500" data-aos-delay="500"
           class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-full  justify-center shadow-lg  text-indigo-800 md:flex">
           <form class="shadow-lg rounded-full h-full px-4">
             <div class="relative pt-1 ">
@@ -120,13 +121,13 @@
         </div>
 
 
-        <div class="lg:flex hidden lg:block my-4">
+        <div class="lg:flex hidden lg:block my-2">
 
           <div v-for="button in buttons" :key="button.name">
-            <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : 'bg-indigo-600'"
-              class="-m-2 text-white mx-2 py-1 rounded-full block px-6 text-sm font-medium text-[9px] whitespace-nowrap">{{ button.name }} </button>
-            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
-              class="-m-2 text-white mx-2 py-1 rounded-full block px-6 text-sm font-medium text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
+            <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : 'bg-white'"
+              class="-m-2 text-indigo-800  mx-2 py-2 rounded-full block px-6 text-sm font-medium bg-glass  text-[9px] whitespace-nowrap">{{ button.name }} </button>
+            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-white'"
+              class="-m-2 text-indigo-800  mx-2 py-2 rounded-full block px-6 text-sm font-medium bg-glass  text-[9px] whitespace-nowrap">{{ button.name }}</nuxt-link>
 
           </div>
 
@@ -248,7 +249,12 @@ export default {
     },
     checkScroll() {
       // Check if the scroll position is greater than 100px
-      this.showButton = window.scrollY > 400;
+      this.showButton = true
+      if (this.currentRouteCheck('index')){
+        this.showButton = window.scrollY > 400;
+      }else if(this.currentRouteCheck('search')){
+        this.showButton = false
+      }
     },
   }
 };
@@ -274,5 +280,16 @@ input {
 .fade-enter,
 .fade-leave-to {
   opacity: 0
+}
+
+
+.show-enter-active,
+.show-leave-active {
+  transition: opacity .5s
+}
+
+.show-enter,
+.show-leave-to {
+  opacity: 1
 }
 </style>

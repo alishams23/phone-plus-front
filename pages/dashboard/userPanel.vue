@@ -144,6 +144,7 @@
 <script>
 import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
+import { NavigationStore } from '~/store/navigation'; 
 
 import { PaperClipIcon } from '@heroicons/vue/20/solid'
 import {
@@ -289,6 +290,9 @@ export default {
  
   mounted() {
     this.getData()
+    NavigationStore().setButtons([
+      
+    ])
   }
 
 }
