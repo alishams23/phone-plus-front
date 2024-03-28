@@ -211,8 +211,8 @@ export default {
     await this.getData()
     NavigationStore().setButtons([{
         'name':'چت کردن',
-        'func':this.isLogin == true ?null :this.openLogin ,
-        'href': this.isLogin == true ? `/chat/${this.results.username}/${this.results.username}_${useUserStore().username}` : '',
+        'func': this.isLogin == true ?null :this.openLogin ,
+        'href': this.isLogin == true ? `/chat/${this.results.username}/${this.results.username}_${useUserStore().username}` : null,
       }])
   
   },

@@ -91,17 +91,17 @@ export default {
   },
   mounted(){
     NavigationStore().setButtons([
-        {
-          'name':'محصولات محبوب',
-          'func':null,
-          'href':`/search/?sort_product=-rate`,
-        },
-        {
-          'name':'محصولات دیجیتال محبوب',
-          'func':null,
-          'href':`search/?sort_digital_product=-rate`,
-        },
-      ])
+      {
+        'name':'محصولات محبوب',
+        'func':null,
+        'href':`/search/?sort_product=-rate`,
+      },
+      {
+        'name':'محصولات دیجیتال محبوب',
+        'func':null,
+        'href':`/search/?sort_digital_product=-rate`,
+      },
+    ])
   }
 };
 </script>

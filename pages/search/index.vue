@@ -306,7 +306,7 @@ import SearchFilterDigitalProduct from "@/components/section/filters/SearchFilte
 import SearchFilterBlog from "@/components/section/filters/SearchFilterBlog.vue"
 import Blog from '~/components/shared/Blog.vue'
 import { ChevronDownIcon, AdjustmentsHorizontalIcon } from '@heroicons/vue/20/solid'
-
+import { NavigationStore } from '~/store/navigation'; 
 export default {
   components: {
     Slider,
@@ -376,6 +376,28 @@ export default {
     if (this.$route.query.search != null) this.text = this.$route.query.search
     if (this.$route.query.tab != null) this.selected_tab = parseInt(this.$route.query.tab)
 
+    NavigationStore().setButtons([
+      {
+        'name':'محصولات',
+        'func':() => {this.selected_tab = 0},
+        'href':null,
+      },
+      {
+        'name':'محصولات دیجیتال',
+        'func':() => {this.selected_tab = 1},
+        'href':null,
+      },
+      {
+        'name':'مقاله‌ها',
+        'func':() => {this.selected_tab = 2},
+        'href':null,
+      },
+      {
+        'name':'همه',
+        'func':() => {this.selected_tab = 3},
+        'href':null,
+      },
+    ])
   },
 
 }

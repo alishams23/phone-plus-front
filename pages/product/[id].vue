@@ -385,6 +385,7 @@ import { HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@hero
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
+import { NavigationStore } from '~/store/navigation'; 
 export default {
   components: {
     LoginPopup,
@@ -414,6 +415,11 @@ export default {
   props: {
 
   },
+  computed: {
+    isLogin() {
+      return useUserStore().userToken != null;
+    },
+  },
   beforeMount(){
     if (useUserStore().userToken == null){
       // this.$router.push('/')
@@ -432,6 +438,7 @@ export default {
     comment_hover_rate: 0,
   }),
   methods: {
+    
     getData() {
       this.loading = true
       axios.get(`${apiStore().address}/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
@@ -469,9 +476,20 @@ export default {
 
 
     },
+
+    openLogin() {
+      NavigationStore().changeLoginState(true)
+    },
   },
   mounted() {
     this.getData()
+    NavigationStore().setButtons([
+      {
+        'name':'خرید محصول',
+        'func': ()=>{this.show = true},
+        'href': null,
+      }
+    ])
   }
 }
 

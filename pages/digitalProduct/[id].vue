@@ -329,7 +329,7 @@ import { HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@hero
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
-
+import { NavigationStore } from '~/store/navigation'; 
 export default {
   components: {
     HeartIcon,
@@ -405,7 +405,14 @@ export default {
   },
   mounted() {
     this.getData()
-  }
+    NavigationStore().setButtons([
+        {
+          'name':'خرید محصول',
+          'func': null,
+          'href': '/',
+        }
+      ])
+  },
 }
 
 </script>
