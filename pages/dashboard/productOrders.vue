@@ -18,7 +18,7 @@
         </div>
     </div>
     <div v-else>
-        <div v-if="orders==null">
+        <div v-if="orders.length==0 ">
             <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
                 <section aria-labelledby="section-1-title">
                     <h2 class="sr-only" id="section-1-title">Section title</h2>
@@ -36,10 +36,10 @@
                 <div v-for="data in orders" :key="data.id">
                     <div
                     class="min-h-[300px] bg-gray-100 border shadow-xl lg:mx-[3rem]  flex flex-wrap my-2 items-center justify-end rounded-2xl">
-                        <div class="grid flex items-center grid-cols-6">
+                        <div class="grid flex items-center justify-start w-full grid-cols-6">
                             <div class="col-span-2">
                                 <img :src="data.product.image[0].photo" alt=""
-                                    class=" w-56 h-56 -ms-10 flex items-center shadow-lg rounded-3xl" />
+                                    class=" w-56 h-56 -ms-10 flex items-center object-cover shadow-lg rounded-3xl" />
                             </div>
                             <div class="col-span-4">
                                 <div class="w-full flex justify-end ">
@@ -165,7 +165,7 @@ export default {
     },
     data() {
         return {
-            orders: null,
+            orders: [],
             loading: true
         }
     },

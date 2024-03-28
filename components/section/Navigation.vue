@@ -102,7 +102,11 @@
                     </MenuItem>
                     <div v-for="button in buttons" :key="button.name">
                       <MenuItem v-slot="{ active }">
-                        <div @click="button.func" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">{{button.name}}</div>
+                        <div v-if="button.func" @click="button.func" :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">{{button.name}}</div>
+                        <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : 'bg-indigo-600'"
+                          class="-m-2 text-white  py-1 rounded-full block px-6 text-sm font-medium ">
+                          {{ button.name }}
+                        </nuxt-link>
                       </MenuItem>
                     </div>
                   </div>
