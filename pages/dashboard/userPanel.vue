@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading" >
-      <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
+      <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] mt-12 lg:mt-0">
           <section aria-labelledby="section-1-title">
               <h2 class="sr-only" id="section-1-title">Section title</h2>
               <div class="overflow-hidden rounded-lg bg-white shadow">

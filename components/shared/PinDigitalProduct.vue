@@ -1,5 +1,5 @@
 <template>
-  <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gradient-to-b from-gray-100 to-white shadow-1 isolate my-20  mx-2  rounded-2xl">
+  <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gradient-to-b from-gray-200 to-white  isolate my-20  mx-2  rounded-2xl">
     <nuxt-link :to="'/digitalProduct/'+ data.id">
       <div class="flex justify-center text-center">
         <div>
@@ -7,15 +7,15 @@
         </div>
       </div>
       <div>
-        <h3 class="mt-3 rtl text-lg pe-4 py-2 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+        <h3 class="mt-3 rtl text-lg lg:pe-4 py-2 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
           <a>
             {{ data.title }}
           </a>
         </h3>
-        <div :class="data.discount != 0 ? 'line-through ' : '' " class="pe-4 text-xs text-gray-300 font-semibold">
+        <div :class="data.discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-gray-300 font-semibold">
           {{ data.discount != 0 ? data.price : '&nbsp; ' }}
         </div>
-        <div class="pe-4 pb-4">
+        <div class="lg:pe-4 pb-4">
           {{ data.discount != 0 ? data.price*(100-data.discount)/100 : data.price }}
         </div>
       

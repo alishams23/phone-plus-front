@@ -13,8 +13,8 @@
       <transition name="fade">
         <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500"
           data-aos-delay="500"
-          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center shadow-lg  text-indigo-800 md:flex">
-          <form class="shadow-lg rounded-full h-full px-4">
+          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center   text-indigo-800 md:flex">
+          <form class=" rounded-full h-full px-4">
             <div class="relative  ">
               <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg class="w-4 h-4 text-indigo-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"

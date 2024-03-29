@@ -14,12 +14,12 @@
         <div class="mt-[-40px]">
             <div class="  relative  ">
                 <div class="">
-                    <!-- <div class="bg rounded-b-[50px] "></div>
+                    <div class="bg rounded-b-[50px] "></div>
                     <div class="bg bg2 rounded-b-[50px]"></div>
-                    <div class="bg bg3 rounded-b-[50px]"></div> -->
+                    <div class="bg bg3 rounded-b-[50px]"></div>
                 </div>
                 <img :src="blog.imageBlog.photo" alt=""
-                    class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
+                    class="absolute overflow-hidden  inset-0 -z-10 h-full w-full object-cover " />
                 <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
                 <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                     aria-hidden="true">
@@ -37,7 +37,7 @@
 
 
             </div>
-            <div class="mt-[-30px]">
+            <div class="mt-[-30px] hidden md:block">
 
                 <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 695.06 35.8">
@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class=" shadow-lg -mt-40 pb-10 flex justify-center">
-            <div class="max-w-[75rem] flex flex-col shadow-lg rounded-[25px] overflow-hidden">
+            <div class="max-w-[75rem] mx-5 lg:mx-0 flex flex-col shadow-1 rounded-[25px] overflow-hidden">
                 <div class="relative isolate overflow-hidden ">
 
                     <div class="grid grid-cols-4 gap-4 bg-white p-4 pb-10">
@@ -78,13 +78,13 @@
                         <div class="bg-gray-200 col-span-4 lg:col-span-1 shadow-xl rounded-[30px]">
                             <div class="flex flex-col justify-between h-full">
                                 <div>
-                                    <div class="flex justify-end items-center pt-10 px-5 ">
+                                    <div class="flex justify-end items-center pt-5 md:pt-10 px-5 ">
                                         <p class="text-black text-5sm font-bold pe-4">
                                             {{ blog.author.get_full_name }}
                                         </p>
                                         <img src="/images/6.jpg" class="h-10 w-10 rounded-full bg-gray-200" alt="" />
                                     </div>
-                                    <div class="pe-5 pt-5 text-gray-400 flex justify-end">
+                                    <div class="pe-5 pt-5 text-gray-400 text-xs flex justify-end">
                                         <p>:دسته بندی ها</p>
                                     </div>
                                     <div class="flex justify-end px-2">
@@ -97,9 +97,9 @@
                                     </div>
                                 </div>
 
-                                <div class="pb-8 px-5 flex mt-4 items-center justify-between">
+                                <div class="md:pb-8 pb-4 px-5 flex mt-4 items-center justify-between">
                                     <div>
-                                        <p class=" text-black  text-sm">
+                                        <p class=" text-black  text-xs">
                                             {{ blog.created_at }}
                                         </p>
                                     </div>
@@ -117,7 +117,7 @@
                     </div>
 
                 </div>
-                <div class="p-16 rtl">
+                <div class="p-10 md:p-16 rtl">
                     <p v-html="blog.body"></p>
                 </div>
             </div>

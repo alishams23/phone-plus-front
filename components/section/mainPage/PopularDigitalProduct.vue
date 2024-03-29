@@ -16,7 +16,7 @@
         <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
         <div class="relative">
           <div class="flex pt-3 justify-between items-center">
-            <div class="rtl px-3">
+            <div class="rtl px-3 pt-3">
               <button @click="$router.push('/search/?sort_digital_product=-rate&tab=1');" class="text-gray-200 text-sm mg:text-lg rtl cursor-pointer ">
                 بیشتر
                 <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
