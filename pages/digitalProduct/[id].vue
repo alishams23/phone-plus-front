@@ -82,7 +82,7 @@
                       <TabGroup as="div" class="flex flex-col-reverse">
                         <!-- Image selector -->
                         <div class="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
-                          <TabList class="grid grid-cols-6 md:grid-cols-5 lg:gap-6 ">
+                          <TabList class="grid grid-cols-4 md:grid-cols-5 lg:gap-6 ">
                             <!-- Video Tab -->
                             <Tab v-if="product.video"
                               class="relative flex h-10 w-10 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-gray-50 text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100"

@@ -15,6 +15,7 @@
                <div class=" text-gray-900 font-semibold lg:px-5 text-md lg:text-lg lg:mt-2 rtl ">
                   <p class="text-gray-600 test-n w-100  text-[14px] py-2 max-w-[90%] lg:max-w-[90%] font-light text-xs mt-2 " v-html="truncatedBody"></p>
                 </div>
+                <div class="text-xs text-indigo-500 lg:px-5 text-md">{{ blog.created_at }}</div>
             </div>
               <div class="flex rtl ">
               <nuxt-link :to="'/blog/' + blog.id"
@@ -31,6 +32,8 @@
                   {{ blog.like_count }}
                 </div>
                 <HeartIcon class="h-4  " />
+                
+
               </button>
             </div>
           </div>
