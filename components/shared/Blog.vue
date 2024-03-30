@@ -1,20 +1,21 @@
 <template>
   <div
     class="flex w-full items-center lg:pl-0 flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
-    <div class="bg-gradient-to-b from-gray-50 mt-4 to-white border-t-[0.7px]  p-10 text-right lg:pl-[0px] w-full rounded-2xl shadow-3  ">
+    <div class="bg-gradient-to-b from-gray-100 mt-4 to-white border-t-[0.7px]  p-7 text-right lg:pl-[0px] w-full rounded-2xl shadow-3  ">
       <div class="w-full ">
         <div class="grid grid-cols-6 lg:justify-end">
           <div class="col-span-6  lg:col-span-2 mt-[-70px]  lg:mt-0  lg:ml-[-50px]">
-           <div class="p-4">
-             <img :src="blog.imageBlog.photo" class=" object-cover aspect-[7/4]  lg:aspect-square rounded-[18px] shadow-xl" />
+           <div class="lg:p-4">
+             <img :src="blog.imageBlog.photo" class=" object-cover aspect-[6/4]  lg:aspect-square rounded-[18px] shadow-xl" />
            </div>
           </div>
           <div class="col-span-6 lg:col-span-4 flex flex-col justify-between ">
             <div>
-              <div class="text-gray-900 font-semibold lg:px-5  text-md lg:text-lg mt-5 rtl">{{ blog.title }}</div>
+              <div class="text-gray-900 font-semibold lg:px-5  text-md mt-5 rtl">{{ blog.title }}</div>
                <div class=" text-gray-900 font-semibold lg:px-5 text-md lg:text-lg lg:mt-2 rtl ">
                   <p class="text-gray-600 test-n w-100  text-[14px] py-2 max-w-[90%] lg:max-w-[90%] font-light text-xs mt-2 " v-html="truncatedBody"></p>
                 </div>
+                <div class="text-xs text-indigo-500 lg:px-5 text-md">{{ blog.created_at }}</div>
             </div>
               <div class="flex rtl ">
               <nuxt-link :to="'/blog/' + blog.id"
@@ -31,6 +32,8 @@
                   {{ blog.like_count }}
                 </div>
                 <HeartIcon class="h-4  " />
+                
+
               </button>
             </div>
           </div>

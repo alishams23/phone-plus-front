@@ -1,6 +1,6 @@
 <template>
-    <div v-if="loading" data-aos="fade-down">
-        <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
+    <div v-if="loading" >
+        <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] mt-12 lg:mt-0">
             <section aria-labelledby="section-1-title">
                 <h2 class="sr-only" id="section-1-title">Section title</h2>
                 <div class="overflow-hidden rounded-lg bg-white shadow">
@@ -18,8 +18,8 @@
         </div>
     </div>
     <div v-else>
-        <div v-if="orders.length==0" data-aos="fade-up">
-            <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
+        <div v-if="orders.length==0" data-aos="zoom-out" data-aos-duration="500">
+            <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] mt-12 lg:mt-0">
                 <section aria-labelledby="section-1-title">
                     <h2 class="sr-only" id="section-1-title">Section title</h2>
                     <div class="overflow-hidden rounded-lg bg-white shadow">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div v-else>
-            <div class="grid grid-cols-1 pb-10">
+            <div class="grid grid-cols-1 pb-10 mt-12 lg:mt-0">
                 <div v-for="data in orders" :key="data.id">
                     <div
                     class="min-h-[300px] mt-12 lg:mt-0 bg-gray-100 border shadow-xl lg:mx-[3rem] flex flex-wrap my-2 items-center justify-end rounded-2xl">

@@ -17,8 +17,8 @@
       <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
     <div class="relative" >
       <div class="flex mt-4 justify-between items-center">
-        <div class="rtl px-3 ">
-          <a @click="$router.push('/search/?is_discount=' + 'true');" class="text-gray-200 cursor-pointer rtl  ">
+        <div class="rtl px-3 pt-3">
+          <a @click="$router.push('/search/?is_discount=' + 'true');" class="text-gray-200  text-sm mg:text-lg cursor-pointer rtl  ">
             بیشتر
             <span aria-hidden="true" class="px-3 "> &larr;</span>
           </a>

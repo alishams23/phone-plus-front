@@ -13,8 +13,8 @@
   <div v-else>
     <div class="   bg-white rounded-[30px]  isolate overflow-hidden relative">
      <div class="flex pt-2 justify-between items-center">
-      <div class="rtl lg:px-3">
-        <a @click="$router.push('/search/?is_discount_digital_product=true&tab=1');" class="text-gray-900 rtl  flex items-center">
+      <div class="rtl lg:px-3 pt-3">
+        <a @click="$router.push('/search/?is_discount_digital_product=true&tab=1');" class="text-gray-900 rtl text-sm mg:text-lg flex items-center">
           بیشتر
           <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
         </a>

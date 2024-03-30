@@ -68,14 +68,14 @@
             <!-- Left column -->
             <div class="grid grid-cols-1 gap-4 lg:col-span-12">
               <section aria-labelledby="section-1-title">
-                <div class="bg-white rounded-[25px] shadow-xl">
+                <div class="bg-white rounded-[25px] shadow-1">
                   <div class="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
                     <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
                       <!-- Image gallery -->
                       <TabGroup as="div" class="flex flex-col-reverse">
                         <!-- Image selector -->
                         <div class="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
-                          <TabList class="grid grid-cols-6 md:grid-cols-5 lg:gap-6 ">
+                          <TabList class="grid grid-cols-4 md:grid-cols-5 lg:gap-6 ">
                             <!-- Video Tab -->
                             <Tab v-if="product.video"
                               class="relative flex h-10 w-10 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-gray-50 text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100"
@@ -90,7 +90,7 @@
                             </Tab>
                             <!-- Image Tabs -->
                             <Tab v-for="image in product.image" :key="image.id"
-                              class="relative flex h-10 w-10 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
+                              class="relative flex h-14 w-14 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100 "
                               v-slot="{ selected }">
                               <span class="sr-only">{{ image.photo }}</span>
                               <span
