@@ -2,7 +2,7 @@
   <div class="relative " v-if="results && results.image">
       <img :src="results.image" alt=""
         class="absolute  inset-0 -z-10  h-full w-full object-cover " />
-        <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <div class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
   
       <div class="bg rounded-b-[50px] "></div>
       <div class="bg bg2 rounded-b-[50px]"></div>
@@ -16,40 +16,36 @@
     <div class="flex flex-col justify-center items-center " v-if="results">
       <img class="h-24 w-24 mt-10 object-cover rounded-full" :src="results.image" alt="" />
       <div class="flex items-center mt-4 space-x-reverse space-x-2">
-        <h1 class="text-white font-bold text-xl">{{ results.name }}</h1>
+        
         <!-- Using the ExclamationCircleIcon component -->
-        <ExclamationCircleIcon @click="" class="h-5 w-5 text-white" />
+        <Menu as="div" class="relative inline-block text-left">
+          <div>
+            <!-- Using a div or span as a clickable element for opening the dropdown -->
+            <div @click="toggleMenu" class="inline-flex w-full justify-center gap-x-1.5 cursor-pointer rounded-md px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm">
+              <MenuButton
+                class="inline-flex w-full justify-center gap-x-1.5 rounded-md  text-sm font-semibold text-gray-900 shadow-sm ">
+                
+                <ExclamationCircleIcon @click="" class="h-5 w-5 my-2 text-white " />
+                <h1 class="text-white font-bold text-xl ">{{ results.name }}</h1>
+              </MenuButton>
+              <span class="sr-only">Show options</span>
+            </div>
+          </div>
+          <transition enter-active-class="transition ease-out duration-500"
+            enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100"
+            leave-to-class="transform opacity-0 scale-95">
+            <MenuItems
+              class="absolute rtl left-1/2 z-10 mt-2 w-96 -translate-x-1/2 rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <!-- Menu items here -->
+              <p class="text-right p-5 px-10 font-serif text-lg font-semibold">درباره فروشگاه:</p>
+              <p class="text-right pb-5 px-10 text-gray-700 font-normal text-base leading-relaxed">{{results.bio}}</p>
+            </MenuItems>
+          </transition>
+        </Menu>
       </div>
 
-      <Menu as="div" class="relative md:hidden inline-block text-left">
-        <div>
-          <MenuButton
-            class="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ">
-            <svg
-              class="w-4 h-4 text-gray-500 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white"
-              aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
-              <path
-                d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-            </svg>
-            <span class="sr-only">Show options</span>
-          </MenuButton>
-        </div>
-        <transition enter-active-class="transition ease-out duration-500"
-          enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100"
-          leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100"
-          leave-to-class="transform opacity-0 scale-95">
-          <MenuItems
-            class="absolute right-0 z-10 bottom-full mb-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <MenuItem v-slot="{ active }">
-              <div @click=""
-                :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex justify-end items-center px-6 py-2 text-sm text-right']">
-                پشتیبانی
-                <!-- <ChatBubbleLeftRightIcon class="w-5 mx-2 text-indigo-600" /> -->
-              </div>
-            </MenuItem>
-          </MenuItems>
-        </transition>
-      </Menu>
+
       
     </div>
     <div class="mx-auto max-w-2xl  py-10 md:pt-[1rem] md:pb-[1rem]">

@@ -188,9 +188,11 @@
                                     </div>
                                 </div>
                             </button>
-                            <button v-else @click="isLogin==true?'':openLogin()"
-                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
-                              خرید / دانلود
+                            <button v-else @click="isLogin==true?'open_zarrinpal':openLogin()"
+                              :class="is_sellable?'bg-indigo-600  hover:bg-indigo-700':'bg-gray-400'"
+                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none sm:w-full">
+                              <p v-if="is_sellable">خرید / دانلود</p>
+                              <p v-else>ناموجود</p>
                             </button>
 
 
@@ -375,6 +377,7 @@ export default {
   data: () => ({
     loading: true,
     product: null,
+    is_sellable: true,
     selected_color: null,
     btn_buy_loading: null,
     // selectedColor: ref(product.colors[0]),
@@ -394,6 +397,23 @@ export default {
         console.log('data', response.data);
         this.product = response.data
         this.loading = false
+        if (this.product.type == 'license'){
+          if(this.product.inventory_status==false){
+            this.is_sellable = false
+          }
+        }
+        if (this.is_sellable){
+          NavigationStore().setButtons([
+            {
+              'name':'خرید / دانلود',
+              'func': this.isLogin==true? null : this.openLogin,
+              'href': this.isLogin==true? '/' : null,
+            }
+          ])
+        }else{
+          NavigationStore().setButtons([
+          ])
+        }
 
       })
     },
@@ -454,15 +474,9 @@ export default {
       NavigationStore().changeLoginState(true)
     },
   },
-  mounted() {
+
+   mounted() {
     this.getData()
-    NavigationStore().setButtons([
-        {
-          'name':'خرید / دانلود',
-          'func': this.isLogin==true? null : this.openLogin,
-          'href': this.isLogin==true? '/' : null,
-        }
-      ])
   },
 }
 

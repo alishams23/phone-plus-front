@@ -203,12 +203,18 @@
                           </div>
 
                           <div class="sm:flex-col1 mt-10 flex">
-                        
+                            
                             <button 
-                            @click="isLogin==true?show = true:openLogin()"
-                          
-                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
-                               خرید محصول</button>
+                              v-if="selected_color?selected_color.count>0:product.amount>0"
+                              @click="isLogin==true?show = true:openLogin()"
+                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white  sm:w-full">
+                              خرید محصول
+                            </button>
+                            <button 
+                              v-else
+                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-gray-400 px-8 py-3 text-base font-medium text-white sm:w-full">
+                              ناموجود
+                            </button>
 
                               <BuyProductPopup   @show-change="(data) => {show = data}" :show="show" :product="product" :color="selected_color" />
                           </div>
@@ -423,6 +429,7 @@ export default {
     show:false,
     loading: true,
     comment_rate: 0,
+    is_sellable:false,
     comment_hover_rate: 0,
   }),
   methods: {
@@ -438,7 +445,25 @@ export default {
         this.selected_color = response.data.colors?response.data.colors[0]:null
         this.product = response.data
         this.loading = false
-
+        if(response.data.colors){
+          response.data.colors.forEach(element => {
+            element.count>0?this.is_sellable = true:''
+          });
+        }else{
+          this.product.amount > 0? this.is_sellable = true : ''
+        }
+        if (this.is_sellable){
+          NavigationStore().setButtons([
+            {
+            'name':'خرید محصول',
+            'func': this.isLogin==true? ()=>{this.show = true} : this.openLogin,
+            'href': null,
+          }
+          ])
+        }else{
+          NavigationStore().setButtons([
+          ])
+        }
       })
     },
     async sendComment() {
@@ -471,13 +496,6 @@ export default {
   },
   mounted() {
     this.getData()
-    NavigationStore().setButtons([
-      {
-        'name':'خرید محصول',
-        'func': this.isLogin==true? ()=>{this.show = true} : this.openLogin,
-        'href': null,
-      }
-    ])
   }
 }
 

@@ -298,7 +298,7 @@ export default {
   },
   mounted() {
     if (this.$route.query.shop_blog != null) this.selected_shop = this.$route.query.shop_blog
-
+    if (this.$route.query.category_blog != null) this.selected_categories.push(parseInt(this.$route.query.category_blog))
     this.getCategories()
     this.getData()
   },
