@@ -174,8 +174,12 @@ export default {
 
   components: {
     side,
-    UserIcon, HomeIcon, ShoppingCartIcon, BellAlertIcon, ChatBubbleLeftRightIcon, LoginPopup,
-
+    UserIcon,
+    HomeIcon,
+    ShoppingCartIcon,
+    BellAlertIcon,
+    ChatBubbleLeftRightIcon,
+    LoginPopup,
     Dialog,
     DialogPanel,
     DialogTitle,
