@@ -188,7 +188,7 @@
                                     </div>
                                 </div>
                             </button>
-                            <button v-else @click="isLogin==true?'open_zarrinpal':openLogin()"
+                            <button v-else @click="isLogin==true?sendData():openLogin()"
                               :class="is_sellable?'bg-indigo-600  hover:bg-indigo-700':'bg-gray-400'"
                               class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none sm:w-full">
                               <p v-if="is_sellable">خرید / دانلود</p>
@@ -421,9 +421,9 @@ export default {
       this.btn_buy_loading = true
       const apiUrl = `${apiStore().address}/api/order/create-order-digital-product/`;
       const data = {
-          product: this.product.id,
+          digital_product: this.product.id,
       };
-      this.loading = true
+      // this.loading = true
       axios.post(apiUrl, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -431,7 +431,7 @@ export default {
           Authorization: `Token ${useUserStore().userToken}`
         },
       }).then(response => {
-        axios.post(`${apiStore().address}/api/wallet/pay-order/`, { order_id: response.data.id }, {
+        axios.post(`${apiStore().address}/api/wallet/pay-order-digital-product/`, { order_id: response.data.id }, {
           headers: {
             'Content-Type': 'multipart/form-data',
             Accept: "application/json",
