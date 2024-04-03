@@ -1,7 +1,14 @@
 <template>
-  <div v-if="loading">
-
-  </div>
+  <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
+        <div role="status">
+            <span class="relative flex h-8 w-8">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-8 w-8 bg-indigo-500"></span>
+            </span>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
   <div v-else>
     <div class=" isolate overflow-hidden relative">
       <div>
@@ -27,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div data-aos="fade-up" data-aos-duration="1000">
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
           <Carousel :breakpoints="breakpoints" :wrapAround="true" :transition="500" class="pt-0">
             <Slide v-for="product in best_products" :key="product">
               <Product :data="product" class="my-10" />

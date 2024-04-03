@@ -1,5 +1,14 @@
 <template>
-  <div v-if="loading"></div>
+  <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
+        <div role="status">
+            <span class="relative flex h-8 w-8">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-8 w-8 bg-indigo-500"></span>
+            </span>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
   <div v-else>
     <div class="flex pt-2  justify-between items-center">
       <div class="rtl mx-10">
@@ -26,8 +35,8 @@
         </div>
         <div class="mx-auto grid w-2xl grid-cols-1 gap-x-10 gap-y-10 md:mx-0 md:max-w-none md:grid-cols-2">
           <div v-for="(blog, index) in blogs" :key="blog.id">
-            <Blog class="md:px-7" :blog="blog" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"
-              data-aos-duration="1000" :data-aos-delay="index * 200" />
+            <Blog class="md:px-7" :blog="blog" data-aos="fade-up" data-aos-anchor-placement="top-bottom"
+              data-aos-duration="1000"  :data-aos-delay="index * 200" />
           </div>
         </div>
       </div>
