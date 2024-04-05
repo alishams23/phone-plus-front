@@ -37,7 +37,8 @@
           <nuxt-link  :to="'/chat/' +  person.contact.username + '/'+person.room_name " class="-m-1  block flex-1 p-1">
             <div class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
-                <img class="h-10 w-10 rounded-full object-cover" :src="address + person.contact.shop.image" alt="" />
+                <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
+                <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else  alt="" />
               </span>
               <div class="mr-4 truncate"> <!-- Adjusted from ml-4 to mr-4 -->
                 <p class="truncate px-4 text-sm font-medium " v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
