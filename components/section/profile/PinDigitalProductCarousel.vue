@@ -127,7 +127,7 @@ export default {
 </script>
 
 <style scoped>
-.carousel__slide {
+/* .carousel__slide {
   padding: 5px;
 }
 
@@ -171,5 +171,5 @@ export default {
   filter: blur(0px);
 
   transform: rotateY(0) scale(1.15);
-}
+} */
 </style>

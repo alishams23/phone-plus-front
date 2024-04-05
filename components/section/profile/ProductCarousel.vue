@@ -134,7 +134,7 @@ export default {
 
 
 <style scoped>
-.carousel__slide {
+/* .carousel__slide {
   padding: 5px;
 }
 
@@ -182,5 +182,5 @@ export default {
 
 .swiper-slide {
   width: auto;
-}
+} */
 </style>

@@ -6,7 +6,6 @@
         <div class="text-base font-semibold leading-6  text-gray-900">فروشندگان</div>
         <div class="mr-3 flex h-7 items-center"> <!-- Adjusted from ml-3 to mr-3 -->
           <!-- <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 ">
-
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
           </button> -->
         </div>
@@ -23,7 +22,7 @@
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
       </svg>
       </div>
-      <input v-model="searchInput" @input="ListUserMessageApi" type="text" id="simple-search" class="bg-gray-50 bg-white text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 px-5" placeholder="Search ..." required />
+      <input v-model="searchInput" @input="ListUserMessageApi" type="text" id="simple-search" class="bg-gray-50 bg-white text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 px-5 rtl" placeholder="جستجو ..." required />
   </div>
  
   </div>
@@ -31,11 +30,12 @@
 
     
     <ul role="list" class="flex-1 divide-y divide-gray-200 overflow-y-auto">
+ 
       <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 " :class=" selected_user == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
         {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
         <div class="group relative flex  items-center px-5 py-4" @click="$emit('get-selected-user', person);selected_user = person.contact.username">
-          <nuxt-link  :to="'/chat/' +  person.contact.username + '/'+person.room_name " class="-m-1  block flex-1 p-1">
-            <div class="relative flex min-w-0 flex-1 items-center">
+          <nuxt-link :to="sectionSupport != true ?'/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1">
+            <a :href="sectionSupport == true ? '/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
                 <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else  alt="" />
@@ -46,7 +46,7 @@
                 <p class="truncate px-4 text-xs text-gray-400 pt-2" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
                 <p class="truncate px-4 text-xs text-gray-400 pt-2" v-else>{{ '@' + person.contact.username }}</p>
               </div>
-            </div>
+            </a>
           </nuxt-link>
           
         </div>
@@ -70,7 +70,7 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { apiStore } from '~/store/api'; 
 
 export default {
-  props:["class",],
+  props:["class","sectionSupport"],
   
   computed: {
       address() {

@@ -54,10 +54,10 @@
     <div class="pb-20"></div>
     <div class="fixed bottom-0 right-0 w-full  ">
       <div v-if="username != null && loadingGetMessage == false" class=" flex items-center flex-row px-10 pb-3 ">
-        <div class="w-72"></div>
-        <input v-model="inputData" placeholder="Your Message.." type="text" style="
+        <div class="lg:w-72 "></div>
+        <input v-model="inputData" placeholder="پیام شما" type="text"  style="
             word-break: break-all;"
-          class="shadow-xl grow  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block h-15 p-3  "
+          class="shadow-xl grow rtl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block h-15 p-3  "
           @keyup.enter="sendMessage()" />
         <div class="flex items-center px-2">
           <button id="text-submit" type="submit"
@@ -108,9 +108,7 @@ export default {
     }
   },
   mounted() {
-    if (
-      this.$route.params.roomName == null
-    ) {
+ 
       if (this.$route.params.username != null) {
         fetch(
           `${apiStore().address}/api/chat/ChatRetrieve/${this.$route.params.username}/`,
@@ -120,8 +118,9 @@ export default {
         )
           .then(response => response.json())
           .then((data) => {
+            console.log(data)
             this.username = data.contact.username
-            this.$route.params.username = this.username
+         
             this.user = data.contact
             this.$route.params.user = this.user
             this.roomName = data.room_name
@@ -131,9 +130,9 @@ export default {
       } else {
         this.slideBarActivator()
       }
-    } else {
+    
       this.connectToWebsocket(this.$route.params.roomName)
-    }
+    
   },
   beforeDestroy() {
     if (this.chatSocket != null) {
@@ -162,7 +161,7 @@ export default {
       this.messages.push(data)
     },
     async connectToWebsocket(roomName) {
-      console.log('fffff')
+    
       this.loadingGetMessage = true
       this.chatSocket = new WebSocket(
         `${apiStore().ws}` + '/ws/chat/' + roomName + '/' + useUserStore().userToken + '/'
