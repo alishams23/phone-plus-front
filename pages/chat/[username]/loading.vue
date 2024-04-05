@@ -18,7 +18,7 @@ export default{
   
   setup() {
     definePageMeta({
-      layout: "chat",
+      layout: "chatLayout",
     })
   },
 }

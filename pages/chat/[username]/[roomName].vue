@@ -83,7 +83,7 @@ export default {
   components: { PaperAirplaneIcon, },
   setup() {
     definePageMeta({
-      layout: "chat",
+      layout: "chat-layout",
     })
   },
   data() {
