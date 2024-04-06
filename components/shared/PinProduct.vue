@@ -1,7 +1,7 @@
 <template>
   
     <div  class="h-[300px]  bg-gradient-to-b from-gray-100 to-white shadow-1 mx-3 ml-7 lg:mx-[3rem] isolate my-5  justify-end rounded-2xl">
-        <nuxt-link :to="'/product/'+ data.id">
+        <nuxt-link :to="'/p/product/'+ data.id">
           <img :src="data.image[0].photo" alt="" class="absolute h-[7rem] w-[7rem] md:h-[12rem] md:w-[12rem] -ms-5 lg:-ms-10 -mb-10 mt-10 shadow-1 rounded-3xl" />
           <div class="flex justify-end w-full">
             <h3 class="mt-3 rtl text-right text-xs max-w-[65%] ps-4 py-7 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">

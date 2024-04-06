@@ -18,7 +18,7 @@
                 <div class="text-xs text-indigo-500 lg:px-5 text-md">{{ blog.created_at }}</div>
             </div>
               <div class="flex rtl ">
-              <nuxt-link :to="'/blog/' + blog.id"
+              <nuxt-link :to="'/p/blog/' + blog.id"
                 class="text-sm  mt-4 bg-indigo-600 px-10 text-white font-bold py-2 px-4 rounded-full hover:bg-indigo-800 focus:outline-none focus:shadow-outline">
                 ادامه
               </nuxt-link>
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="flex rtl">
-          <nuxt-link :to="'/blog/' + blog.id"
+          <nuxt-link :to="'/p/blog/' + blog.id"
             class="text-sm  mt-4 bg-indigo-600 px-10 text-white font-bold py-2 px-4 rounded-full hover:bg-indigo-800 focus:outline-none focus:shadow-outline">
             ادامه
           </nuxt-link>

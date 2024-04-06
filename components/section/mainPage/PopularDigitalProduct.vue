@@ -16,7 +16,7 @@
         <div class="relative">
           <div class="flex pt-3 justify-between items-center">
             <div class="rtl px-3 pt-3">
-              <button @click="$router.push('/search/?sort_digital_product=-rate&tab=1');" class="text-gray-200 text-sm mg:text-lg rtl cursor-pointer ">
+              <button @click="$router.push('/p/search/?sort_digital_product=-rate&tab=1');" class="text-gray-200 text-sm mg:text-lg rtl cursor-pointer ">
                 بیشتر
                 <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
               </button>

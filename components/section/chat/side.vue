@@ -34,8 +34,8 @@
       <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 " :class=" selected_user == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
         {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
         <div class="group relative flex  items-center px-5 py-4" @click="$emit('get-selected-user', person);selected_user = person.contact.username">
-          <nuxt-link :to="sectionSupport != true ?'/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1">
-            <a :href="sectionSupport == true ? '/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center">
+          <nuxt-link :to="sectionSupport != true ?'/p/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1">
+            <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
                 <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else  alt="" />

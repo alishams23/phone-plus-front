@@ -143,7 +143,7 @@ export default {
             {
                 'name':'خروج',
                 'func':null,
-                'href':'/auth/logOut'
+                'href':'/p/auth/logOut'
             }
         ])
     }

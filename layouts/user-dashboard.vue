@@ -115,10 +115,10 @@ export default {
     return {
       
       items: [
-        { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/', page_name: 'userPanel' },
-        { name: 'محصولات خریداری شده', href: '/dashboard/productOrders/', page_name: 'productOrders' },
-        { name: 'فایل های خریداری شده', href: '/dashboard/digitalProductOrders/', page_name: 'digitalProductOrders' },
-        { name: 'خروج', href: '/auth/logOut/', page_name: 'logOut' },
+        { name: 'اطلاعات کاربری', href: '/p/dashboard/userPanel/', page_name: 'userPanel' },
+        { name: 'محصولات خریداری شده', href: '/p/dashboard/productOrders/', page_name: 'productOrders' },
+        { name: 'فایل های خریداری شده', href: '/p/dashboard/digitalProductOrders/', page_name: 'digitalProductOrders' },
+        { name: 'خروج', href: '/p/auth/logOut/', page_name: 'logOut' },
       ], 
     }
   }

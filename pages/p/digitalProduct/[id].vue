@@ -41,7 +41,7 @@
           <div class=" me-5">
             <img :src="product.shop.image" class="h-24 w-24 object-cover rounded-full" />
           </div>
-          <nuxt-link :to="'/dashboard/shopPanel/' + product.shop.username" class=" ">
+          <nuxt-link :to="'/' + product.shop.username" class=" ">
             <div class="text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]">
               فروشگاه:
             </div>

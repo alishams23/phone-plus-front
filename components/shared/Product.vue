@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/product/'+ data.id">
+  <nuxt-link :to="'/p/product/'+ data.id">
     <div :class="width ? `${width}` : 'w-[15rem]'" class="relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-60 sm:pt-60 lg:pt-60">
         <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-white from-10% via-white/30" />
@@ -29,7 +29,7 @@
     </div>
   </nuxt-link>
 
-    <!-- <nuxt-link to="/product/1/" class=" my-10 mx-2  rounded-xl bg-white  px-5 w-64">
+    <!-- <nuxt-link to="/p/product/1/" class=" my-10 mx-2  rounded-xl bg-white  px-5 w-64">
         <div class="relative pb-5">
             <div class="relative shadow-3  h-72 w-full overflow-hidden rounded-lg">
 

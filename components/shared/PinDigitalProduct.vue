@@ -1,6 +1,6 @@
 <template>
   <div :class="width ? `${width}` : 'w-[20rem]'" class=" bg-gradient-to-b from-gray-200 to-white  isolate my-20  mx-2  rounded-2xl">
-    <nuxt-link :to="'/digitalProduct/'+ data.id">
+    <nuxt-link :to="'/p/digitalProduct/'+ data.id">
       <div class="flex justify-center text-center">
         <div>
           <img :src="data.image[0].photo" alt="" class="-mt-10 w-[200px] h-[200px] shadow-1 border object-cover rounded-3xl" />

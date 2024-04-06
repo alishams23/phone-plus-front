@@ -22,7 +22,7 @@
       buttons:[{
         'name':'محبوب ترین محصولات',
         'func':null,
-        'href':'/search/?sort_product=-rate',
+        'href':'/p/search/?sort_product=-rate',
       }]
     }),
   }

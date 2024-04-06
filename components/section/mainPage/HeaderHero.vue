@@ -23,7 +23,7 @@
           <div class="flex ">
             <div class="relative w-full">
               <input data-aos="flip-up" type="search" id="search-dropdown"
-                v-on:keyup.enter="$router.push('/search/?search=' + searchQuery);" v-model="searchQuery"
+                v-on:keyup.enter="$router.push('/p/search/?search=' + searchQuery);" v-model="searchQuery"
                 class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات ..." required>
 
@@ -34,7 +34,7 @@
                   <div class="rtl">
                     <Swiper :modules="modules" :slides-per-view="'auto'" :loop="false" :space-between="34">
                       <SwiperSlide v-for="item in products.results" :key="item.id" class="mb-10 px-2">
-                        <nuxt-link :to="'/product/' + item.id">
+                        <nuxt-link :to="'/p/product/' + item.id">
                           <div class="flex items-start border rounded-xl text-sm overflow-hidden">
                             <div class="px-5 py-3 flex-grow">
                             <div class="pb-3">
@@ -64,7 +64,7 @@
                   <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
                   <Swiper :modules="modules" :slides-per-view="'auto'" :loop="false" :space-between="34">
                     <SwiperSlide v-for="item in digital_products.results" :key="item" class="mb-10 px-2">
-                      <nuxt-link :to="'/digitalProduct/' + item.id">
+                      <nuxt-link :to="'/p/digitalProduct/' + item.id">
                         <div class="flex items-start border rounded-xl text-sm overflow-hidden">
                           <div class="px-5 py-3 flex-grow">
                             <div class="pb-3">

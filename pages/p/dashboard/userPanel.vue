@@ -224,9 +224,9 @@ export default {
         "یزد"
       ],
       items: [
-        { name: 'اطلاعات کاربری', href: '/dashboard/userPanel/' },
+        { name: 'اطلاعات کاربری', href: '/p/dashboard/userPanel/' },
         { name: 'سفارشات من', href: '#' },
-        { name: 'خروج', href: '/auth/logOut/' },
+        { name: 'خروج', href: '/p/auth/logOut/' },
       ],
       user: null,
       first_name: null,
@@ -294,7 +294,7 @@ export default {
       {
         'name':'خروج',
         'func':null,
-        'href':'/auth/logOut'
+        'href':'/p/auth/logOut'
       }
     ])
   }

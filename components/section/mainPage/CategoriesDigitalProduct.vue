@@ -34,7 +34,7 @@
       
           </div>
           <div class="min-w-0 flex-1 ">
-            <nuxt-link :to="'/search/?tab=1&category_digital_product='+category.id"  class="focus:outline-none">
+            <nuxt-link :to="'/p/search/?tab=1&category_digital_product='+category.id"  class="focus:outline-none">
               <span class="absolute inset-0" aria-hidden="true" />
               <p class="text-sm font-medium text-gray-900 px-3">{{ category.title }}</p>
             </nuxt-link>

@@ -38,12 +38,12 @@
             <HomeIcon class=" w-5 text-indigo-900" />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
-          <button @click="isLogin ? $router.push('/dashboard/userPanel/') : changeStateLogin(true)"
+          <button @click="isLogin ? $router.push('/p/dashboard/userPanel/') : changeStateLogin(true)"
             :class="currentRouteCheck('userPanel') ? 'bg-white' : 'bg-indigo-200'"
             class="p-2.5   transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 text-indigo-600" />
           </button>
-          <button @click="isLogin ? $router.push('/dashboard/productOrders/') : changeStateLogin(true)"
+          <button @click="isLogin ? $router.push('/p/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('productOrders') ? 'bg-white' : 'bg-indigo-200'"
             class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">

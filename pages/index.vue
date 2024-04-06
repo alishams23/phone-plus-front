@@ -94,12 +94,12 @@ export default {
       {
         'name':'محصولات محبوب',
         'func':null,
-        'href':`/search/?sort_product=-rate`,
+        'href':`/p/search/?sort_product=-rate`,
       },
       {
         'name':'محصولات دیجیتال محبوب',
         'func':null,
-        'href':`/search/?sort_digital_product=-rate`,
+        'href':`/p/search/?sort_digital_product=-rate`,
       },
     ])
   }

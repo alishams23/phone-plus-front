@@ -248,7 +248,7 @@ export default {
     NavigationStore().setButtons([{
         'name':'گفتگو با فروشگاه',
         'func': this.isLogin == true ?null :this.openLogin ,
-        'href': this.isLogin == true ? `/chat/${this.results.admin[0].username}/${this.results.admin[0].username}_${useUserStore().username}` : null,
+        'href': this.isLogin == true ? `/p/chat/${this.results.admin[0].username}/${this.results.admin[0].username}_${useUserStore().username}` : null,
       }])
   
   },

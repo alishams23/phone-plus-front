@@ -38,7 +38,7 @@
                   ? 'bg-gray-100    '
                   : ''
               " type="button" :key="person['contact']['username'] + 'contacts-chat'" :to="{
-                  name: 't-chat-username-roomName',
+                  name: 'p-chat-username-roomName',
                   params: {
                     username: person.contact.username,
                     user: person.contact,
@@ -56,7 +56,7 @@
                   ? 'bg-gray-100    '
                   : ''
               " type="button" :key="person['contact']['username'] + 'contacts-chat'" :to="{
-                  name: 't-chat-username-roomName',
+                  name: 'p-chat-username-roomName',
                   params: {
                     username: person.contact.username,
                     user: person.contact,
