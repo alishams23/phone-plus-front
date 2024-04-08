@@ -1,4 +1,12 @@
 <template>
+  <div v-if="snackbarVisible" class="bg-indigo-700 shadow-2 rtl text-white p-4 py-2 mx-10 rounded-full fixed top-4  flex justify-between items-center">
+    با موفقیت ثبت شد
+    <button @click="snackbarVisible = false" class="text-white mr-10">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
   <div v-if="loading" >
       <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] mt-12 lg:mt-0">
           <section aria-labelledby="section-1-title">
@@ -188,6 +196,7 @@ export default {
   },
   data() {
     return {
+      snackbarVisible:false,
       loading:true,
       provinces: [
         "انتخاب کنید",
@@ -239,6 +248,8 @@ export default {
     }
   },
   methods: {
+
+  
     getData() { 
       
       this.loading = true
@@ -283,6 +294,10 @@ export default {
       .then(response => {
 
         this.loading = false
+        this.snackbarVisible = true
+        setTimeout(() => {
+          this.snackbarVisible = false
+        }, 5000);
         // You can change the dialog page or show a success message here
       })
   },
