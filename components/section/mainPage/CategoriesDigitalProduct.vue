@@ -26,7 +26,7 @@
       <div   class="container mx-auto grid grid-cols-2 gap-4 sm:grid-cols-4 pb-20 rtl "
         :style="{ backgroundImage: '', backgroundSize: 'cover' }">
         <div v-for="category in data" :key="category.id"
-          class=" relative isolate  flex items-center  rounded-[19px] border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
+          class=" relative isolate  flex items-center  rounded-[19px] cursor-pointer border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
           :style="{ backgroundImage: 'url(' + category.image + ')', backgroundSize: 'cover' }">
           <div class="rounded-lg absolute inset-0 -z-10 bg-gradient-to-l  from-white from-20% via-white/40" />
           <div class=" bg-blue-circle-categories  absolute inset-0  " />
@@ -34,10 +34,14 @@
       
           </div>
           <div class="min-w-0 flex-1 ">
-            <nuxt-link :to="'/p/search/?tab=1&category_digital_product='+category.id"  class="focus:outline-none">
+            <a @click="$router.push('/p/search/?tab=1&category_digital_product=' + category.id);" class="focus:outline-none">
               <span class="absolute inset-0" aria-hidden="true" />
               <p class="text-sm font-medium text-gray-900 px-3">{{ category.title }}</p>
-            </nuxt-link>
+            </a>
+            <!-- <nuxt-link :to="'/p/search/?tab=1&category_digital_product='+category.id"  class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true" />
+              <p class="text-sm font-medium text-gray-900 px-3">{{ category.title }}</p>
+            </nuxt-link> -->
           </div>
         </div>
       </div>

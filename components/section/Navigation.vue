@@ -11,7 +11,7 @@
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
       <transition name="fade">
-        <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-left' : ''" data-aos-duration="500"
+        <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-up' : ''" data-aos-duration="500"
           data-aos-delay="500"
           class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center   text-indigo-800 md:flex">
           <form class=" rounded-full h-full px-4">
@@ -30,7 +30,7 @@
           </form>
         </div>
       </transition>
-      <div class=" grow bg-glass-3 ml-0 md:ml-3  px-8 py-2 flex flex-row items-center justify-between rounded-[23px]  ">
+      <div class=" grow bg-glass-3 ml-0 md:ml-3  px-8 py-2 flex flex-row items-center justify-between rounded-[23px] rtl ">
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? 'bg-white' : 'bg-indigo-200'"

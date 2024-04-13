@@ -210,7 +210,7 @@
                       <div class="border-t-2 mt-8  py-1">
                       </div>
                       <div class=" flex items-center justify-center " style="margin-top:-35px">
-                        <div @click="selected_tab = 0"
+                        <div @click="selected_tab = 0; scrollToTop()"
                           class=" cursor-pointer border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
                           بیشتر
                         </div>
@@ -232,7 +232,7 @@
                       <div class="border-t-2 mt-8  py-1">
                       </div>
                       <div class=" flex items-center justify-center " style="margin-top:-35px">
-                        <div @click="selected_tab = 1"
+                        <div @click="selected_tab = 1; scrollToTop()"
                           class=" cursor-pointer border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
                           بیشتر
                         </div>
@@ -254,7 +254,7 @@
                       <div class="border-t-2 mt-8  py-1">
                       </div>
                       <div class=" flex items-center justify-center " style="margin-top:-35px">
-                        <div @click="selected_tab = 2"
+                        <div @click="selected_tab = 2; scrollToTop()"
                           class=" cursor-pointer border-2 text-sm  bg-white rounded-full px-10 py-2 mb-5">
                           بیشتر
                         </div>
@@ -399,6 +399,11 @@ export default {
       },
     },
   }),
+  methods: { 
+    scrollToTop() {
+      window.scrollTo(0,0);
+    }
+  },
   mounted() {
     if (this.$route.query.search != null) this.text = this.$route.query.search
     if (this.$route.query.tab != null) this.selected_tab = parseInt(this.$route.query.tab)

@@ -133,11 +133,11 @@
                                                 </div>
 
                                                 <div class="px-4 py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
-                                                    <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-top leading-6 text-gray-900">آدرس</dt>
+                                                    <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-end md:px-8 items-top leading-6 text-gray-900">آدرس</dt>
                                                     <dd
                                                         class="mt-1 flex text-sm leading-6 text-gray-700 col-span-2  mt-0">
                                                         <div class="flex flex-wrap -mx-3 mb-2">
-                                                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                                                 <label
                                                                     class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                                                     for="grid-state">
@@ -164,7 +164,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                                                 <label
                                                                     class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                                                     for="grid-city">
@@ -174,28 +174,22 @@
                                                                     class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="city">
                                                             </div>
-                                                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                                                <label
-                                                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                                                    for="grid-city">
-                                                                    خیابان اصلی
+                                                            <div class="py-2 w-full px-3 mb-6 md:mb-0">
+                                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                                                for="grid-city">
+                                                                    محل سکونت
                                                                 </label>
-                                                                <input required
-                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                                    id="grid-city" type="text" v-model="street">
+                                                                <textarea
+                                                                class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                id="grid-city"
+                                                                v-model="street"
+                                                                rows="3" 
+                                                                >
+                                                                </textarea>
                                                             </div>
-                                                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                                                <label
-                                                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                                                    for="grid-city">
-                                                                    خیابان فرعی
-                                                                </label>
-                                                                <input required
-                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                                    id="grid-city" type="text" v-model="alley">
-                                                            </div>
+                                                            
 
-                                                            <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                                                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                                                 <label
                                                                     class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                                                     for="grid-zip">
@@ -209,7 +203,7 @@
                                                     </dd>
                                                     <button v-if="btn_buy_loading" type=""
                                                         class="bg-gray-400 text-white font-bold py-2 mb-8 px-4 rounded-full px-10">
-                                                        <div class=" flex items-center justify-center" >
+                                                        <div class=" flex items-center  justify-center" >
                                                             <div role="status">
                                                                 <svg aria-hidden="false" class="w-8 h-8 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -289,7 +283,6 @@ export default {
             last_name: null,
             zipCode: null,
             street: null,
-            alley: null,
             city: null,
             state: null,
         }
@@ -310,7 +303,6 @@ export default {
                 this.last_name = this.user["last_name"]
                 this.zipCode = this.user["zipCode"]
                 this.street = this.user["street"]
-                this.alley = this.user["alley"]
                 this.city = this.user["city"]
                 this.state = this.user["state"]
                 this.loading = false
@@ -328,7 +320,6 @@ export default {
                 last_name: this.last_name,
                 zipCode: this.zipCode,
                 street: this.street,
-                alley: this.alley,
                 city: this.city,
                 state: this.state,
             };

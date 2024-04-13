@@ -104,16 +104,16 @@
                           </TabList>
                         </div>
 
-                        <TabPanels class="aspect-h-1 aspect-w-1 w-full">
+                        <TabPanels class="aspect- aspect-w-1 w-full">
                           <!-- Video Panel -->
-                          <TabPanel v-if="product.video" class="h-full flex justify-center rounded-xl  items-center">
-                            <div class="overflow-hidden rounded-[25px]" style="width: 90%; height: 100%; max-height: 500px; position: relative;">
+                          <TabPanel v-if="product.video" class="aspect-square flex justify-center rounded-xl  items-center">
+                            <div class="overflow-hidden rounded-[25px]" style="width: 90%; max-height: 500px; position: relative;">
                               <div v-html="product.video" >
                               </div>
                             </div>
                           </TabPanel>
                           <!-- Image Panels -->
-                          <TabPanel v-for="image in product.image" :key="image.id" class="w-full">
+                          <TabPanel v-for="image in product.image" :key="image.id" class="aspect-square flex justify-center rounded-xl  items-center ">
                             <img :src="image.photo" :alt="image.title_for_photo"
                               class=" aspect-square rounded-[25px] object-cover " />
                           </TabPanel>
@@ -212,10 +212,9 @@
                             </button>
                             <button 
                               v-else
-                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-gray-400 px-8 py-3 text-base font-medium text-white sm:w-full">
+                              class="flex max-w-xs cursor-default flex-1 items-center justify-center rounded-full border border-transparent bg-gray-400 px-8 py-3 text-base font-medium text-white sm:w-full">
                               ناموجود
                             </button>
-
                               <BuyProductPopup   @show-change="(data) => {show = data}" :show="show" :product="product" :color="selected_color" />
                           </div>
                         </div>

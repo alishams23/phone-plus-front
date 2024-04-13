@@ -70,7 +70,7 @@
                       <dt class="text-sm font-medium leading-6 text-gray-900">آدرس</dt>
                       <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div class="flex flex-wrap -mx-3 mb-2">
-                          <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                          <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                               for="grid-state">
                               استان
@@ -91,7 +91,7 @@
                             </div>
                           </div>
                 
-                          <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                          <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                               for="grid-city">
                               شهر
@@ -100,26 +100,22 @@
                               class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-city" type="text" v-model="city">
                           </div>
-                          <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                          <div class="py-2 w-full  px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                               for="grid-city">
-                              خیابان اصلی
+                              محل سکونت
                             </label>
-                            <input
+                            <textarea
                               class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                              id="grid-city" type="text" v-model="street">
-                          </div>
-                          <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                              for="grid-city">
-                              خیابان فرعی
-                            </label>
-                            <input
-                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                              id="grid-city" type="text" v-model="alley">
+                              id="grid-city"
+                              v-model="street"
+                              rows="3" 
+                            >
+                            </textarea>
+
                           </div>
                 
-                          <div class="py-2 w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                          <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                               for="grid-zip">
                               کدپستی
@@ -242,7 +238,6 @@ export default {
       last_name: null,
       zipCode: null,
       street: null,
-      alley: null,
       city: null,
       state: null,
     }
@@ -265,7 +260,6 @@ export default {
         this.last_name = this.user["last_name"]
         this.zipCode = this.user["zipCode"]
         this.street = this.user["street"]
-        this.alley = this.user["alley"]
         this.city = this.user["city"]
         this.state = this.user["state"]
         this.loading = false
@@ -279,7 +273,6 @@ export default {
       last_name: this.last_name,
       zipCode: this.zipCode,
       street: this.street,
-      alley: this.alley,
       city: this.city,
       state: this.state,
     };

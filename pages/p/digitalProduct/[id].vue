@@ -121,7 +121,7 @@
                             </div>
                           </TabPanel>
                           <!-- Image Panels -->
-                          <TabPanel v-for="image in product.image" :key="image.id" class="h-full">
+                          <TabPanel v-for="image in product.image" :key="image.id" class="aspect-square flex justify-center rounded-xl  items-center ">
                             <img :src="image.photo" :alt="image.title_for_photo"
                               class=" aspect-square rounded-[25px] object-cover " />
                           </TabPanel>
@@ -177,8 +177,8 @@
 
                           <div class="sm:flex-col1 mt-10 flex">
                             <button v-if="btn_buy_loading" type=""
-                                class="bg-gray-400 text-white font-bold py-2 mb-8 px-4 rounded-full px-10">
-                                <div class=" flex items-center justify-center" >
+                                class="bg-gray-400 text-white font-bold py-2 mb-8 px-4 w-full max-w-xs rounded-full px-10">
+                                <div class=" flex w-full items-center justify-center" >
                                     <div role="status">
                                         <svg aria-hidden="false" class="w-8 h-8 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -188,8 +188,8 @@
                                     </div>
                                 </div>
                             </button>
-                            <button v-else @click="isLogin==true?sendData():openLogin()"
-                              :class="is_sellable?'bg-indigo-600  hover:bg-indigo-700':'bg-gray-400'"
+                            <button v-else @click="isLogin==true?sendData():is_sellable?openLogin():''"
+                              :class="is_sellable?'bg-indigo-600 hover:bg-indigo-700':'cursor-default bg-gray-400'"
                               class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none sm:w-full">
                               <p v-if="is_sellable">خرید / دانلود</p>
                               <p v-else>ناموجود</p>
@@ -379,13 +379,27 @@ export default {
     product: null,
     is_sellable: true,
     selected_color: null,
-    btn_buy_loading: null,
+    btn_buy_loading: false,
     // selectedColor: ref(product.colors[0]),
     comment_title: '',
     comment_rate: 0,
     comment_hover_rate: 0,
   }),
   methods: {
+    setButtons(){
+      if (this.is_sellable){
+          NavigationStore().setButtons([
+            {
+              'name':'خرید / دانلود',
+              'func': this.isLogin==true? this.btn_buy_loading==false? this.sendData: null : this.openLogin,
+              'href': this.isLogin==true? null : null,
+            }
+          ])
+        }else{
+          NavigationStore().setButtons([
+        ])
+        }
+    },
     getData() {
       this.loading = true
       axios.get(`${apiStore().address}/api/product/digital-product-retrieve-main-page/${this.$route.params.id}/`, {
@@ -402,23 +416,13 @@ export default {
             this.is_sellable = false
           }
         }
-        if (this.is_sellable){
-          NavigationStore().setButtons([
-            {
-              'name':'خرید / دانلود',
-              'func': this.isLogin==true? null : this.openLogin,
-              'href': this.isLogin==true? '/' : null,
-            }
-          ])
-        }else{
-          NavigationStore().setButtons([
-          ])
-        }
+        this.setButtons()
 
       })
     },
     sendData() {
       this.btn_buy_loading = true
+      this.setButtons()
       const apiUrl = `${apiStore().address}/api/order/create-order-digital-product/`;
       const data = {
           digital_product: this.product.id,
@@ -442,8 +446,10 @@ export default {
             window.location.href = response.data["result"]
           }
           console.log(response.data);
+          this.btn_buy_loading = false;
+          this.setButtons();
         }),
-          this.loading = false
+          this.loading = false;
           // You can change the dialog page or show a success message here
       })
     },
