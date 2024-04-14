@@ -1,6 +1,72 @@
 <template>
-  <div class="flex justify-center ">
-    
+  <div class="flex justify-start ">
+    <div  style="z-index:9999999999999999" class="fixed bottom-0  ml-[5rem] mb-[5rem]" data-aos="fade-up" v-if="searchQuery != null && searchQuery != ''">
+       <div class=" mt-2 w-full  w-[30rem]" 
+               >
+                <ul class="bg-gray-100 rtl rounded-xl  shadow-xl w-full">
+                  <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
+                  <div class="rtl">
+                    <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
+                      <SwiperSlide v-for="item in products.results" :key="item.id" class="mb-10 px-2">
+                        <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
+                          <div class="flex items-start bg-white border rounded-xl text-sm overflow-hidden">
+                            <div class="px-5 py-3 flex-grow">
+                            <div class="pb-3">
+                              {{ truncateTitle(item.title) }}
+                            </div>
+                            <div :class="item.discount != 0 ? 'line-through ' : ''"
+                              class=" text-xs text-gray-300 font-semibold   rtl text-right  rounded-full "> 
+                              {{item.discount != 0 ? item.price : '&nbsp; ' }}
+                               </div>
+                            <div class=" text-sm font-bold text-black  rtl text-right w-[150px] rounded-full "> {{ item.price*(100 - item.discount )/100 }}
+                            </div>
+                            <div
+                              class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg px-3 py-1">
+                              <div
+                                class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-[10px] px-3 py-1"
+                                v-if="item.discount != 0"> {{ item.discount }} % 
+                              </div>
+                            </div>
+                          </div>
+                            <img :src="item.image[0].photo" alt="Option image"
+                              class="w-32 h-24 object-cover rounded-e-lg" />
+                          </div>
+                        </nuxt-link>
+                      </SwiperSlide>
+                    </Swiper>
+                  </div>
+                  <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
+                  <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
+                    <SwiperSlide v-for="item in digital_products.results" :key="item" class="mb-10 px-2" @click="searchQuery = null">
+                      <nuxt-link :to="'/p/digitalProduct/' + item.id">
+                        <div class="flex items-start border bg-white rounded-xl text-sm overflow-hidden">
+                          <div class="px-5 py-3 flex-grow">
+                            <div class="pb-3">
+                              {{ truncateTitle(item.title) }}
+                            </div>
+                            <div :class="item.discount != 0 ? 'line-through ' : ''"
+                              class=" text-xs text-gray-300 font-semibold   rtl text-right  rounded-full "> 
+                              {{item.discount != 0 ? item.price : '&nbsp; ' }}
+                               </div>
+                            <div class=" text-sm font-bold text-black  rtl text-right w-[150px] rounded-full "> {{ item.price*(100 - item.discount )/100 }}
+                            </div>
+                            <div
+                              class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg px-3 py-1">
+                              <div
+                                class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-[10px] px-3 py-1"
+                                v-if="item.discount != 0"> {{ item.discount }} % 
+                              </div>
+                            </div>
+                          </div>
+                          <img :src="item.image[0].photo" alt="Option image"
+                            class="w-32 h-24 object-cover rounded-e-lg" />
+                        </div>
+                      </nuxt-link>
+                    </SwiperSlide>
+                  </Swiper>
+                </ul>
+              </div>
+    </div>
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full  px-8  ">
       <div @click="isLogin ? open_support = true : changeStateLogin(true)"
         class="flex-1/8 px-5  items-center bg-indigo-600 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
@@ -14,7 +80,7 @@
         <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-up' : null" data-aos-duration="500"
           data-aos-delay="500"
           class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center   text-indigo-800 md:flex">
-          <form class=" rounded-full h-full px-4">
+          <div class=" rounded-full h-full px-4">
             <div class="relative  ">
               <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg class="w-4 h-4 text-indigo-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -23,11 +89,17 @@
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>
               </div>
-              <input type="search" v-model="inputValue" id="default-search"
+
+             
+              
+              <input type="search" v-on:keyup.enter="$router.push('/p/search/?search=' + searchQuery);searchQuery = null" v-model="searchQuery" id="default-search"
                 class="w-full p-4 pl-10 text-sm rtl text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-indigo-800   border-transparent"
                 placeholder="جستجو..." required>
+
+              
+
             </div>
-          </form>
+          </div>
         </div>
       </transition>
       <div class=" grow bg-glass-3 ml-0 md:ml-3  px-8 py-2 flex flex-row items-center justify-between rounded-[23px] rtl ">
@@ -155,6 +227,10 @@
 <script>
 
 import {
+  Combobox,
+  ComboboxInput,
+  ComboboxOptions,
+  ComboboxOption,
   Dialog,
   DialogPanel,
   DialogTitle,
@@ -165,6 +241,12 @@ import {
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
+
+import { ref } from 'vue'
+import axios from 'axios'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { apiStore } from '~/store/api';
+
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { useUserStore } from '~/store/user';
 import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
@@ -176,6 +258,10 @@ import { NavigationStore } from '~/store/navigation';
 export default {
 
   components: {
+    Combobox,
+    ComboboxInput,
+    ComboboxOptions,
+    ComboboxOption,
     side,
     UserIcon,
     HomeIcon,
@@ -202,8 +288,11 @@ export default {
       open_support: false,
 
       showButton: true,
-      inputValue: '',
- heightPage:null
+      searchQuery: '',
+      products: [],
+      digital_products: [],
+      loading: false,
+      heightPage:null
     };
   },
   computed: {
@@ -229,7 +318,35 @@ export default {
     window.removeEventListener('scroll', this.checkScroll);
   },
   methods: {
+    truncateTitle(title) {
+      return title.length > 20 ? title.substring(0, 10) + '...' : title;
+    },
+    getProducts() {
+      this.loading = true
+      axios.get(`${apiStore().address}/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      }).then((response) => {
+        this.products = response.data
+        this.loading = false
 
+      })
+    },
+    getDigitalProducts() {
+      this.loading = true
+      axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?search=${this.searchQuery}`, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      }).then((response) => {
+        this.digital_products = response.data
+        this.loading = false
+
+      })
+    },
     currentRouteCheck(page_name) {
       if (page_name != '') {
         return this.routeName.split("-").includes(page_name);
@@ -247,7 +364,16 @@ export default {
     },
     
   },
-
+  watch: {
+    'searchQuery': {
+      // the callback will be called immediately after the start of the observation
+      immediate: true,
+      handler(val, oldVal) {
+        this.getProducts()
+        this.getDigitalProducts()
+      }
+    }
+  }
 };
 </script>
 
