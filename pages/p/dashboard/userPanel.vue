@@ -266,34 +266,34 @@ export default {
 
       })
     },
-  sendData() {
-    const apiUrl = `${apiStore().address}/api/account/user-settings-update/${useUserStore().username}/`;
-    const data = {
-      first_name: this.first_name,
-      last_name: this.last_name,
-      zipCode: this.zipCode,
-      street: this.street,
-      city: this.city,
-      state: this.state,
-    };
-    this.loading = true
-    axios.put(apiUrl, data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Accept: "application/json",
-        Authorization: `Token ${useUserStore().userToken}`
-      },
-    })
-      .then(response => {
-
-        this.loading = false
-        this.snackbarVisible = true
-        setTimeout(() => {
-          this.snackbarVisible = false
-        }, 5000);
-        // You can change the dialog page or show a success message here
+    sendData() {
+      const apiUrl = `${apiStore().address}/api/account/user-settings-update/${useUserStore().username}/`;
+      const data = {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        zipCode: this.zipCode,
+        street: this.street,
+        city: this.city,
+        state: this.state,
+      };
+      this.loading = true
+      axios.put(apiUrl, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Accept: "application/json",
+          Authorization: `Token ${useUserStore().userToken}`
+        },
       })
-  },
+        .then(response => {
+
+          this.loading = false
+          this.snackbarVisible = true
+          setTimeout(() => {
+            this.snackbarVisible = false
+          }, 5000);
+          // You can change the dialog page or show a success message here
+        })
+    },
   },
  
   mounted() {

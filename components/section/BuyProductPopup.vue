@@ -1,14 +1,20 @@
 <template>
-    <!-- login popup -->
+    
     <div>
-
         <TransitionRoot as="template" :show="show">
             <Dialog as="div" class="relative z-10" @close="show = false;">
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
                     enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
                     <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity" />
                 </TransitionChild>
-
+                <div v-if="snackbarVisible" class="bg-indigo-700 shadow-2 rtl text-white p-4 py-2 mx-10 rounded-full fixed top-4  flex justify-between items-center">
+                    اطلاعات با موفقیت ذخیره شد
+                    <button @click="snackbarVisible = false" class="text-white mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                    </button>
+                </div>
                 <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
                     <div class="flex min-h-full items-end justify-center p-4 text-center items-center p-0">
                         <TransitionChild as="template" enter="ease-out duration-300"
@@ -187,7 +193,6 @@
                                                                 >
                                                                 </textarea>
                                                             </div>
-                                                            
 
                                                             <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                                                 <label
@@ -199,11 +204,22 @@
                                                                     class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-zip" type="text" v-model="zipCode">
                                                             </div>
+                                                            <div class="py-2 flex items-center w-full pt-10 px-3 mb-6 md:mb-0">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    id="save-address"
+                                                                    v-model="save_address"
+                                                                    class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                                                                >
+                                                                <label for="save-address" class="ml-2 block px-2 text-sm text-gray-900">
+                                                                    ذخیره اطلاعت من
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                     </dd>
                                                     <button v-if="btn_buy_loading" type=""
                                                         class="bg-gray-400 text-white font-bold py-2 mb-8 px-4 rounded-full px-10">
-                                                        <div class=" flex items-center  justify-center" >
+                                                        <div class=" flex items-center w-full  justify-center" >
                                                             <div role="status">
                                                                 <svg aria-hidden="false" class="w-8 h-8 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -277,6 +293,8 @@ export default {
                 "همدان",
                 "یزد"
             ],
+            snackbarVisible:false,
+            save_address: false,
             qty: 1,
             user: null,
             first_name: null,
@@ -306,10 +324,37 @@ export default {
                 this.city = this.user["city"]
                 this.state = this.user["state"]
                 this.loading = false
-
+            })
+        },
+        saveAddress() {
+            const apiUrl = `${apiStore().address}/api/account/user-settings-update/${useUserStore().username}/`;
+            const data = {
+                first_name: this.first_name,
+                last_name: this.last_name,
+                zipCode: this.zipCode,
+                street: this.street,
+                city: this.city,
+                state: this.state,
+            };
+            this.loading = true
+            axios.put(apiUrl, data, {
+                headers: {
+                'Content-Type': 'multipart/form-data',
+                Accept: "application/json",
+                Authorization: `Token ${useUserStore().userToken}`
+                },
+            }).then(response => {
+                this.snackbarVisible = true
+                setTimeout(() => {
+                    this.snackbarVisible = false
+                }, 5000);
+                // You can change the dialog page or show a success message here
             })
         },
         sendData() {
+            if(this.save_address){
+                this.saveAddress()
+            }
             this.btn_buy_loading = true
             const apiUrl = `${apiStore().address}/api/order/create-order/`;
             const data = {
