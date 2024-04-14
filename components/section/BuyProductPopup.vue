@@ -386,7 +386,7 @@ export default {
                     if (response.status == 200) {
                         window.location.href = response.data["result"]
                     }
-                    console.log(response.data);
+               
                 }),
                     this.loading = false
                 // You can change the dialog page or show a success message here

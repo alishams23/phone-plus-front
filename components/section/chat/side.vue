@@ -29,13 +29,42 @@
 
 
     
-    <ul role="list" class="flex-1 divide-y divide-gray-200 overflow-y-auto">
- 
-      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 " :class=" selected_user == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
+    <ul role="list" class="flex-1  overflow-y-auto">
+      <li v-if="$route.name == 'username'" class="rounded-2xl mx-3 mt-2  bg-gray-200"  >
+        <div class="group relative flex  items-center px-5 py-4" >
+            <a :href="sectionSupport == true ?'/p/chat/' +  $route.params.username + '/'+username : '#'" class="relative flex min-w-0 flex-1 items-center">
+              <span class="relative inline-block flex-shrink-0">
+                <img class="h-10 w-10 rounded-full object-cover"  :src="address + '/api/account/shop-profile/' + $route.params.username" alt="" />
+               
+              </span>
+              <div class="mr-4 truncate"> 
+                <p class="truncate px-4 text-sm font-medium rtl" > فروشگاه : {{ $route.params.username }}</p>
+              </div>
+            </a>
+            <PaperClipIcon class="h-6 w-6" aria-hidden="true" />
+
+        </div>
+      </li>
+      <li v-else v-if="currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2  bg-gray-200" >
+        <div class="group relative flex  items-center px-5 py-4" >
+            <a :href="sectionSupport == true ?'/p/chat/' +  $route.params.username + '/'+'pourya' : '#'" class="relative flex min-w-0 flex-1 items-center">
+              <span class="relative inline-block flex-shrink-0">
+                <img class="h-10 w-10 rounded-full object-cover bg-gray-300"   alt="" />
+               
+              </span>
+              <div class="mr-4 truncate"> 
+                <p class="truncate px-4 text-sm font-medium " >ادمین اصلی سایت</p>
+              </div>
+            </a>
+            <PaperClipIcon class="h-6 w-6" aria-hidden="true" />
+
+        </div>
+      </li>
+      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 border-0" :class=" selected_user == person.contact.username ? 'bg-indigo-600 text-white' : ''" :key="person.handle">
         {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
         <div class="group relative flex  items-center px-5 py-4" @click="$emit('get-selected-user', person);selected_user = person.contact.username">
-          <nuxt-link :to="sectionSupport != true ?'/p/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1">
-            <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center">
+          <nuxt-link :to="sectionSupport != true ?'/p/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1 border-0">
+            <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center border-0">
               <span class="relative inline-block flex-shrink-0">
                 <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else  alt="" />
@@ -66,7 +95,7 @@ import {
   MenuItems,
 } from '@headlessui/vue'
 import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { XMarkIcon , PaperClipIcon} from '@heroicons/vue/24/outline'
 import { apiStore } from '~/store/api'; 
 
 export default {
@@ -75,6 +104,9 @@ export default {
   computed: {
       address() {
         return apiStore().address
+      },
+      username() {
+        return apiStore().username
       },
     },
   components: {
@@ -85,6 +117,7 @@ export default {
     MenuButton,
     MenuItem,
     MenuItems,
+    PaperClipIcon
   },
   
   
@@ -105,6 +138,16 @@ export default {
     }
   },
   methods: {
+    currentRouteCheck(page_name) {
+      if (page_name != '') {
+        return this.$route.name.split("-").includes(page_name);
+      } else if (this.$route.name== 'index') {
+        return true
+      }
+    },
+    routeName(){
+      return this.$route.name
+    },
     async ListUserMessageApi() {
       await fetch(`${apiStore().address}/api/chat/ChatList/?search=${this.searchInput == null ? '' :this.searchInput}`, {
         headers: this.headers

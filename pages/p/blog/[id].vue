@@ -58,12 +58,12 @@
 
                     <div class="grid grid-cols-4 gap-4 bg-white p-4 pb-10">
                         <div class="col-span-4 lg:col-span-3  ">
-                            <div class="relative isolate shadow-xl rounded-[25px] pb-10  h-[10rem] lg:h-[30rem]">
+                            <div class="relative isolate shadow-xl rounded-[25px] pb-10  h-[10rem] lg:h-[20rem]">
 
                                 <img :src="blog.imageBlog.photo" :alt="blog.imageBlog.title_for_photo"
-                                    class="absolute inset-0 -z-1000  h-[10rem] lg:h-[30rem] w-full rounded-[25px] object-cover" />
+                                    class="absolute inset-0 -z-1000  h-[10rem] lg:h-[20rem] w-full rounded-[25px] object-cover" />
                                 <div
-                                    class="absolute inset-0 -z-9999 bg-gradient-to-tr from-gray-700 to-gray-900 opacity-80 rounded-[25px] h-[10rem] lg:h-[30rem] w-full" />
+                                    class="absolute inset-0 -z-9999 bg-gradient-to-tr from-gray-700 to-gray-900 opacity-80 rounded-[25px] h-[10rem] lg:h-[20rem] w-full" />
 
                                 <div class="absolute inset-0 -z-1000   h-[10rem] lg:h-[30rem] w-full ">
                                     <h1 class="font-bold rtl px-8 lg:px-16 pt-8 lg:pt-16 text-white text-xl lg:text-4xl">

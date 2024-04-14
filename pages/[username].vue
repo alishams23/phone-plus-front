@@ -1,4 +1,5 @@
 <template>
+  
   <div class="relative " v-if="results && results.image">
       <img :src="results.image" alt=""
         class="absolute  inset-0 -z-10  h-full w-full object-cover " />
