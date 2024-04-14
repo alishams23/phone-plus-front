@@ -386,7 +386,8 @@ export default {
                         // Handle success response
                         const userStore = useUserStore();
                         userStore.setToken(response.data.token, response.data.username);
-                        this.$emit("close")
+                        // this.$emit("close")
+                        this.$router.go(this.$router.currentRoute)
                        
                         // You can change the dialog page or show a success message here
                     })
@@ -460,7 +461,8 @@ export default {
                         // Handle success response
                         const userStore = useUserStore();
                         userStore.setToken(response.data.token, response.data.username);
-                        this.$emit("close")
+                        // this.$emit("close")
+                        this.$router.go(this.$router.currentRoute)
                         // You can change the dialog page or show a success message here
                     })
                     .catch(error => {

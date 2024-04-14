@@ -185,12 +185,12 @@
                           <div v-if="selected_color" class="ltr flex items-end flex-col">
                             <h3 class="text-sm text-gray-600 rtl">رنگ‌ها </h3>
 
-                            <RadioGroup v-model="selected_color" class="mt-2">
+                            <RadioGroup v-model="selected_color" class="mt-2" @click="setButtons" >
                               <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
                               <span class="flex items-center space-x-3">
                                 <RadioGroupOption as="template" v-for="color in product.colors" :key="color.id"
                                   :value="color" v-slot="{ active, checked }">
-                                  <div
+                                  <div 
                                     :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
                                     <RadioGroupLabel as="span" class="sr-only">{{ color.title }}</RadioGroupLabel>
                                     <span aria-hidden="true"
@@ -432,7 +432,22 @@ export default {
     comment_hover_rate: 0,
   }),
   methods: {
-    
+    setButtons(){
+      this.is_sellable = this.selected_color.count>0? true : false
+      console.log('set buttons', this.is_sellable);
+      if (this.is_sellable){
+        NavigationStore().setButtons([
+          {
+          'name':'خرید محصول',
+          'func': this.isLogin==true? ()=>{this.show = true} : this.openLogin,
+          'href': null,
+        }
+        ])
+      }else{
+        NavigationStore().setButtons([
+        ])
+      }
+    },
     getData() {
       this.loading = true
       axios.get(`${apiStore().address}/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
@@ -451,18 +466,7 @@ export default {
         }else{
           this.product.amount > 0? this.is_sellable = true : ''
         }
-        if (this.is_sellable){
-          NavigationStore().setButtons([
-            {
-            'name':'خرید محصول',
-            'func': this.isLogin==true? ()=>{this.show = true} : this.openLogin,
-            'href': null,
-          }
-          ])
-        }else{
-          NavigationStore().setButtons([
-          ])
-        }
+        this.setButtons()
       })
     },
     async sendComment() {
