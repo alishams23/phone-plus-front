@@ -40,15 +40,15 @@ backdrop-filter: blur(15px);
 .bg-glass-2{
     background: rgba(225, 225, 255, 0.8);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px) !important;
-    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
   }
 
 .bg-glass-3{
-    background: rgba(66, 46, 247, 0.8);
+    background: rgba(66, 46, 247, 0.682);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px) !important;
-    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
   }
 
 //   .bg-glass-3{
