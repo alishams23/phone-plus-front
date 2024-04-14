@@ -11,7 +11,7 @@
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
       <transition name="fade">
-        <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-up' : ''" data-aos-duration="500"
+        <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-up' : null" data-aos-duration="500"
           data-aos-delay="500"
           class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center   text-indigo-800 md:flex">
           <form class=" rounded-full h-full px-4">
