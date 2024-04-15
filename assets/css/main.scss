@@ -194,15 +194,17 @@ body {
 }
 
 .carousel__prev,
-.carousel__next {
-  border-radius: 50%;
-  margin: 0 16px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff !important;
-  filter: drop-shadow(0px 15px 30px rgba(51, 51, 51, 0.2));
-  box-shadow: 0px 15px 30px rgba(51, 51, 51, 0.2);
+.carousel__next
+{
+border-radius: 30px !important;
+margin: 0 16px;
+padding: 4px !important;
+width: 40px !important;
+height: 40px !important;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #ffffffaf !important;
+filter: drop-shadow(0px 15px 30px rgba(51, 51, 51, 0.2));
+box-shadow: 0px 15px 30px rgba(51, 51, 51, 0.2);
 }
