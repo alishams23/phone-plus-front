@@ -3,19 +3,19 @@
     <div  style="z-index:9999999999999999" class="fixed bottom-0  ml-[5rem] mb-[5rem]" data-aos="fade-up" v-if="searchQuery != null && searchQuery != ''">
        <div class=" mt-2 w-full  w-[30rem]" 
                >
-                <ul class="bg-gray-100 rtl rounded-xl  shadow-xl w-full">
+                <ul class="bg-glass-2 rtl rounded-xl  shadow-xl w-full">
                   <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
                   <div class="rtl">
                     <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
-                      <SwiperSlide v-for="item in products.results" :key="item.id" class="mb-10 px-2">
+                      <SwiperSlide v-for="item in products.results"  class="mb-10 px-2">
                         <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
-                          <div class="flex items-start bg-white border rounded-xl text-sm overflow-hidden">
+                          <div class="flex items-start bg-glass-2  rounded-xl text-sm overflow-hidden">
                             <div class="px-5 py-3 flex-grow">
                             <div class="pb-3">
                               {{ truncateTitle(item.title) }}
                             </div>
                             <div :class="item.discount != 0 ? 'line-through ' : ''"
-                              class=" text-xs text-gray-300 font-semibold   rtl text-right  rounded-full "> 
+                              class=" text-xs text-gray-700 font-semibold   rtl text-right  rounded-full "> 
                               {{item.discount != 0 ? item.price : '&nbsp; ' }}
                                </div>
                             <div class=" text-sm font-bold text-black  rtl text-right w-[150px] rounded-full "> {{ item.price*(100 - item.discount )/100 }}
@@ -37,15 +37,15 @@
                   </div>
                   <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
                   <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
-                    <SwiperSlide v-for="item in digital_products.results" :key="item" class="mb-10 px-2" @click="searchQuery = null">
+                    <SwiperSlide v-for="item in digital_products.results"  class="mb-10 px-2" @click="searchQuery = null">
                       <nuxt-link :to="'/p/digitalProduct/' + item.id">
-                        <div class="flex items-start border bg-white rounded-xl text-sm overflow-hidden">
+                        <div class="flex items-start  bg-glass-2 rounded-xl text-sm overflow-hidden">
                           <div class="px-5 py-3 flex-grow">
                             <div class="pb-3">
                               {{ truncateTitle(item.title) }}
                             </div>
                             <div :class="item.discount != 0 ? 'line-through ' : ''"
-                              class=" text-xs text-gray-300 font-semibold   rtl text-right  rounded-full "> 
+                              class=" text-xs text-gray-700 font-semibold   rtl text-right  rounded-full "> 
                               {{item.discount != 0 ? item.price : '&nbsp; ' }}
                                </div>
                             <div class=" text-sm font-bold text-black  rtl text-right w-[150px] rounded-full "> {{ item.price*(100 - item.discount )/100 }}
