@@ -100,12 +100,14 @@
                                                         </div>
                                     
                                                         </dd>
-                                                        <button type="submit"
-                                                            class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10 max-w-[15rem]">
-                                                            <p >مرحله بعد</p>
-                                                        </button>
                                                     </div>
                                                 </dl>
+                                                <div class="w-full flex justify-end" >
+                                                    <button type="submit"
+                                                        class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10 w-[10rem] md:w-[15rem]">
+                                                        <p >مرحله بعد</p>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -119,44 +121,68 @@
                                                         class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
                                                         دریافت کننده:
                                                     </div>
-                                                    <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
-                                                        <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">نام </dt>
+                                                    <div class="px-4 py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
+                                                        <dt class="text-xs md:text-sm hidden md:block font-medium flex justify-start md:justify-center items-top leading-6 text-gray-900 pt-3">
+                                                             نام و نام خانوادگی
+                                                            </dt>
                                                         <dd
-                                                            class="mt-1 flex text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
-                                    
-                                                            <div class=" flex-grow">
-                                                                <div class="flex">
-                                                                    <input type="text" id="first_name" v-model="first_name"
-                                                                        class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5"
-                                                                        required>
-                                                                </div>
+                                                            class="mt-1 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-3 md:col-span-2  mt-0">
+                                                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                                                <label
+                                                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                                                    for="grid-city">
+                                                                    نام
+                                                                </label>
+                                                                <input required
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    id="grid-city" type="text" v-model="first_name">
                                                             </div>
-                                    
+                                                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                                                <label
+                                                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                                                    for="grid-city">
+                                                                     نام خانوادگی
+                                                                </label>
+                                                                <input required
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    id="grid-city" type="text" v-model="last_name">
+                                                            </div>
                                                         </dd>
                                                     </div>
-                                                    <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
-                                                        <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">نام خانوادگی
-                                                        </dt>
+                                                    
+                                                    <div class="px-4 py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
+                                                        <dt class="text-xs md:text-sm font-medium hidden md:block flex justify-start md:justify-center items-top leading-6 text-gray-900 pt-3">
+                                                             شماره موبایل
+                                                            </dt>
                                                         <dd
-                                                            class="mt-1 flex text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
-                                    
-                                                            <div class=" flex-grow">
-                                                                <div class="flex">
-                                                                    <input type="text" id="first_name"
-                                                                        class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5"
-                                                                        v-model="last_name" required>
-                                                                </div>
+                                                            class="mt-1 flex text-sm leading-6 justify-between md:justify-start  text-gray-700 col-span-3 md:col-span-2  mt-0">
+                                                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                                                <p>
+                                                                    <label
+                                                                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                                                        for="grid-city">
+                                                                        شماره موبایل
+                                                                    </label>
+                                                                    <input required
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    id="grid-city" type="text" v-model="phone_number">
+                                                                </p>
                                                             </div>
-                                    
+                                                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                                                <p class="text-xs pt-5 text-gray-400" >
+                                                                    نکته: شماره موبایل فقط برای گیرنده می‌باشد و  پس از دخیره اطلاعات ذخیره نمی‌شود
+                                                                </p>
+                                                            </div>
                                                         </dd>
                                                     </div>
+
                                     
                                                     <div class="px-4 py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
-                                                        <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-end md:px-8 items-top leading-6 text-gray-900">آدرس</dt>
+                                                        <dt class="text-xs hidden md:block md:text-sm font-medium flex justify-start md:justify-center md:px-8 items-top leading-6 text-gray-900">آدرس</dt>
                                                         <dd
-                                                            class="mt-1 flex text-sm leading-6 text-gray-700 col-span-2  mt-0">
+                                                            class="mt-1 flex text-sm leading-6 text-gray-700 col-span-3 md:col-span-2  mt-0">
                                                             <div class="flex flex-wrap -mx-3 mb-2">
-                                                                <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                                                <div class="py-2 w-1/2 px-3 mb-6 md:mb-0">
                                                                     <label
                                                                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                                                         for="grid-state">
@@ -183,7 +209,7 @@
                                                                     </div>
                                                                 </div>
                                     
-                                                                <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                                                <div class="py-2 w-1/2 px-3 mb-6 md:mb-0">
                                                                     <label
                                                                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                                                         for="grid-city">
@@ -230,28 +256,30 @@
                                                                 </div>
                                                             </div>
                                                         </dd>
-                                                        <button v-if="btn_buy_loading" type=""
-                                                            class="bg-gray-400 text-white font-bold py-2 mb-8 px-4 rounded-full px-10">
-                                                            <div class=" flex items-center w-full  justify-center" >
-                                                                <div role="status">
-                                                                    <svg aria-hidden="false" class="w-8 h-8 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                                                    </svg>
-                                                                    <span class="sr-only">Loading...</span>
-                                                                </div>
-                                                            </div>
-                                                        </button>
-                                                        <button  v-else type="submit"
-                                                            class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10">
-                                                            <p >خرید</p>
-                                                        </button>
-                                                        <button @click="tab=1"
-                                                            class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8 px-4 rounded-full px-10">
-                                                            <p >برگشت</p>
-                                                        </button>
                                                     </div>
                                                 </dl>
+                                                <div class="w-full flex justify-end" >
+                                                    <button @click="tab=1"
+                                                        class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
+                                                        <p >برگشت</p>
+                                                    </button>
+                                                    <button v-if="btn_buy_loading" type="" disabled
+                                                        class="bg-gray-400 text-white font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
+                                                        <div class=" flex items-center w-full  justify-center" >
+                                                            <div role="status">
+                                                                <svg aria-hidden="false" class="w-8 h-8 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                                                </svg>
+                                                                <span class="sr-only">Loading...</span>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button  v-else type="submit"
+                                                        class="bg-indigo-600 mx-4 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
+                                                        <p >خرید</p>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -316,6 +344,7 @@ export default {
             save_address: false,
             qty: 1,
             user: null,
+            phone_number: null,
             first_name: null,
             last_name: null,
             zipCode: null,

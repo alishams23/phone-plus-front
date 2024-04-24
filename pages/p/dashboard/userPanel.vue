@@ -35,42 +35,43 @@
               <div class="px-4 sm:px-0">
                 <h3 class="text-base font-semibold leading-7 text-gray-900">اطلاعات شخصی</h3>
               </div>
-               <form @submit.prevent="sendData" class="space-y-6">
+               <form @submit.prevent="sendData" class="">
                 <div class="mt-6 border-t border-gray-100">
                   <dl class="divide-y divide-gray-100">
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt class="text-sm font-medium leading-6 text-gray-900">نام </dt>
-                      <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                
-                        <div class=" flex-grow">
-                          <div class="flex">
-                            <input type="text" id="first_name" v-model="first_name"
-                              class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5" required>
-                          </div>
-                        </div>
-                
-                      </dd>
+                    <div class=" py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
+                        <dt class="hidden md:block text-xs md:text-sm font-medium flex justify-start md:justify-center items-top pt-4 leading-6 text-gray-900">
+                              نام و نام خانوادگی
+                            </dt>
+                        <dd
+                            class="mt-1 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-3 md:col-span-2  mt-0">
+                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label
+                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="grid-city">
+                                    نام
+                                </label>
+                                <input required
+                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="grid-city" type="text" v-model="first_name">
+                            </div>
+                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label
+                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="grid-city">
+                                      نام خانوادگی
+                                </label>
+                                <input required
+                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="grid-city" type="text" v-model="last_name">
+                            </div>
+                        </dd>
                     </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt class="text-sm font-medium leading-6 text-gray-900">نام خانوادگی</dt>
-                      <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                
-                        <div class=" flex-grow">
-                          <div class="flex">
-                            <input type="text" id="first_name"
-                              class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5"
-                              v-model="last_name" required>
-                          </div>
-                        </div>
-                
-                      </dd>
-                    </div>
                 
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <dt class="text-sm font-medium leading-6 text-gray-900">آدرس</dt>
+                      <dt class="text-xs hidden md:block md:text-sm font-medium flex justify-start md:justify-center items-top pt-4 leading-6 text-gray-900">آدرس</dt>
                       <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <div class="flex flex-wrap -mx-3 mb-2">
-                          <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                          <div class="py-2 w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                               for="grid-state">
                               استان
@@ -91,7 +92,7 @@
                             </div>
                           </div>
                 
-                          <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                          <div class="py-2 w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                               for="grid-city">
                               شهر
@@ -127,12 +128,14 @@
                         </div>
                       </dd>
                     </div>
+                  </dl>
+                  <div class="flex justify-end" >
                     <button
                       type="submit"
-                      class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10">
+                      class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-4 px-4 rounded-full px-10">
                       ثبت تغییرات
                     </button>
-                  </dl>
+                  </div>
                 </div>
               </form>
             </div>

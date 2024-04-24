@@ -72,7 +72,7 @@
         </div>
       </transition>
     </div>
-    <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full  px-8  ">
+    <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-8  ">
       <div @click="isLogin ? open_support = true : changeStateLogin(true)"
         class="flex-1/8 px-5  items-center bg-indigo-600 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-xs  ">
@@ -81,10 +81,9 @@
         </div>
         <ChatBubbleLeftRightIcon class="w-6" />
       </div>
-      <transition name="fade">
-        <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)   " :data-aos="currentRouteCheck('') == true ? 'fade-up' : null" data-aos-duration="500"
-          data-aos-delay="500"
-          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block  rounded-[23px]  justify-center   text-indigo-800 md:flex">
+      <transition name="fade" >
+        <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)" 
+          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block transition-all duration-500 rounded-[23px]  justify-center min-w-0  text-indigo-800 md:flex">
           <div class=" rounded-full h-full px-4">
             <div class="relative  ">
               <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -107,7 +106,10 @@
           </div>
         </div>
       </transition>
-      <div class=" grow bg-glass-3 ml-0 md:ml-3  px-8 py-2 flex flex-row items-center justify-between rounded-[23px] rtl ">
+      <div
+    :class="((currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true))? 'w-[100%] md:w-[80%]': 'w-[2000%]' "
+    class="bg-glass-3 ml-0 md:ml-3 transition-all duration-1000 ease-in-out px-8 py-2 flex flex-row items-center justify-between rounded-[23px] rtl">
+
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? 'bg-white' : 'bg-indigo-200'"
