@@ -1,5 +1,12 @@
 <template>
-    
+    <div v-if="snackbarVisible" class="bg-indigo-700 shadow-2 rtl text-white p-4 py-2 mx-10 rounded-full fixed top-4  flex justify-between items-center">
+        کد تخفیف اعمال شد {{ discount_amount }}تومان از سفارش شما کسر شد
+        <button @click="snackbarVisible = false" class="text-white mr-10">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+        </button>
+    </div>
     <div>
         <TransitionRoot as="template" :show="show">
             <Dialog as="div" class="relative z-10" @close="show = false;">
@@ -113,7 +120,7 @@
                                     </form>
                                 </div>
                                 <div v-if="tab==2">
-                                    <form @submit.prevent="sendData">
+                                    <form @submit.prevent="tab=3">
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
                                             <div class="mt-6 border-t border-gray-100">
                                                 <dl class="divide-y divide-gray-100">
@@ -178,7 +185,7 @@
 
                                     
                                                     <div class="px-4 py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
-                                                        <dt class="text-xs hidden md:block md:text-sm font-medium flex justify-start md:justify-center md:px-8 items-top leading-6 text-gray-900">آدرس</dt>
+                                                        <dt class="text-xs hidden md:block md:text-sm font-medium flex justify-start md:justify-start md:px-8 items-top leading-6 text-gray-900">آدرس</dt>
                                                         <dd
                                                             class="mt-1 flex text-sm leading-6 text-gray-700 col-span-3 md:col-span-2  mt-0">
                                                             <div class="flex flex-wrap -mx-3 mb-2">
@@ -277,12 +284,81 @@
                                                     </button>
                                                     <button  v-else type="submit"
                                                         class="bg-indigo-600 mx-4 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
-                                                        <p >خرید</p>
+                                                        <p >مرحله بعد</p>
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+                                <div v-if="tab==3">
+                                    <div >
+                                        <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
+                                            <div class="mt-6 border-t border-gray-100">
+                                                <dl class="divide-y divide-gray-100">
+                                                    <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
+                                                        پرداخت:
+                                                    </div>
+                                                    <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                        <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">مبلغ قابل پرداخت
+                                                        </dt>
+                                                        <dd class="mt-1 flex text-sm text-right justify-end md:justify-center leading-6 text-gray-700 col-span-1 mt-0">
+                                                            <p class="text-md md:text-xl tracking-tight text-gray-900">
+                                                                <div v-if="color">
+                                                                    {{ (((product.price + color.price) * ((100 - product.discount) / 100)) * qty)-discount_amount }}
+                                                                    <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
+                                                                </div>
+                                                                <div v-else>
+                                                                    {{ (((product.price ) * ((100 - product.discount) / 100)) * qty)-discount_amount }}
+                                                                    <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
+                                                                </div>
+                                                            </p>
+                                    
+                                                        </dd>
+                                                    </div>
+                                                    <form @submit.prevent="checkDiscountCode">
+                                                        <div class="px-4 py-3 md:py-6 grid grid-cols-6 gap-4 px-0">
+                                                            <div class="col-span-1" >
+
+                                                            </div>
+                                                            <dd
+                                                                class="mt-1 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-3 md:col-span-5  mt-0">
+                                                                    <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                                                        <p>
+                                                                            <label
+                                                                                class="block uppercase tracking-wide text-gray-700 text-xs font-bold "
+                                                                                for="grid-city">
+                                                                                کد تخفیف
+                                                                            </label>
+                                                                            <input required
+                                                                            class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                            id="grid-city" type="text" v-model="discount_code">
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="py-2 w-full md:w-1/2 flex justify-center mt-4 mb-6 md:mb-0">
+                                                                        <button type="submit"
+                                                                            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 mb-8 px-5 rounded-full px-10">
+                                                                            <p v-if="btn_discount_loading">درحال بررسی...</p>
+                                                                            <p v-else>اعمال کد تخفیف</p>
+                                                                        </button>
+                                                                    </div>
+                                                            </dd>
+                                                        </div>
+                                                    </form>
+                                                </dl>
+                                                <div class="w-full flex justify-end" >
+                                                    <button @click="tab=2"
+                                                        class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
+                                                        <p >برگشت</p>
+                                                    </button>
+                                                    <button @click="sendData"
+                                                        class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10 w-[10rem] md:w-[15rem]">
+                                                        <p >پرداخت</p>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                             
                             </DialogPanel>
@@ -306,6 +382,8 @@ export default {
     data() {
         return {
             btn_buy_loading: false,
+            btn_discount_loading: false,
+            discount_amount: 0,
             provinces: [
                 "انتخاب کنید",
                 "آذربایجان شرقی",
@@ -344,6 +422,7 @@ export default {
             save_address: false,
             qty: 1,
             user: null,
+            discount_code: null,
             phone_number: null,
             first_name: null,
             last_name: null,
@@ -366,6 +445,7 @@ export default {
                 },
             }).then((response) => {
                 this.user = response.data
+                this.phone_number = this.user["phone_number"]
                 this.first_name = this.user["first_name"]
                 this.last_name = this.user["last_name"]
                 this.zipCode = this.user["zipCode"]
@@ -410,6 +490,7 @@ export default {
                 count: this.qty,
                 product: this.product.id,
                 product_color: this.color ? this.color.id : null,
+                phone_number: this.phone_number,
                 first_name: this.first_name,
                 last_name: this.last_name,
                 zipCode: this.zipCode,
@@ -439,6 +520,35 @@ export default {
                 }),
                     this.loading = false
                 // You can change the dialog page or show a success message here
+            })
+        },
+        checkDiscountCode() {
+            if(this.save_address){
+                this.saveAddress()
+            }
+            this.btn_discount_loading = true
+            const apiUrl = `${apiStore().address}/api/product/check-valid-discount/${this.discount_code}/`;
+            axios.get(apiUrl,{
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Accept: "application/json",
+                    Authorization: `Token ${useUserStore().userToken}`
+                },
+            }).then(response => {
+                console.log('discount', response.data);
+                if (response.data.valid){
+                    if(response.data.is_percentage){
+                        this.discount_amount = (((this.product.price + this.color.price) * ((100 - this.product.discount) / 100))  * this.qty) * (response.data.amount/100)  
+                    }else{
+                        this.discount_amount = response.data.amount 
+                    }
+                    this.snackbarVisible = true
+                    setTimeout(() => {
+                        this.snackbarVisible = false
+                    }, 5000);
+                }
+                console.log('amount', this.discount_amount, this.product);
+                this.btn_discount_loading = false
             })
         },
     },

@@ -106,16 +106,16 @@
 
                         <TabPanels class="aspect- aspect-w-1 w-full">
                           <!-- Video Panel -->
-                          <TabPanel v-if="product.video" class="aspect-square flex justify-center rounded-xl  items-center">
+                          <TabPanel v-if="product.video" class="aspect-[2/1] flex justify-center rounded-xl  items-center">
                             <div class="overflow-hidden rounded-[25px]" style="width: 90%; max-height: 500px; position: relative;">
                               <div v-html="product.video" >
                               </div>
                             </div>
                           </TabPanel>
                           <!-- Image Panels -->
-                          <TabPanel v-for="image in product.image" :key="image.id" class="aspect-square flex justify-center rounded-xl  items-center ">
-                            <img :src="image.photo" :alt="image.title_for_photo"
-                              class=" aspect-square rounded-[25px] object-cover " />
+                          <TabPanel v-for="image in product.image" :key="image.id" class="aspect-[2/1] flex justify-center rounded-xl  items-center ">
+                            <img :src="image.photo" :alt="image.title_for_photo" style="width: 90%; height: 100%; position: relative;"
+                              class=" aspect-[2/1] rounded-[25px] object-cover " />
                           </TabPanel>
                         </TabPanels>
                       </TabGroup>
