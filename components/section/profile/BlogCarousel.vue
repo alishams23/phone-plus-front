@@ -1,12 +1,13 @@
 <template>
-    <div v-if="blogs == []">
+    <!-- <div v-if="blogs.length == 0">
         <div class="container rtl px-10 my-6">
             <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4" role="alert">
                 <p class="font-bold">مقاله‌ای یافت نشد </p>
             </div>
         </div>
     </div>
-    <div v-else>
+    <div v-else> -->
+    <div v-if="blogs.length != 0">
         <div class="flex py-5 justify-between items-center">
             <div class="rtl lg:mx-10 ">
                 <a @click="$router.push('/p/search/?tab=2&shop_blog=' + this.idShop );" class=" rtl cursor-pointer ">
@@ -28,7 +29,7 @@
 
                 </div>
                 <div class="mx-auto grid  w-2xl grid-cols-1 gap-x-20 gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-                    <div v-for="blog, index in blogs.results" :key="blog.id" class="col-span-1 ">
+                    <div v-for="blog, index in blogs" :key="blog.id" class="col-span-1 ">
                         <Blog :blog="blog" data-aos="fade-up" :data-aos-delay="index * 200" />
                     </div>
 
@@ -62,7 +63,7 @@ export default {
                     Accept: "application/json",
                 },
             }).then((response) => {
-                this.blogs = response.data
+                this.blogs = response.data.results
                 this.loading = false
 
             })

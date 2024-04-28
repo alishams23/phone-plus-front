@@ -92,8 +92,8 @@
                 <PinProductCarousel :idShop="results.id" />
                 <PinDigitalProductCarousel :idShop="results.id" />
                 
-              </div>
-              <div v-if="results" v-for="(item, index) in order" :class="index % 2 != 0 ? 'bg-gradient-to-tl bg-indigo-600 from-gray-900 from-0%  text-white ' : ''" >
+              </div>                                                    <!-- bg-gradient-to-tl bg-indigo-600 from-gray-900 from-0%  text-white  -->
+              <div v-if="results" v-for="(item, index) in order" :class="index % 2 != 0 ? '' : ''" >
                 <component :is="BlogCarousel" :idObject="item.id_object" :idShop="results.id" :title="item.title"
                   v-if="item.type == 'blog'" />
                 <component :is="ProductCarousel" :idObject="null" :idShop="results.id" :title="item.title"

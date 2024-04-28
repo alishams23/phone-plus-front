@@ -16,7 +16,7 @@
           <img src="/images/logo/phone_plus_logo.png" alt="">
         </div>
       </div>
-      <div class="mx-5 lg:mx-auto max-w-2xl py-32 sm:py-48 lg:pb-[7rem] lg:pt-[4rem]">
+      <div class="mx-5 lg:mx-auto max-w-2xl py-32 sm:py-48 lg:pb-[7rem] lg:pt-16">
         <div data-aos="flip-up" class="text-center">
           <h1 class="text-2xl md:text-4xl mb-5 md:mb-0 font-bold  tracking-tight text-white ">بهترین فروشگاه‌ها رو اینجا
             پیدا کن</h1>

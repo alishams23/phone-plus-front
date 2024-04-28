@@ -36,19 +36,21 @@
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
         </div>
         <!-- Shop Name and Picture -->
-
-        <div class="flex flex-row rtl pt-16 container items-center pb-2">
+        <div class="flex flex-row rtl pt-4 container justify-center md:justify-start items-center ">
           <div class=" me-5">
-            <img :src="product.shop.image" class="h-24 w-24 object-cover rounded-full" />
+            <a :href="'/' + product.shop.username" target="blank" >
+              <ArrowTopRightOnSquareIcon class="h-4 w-4 mt-3 text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]" click="" />
+              <img :src="product.shop.image" class="h-24 w-24 object-cover rounded-full" />
+            </a>
           </div>
-          <nuxt-link :to="'/' + product.shop.username" class=" ">
+          <a :href="'/' + product.shop.username" target="blank" >
             <div class="text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]">
               فروشگاه:
             </div>
-            <div class="font-semibold text-3xl text-white drop-shadow-[0_10.2px_10.2px_rgba(125,125,125,0.9)]">
+            <div class="flex font-semibold text-3xl text-white drop-shadow-[0_10.2px_10.2px_rgba(125,125,125,0.9)]">
               {{ product.shop.name }}
             </div>
-          </nuxt-link>
+          </a>
         </div>
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-[1rem] lg:pb-[5rem]">
           <div class="hidden sm:mb-8 sm:flex sm:justify-center">
@@ -339,13 +341,14 @@ import {
   TabPanels,
 } from '@headlessui/vue'
 import { StarIcon } from '@heroicons/vue/20/solid'
-import { HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
+import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
 import { NavigationStore } from '~/store/navigation'; 
 export default {
   components: {
+    ArrowTopRightOnSquareIcon,
     HeartIcon,
     VideoCameraIcon,
     UserIcon,

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.length == 0">
+  <!-- <div v-if="data.length == 0">
     <div class="container py-20 rtl mx-auto px-10 mt-6">
       <div class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-lg text-indigo-700 p-4"
         role="alert">
@@ -7,7 +7,8 @@
       </div>
     </div>
   </div>
-  <div v-else class="flex pt-2 justify-between items-center pt-4 ">
+  <div v-else class="flex pt-2 justify-between items-center pt-4 "> -->
+  <div v-if="data.length != 0" class="flex pt-2 justify-between items-center pt-4 ">
     <div class="rtl lg:mx-10 ">
       <a @click="$router.push('/p/search/?tab=1&shop_digital_product=' + this.idShop + `${this.idObject == null ? '' : ('&category_digital_product=' + this.idObject)}`);" class=" rtl cursor-pointer flex items-center">
         بیشتر

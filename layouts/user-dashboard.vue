@@ -13,12 +13,12 @@
             class="absolute overflow-hidden inset-0 -z-10 h-full w-full object-cover " />
         <div class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
      
-        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-[1rem] lg:pb-[8rem]">
+        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-20 lg:pb-[8rem]">
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
             </div>
         </div>
       </div>
-    <div class="mt-[-20px] lg:mt-[-40px]">
+    <div class="mt-[-20px] lg:pt-[-40px]">
          
       <svg id="Layer_2" class="w-full" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
        
