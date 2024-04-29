@@ -168,10 +168,10 @@
               leave-active-class="transition ease-in duration-100" leave-from-class="transform opacity-100 scale-100"
               leave-to-class="transform opacity-0 scale-95">
               <MenuItems
-                class="absolute right-0 z-10 bottom-full mb-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                class="absolute left-0 z-10 bottom-full mb-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <MenuItem v-slot="{ active }">
                 <div @click="isLogin ? open_support = true : changeStateLogin(true)"
-                  :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex justify-end items-center px-6 py-2 text-sm text-right']">
+                  :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex  justify-start items-center px-4 py-2 text-sm text-right']">
                   پشتیبانی
                   <!-- <ChatBubbleLeftRightIcon class="w-5 mx-2 text-indigo-600" /> -->
                 </div>
