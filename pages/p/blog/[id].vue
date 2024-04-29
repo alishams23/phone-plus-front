@@ -115,11 +115,52 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="p-10 md:p-16 rtl">
                     <p v-html="blog.body"></p>
                 </div>
+
+                <section class="bg-white px-6 py-24 sm:py-32 lg:px-8">
+                    <div class=" font-bold text-right text-3xl pb-10">
+                    نظرات
+                    </div>
+                    <figure class="mx-auto rtl  border-t pb-10" v-for="comment in blog.comment" :key="comment.id">
+                        <blockquote class="mt-5 text-lg leading-8 tracking-tight text-gray-700 text-sm  sm:leading-9">
+                            <p><span class="text-2xl">”</span>{{ comment.title }}<span class="text-2xl">“</span></p>
+                        </blockquote>
+                    </figure>
+                    <div class="flex items-start space-x-4 mt-10">
+                        <div class="min-w-0 flex-1">
+                            <form @submit.prevent="sendComment" class="relative">
+                            <div
+                                class="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-gray-400">
+                                <label for="comment" class="sr-only ">نظر خود را بنویسید</label>
+                                <textarea rows="3" required v-model="comment_title" name="comment" id="comment"
+                                class="block w-full p-3 text-right resize-none bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 outline-none"
+                                placeholder="... نظر خود را بنویسید "></textarea>
+
+                                <!-- Spacer element to match the height of the toolbar -->
+                                <div class="py-2" aria-hidden="true">
+                                <!-- Matches height of button in toolbar (1px border + 36px content height) -->
+                                <div class="py-px">
+                                    <div class="h-9" />
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="absolute inset-x-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
+                                <div class="flex items-center space-x-5">
+
+                                </div>
+                                <div class="flex-shrink-0">
+                                <button type="submit"
+                                    class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">ارسال</button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -145,8 +186,31 @@ export default {
     data: () => ({
         blog: null,
         loading:true,
+        comment_title: '',
     }),
     methods: {
+        async sendComment() {
+
+            let Comment = new FormData();
+            Comment.append('title', this.comment_title);
+            try {
+                axios.post(`${apiStore().address}/api/blog/add-comment/${this.$route.params.id}/`, Comment, {
+                headers: {
+                    "Content-type": "application/json",
+                    Accept: "application/json",
+                    Authorization: `Token ${useUserStore().userToken}`
+                },
+                }).then((data) => {
+                this.getData()
+
+                })
+            } catch (error) {
+                console.error('Error sending comment:', error);
+
+            }
+
+
+        },
         getData() {
             this.loading = true
             axios.get(`${apiStore().address}/api/blog/blog-retrieve-main-page/${this.$route.params.id}/`, {
