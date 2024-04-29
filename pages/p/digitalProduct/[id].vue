@@ -190,14 +190,13 @@
                                     </div>
                                 </div>
                             </button>
-                            <button v-else @click="isLogin==true?sendData():is_sellable?openLogin():''"
+                            <button v-else @click="isLogin==true?is_sellable?show = true:'':openLogin()"
                               :class="is_sellable?'bg-indigo-600 hover:bg-indigo-700':'cursor-default bg-gray-400'"
                               class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none sm:w-full">
                               <p v-if="is_sellable">خرید / دانلود</p>
                               <p v-else>ناموجود</p>
                             </button>
-
-
+                            <BuyDigitalProductPopup   @show-change="(data) => {show = data}" :show="show" :product="product" />
                           </div>
                         </div>
 
@@ -340,6 +339,7 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/vue'
+import BuyDigitalProductPopup from "@/components/section/BuyDigitalProductPopup.vue"
 import { StarIcon } from '@heroicons/vue/20/solid'
 import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
@@ -348,6 +348,7 @@ import { apiStore } from '~/store/api';
 import { NavigationStore } from '~/store/navigation'; 
 export default {
   components: {
+    BuyDigitalProductPopup,
     ArrowTopRightOnSquareIcon,
     HeartIcon,
     VideoCameraIcon,
@@ -379,9 +380,9 @@ export default {
   },
   data: () => ({
     loading: true,
+    show:false,
     product: null,
     is_sellable: true,
-    selected_color: null,
     btn_buy_loading: false,
     // selectedColor: ref(product.colors[0]),
     comment_title: '',
@@ -394,8 +395,8 @@ export default {
           NavigationStore().setButtons([
             {
               'name':'خرید / دانلود',
-              'func': this.isLogin==true? this.btn_buy_loading==false? this.sendData: null : this.openLogin,
-              'href': this.isLogin==true? null : null,
+              'func': this.isLogin==true? ()=>{this.show = true} : this.openLogin,
+              'href': null,
             }
           ])
         }else{

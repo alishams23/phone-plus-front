@@ -16,7 +16,7 @@
           {{ data.discount != 0 ? data.price : '&nbsp; ' }}
         </div>
         <div class="lg:pe-4 pb-4">
-          {{ data.discount != 0 ? data.price*(100-data.discount)/100 : data.price }}
+          {{ parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price) }}
         </div>
       
         <div class="flex items-end justify-end overflow-hidden rounded-lg pe-4 pb-2">

@@ -117,7 +117,7 @@
                                 <div class="text-right pe-4 pb-4">
                                     <div class="flex justify-end items-center">
                                         <p class="pe-1 text-[10px] text-gray-400">تومان</p>
-                                        <p> {{ data.price }}</p>
+                                        <p> {{ parseInt(data.price/10) }}</p>
                                     </div>
                                 </div>
                                 <p class=" text-right text-xs pe-4 test-n pb-4" v-html="truncatedBody(data.product.description)">

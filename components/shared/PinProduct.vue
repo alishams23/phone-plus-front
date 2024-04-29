@@ -14,7 +14,7 @@
             {{ data.discount != 0 ? data.price : '&nbsp; ' }}
           </div>
           <div class="text-right pe-4 pb-4">
-            {{ data.discount != 0 ? data.price*(100-data.discount)/100 : data.price }}
+            {{ parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price) }}
           </div>
           <div class="flex justify-end w-full">
             <p class="text-right max-h-[50px] max-w-[65%] overflow-hidden text-xs pe-4 pb-4" v-html="data.description">

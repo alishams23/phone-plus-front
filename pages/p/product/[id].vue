@@ -146,7 +146,7 @@
                           </div>
                           <div v-if="selected_color">
                             <p class="text-3xl  text-gray-900">
-                              {{ (product.price + selected_color.price) * ((100 - product.discount) / 100) }} 
+                              {{ parseInt((product.price + selected_color.price) * ((100 - product.discount) / 100)) }} 
                               <span class="text-sm text-gray-600">
                                 تومان
                               </span>
@@ -154,7 +154,7 @@
                           </div>
                           <div v-else>
                             <p class="text-3xl  text-gray-900">
-                              {{ (product.price) * ((100 - product.discount) / 100) }} 
+                              {{ parseInt((product.price) * ((100 - product.discount) / 100)) }} 
                               <span class="text-sm text-gray-600">
                                 تومان
                               </span>
@@ -269,10 +269,9 @@
                     </div>
 
                     <div class="mt-6">
-                          <h3 class="sr-only">Description</h3>
-
-                          <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700" v-html="product.description" />
-                        </div>
+                      <h3 class="sr-only">Description</h3>
+                      <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700" v-html="product.description" />
+                    </div>
 
                     <section class="bg-white px-6 py-24 sm:py-32 lg:px-8">
                       <div class=" font-bold text-right text-3xl pb-10">
@@ -289,8 +288,9 @@
                               <UserIcon class="h-6 w-6  text-gray-400" />
                             </div>
                             <div class="text-sm leading-6">
-                              <div class="font-semibold text-gray-600">{{ comment.author.first_name }} {{
-    comment.author.last_name }}</div>
+                              <div class="font-semibold text-gray-600">
+                                {{ comment.author.first_name }} 
+                                {{comment.author.last_name }}</div>
                               <div class="">
                                 <h3 class="sr-only">Reviews</h3>
                                 <div class="flex items-center">
@@ -496,7 +496,6 @@ export default {
 
 
     },
-
     openLogin() {
       NavigationStore().changeLoginState(true)
     },

@@ -21,8 +21,8 @@
             {{ data.title }}
           </a>
         </h3>
-        <div class=" text-sm font-bold text-black  rtl text-center rounded-full ">   {{ data.price}}  </div>
-        <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? data.price : '&nbsp; ' }}  </div>
+        <div class=" text-sm font-bold text-black  rtl text-center rounded-full ">   {{ data.price + data.colors[0].price}}  </div>
+        <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? parseInt((data.price + data.colors[0].price)*((100-data.discount)/100)) : '&nbsp; ' }}  </div>
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg p-4">
             <div class="relative text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
