@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'vue3-carousel-nuxt',
     'nuxt-swiper',
-    'nuxt-aos'
+    'nuxt-aos',
+    "nuxt-marquee"
 
     // 'nuxt-swiper'
   ],
