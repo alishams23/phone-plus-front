@@ -19,7 +19,7 @@
         <CategoriesProduct class="mx-2" />
       </div>
       <div >
-        <Shop class="mx-2" />
+        <Shop  />
       </div>
       <div class="">
         <DiscountProduct />
