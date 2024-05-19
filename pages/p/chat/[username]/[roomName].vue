@@ -24,9 +24,9 @@
           <div v-for="data, index in messages" :key="data.id + 'message-chat-'"
             :class="data.username == userSelf ? 'flex-row-reverse' : ''" class="flex m-3 lg:items-center">
             <div class="w-8 h-8 hidden sm:block"></div>
-            <div class="py-2 px-3 rounded-2xl relative h-full" :class="data.username == userSelf
-                ? 'text-white bg-indigo-600 shadow-lg text-right'
-                : 'text-gray-700 shadow-lg border-t text-right relative'
+            <div class=" px-5  relative h-full" :class="data.username == userSelf
+                ? 'text-white py-1 bg-indigo-600 rounded-full rounded-br-none shadow-lg text-right'
+                : 'bg-gray-100 py-2 rounded-full rounded-bl-none text-right relative'
               ">
               <div v-if="data.content">{{ data.content }}</div>
               <div>
@@ -57,7 +57,7 @@
         <div class="lg:w-72 "></div>
         <input v-model="inputData" placeholder="پیام شما" type="text"  style="
             word-break: break-all;"
-          class="shadow-xl grow rtl bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block h-15 p-3  "
+          class="shadow-lg grow rtl bg-gray-100   text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block py-4 p-3  "
           @keyup.enter="sendMessage()" />
         <div class="flex items-center px-2">
           <button id="text-submit" type="submit"

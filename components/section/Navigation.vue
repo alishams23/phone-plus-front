@@ -217,7 +217,7 @@
               leave="transform transition ease-in-out duration-100 sm:duration-700" leave-from="translate-y-0"
               leave-to="translate-y-full">
               <DialogPanel class="pointer-events-auto w-screen max-w-md">
-                <side class="bg-white rounded-2xl  overflow-y-scroll" :sectionSupport="true" />
+                <side class="bg-glass-2 rounded-2xl  overflow-y-scroll" :sectionSupport="true" />
               </DialogPanel>
             </TransitionChild>
           </div>

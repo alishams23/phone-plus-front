@@ -75,7 +75,7 @@
 
         <form class="relative flex items-center  flex-1" action="#" method="GET">
           
-          <nuxt-link to="/" tag="div" class="relative" v-if="user">
+          <a :href="`/${user.contact.shop ? user.contact.shop.username : ''}`"  class="relative" v-if="user">
             <div class="-m-1.5 flex items-center p-1.5">
        
               <img class="h-8 w-8 rounded-full bg-gray-100 object-cover" v-if="user.contact.shop && user.contact.shop.image" :src="address + user.contact.shop.image" alt="" />
@@ -88,13 +88,13 @@
               </span>
             </div>
 
-          </nuxt-link>
+          </a>
         </form>
         <div class="flex items-center gap-x-4 lg:gap-x-6">
-          <nuxt-link to="/" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+          <a href="/" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
             <span class="sr-only">View notifications</span>
             <HomeIcon class="h-6 w-6" aria-hidden="true" />
-          </nuxt-link>
+          </a>
 
           <!-- Separator -->
           <!-- <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" /> -->

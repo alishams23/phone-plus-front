@@ -45,11 +45,11 @@
 
         </div>
       </li>
-      <li v-else v-if="currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2  bg-gray-200" >
+      <li v-else v-if="currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2  bg-glass-2 shadow-3" >
         <div class="group relative flex  items-center px-5 py-4" >
             <a :href="sectionSupport == true ?'/p/chat/' +  $route.params.username + '/'+'pourya' : '#'" class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
-                <img class="h-10 w-10 rounded-full object-cover bg-gray-300"   alt="" />
+                <img class="h-10 w-10 rounded-full object-cover bg-white"   alt="" />
                
               </span>
               <div class="mr-4 truncate"> 
