@@ -7,7 +7,7 @@
         <StarIcon class="h-5 text-white"/>
       </div>
     </div>
-    <div class="   isolate overflow-hidden relative">
+    <!-- <div class="   isolate overflow-hidden relative">
       <Carousel :breakpoints="breakpoints" :wrapAround="true" :transition="500" class="pt-5 pb-4">
         <Slide v-for="item in data" :key="item">
           <PinDigitalProduct class=" " :data="item" />
@@ -16,7 +16,20 @@
           <Navigation />
         </template>
       </Carousel>
-    </div>
+    </div> -->
+     <div class=" rtl  isolate overflow-hidden relative mb-2">
+      <Swiper @swiper="onSwiper" :modules="modules" :slides-per-view="'auto'" :loop="false" :autoplay="{
+         delay: 2000,
+         disableOnInteraction: false,
+       }" :pagination="{
+         clickable: true,
+       }" :space-between="10" class="px-3 ">
+         <SwiperSlide  v-for="item in data" :key="item"
+           class="mb-10 mx-2 ">
+           <PinDigitalProduct class=" px-5" :data="item" />
+         </SwiperSlide>
+       </Swiper>
+     </div >
     <div class="container border-t py-2 mx-auto" ></div>
 
   </div>
@@ -125,51 +138,8 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-/* .carousel__slide {
-  padding: 5px;
+.swiper-slide {
+  width: auto;
 }
-
-.carousel__viewport {
-  perspective: 2000px;
-}
-
-.carousel__track {
-  transform-style: preserve-3d;
-}
-
-.carousel__slide--sliding {
-  transition: 0.5s;
-}
-
-.carousel__slide {
-  opacity: 0.5;
-  filter: blur(3px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-.carousel__slide--prev {
-  opacity: 0.8;
-  filter: blur(1px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-.carousel__slide--next {
-  opacity: 0.8;
-  filter: blur(1px);
-
-
-
-  transform: rotateY(10deg) scale(0.99);
-}
-
-.carousel__slide--active {
-  opacity: 1;
-  filter: blur(0px);
-
-  transform: rotateY(0) scale(1.15);
-} */
 </style>

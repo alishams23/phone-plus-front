@@ -11,7 +11,7 @@
     </div>
   <div v-else>
     <div v-if="data != null" data-aos="fade-up" data-aos-duration="1000">
-      <div class="flex pt-20 pb-10 justify-between items-center">
+      <div class="flex pt-10 pb-10 justify-between items-center">
         <div class="rtl px-3">
 
         </div>
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="container mx-auto grid grid-cols-2 gap-4 sm:grid-cols-4 pb-20 rtl "
+      <div class="container mx-auto grid grid-cols-2 gap-4 sm:grid-cols-5 pb-20 rtl "
         :style="{ backgroundImage: '', backgroundSize: 'cover' }">
         <div v-for="category in data" :key="category.id"
           class=" relative isolate  flex items-center  rounded-[19px] cursor-pointer border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
@@ -48,7 +48,7 @@
       </div>
       <div v-if="!show_categories" class="flex items-center justify-center mb-10" style="margin-top:-35px">
         <div @click="data = categories, show_categories = !show_categories"
-          class="text-sm border-2 bg-white rounded-full px-10 py-2 mb-5">
+          class="text-sm border-2 bg-white rounded-full px-10 py-2 ">
           بیشتر
         </div>
       </div>
@@ -89,7 +89,7 @@ export default {
           Accept: "application/json",
         },
       }).then((response) => {
-        this.data = response.data.slice(0, 4)
+        this.data = response.data.slice(0, 5)
         this.categories = response.data
         this.loading = false
 

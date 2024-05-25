@@ -1,11 +1,10 @@
 <template>
   <nuxt-link :to="'/p/product/'+ data.id">
-    <div :class="width ? `${width}` : 'w-[15rem]'" class="relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-60 sm:pt-60 lg:pt-60">
-        <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute inset-0 -z-10 h-full w-full object-cover" />
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-white from-10% via-white/30" />
+    <div :class="width ? `${width}` : 'w-[14rem]'" class="relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-20 sm:pt-20 lg:pt-40">
+        <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute  inset-0 -z-10 h-full w-full object-cover" />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-black from-0% via-black/30 " />
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
         <div class="absolute inset-0 -z-10 rounded-2xl bg-blue-circle" />
-
         <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
       
           <div class="-ml-4 flex items-center gap-x-4">
@@ -15,16 +14,16 @@
         
           </div>
         </div>
-        <h3 class="mt-3 rtl text-sm pb-5 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+        <h3 class="mt-3 rtl text-md pb-3 font-semibold  text-white text-center overflow-hidden whitespace-nowrap text-ellipsis">
           <a v-if="data.title">
             <span class="absolute inset-0" />
             {{ data.title }}
           </a>
         </h3>
-        <div class=" text-sm font-bold text-black  rtl text-center rounded-full ">   {{ data.price + data.colors[0].price}}  </div>
-        <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? parseInt((data.price + data.colors[0].price)*((100-data.discount)/100)) : '&nbsp; ' }}  </div>
+        <div class=" text-sm font-bold text-white  rtl text-center rounded-full ">   {{ data.price + data.colors[0].price}}  </div>
+        <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-500 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? parseInt((data.price + data.colors[0].price)*((100-data.discount)/100)) : '&nbsp; ' }}  </div>
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg p-4">
-            <div class="relative text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
+            <div class="relative text-white shadow-xl text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
     </div>
   </nuxt-link>
@@ -69,7 +68,7 @@ export default {
 .bg-blue-circle{
    
   
-    background-image:radial-gradient(ellipse 100% 30% at 50% 10%, #fcfcfc3f 86.9%, #00000000 90%)!important;
+    background-image:radial-gradient(ellipse 100% 30% at 50% 10%, #ffffff3e 86.9%, #00000000 90%)!important;
 
 }
 </style>

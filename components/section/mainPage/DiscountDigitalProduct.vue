@@ -10,7 +10,7 @@
         </div>
     </div>
   <div v-else>
-    <div class="   bg-white rounded-[30px]  isolate overflow-hidden relative">
+    <div class="bg-white rounded-[30px] mt-[-50px] isolate overflow-hidden relative">
      <div class="flex pt-2 justify-between items-center">
       <div class="rtl lg:px-3 pt-3">
         <a @click="$router.push('/p/search/?is_discount_digital_product=true&tab=1');" class="text-gray-900 rtl text-sm mg:text-lg flex items-center">
@@ -71,20 +71,20 @@ export default {
           snapAlign: 'center',
         },
         700: {
-          itemsToShow: 1.5,
+          itemsToShow: 2,
           snapAlign: 'center',
         },
         1150: {
-          itemsToShow: 3.5,
+          itemsToShow: 4,
           snapAlign: 'center',
         },
         // 1024 and up
         1340: {
-          itemsToShow: 4.5,
+          itemsToShow: 5,
           snapAlign: 'center',
         },
         1490: {
-          itemsToShow: 5,
+          itemsToShow: 5.5,
           snapAlign: 'center',
         },
       },

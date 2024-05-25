@@ -1,5 +1,7 @@
 <template>
-
+  <div class=" w-full h-[200px] md:h-[300px] mt-[-20px] flex">
+      <img src="/images/banner2.webp" class="w-full h-full object-cover object-center  " alt="">
+    </div>
 <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
         <div role="status">
             <span class="relative flex h-8 w-8">
@@ -11,7 +13,39 @@
         </div>
     </div>
   <div  v-else >
-    <div class="   isolate overflow-hidden relative">
+    <div class="">
+      <div class="flex pt-3 pb-5 justify-between items-center mt-[-10px]">
+            <div class="rtl px-3">
+              <a @click="$router.push('/p/search/?sort_product=' + '-rate');"
+                class="text-gray-100 text-sm mg:text-lg rtl pt-3 cursor-pointer flex items-center  ">
+                بیشتر
+                <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
+              </a>
+            </div>
+            <div class="text-black font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
+              محبوب ترین محصولات
+
+              <div
+              class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
+                <ShoppingBagIcon class="h-5 text-white" />
+              </div>
+            </div>
+          </div>
+    <div class="  mb-8">
+        <div  class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-4 container mx-auto">
+          <div v-for="product ,index in products.slice(0, 5)" class="my-5"  >
+            <Product class="py-10 " :width="' '" :data="product" />
+          </div>
+          
+        </div>
+        <div class="flex justify-center mt-10">
+        <div class="w-[300px] py-[2px] rounded-xl bg-gray-100"></div>
+
+    </div>
+    </div>
+    </div>
+
+    <!-- <div class="   isolate overflow-hidden relative">
       <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-red-800/80 via-black/100" />
       <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
     <div class="relative" >
@@ -24,7 +58,7 @@
         </div>
         <div class="text-gray-200 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
           محصولات تخفیف خرده
-          <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-gray-400 to-white   flex justify-center  items-center rounded-xl">
+          <div class="ml-2 lg:mx-5  h-12 w-12 bg-white   flex justify-center  items-center rounded-xl">
         <ShoppingBagIcon class="h-5 text-indigo-600"/>
       </div>
         </div>
@@ -52,7 +86,7 @@
         </svg>
        </div>
       
-    </div>
+    </div> -->
   </div>
 </template>
   

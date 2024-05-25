@@ -10,7 +10,75 @@
         </div>
     </div>
     <div v-else>
-      <div class="   isolate overflow-hidden relative" v-if="loading == false">
+     <div class="container mx-auto">
+       <div class=" md:rounded-3xl   isolate overflow-hidden relative border-t border-b" v-if="loading == false">
+         <img :src="digital_products[index].image[0].photo ? digital_products[index].image[0].photo : digital_products[index].image" data-aos="fade-left" data-aos-duration="1000" class="absolute  rounded-2xl inset-0 -z-10 h-full w-full object-cover" />
+         
+         <div class="absolute inset-0 -z-10 bg-gradient-to-l  rounded-2xl from-white from-0% via-white/30" />
+         <div class="absolute inset-0 -z-10 bg-indigo-100/60 "  />
+         <div class="absolute backdrop-blur-xl  overflow-hidden inset-0 -z-10  h-full w-full  " />
+         <div class="relative">
+           <div class="flex pt-3 justify-between items-center">
+             <div class="rtl px-3 pt-3">
+               <button @click="$router.push('/p/search/?sort_digital_product=-rate&tab=1');" class="text-black text-sm mg:text-lg rtl cursor-pointer ">
+                 بیشتر
+                 <span aria-hidden="true" class="px-3 pt-3"> &larr;</span>
+               </button>
+             </div>
+             <div class="text-black font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
+               محصولات دیجیتال محبوب هفته
+      
+               <div class="ml-2 lg:mx-5  h-12 w-12 bg-white   flex justify-center  items-center rounded-xl">
+         <CloudArrowDownIcon class="h-5 text-indigo-600"/>
+       </div>
+             </div>
+           </div>
+         </div>
+      
+         <div class="flex justify-center md:justify-between flex-wrap container mx-auto">
+           <img :src="digital_products[index].image[0].photo" alt="" class=" mb-10 mx-20 mt-10 md:mt-0 w-[200px] h-[200px] border shadow-2  object-cover rounded-3xl" />
+      
+           <div class="mx-20 my-10">
+             <div class="text-black font-black text-right text-2xl">
+               {{ digital_products[index].title }}
+             </div>
+             <div class="text-gray-500 text-right mt-5 " v-html="digital_products[index].description">
+              
+             </div>
+             <div class="mt-5">
+                     <div :class="digital_products[index].discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-red-500 font-semibold text-right">
+                   {{ digital_products[index].discount != 0 ? digital_products[index].price : '&nbsp; ' }}
+                 </div>
+                 <div class="lg:pe-4 pb-4 text-right">
+                   {{ parseInt(digital_products[index].discount != 0 ? digital_products[index].price*(100-digital_products[index].discount)/100 : digital_products[index].price) }}
+                 </div>
+             </div>
+           </div>
+            <!-- <PinDigitalProduct  class="text-center w-[200px]" :data="digital_products[0]" /> -->
+           
+            <!-- <Carousel   :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="">
+            <Slide  v-for="digital_product ,index in digital_products" :key="digital_product.id">
+              <DigitalProduct class="" :data="digital_product" />
+            </Slide>
+            <template #addons>
+              <Navigation />
+            </template>
+          </Carousel> -->
+      
+        </div>
+      <!-- <div data-aos="fade-up" data-aos-duration="1000">
+          <Carousel   :breakpoints="breakpoints"  :wrapAround="true" :transition="500" class="">
+            <Slide  v-for="digital_product ,index in digital_products" :key="digital_product.id">
+              <DigitalProduct class="" :data="digital_product" />
+            </Slide>
+            <template #addons>
+              <Navigation />
+            </template>
+          </Carousel>
+      </div> -->
+       </div>
+     </div>
+      <!-- <div class="   isolate overflow-hidden relative" v-if="loading == false">
         <div class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-indigo-800/80 via-black/100" />
         <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
         <div class="relative">
@@ -24,7 +92,7 @@
             <div class="text-gray-200 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
               محصولات دیجیتال محبوب
 
-              <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-gray-400 to-white   flex justify-center  items-center rounded-xl">
+              <div class="ml-2 lg:mx-5  h-12 w-12 bg-white   flex justify-center  items-center rounded-xl">
         <CloudArrowDownIcon class="h-5 text-indigo-600"/>
       </div>
             </div>
@@ -40,7 +108,7 @@
            </template>
          </Carousel>
      </div>
-      </div>
+      </div> -->
     </div>
   </template>
     
@@ -49,13 +117,14 @@
   import axios from 'axios'
   import DigitalProduct from "@/components/shared/DigitalProduct.vue"
   import { CloudArrowDownIcon } from '@heroicons/vue/20/solid'
+  import PinDigitalProduct from "@/components/shared/PinDigitalProduct.vue"
 
   export default {
-    components: { DigitalProduct ,CloudArrowDownIcon}, 
+    components: { DigitalProduct ,CloudArrowDownIcon,PinDigitalProduct}, 
     data: () => ({
       digital_products: [],
       loading: true,
-  
+      index:0,
       settings: {
         itemsToShow: 1,
         snapAlign: 'center',
@@ -97,7 +166,14 @@
           }).then((response) => {
               this.digital_products = response.data
               this.loading = false
-  
+              setInterval(() => {
+                if (this.digital_products.length > this.index + 1) {
+                  this.index += 1
+                }
+                else if (this.digital_products.length == this.index + 1){
+                  this.index = 0
+                }
+              }, 3000);
           })
         },
        

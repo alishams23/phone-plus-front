@@ -11,7 +11,7 @@
     </div>
   <div v-else>
     <div  v-if="data != null" data-aos="fade-up" data-aos-duration="1000">
-        <div class="flex pt-20 pb-10 justify-between items-center">
+        <div class="flex  pb-10 justify-between items-center">
         <div class="rtl px-3">
          
         </div>
