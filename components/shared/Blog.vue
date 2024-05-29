@@ -5,8 +5,7 @@
     <div class=" shadow-1 border isolate relative p-7 text-right lg:pl-[0px] w-full rounded-2xl  ">
       <img :src="blog.imageBlog.photo"  class="absolute  rounded-2xl inset-0 -z-10 h-full w-full " />
         <div class="absolute inset-0 -z-10 md:bg-gradient-to-l bg-gradient-to-t  rounded-2xl from-white/80 from-0% via-white/80 "  />
-        <div class="absolute inset-0 -z-10 bg-gray-50/80 rounded-2xl"  />
-        <div class="absolute backdrop-blur-sm rounded-2xl overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <div class="absolute inset-0 -z-10 bg-gray-50/90 rounded-2xl"  />
       <div class="w-full ">
         <div class="grid grid-cols-8 justify-center lg:justify-end">
           <div class="col-span-8  lg:col-span-2 mt-[-60px]  md:mx-0  lg:mt-0  lg:ml-[-50px]">
