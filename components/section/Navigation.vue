@@ -10,7 +10,7 @@
                 <Swiper :modules="modules" :slides-per-view="2.5" :loop="false" :space-between="1">
                   <SwiperSlide v-for="item in products.results"  class="mb-10 px-2">
                     <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
-                      <div class="flex items-start  bg-gradient-to-r from-indigo-200 to-white  rounded-xl text-sm overflow-hidden">
+                      <div class="flex items-start  bg-gradient-to-t from-indigo-100 to-white  rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
                         <div class="pb-2 font-weight-black text-xs">
                           {{ truncateTitle(item.title) }}
@@ -39,7 +39,7 @@
               <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
                 <SwiperSlide v-for="item in digital_products.results"  class="mb-10 px-2" @click="searchQuery = null">
                   <nuxt-link :to="'/p/digitalProduct/' + item.id">
-                    <div class="flex items-start bg-gradient-to-r from-indigo-200 to-white rounded-xl text-sm overflow-hidden">
+                    <div class="flex items-start bg-gradient-to-r from-white to-white rounded-xl text-sm overflow-hidden">
                       <div class="px-5 py-3 flex-grow">
                         <div class="pb-3">
                           {{ truncateTitle(item.title) }}
