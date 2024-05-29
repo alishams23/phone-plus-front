@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null" data-aos="zoom-out-right">
+  <div v-else v-if="product != null" data-aos="fade-up">
 
     <div class="min-h-full">
 
@@ -29,6 +29,8 @@
         <img :src="product.image[0].photo"
           class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
         <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <img class="absolute bg-gray-800/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
+
         <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true">
           <div
@@ -84,7 +86,7 @@
                       <TabGroup as="div" class="flex flex-col-reverse">
                         <!-- Image selector -->
                         <div class="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
-                          <TabList class="grid grid-cols-4 md:grid-cols-5 lg:gap-6 ">
+                          <TabList class="grid grid-cols-4 md:grid-cols-6  ">
                             <!-- Video Tab -->
                             <Tab v-if="product.video"
                               class="relative flex h-10 w-10 md:h-20 md:w-20 cursor-pointer items-center justify-center rounded-xl bg-gray-50 text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:bg-gray-100"
@@ -140,7 +142,7 @@
                             <div class="text-xl line-through text-gray-300  tracking-tight">{{ product.price }} </div>
                             <div class=" overflow-hidden rounded-lg p-4">
                               <div
-                                class=" text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1"
+                                class=" text-white shadow-xl text-sm font-semibold bg-red-600 rtl text-right rounded-full px-3 py-1"
                                 v-if="product.discount != 0"> {{ product.discount }} % </div>
                             </div>
                           </div>

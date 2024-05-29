@@ -13,22 +13,13 @@
 </div>
 
 <NuxtMarquee :autoFill="true">
-
-
-
-
-
-
     <div v-for="item in shops"  v-show="item.image" class="mx-2 py-10 pb-14 " >
       <a :href="'/' + item.username" target="blank" >
         <div class="w-full max-w-xl px-8 border shadow-1 border-gray-200 rounded-[25px]  ">
           
           <div class="  flex flex-col items-center pb-5">
             
-            <img class=" w-20 -mt-10 h-20 mb-3 rounded-full shadow-lg" :src="item.image" alt=""/>
-            
-        
-
+            <img class=" w-20 -mt-10 h-20 mb-3 rounded-full object-cover shadow-lg" :src="item.image" alt=""/>
 
             <h5 class="mb-1 text-md font-medium text-gray-900 ">{{ item.name }}</h5>
             <span class="text-xs text-gray-500">{{ item.username }}</span>

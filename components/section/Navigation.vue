@@ -74,7 +74,7 @@
     </div>
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-8  ">
       <div @click="isLogin ? open_support = true : changeStateLogin(true)"
-        class="flex-1/8 px-5  items-center bg-indigo-600 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
+        class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-500 to-indigo-800 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-xs  ">
          
           پشتیبانی
@@ -112,21 +112,21 @@
 
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
-            :class="currentRouteCheck('') ? 'bg-white' : 'bg-indigo-200'"
+            :class="currentRouteCheck('') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
             class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-            <HomeIcon class=" w-5 text-indigo-900" />
+            <HomeIcon class=" w-5 " />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
           <button @click="isLogin ? $router.push('/p/dashboard/userPanel/') : changeStateLogin(true)"
-            :class="currentRouteCheck('userPanel') ? 'bg-white' : 'bg-indigo-200'"
+            :class="currentRouteCheck('userPanel') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
             class="p-2.5   transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-            <UserIcon class=" w-5 text-indigo-600" />
+            <UserIcon class=" w-5 " />
           </button>
           <button @click="isLogin ? $router.push('/p/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
-            :class="currentRouteCheck('productOrders') ? 'bg-white' : 'bg-indigo-200'"
+            :class="currentRouteCheck('productOrders') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
             class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-            <ShoppingCartIcon class=" w-5 text-indigo-600" />
+            <ShoppingCartIcon class=" w-5 " />
           </button>
         </div>
         <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
