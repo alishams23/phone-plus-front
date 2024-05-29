@@ -1,15 +1,28 @@
 <template>
   
-    <div  class="h-[300px]  bg-gradient-to-b from-gray-100 to-white shadow-1 mx-3 ml-7 lg:mx-[3rem] isolate my-5  justify-end rounded-2xl">
+    <div  class="h-[300px]  bg-gradient-to-b from-gray-100 to-white shadow-1 mx-3 ml-7 lg:mx-[3rem] isolate mt-5  justify-end rounded-2xl">
         <nuxt-link :to="'/p/product/'+ data.id">
           <img :src="data.image[0].photo" alt="" class="absolute h-[7rem] w-[7rem] md:h-[12rem] md:w-[12rem] -ms-5 lg:-ms-10 -mb-10 mt-10 shadow-1 rounded-3xl" />
           <div class="flex justify-end w-full">
-            <h3 class="mt-3 rtl text-right text-xs max-w-[65%] ps-4 py-7 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+            <h3 class="mt-3 rtl text-right text-xs max-w-[65%] ps-4 pt-7 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
               <a>
                 {{ data.title }}
               </a>
             </h3>
           </div>
+          <div class=" bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pt-2">
+          <div class="flex items-center justify-end">
+              <div v-if="data.rate > 0">
+                  <p class="text-sm text-gray-500 px-3 pt-1">({{ data.rate_number }})</p>
+              </div>
+              <div v-else>
+                  <p class="text-sm text-gray-500 px-3">(0)</p>
+              </div>
+              <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
+                :class="[data.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
+                aria-hidden="true" />
+          </div>
+        </div>
           <div :class="data.discount != 0 ? 'line-through ' : '' " class="pe-4 text-right text-xs text-gray-300 font-semibold">
             {{ data.discount != 0 ? data.price : '&nbsp; ' }}
           </div>
@@ -23,9 +36,8 @@
           <div class="flex flex-wrap justify-end pe-4 pb-4">
             <div v-for="color in data.colors" :key="color" class="w-4 h-4 rounded-full shadow-lg m-1" :style="{ backgroundColor: color.hexcolor }"></div>
           </div>
-            
             <div class="flex items-end justify-end overflow-hidden rounded-lg pe-4 pb-10 pt-4">
-              <div class="relative text-red-700 shadow-md text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">
+              <div class="relative text-white shadow-md text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">
                 {{ data.discount}} % 
               </div>
             </div> 
@@ -35,7 +47,10 @@
 </template>
 
 <script >
+import { StarIcon } from '@heroicons/vue/20/solid'
 export default {
+  components: {StarIcon},
+
     props: ["data","width"],
 
 }

@@ -22,7 +22,7 @@
         </h3>
         <div class=" text-sm font-bold text-white  rtl text-center rounded-full ">   {{ data.price + data.colors[0].price}}  </div>
         <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-500 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? parseInt((data.price + data.colors[0].price)*((100-data.discount)/100)) : '&nbsp; ' }}  </div>
-        <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pb-2 pt-6">
+        <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pe-4 pb-2 pt-6">
             <div class="relative text-white shadow-xl text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
         <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">

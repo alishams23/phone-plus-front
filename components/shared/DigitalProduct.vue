@@ -24,8 +24,8 @@
           </h3>
           <div class=" text-sm font-bold   text-center rounded-full ">   {{ data.price}}  </div>
           <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? data.price : '&nbsp; ' }}  </div>
-          <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg p-4">
-            <div class="relative text-red-700 shadow-xl text-sm font-semibold bg-glass-red rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
+          <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pb-3">
+            <div class="relative text-white shadow-xl text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
           </div> 
           <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">
           <div class="flex items-center justify-end mt-2">
@@ -47,9 +47,13 @@
     </nuxt-link>
 
 </template>
-  
+
 <script >
+import { StarIcon } from '@heroicons/vue/20/solid'
 export default {
+
+  components: {StarIcon},
+
     props: ["data","width"],
 }
 
