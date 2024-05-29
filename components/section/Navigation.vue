@@ -7,30 +7,27 @@
             <div v-if="products.results.length>0">
               <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
               <div class="rtl">
-                <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
+                <Swiper :modules="modules" :slides-per-view="2.5" :loop="false" :space-between="1">
                   <SwiperSlide v-for="item in products.results"  class="mb-10 px-2">
                     <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
-                      <div class="flex items-start bg-glass-2  rounded-xl text-sm overflow-hidden">
-                        <div class="px-5 py-3 flex-grow">
-                        <div class="pb-3">
+                      <div class="flex items-start  bg-gradient-to-r from-indigo-200 to-white  rounded-xl text-sm overflow-hidden">
+                        <div class="px-2 py-2 flex-grow">
+                        <div class="pb-2 font-weight-black text-xs">
                           {{ truncateTitle(item.title) }}
                         </div>
-                        <div :class="item.discount != 0 ? 'line-through ' : ''"
-                          class=" text-xs text-gray-700 font-semibold   rtl text-right  rounded-full "> 
-                          {{item.discount != 0 ? item.price : '&nbsp; ' }}
-                            </div>
-                        <div class=" text-sm font-bold text-black  rtl text-right w-[150px] rounded-full "> {{ item.price*(100 - item.discount )/100 }}
+
+                        <div class="  font-bold text-black text-xs  rtl text-right  rounded-full "> {{ item.price*(100 - item.discount )/100 }}
                         </div>
                         <div
                           class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg px-3 py-1">
                           <div
-                            class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-[10px] px-3 py-1"
+                            class="relative text-red-700  text-xs font-semibold  rtl text-right rounded-[10px] px-2 py-1"
                             v-if="item.discount != 0"> {{ item.discount }} % 
                           </div>
                         </div>
                       </div>
                         <img :src="item.image[0].photo" alt="Option image"
-                          class="w-32 h-24 object-cover rounded-e-lg" />
+                          class="w-[4rem] h-[4rem] object-cover rounded-e-lg" />
                       </div>
                     </nuxt-link>
                   </SwiperSlide>
@@ -42,7 +39,7 @@
               <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
                 <SwiperSlide v-for="item in digital_products.results"  class="mb-10 px-2" @click="searchQuery = null">
                   <nuxt-link :to="'/p/digitalProduct/' + item.id">
-                    <div class="flex items-start  bg-glass-2 rounded-xl text-sm overflow-hidden">
+                    <div class="flex items-start bg-gradient-to-r from-indigo-200 to-white rounded-xl text-sm overflow-hidden">
                       <div class="px-5 py-3 flex-grow">
                         <div class="pb-3">
                           {{ truncateTitle(item.title) }}
@@ -62,7 +59,7 @@
                         </div>
                       </div>
                       <img :src="item.image[0].photo" alt="Option image"
-                        class="w-32 h-24 object-cover rounded-e-lg" />
+                        class="w-24 h-24 object-cover rounded-e-lg" />
                     </div>
                   </nuxt-link>
                 </SwiperSlide>
