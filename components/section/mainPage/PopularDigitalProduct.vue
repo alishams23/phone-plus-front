@@ -14,8 +14,8 @@
       <div class="md:rounded-3xl isolate overflow-hidden relative border-t border-b" v-if="loading == false">
           <img :src="digital_products[index].image[0].photo ? digital_products[index].image[0].photo : digital_products[index].image" data-aos="fade-left" data-aos-duration="1000" class="absolute rounded-2xl inset-0 -z-10 h-full w-full object-cover" />
           <div class="absolute inset-0 -z-10 bg-gradient-to-l rounded-2xl from-white from-0% via-white/30" />
-          <div class="absolute inset-0 -z-10 bg-indigo-100/60 "  />
-          <div class="absolute backdrop-blur-xl overflow-hidden inset-0 -z-10 h-full w-full" />
+          <div class="absolute inset-0 -z-10 bg-indigo-100/80 "  />
+          <div class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10 h-full w-full" />
           <div class="relative">
               <div class="flex pt-3 justify-between items-center">
                   <div class="rtl px-3 pt-3">
