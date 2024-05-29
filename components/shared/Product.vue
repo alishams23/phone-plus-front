@@ -22,9 +22,22 @@
         </h3>
         <div class=" text-sm font-bold text-white  rtl text-center rounded-full ">   {{ data.price + data.colors[0].price}}  </div>
         <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-500 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? parseInt((data.price + data.colors[0].price)*((100-data.discount)/100)) : '&nbsp; ' }}  </div>
-        <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg p-4">
+        <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pb-2 pt-6">
             <div class="relative text-white shadow-xl text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
+        <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">
+          <div class="flex items-center justify-end mt-2">
+              <div v-if="data.rate > 0">
+                  <p class="text-sm text-gray-500 px-3">({{ data.rate_number }})</p>
+              </div>
+              <div v-else>
+                  <p class="text-sm text-gray-500 px-3">(0)</p>
+              </div>
+              <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
+                :class="[data.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
+                aria-hidden="true" />
+          </div>
+        </div>
     </div>
   </nuxt-link>
 
@@ -56,8 +69,11 @@
 </template>
   
 <script >
+import { StarIcon } from '@heroicons/vue/20/solid'
+
 export default {
-    props: ["data","width"],
+  components: {StarIcon},
+  props: ["data","width"],
 
 }
 

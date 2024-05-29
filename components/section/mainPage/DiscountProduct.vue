@@ -17,13 +17,13 @@
       <div class="flex pt-3 pb-5 justify-between items-center mt-[-10px]">
             <div class="rtl px-3">
               <a @click="$router.push('/p/search/?sort_product=' + '-rate');"
-                class="text-gray-100 text-sm mg:text-lg rtl pt-3 cursor-pointer flex items-center  ">
+                class="text-gray-900 text-sm mg:text-lg rtl pt-3 cursor-pointer flex items-center  ">
                 بیشتر
                 <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
               </a>
             </div>
             <div class="text-black font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
-              محبوب ترین محصولات
+              محصولات تخفیف خورده
 
               <div
               class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">

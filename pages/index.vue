@@ -1,6 +1,6 @@
 <template>
   <!-- <Blog /> -->
-  
+
   <div class=" rounded-b-[50px]">
     <HeaderHero />
   </div>
@@ -9,36 +9,39 @@
     <div>
       <Banner class="mt-[-1px]" />
     </div>
-   
- 
-      <div class=" mt-5">
-        <PopularProduct />
-  
-      </div>
-      <div >
-        <CategoriesProduct class="mx-2" />
-      </div>
-      <div >
-        <Shop  />
-      </div>
-      <div class="">
-        <DiscountProduct />
-  
-      </div>
-      <div ><Blog  /></div>
 
-      <div class=" mt-5 pb-10 ">
-        <PopularDigitalProduct />
-      </div>
-    
-      <div class=" mt-5 pb-10 ">
-        <DiscountDigitalProduct />
-      </div>
-
-      <div >
-        <CategoriesDigitalProduct class="mx-2" />
-      </div>
+    <div class=" mt-5">
+      <PopularProduct />
     </div>
+
+    <div>
+      <CategoriesProduct class="mx-2" />
+    </div>
+    
+    <div>
+      <Shop />
+    </div>
+    
+    <div class="">
+      <DiscountProduct />
+    </div>
+
+    <div>
+      <Blog />
+    </div>
+
+    <div class=" mt-5 pb-10 ">
+      <PopularDigitalProduct />
+    </div>
+    
+    <div class=" mt-5 pb-10 ">
+      <DiscountDigitalProduct />
+    </div>
+
+    <div>
+      <CategoriesDigitalProduct class="mx-2" />
+    </div>
+  </div>
 
 </template>
 
@@ -58,10 +61,10 @@ import Shop from "~/components/section/mainPage/Shop.vue"
 import CategoriesProduct from "@/components/section/mainPage/CategoriesProduct.vue"
 import CategoriesDigitalProduct from "@/components/section/mainPage/CategoriesDigitalProduct.vue"
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { NavigationStore } from '~/store/navigation'; 
+import { NavigationStore } from '~/store/navigation';
 
 export default {
-  components: { 
+  components: {
     Dialog,
     DialogPanel,
     DialogTitle,
@@ -78,7 +81,8 @@ export default {
     Banner,
     PromoSection,
     Blog,
-    HeaderHero },
+    HeaderHero
+  },
   head() {
     return {
       // title: "ثبت نام"
@@ -87,24 +91,24 @@ export default {
   layout: "landing",
   data() {
     return {
-     
+
     };
   },
 
   methods: {
 
   },
-  mounted(){
+  mounted() {
     NavigationStore().setButtons([
       {
-        'name':'محصولات محبوب',
-        'func':null,
-        'href':`/p/search/?sort_product=-rate`,
+        'name': 'محصولات محبوب',
+        'func': null,
+        'href': `/p/search/?sort_product=-rate`,
       },
       {
-        'name':'محصولات دیجیتال محبوب',
-        'func':null,
-        'href':`/p/search/?sort_digital_product=-rate`,
+        'name': 'محصولات دیجیتال محبوب',
+        'func': null,
+        'href': `/p/search/?sort_digital_product=-rate`,
       },
     ])
   }

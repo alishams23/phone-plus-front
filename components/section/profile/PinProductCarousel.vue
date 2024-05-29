@@ -71,7 +71,6 @@ export default {
     };
   },
   data: () => ({
-    selectedTab: 'products',
     data: [],
     loading:true,
     // carousel settings
@@ -80,17 +79,6 @@ export default {
     // any settings not specified will fallback to the carousel settings
  
   }),
-  computed: {
-    filteredData() {
-      // This computed property filters the data based on the selected country.
-      // Adjust the logic according to your needs.
-      if (this.selectedCountry === 'Canada') {
-        return this.data.filter((item) => item.country === 'Canada');
-      } else {
-        return this.data; // Return all data if no specific filter is applied
-      }
-    },
-  },
   methods: {
     async getData() {
       this.loading = true
@@ -117,49 +105,4 @@ export default {
 .swiper-slide {
   width: auto;
 }
-/* .carousel__slide {
-  padding: 5px;
-}
-
-.carousel__viewport {
-  perspective: 2000px;
-}
-
-.carousel__track {
-  transform-style: preserve-3d;
-}
-
-.carousel__slide--sliding {
-  transition: 0.5s;
-}
-
-.carousel__slide {
-  opacity: 0.5;
-  filter: blur(3px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-.carousel__slide--prev {
-  opacity: 0.8;
-  filter: blur(1px);
-
-  transform: rotateY(-10deg) scale(0.99);
-}
-
-.carousel__slide--next {
-  opacity: 0.8;
-  filter: blur(1px);
-
-
-
-  transform: rotateY(10deg) scale(0.99);
-}
-
-.carousel__slide--active {
-  opacity: 1;
-  filter: blur(0px);
-
-  transform: rotateY(0) scale(1.15);
-} */
 </style>
