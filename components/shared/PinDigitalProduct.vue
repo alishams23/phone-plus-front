@@ -24,7 +24,7 @@
         </div>
       
         <div class="absolute bottom-0 flex left-0 items-end justify-end overflow-hidden rounded-lg pe-4 ps-4 pb-2">
-          <div class="relative text-red-700  text-sm font-semibold bg-glass-red rounded-full px-3 py-1" v-if="data.discount != 0">
+          <div class="relative text-white  text-sm font-semibold bg-indigo-600 rounded-full px-3 py-1" v-if="data.discount != 0">
             {{ data.discount}} % 
           </div>
         </div> 
