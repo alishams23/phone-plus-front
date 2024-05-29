@@ -1,7 +1,9 @@
 <template>
   
   <div class="relative " v-if="results && results.image">
-      <img :src="results.image" alt=""
+      <img v-if="results.background_image" :src="results.background_image" alt=""
+        class="absolute  inset-0 -z-10  h-full w-full object-cover " />
+      <img v-else :src="results.image" alt=""
         class="absolute  inset-0 -z-10  h-full w-full object-cover " />
         <div class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
   
