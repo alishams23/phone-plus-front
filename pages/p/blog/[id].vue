@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-    <div v-else-if="blog != null"  class="w-full h-full " data-aos="zoom-out-right">
+    <div v-else-if="blog != null"  class="w-full h-full " data-aos="fade-down">
         <div class="mt-[-40px]">
             <div class="  relative  ">
                 <div class="">
@@ -21,13 +21,31 @@
                 <img :src="blog.imageBlog.photo" alt=""
                     class="absolute overflow-hidden  inset-0 -z-10 h-full w-full object-cover " />
                 <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <img class="absolute bg-gray-800/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
+
                 <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                     aria-hidden="true">
                     <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                         style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
                 </div>
-                <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-[1rem] lg:pb-[12rem]">
-
+             
+                <div class="pb-[11rem] pt-[5rem] lg:pb-[9rem] ">
+                    <div class="flex flex-row rtl  container justify-center md:justify-start items-center ">
+          <div class=" me-5">
+            <a :href="'/' + blog.shop.username" target="blank" >
+              <ArrowTopRightOnSquareIcon class="h-4 w-4 mt-3 text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]" click="" />
+              <img :src="blog.shop.image" class="h-24 w-24 object-cover rounded-full" />
+            </a>
+          </div>
+          <a :href="'/' + blog.shop.username" target="blank" >
+            <div class="text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]">
+              فروشگاه:
+            </div>
+            <div class="flex font-semibold text-3xl text-white drop-shadow-[0_10.2px_10.2px_rgba(125,125,125,0.9)]">
+              {{ blog.shop.name }}
+            </div>
+          </a>
+        </div>
                     <div class="hidden sm:mb-8 sm:flex sm:justify-center">
 
                     </div>
@@ -58,12 +76,12 @@
 
                     <div class="grid grid-cols-4 gap-4 bg-white p-4 pb-10">
                         <div class="col-span-4 lg:col-span-3  ">
-                            <div class="relative isolate shadow-xl rounded-[25px] pb-10  h-[10rem] lg:h-[20rem]">
+                            <div class="relative  isolate rounded-[25px] pb-10  h-[10rem] lg:h-[20rem]">
 
                                 <img :src="blog.imageBlog.photo" :alt="blog.imageBlog.title_for_photo"
                                     class="absolute inset-0 -z-1000  h-[10rem] lg:h-[20rem] w-full rounded-[25px] object-cover" />
                                 <div
-                                    class="absolute inset-0 -z-9999 bg-gradient-to-tr from-gray-700 to-gray-900 opacity-80 rounded-[25px] h-[10rem] lg:h-[20rem] w-full" />
+                                    class="absolute inset-0 -z-9999  bg-indigo-900/40   rounded-[25px] h-[10rem] lg:h-[20rem] w-full" />
 
                                 <div class="absolute inset-0 -z-1000   h-[10rem] lg:h-[30rem] w-full ">
                                     <h1 class="font-bold rtl px-8 lg:px-16 pt-8 lg:pt-16 text-white text-xl lg:text-4xl">
@@ -75,7 +93,7 @@
 
                             </div>
                         </div>
-                        <div class="bg-gray-200 col-span-4 lg:col-span-1 shadow-xl rounded-[30px]">
+                        <div class="bg-gradient-to-b from-gray-100 to-gray-300 col-span-4 lg:col-span-1  rounded-[30px]">
                             <div class="flex flex-col justify-between h-full">
                                 <div>
                                     <div class="flex justify-end items-center pt-5 md:pt-10 px-5 ">

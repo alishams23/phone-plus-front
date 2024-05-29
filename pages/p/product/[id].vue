@@ -10,7 +10,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null" data-aos="fade-up" class="overflow-x-hidden" >
+  <div v-else v-if="product != null" data-aos="fade-down" class="overflow-x-hidden" >
 
     <div class="min-h-full">
 
