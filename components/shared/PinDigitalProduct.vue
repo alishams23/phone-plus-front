@@ -2,8 +2,8 @@
   <div :class="width ? `${width}` : 'w-[15rem]'" class=" bg-gray-100 border relative isolate my-20  mx-5  rounded-2xl">
     <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute  rounded-2xl inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  rounded-2xl from-white from-10% via-white/40" />
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t  rounded-2xl bg-white/50" />
-        <div class="absolute backdrop-blur-md rounded-2xl overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t  rounded-2xl bg-white/80" />
+        <div class="absolute backdrop-blur-sm rounded-2xl overflow-hidden inset-0 -z-10  h-full w-full  " />
 
     <nuxt-link :to="'/p/digitalProduct/'+ data.id">
       <div class="flex justify-center text-center">
