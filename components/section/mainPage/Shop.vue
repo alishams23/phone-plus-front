@@ -1,7 +1,7 @@
 <template>
 <div class="mb-5 mt-[-50px]">
 
-<div class="relative" >
+<div class="relative mx-2" >
   <div class="flex  justify-end pb-8 items-end">
     <div class="text-black font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
       فروشگاه های برتر

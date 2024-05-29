@@ -74,7 +74,7 @@
     </div>
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-8  ">
       <div @click="isLogin ? open_support = true : changeStateLogin(true)"
-        class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-500 to-indigo-800 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
+        class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-xs  ">
          
           پشتیبانی

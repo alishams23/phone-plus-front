@@ -50,7 +50,7 @@ backdrop-filter: blur(15px);
   }
 
 .bg-glass-3{
-    background: rgba(66, 46, 247, 0.682);
+    background-image: linear-gradient( rgba(66, 46, 247, 0.529) 0%, rgba(66, 46, 247, 0.836) 100%);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
