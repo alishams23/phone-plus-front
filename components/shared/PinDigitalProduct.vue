@@ -20,11 +20,11 @@
         <div :class="data.discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-gray-300 font-semibold">
           {{ data.discount != 0 ? data.price : '&nbsp; ' }}
         </div>
-        <div class="lg:pe-4 pb-4">
+        <div class="lg:pe-4 pb-10">
           {{ parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price) }}
         </div>
       
-        <div class="flex items-end justify-start overflow-hidden rounded-lg ps-4 pb-2">
+        <div class="absolute bottom-0 flex left-0 items-end justify-end overflow-hidden rounded-lg pe-4 ps-4 pb-2">
           <div class="relative text-red-700  text-sm font-semibold bg-glass-red rounded-full px-3 py-1" v-if="data.discount != 0">
             {{ data.discount}} % 
           </div>
