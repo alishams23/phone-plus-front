@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null" data-aos="fade-up">
+  <div v-else v-if="product != null" data-aos="fade-down">
 
     <div class="min-h-full">
 
