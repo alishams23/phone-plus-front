@@ -29,7 +29,7 @@
               </div>
             </div>
           </div>
-    <div class=" bg-gradient-to-b bg-gray-200  from-white from-40% via-white mb-8">
+    <div class=" bg-gradient-to-b bg-gray-200 pb-8  from-white from-40% via-white mb-8">
         <div  class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5  md:gap-4 container mx-auto">
           <div v-for="product in best_products.slice(0, 5)" class="my-5"  >
             <Product class="py-10 " :width="' '" :data="product" />
@@ -82,7 +82,7 @@
       </div>
     </div> -->
 
-    <div class=" w-full h-[200px] md:h-[300px] flex">
+    <div class=" w-full h-[120px] md:h-[300px] mt-[-30px] flex">
       <img src="/images/banner.webp" class="w-full h-full object-cover object-center  " alt="">
     </div>
   </div>

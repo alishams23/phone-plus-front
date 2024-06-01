@@ -15,7 +15,7 @@
           </div>
           <div class="col-span-8 lg:col-span-6 flex flex-col justify-between ">
             <div>
-              <div class="text-gray-900 font-semibold lg:px-5 mt-4 lg:mt-0 text-md lg:flex lg:items-start lg:h-full min-h-[20px] rtl">{{ blog.title }}</div>
+              <div class="text-gray-900 font-semibold lg:px-5 mt-4 lg:mt-0 text-sm md:text-md lg:flex lg:items-start lg:h-full min-h-[20px] rtl">{{ blog.title }}</div>
                <div class=" text-gray-900 font-semibold lg:px-5 text-md lg:text-lg lg:mt-2 rtl ">
                   <p class="text-gray-600 test-n w-100  text-[14px] py-1 max-w-[90%] lg:max-w-[90%] font-light text-xs mt-2 " v-html="truncatedBody"></p>
                 </div>

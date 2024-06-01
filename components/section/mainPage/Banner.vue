@@ -14,11 +14,11 @@
 
         <div class="flex  justify-between items-center pb-5 md:mt-[-40px]">
             <div class="rtl px-3">
-              <a @click="$router.push('/p/search/?sort_product=' + '-rate');"
+              <!-- <a @click="$router.push('/p/search/?sort_product=' + '-rate');"
                 class="text-gray-100 text-sm mg:text-lg rtl pt-3 cursor-pointer flex items-center  ">
                 بیشتر
                 <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
-              </a>
+              </a> -->
             </div>
             <div class="text-black font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
             بنر فروشگاه ها
@@ -39,7 +39,7 @@
     }" :space-between="20" class="px-3 ">
             <SwiperSlide v-for="post in banners" :key="post.id" class="mb-10 mx-2 ">
 
-                <div class=" w-[200px]  md:w-[300px] pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
+                <div class=" w-[230px]  md:w-[300px] pb-10 aspect-[16/9] sm:aspect-[2/1] lg:aspect-[16/9]">
 
                     <a :href="post.link">
                         <div class="">
@@ -57,7 +57,7 @@
            <ArrowRightIcon class="h-5 text-white " />
         </div> -->
         <div class="flex justify-center mt-5">
-        <div class="w-[300px] py-[2px] rounded-xl bg-gray-100"></div>
+        <div class="w-[300px] invisible md:visible py-[2px] rounded-xl bg-gray-100"></div>
 
     </div>
     </div>

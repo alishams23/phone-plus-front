@@ -1,5 +1,5 @@
 <template>
-  <div class=" w-full h-[200px] md:h-[300px] mt-[-20px] flex">
+  <div class=" w-full h-[120px] md:h-[300px] mt-[-20px] flex">
       <img src="/images/banner2.webp" class="w-full h-full object-cover object-center  " alt="">
     </div>
 <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
@@ -39,7 +39,7 @@
           
         </div>
         <div class="flex justify-center mt-10">
-        <div class="w-[300px] py-[2px] rounded-xl bg-gray-100"></div>
+        <div class="w-[300px] invisible md:visible  py-[2px] rounded-xl bg-gray-100"></div>
 
     </div>
     </div>

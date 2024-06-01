@@ -11,7 +11,7 @@
         </div>
       </div>
       <div>
-        <h3 class="mt-3 rtl text-lg lg:pe-4 py-2 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+        <h3 class="mt-3 rtl text-sm md:text-lg lg:pe-4 py-2 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
           <a>
             {{ data.title }}
           </a>
@@ -31,12 +31,7 @@
       </div>
       <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">
         <div class="flex items-center justify-end mt-2">
-            <div v-if="data.rate > 0">
-                <p class="text-sm text-gray-500 px-3">({{ data.rate_number }})</p>
-            </div>
-            <div v-else>
-                <p class="text-sm text-gray-500 px-3">(0)</p>
-            </div>
+            
             <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
               :class="[data.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
               aria-hidden="true" />

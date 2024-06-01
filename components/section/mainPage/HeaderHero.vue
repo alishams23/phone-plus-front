@@ -1,10 +1,10 @@
 <template>
   <div class=" ">
-    <div class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50  py-2.5 sm:px-0 sm:before:flex-1">
+    <div class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50  py-2.5 ">
     
     <NuxtMarquee :speed="15" class="w-full" direction="right" pauseOnHover >
-      <div class="flex items-center gap-x-4 gap-y-2">
-        <p class="flex-grow text-xs md:text-sm leading-6 text-gray-900">
+      <div class="flex items-center gap-x-4 gap-y-2 px-5">
+        <p class="flex-grow  rtl text-xs md:text-sm leading-6 text-gray-900">
           <strong class="font-semibold">
             فرصت فروش در سایت ما
           </strong>

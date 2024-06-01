@@ -14,25 +14,20 @@
         
           </div>
         </div>
-        <h3 class="mt-3 rtl text-md pb-3 font-semibold  text-white text-center overflow-hidden whitespace-nowrap text-ellipsis">
+        <h3 class="mt-3 rtl text-sm md:text-md pb-3 font-semibold  text-white text-center overflow-hidden whitespace-nowrap text-ellipsis">
           <a v-if="data.title">
             <span class="absolute inset-0" />
             {{ data.title }}
           </a>
         </h3>
-        <div class=" text-sm font-bold text-white  rtl text-center rounded-full ">   {{ data.price + data.colors[0].price}}  </div>
+        <div class=" text-xs md:text-sm  font-bold text-white  rtl text-center rounded-full ">   {{ data.price + data.colors[0].price}}  </div>
         <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-500 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? parseInt((data.price + data.colors[0].price)*((100-data.discount)/100)) : '&nbsp; ' }}  </div>
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pe-4 pb-2 pt-6">
-            <div class="relative text-white shadow-xl text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
+            <div class="relative text-white shadow-xl text-xs md:text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1 " v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
         <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">
           <div class="flex items-center justify-end mt-2">
-              <div v-if="data.rate > 0">
-                  <p class="text-sm text-gray-500 px-3">({{ data.rate_number }})</p>
-              </div>
-              <div v-else>
-                  <p class="text-sm text-gray-500 px-3">(0)</p>
-              </div>
+              
               <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
                 :class="[data.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
                 aria-hidden="true" />

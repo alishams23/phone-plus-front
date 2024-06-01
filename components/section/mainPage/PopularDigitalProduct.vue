@@ -12,8 +12,8 @@
     <div v-else>
      <div class="container mx-auto">
       <div class="md:rounded-3xl isolate overflow-hidden relative border border-b" v-if="loading == false">
-          <img :src="digital_products[index].image[0].photo ? digital_products[index].image[0].photo : digital_products[index].image" data-aos="fade-left" data-aos-duration="1000" class="absolute rounded-2xl inset-0 -z-10 h-full w-full object-cover" />
-          <div class="absolute inset-0 -z-10 bg-gradient-to-l rounded-2xl from-white from-0% via-white/90 " />
+          <img :src="digital_products[index].image[0].photo ? digital_products[index].image[0].photo : digital_products[index].image" data-aos="fade-left" data-aos-duration="1000" class="absolute  inset-0 -z-10 h-full w-full object-cover" />
+          <div class="absolute inset-0 -z-10 bg-gradient-to-l from-white from-0% via-white/90 " />
           <div class="absolute inset-0 -z-10 bg-indigo-100/80 "  />
           <div class="relative">
               <div class="flex pt-3 justify-between items-center">
@@ -31,34 +31,29 @@
                   </div>
               </div>
           </div>
-          <div class="flex flex-col md:flex-row justify-center md:justify-between container mx-auto">
-              <img :src="digital_products[index].image[0].photo" alt="" class="md:mb-10 me-4 md:mx-20 mt-10 md:mt-0 mx-4 md:w-[200px] h-[200px] border shadow-2 object-cover  rounded-3xl md:w-auto" />
+          <nuxt-link :to="'/p/digitalProduct/'+ digital_products[index].id" class="flex flex-col md:flex-row justify-center md:justify-between container mx-auto">
+              <img :src="digital_products[index].image[0].photo" alt="" class="md:mb-10 me-4 md:mx-20 mt-10 md:mt-0 mx-4  md:w-[200px] h-[140px] md:h-[200px] border shadow-2 object-cover  rounded-3xl md:w-auto" />
               <div class="mx-4 md:mx-20 my-10">
-                  <div class="text-black font-black text-right text-2xl">
+                  <div class="text-black font-black text-center md:text-right text-lg md:text-2xl">
                       {{ digital_products[index].title }}
                   </div>
-                  <div class="flex items-center justify-end pt-2">
-                      <div v-if="digital_products[index].rate > 0">
-                          <p class="text-sm text-gray-500 px-3">({{ digital_products[index].rate_number }})</p>
-                      </div>
-                      <div v-else>
-                          <p class="text-sm text-gray-500 px-3">(0)</p>
-                      </div>
+                  <div class="flex items-center justify-center  md:justify-end pt-2">
+                    
                       <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
                                 :class="[digital_products[index].rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
                                 aria-hidden="true" />
                   </div>
-                  <div class="text-gray-500 text-right mt-5 max-h-[50px] overflow-hidden pb-4" v-html="digital_products[index].description"></div>
+                  <div class="text-gray-500 text-center md:text-right mt-5 max-h-[50px]  overflow-hidden pb-4" v-html="digital_products[index].description"></div>
                   <div class="mt-5">
-                      <div :class="digital_products[index].discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-red-500 font-semibold text-right">
+                      <div :class="digital_products[index].discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-red-500 font-semibold text-center md:text-right">
                           {{ digital_products[index].discount != 0 ? digital_products[index].price : '&nbsp; ' }}
                       </div>
-                      <div class="lg:pe-4 pb-4 text-right">
+                      <div class="lg:pe-4 pb-4 text-center md:text-right">
                           {{ parseInt(digital_products[index].discount != 0 ? digital_products[index].price*(100-digital_products[index].discount)/100 : digital_products[index].price) }}
                       </div>
                   </div>
               </div>
-          </div>
+          </nuxt-link>
       </div>
   </div>
 
