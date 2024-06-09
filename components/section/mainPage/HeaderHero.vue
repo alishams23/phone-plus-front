@@ -3,16 +3,19 @@
     <div class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50  py-2.5 ">
     
     <NuxtMarquee :speed="15" class="w-full" direction="right" pauseOnHover >
-      <div class="flex items-center gap-x-4 gap-y-2 px-5">
-        <p class="flex-grow  rtl text-xs md:text-sm leading-6 text-gray-900">
-          <strong class="font-semibold">
-            فرصت فروش در سایت ما
-          </strong>
-          
-          به ما بپیوندید و محصولات خود را به هزاران مشتری عرضه کنید.
-        </p>
-        <a href="#" class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-xs md:text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">همین حالا ثبت‌نام کنید</a>
-      </div>
+      <NuxtLink
+      to="/p/start_selling">
+        <div class="flex items-center gap-x-4 gap-y-2 px-5">
+          <p class="flex-grow  rtl text-xs md:text-sm leading-6 text-gray-900">
+            <strong class="font-semibold">
+              فرصت فروش در سایت ما
+            </strong>
+            
+            به ما بپیوندید و محصولات خود را به هزاران مشتری عرضه کنید.
+          </p>
+          <a href="#" class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-xs md:text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">همین حالا ثبت‌نام کنید</a>
+        </div>
+      </NuxtLink>
     </NuxtMarquee>
 
   </div>
