@@ -38,7 +38,7 @@
 
         </div>
       </div>
-      <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
+      <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 mb-12">
         <p class="text-xs leading-5 text-gray-400">&copy; فون پلاس ۱۴۰۲</p>
       </div>
     </div>

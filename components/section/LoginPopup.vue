@@ -20,10 +20,11 @@
                         <div class="sm:mx-auto lg:w-full lg:max-w-sm">
                             <h2
                                 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                                وارد اکانت خود شوید</h2>
+                                وارد اکانت خود شوید
+                            </h2>
                         </div>
                         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <div class="space-y-6">
+                            <form  @submit.prevent="sendLoginSms" @keydown.enter="sendLoginSms" class="space-y-6">
                                 <div class="ltr">
                                     <label for="phone-number"
                                         class="block text-sm  font-medium leading-6 text-gray-900">شماره
@@ -42,7 +43,7 @@
                                 <div>
                                     <div
                                         class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                        <button @click="sendLoginSms" class="w-full"
+                                        <button type="submit" class="w-full"
                                             v-if="loading == false">
                                             دریافت کد
                                         </button>
@@ -64,7 +65,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                             <div class="mt-10 pb-6 flex rtl flex-items-center">
                                 <p class=" text-sm text-center leading-6 ps-2 text-gray-500 ">
                                     اکانت ندارید؟
@@ -84,7 +85,7 @@
                                 کد را وارد کنید</h2>
                         </div>
                         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <form class="space-y-6" action="#" method="POST">
+                            <form  @submit.prevent="check_code" @keydown.enter="check_code" class="space-y-6">
                                 <div class="ltr">
                                     <div class="relative mt-2 rounded-full shadow-sm">
                                         <input type="text" placeholder="code" v-model="code"
@@ -99,7 +100,7 @@
 
                                     <div
                                         class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                        <button @click="check_code" class="w-full" v-if="loading == false">
+                                        <button type="submit" class="w-full" v-if="loading == false">
                                             تایید
                                         </button>
                                         <div v-if="loading">
@@ -147,7 +148,7 @@
                                 ثبت نام کنید</h2>
                         </div>
                         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <form class="space-y-6" action="#" method="POST">
+                            <form  @submit.prevent="sendSingUpSms" @keydown.enter="sendSingUpSms" class="space-y-6">
                                 <div class="sm:col-span-3">
                                     <label for="first-name"
                                         class="block text-sm font-medium leading-6 text-gray-900">نام</label>
@@ -185,7 +186,7 @@
                                     <div
                                         class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 
-                                        <button @click="sendSingUpSms" class="w-full"
+                                        <button type="submit" class="w-full"
                                             v-if="loading == false">
                                             دریافت کد
                                         </button>
@@ -227,7 +228,7 @@
                                 کد را وارد کنید</h2>
                         </div>
                         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <form class="space-y-6" action="#" method="POST">
+                            <form  @submit.prevent="check_code_signup" @keydown.enter="check_code_signup" class="space-y-6">
                                 <div class="ltr">
                                     <div class="relative mt-2 rounded-full shadow-sm">
                                         <input type="text" placeholder="code" v-model="code"

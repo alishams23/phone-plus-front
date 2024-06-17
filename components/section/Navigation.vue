@@ -2,76 +2,77 @@
   <div class="flex justify-start ">
     <div  style="z-index:9999999999999999" class="fixed bottom-0  ml-[5rem] mb-[5rem]" data-aos="fade-up" v-if="searchQuery != null && searchQuery != ''">
       <transition name="fade">
-        <div class=" mt-2 w-[30rem]" v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)" >
-          <ul class="bg-glass-2 rtl rounded-xl  shadow-xl w-full">
-            <div v-if="products.results.length>0">
-              <li class=" p-4 font-body-2 text-gray-500 font-bold"> محصولات</li>
-              <div class="rtl">
-                <Swiper :modules="modules" :slides-per-view="2.5" :loop="false" :space-between="1">
-                  <SwiperSlide v-for="item in products.results"  class="mb-10 px-2">
+        <div class="mt-2 w-[30rem] -ms-5"
+          v-if="(currentRouteCheck('') && showButton && heightPage != null) || (currentRouteCheck('') != true)">
+          <ul class="bg-glass-2 rtl rounded-xl shadow-xl h-96 w-full">
+            <div class="flex">
+              <div v-if="products.results.length > 0" class="flex-1">
+                <li class="p-4 font-body-2 text-gray-500 font-bold">محصولات</li>
+                <div class="rtl overflow-y-auto h-96">
+                  <div v-for="item in products.results" :key="item.id" class="mb-3 px-2">
                     <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
-                      <div class="flex items-start  bg-gradient-to-t from-indigo-100 to-white  rounded-xl text-sm overflow-hidden">
+                      <div class="flex items-start bg-white rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
-                        <div class="pb-2 font-weight-black text-xs">
-                          {{ truncateTitle(item.title) }}
-                        </div>
-
-                        <div class="  font-bold text-black text-xs  rtl text-right  rounded-full "> {{ item.price*(100 - item.discount )/100 }}
-                        </div>
-                        <div
-                          class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg px-3 py-1">
-                          <div
-                            class="relative text-red-700  text-xs font-semibold  rtl text-right rounded-[10px] px-2 py-1"
-                            v-if="item.discount != 0"> {{ item.discount }} % 
+                          <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
+                          <div >
+                            <span class="font-bold text-black text-xs rtl text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span> <span class="text-[8px] text-gray-400" >تومان</span>
                           </div>
+                          <!-- <div class="absolute bottom-0 flex left-0 items-end justify-end overflow-hidden rounded-lg px-3 py-1">
+                            <div
+                              class="relative text-red-700 text-xs font-semibold rtl text-right rounded-[10px] px-2 py-1"
+                              v-if="item.discount != 0"
+                            >
+                              {{ item.discount }} %
+                            </div>
+                          </div> -->
                         </div>
-                      </div>
-                        <img :src="item.image[0].photo" alt="Option image"
-                          class="w-[4rem] h-[4rem] object-cover rounded-e-lg" />
+                        <img
+                          :src="item.image[0].photo"
+                          alt="Option image"
+                          class="w-[4rem] h-[4rem] object-cover rounded-e-lg"
+                        />
                       </div>
                     </nuxt-link>
-                  </SwiperSlide>
-                </Swiper>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div v-if="digital_products.results.length>0">
-              <li class=" p-4 font-body-1 text-gray-500 border-t font-bold">محصولات دیجیتال </li>
-              <Swiper :modules="modules" :slides-per-view="1.5" :loop="false" :space-between="34">
-                <SwiperSlide v-for="item in digital_products.results"  class="mb-10 px-2" @click="searchQuery = null">
-                  <nuxt-link :to="'/p/digitalProduct/' + item.id">
-                    <div class="flex items-start bg-gradient-to-r from-white to-white rounded-xl text-sm overflow-hidden">
-                      <div class="px-5 py-3 flex-grow">
-                        <div class="pb-3">
-                          {{ truncateTitle(item.title) }}
-                        </div>
-                        <div :class="item.discount != 0 ? 'line-through ' : ''"
-                          class=" text-xs text-gray-700 font-semibold   rtl text-right  rounded-full "> 
-                          {{item.discount != 0 ? item.price : '&nbsp; ' }}
-                            </div>
-                        <div class=" text-sm font-bold text-black  rtl text-right w-[150px] rounded-full "> {{ item.price*(100 - item.discount )/100 }}
-                        </div>
-                        <div
-                          class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg px-3 py-1">
-                          <div
-                            class="relative text-red-700  text-xs font-semibold bg-glass-red rtl text-right rounded-[10px] px-3 py-1"
-                            v-if="item.discount != 0"> {{ item.discount }} % 
+              <div v-if="digital_products.results.length > 0" class="flex-1">
+                <li class="p-4 font-body-1 text-gray-500 font-bold">محصولات دیجیتال</li>
+                <div class="rtl overflow-y-auto h-96">
+                  <div v-for="item in digital_products.results" :key="item.id" class="mb-3 px-2" @click="searchQuery = null">
+                    <nuxt-link :to="'/p/digitalProduct/' + item.id">
+                       <div class="flex items-start bg-white rounded-xl text-sm overflow-hidden">
+                        <div class="px-2 py-2 flex-grow">
+                          <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
+                          <div >
+                            <span class="font-bold text-black text-xs rtl text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span> <span class="text-[8px] text-gray-400" >تومان</span>
                           </div>
+                          <!-- <div class="absolute bottom-0 flex left-0 items-end justify-end overflow-hidden rounded-lg px-3 py-1">
+                            <div
+                              class="relative text-red-700 text-xs font-semibold rtl text-right rounded-[10px] px-2 py-1"
+                              v-if="item.discount != 0"
+                            >
+                              {{ item.discount }} %
+                            </div>
+                          </div> -->
                         </div>
+                        <img
+                          :src="item.image[0].photo"
+                          alt="Option image"
+                          class="w-[4rem] h-[4rem] object-cover rounded-e-lg"
+                        />
                       </div>
-                      <img :src="item.image[0].photo" alt="Option image"
-                        class="w-24 h-24 object-cover rounded-e-lg" />
-                    </div>
-                  </nuxt-link>
-                </SwiperSlide>
-              </Swiper>
+                    </nuxt-link>
+                  </div>
+                </div>
+              </div>
             </div>
           </ul>
         </div>
       </transition>
     </div>
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-8  ">
-      <div @click="isLogin ? open_support = true : changeStateLogin(true)"
-        class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
+      <div @click="handleClick" class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-xs  ">
          
           پشتیبانی
@@ -93,7 +94,7 @@
 
              
               
-              <input type="search" v-on:keyup.enter="$router.push('/p/search/?search=' + searchQuery);searchQuery = null" v-model="searchQuery" id="default-search"
+              <input @change="open_support = false" type="search" v-on:keyup.enter="$router.push('/p/search/?search=' + searchQuery);searchQuery = null" v-model="searchQuery" id="default-search"
                 class="w-full p-4 pl-10 text-sm rtl text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-indigo-800   border-transparent"
                 placeholder="جستجو..." required>
 
@@ -322,8 +323,16 @@ export default {
     window.removeEventListener('scroll', this.checkScroll);
   },
   methods: {
+    handleClick() {
+      if (this.isLogin) {
+        this.open_support = true;
+        this.searchQuery = '';
+      } else {
+        this.changeStateLogin(true);
+      }
+    },
     truncateTitle(title) {
-      return title.length > 20 ? title.substring(0, 10) + '...' : title;
+      return title.length > 30 ? title.substring(0, 20) + '...' : title;
     },
     getProducts() {
       this.loading = true
