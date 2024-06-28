@@ -80,15 +80,15 @@
                             </a>
                             </div>
                             <div v-if="data.digital_product.instructions" class="flex justify-end pe-4 mt-4">
-                                <div @click="toggleInstructions(data.id)"
+                                <div @click="toggleInstructions(data.id)" 
                                     class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-indigo-600 cursor-pointer hover:text-indigo-700">
-                                    آموزش استفاده
+                                    نکات ضروری برای استفاده
                                 </div>
                             </div>
                         </div>
                         </div>
                             <transition name="fade">
-                                <div v-if="showInstructionsId === data.id" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
+                                <div v-if="!showInstructionsId.includes(data.id)" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
                                     <div v-html="data.digital_product.instructions"></div>
                                 </div>
                             </transition>
@@ -119,12 +119,19 @@ export default {
         return {
             orders: [],
             loading: true,
-            showInstructionsId: null
+            showInstructionsId: []  // Initialize as an empty array
         }
     },
     methods: {
         toggleInstructions(id) {
-            this.showInstructionsId = this.showInstructionsId === id ? null : id;
+            const index = this.showInstructionsId.indexOf(id);
+            if (index > -1) {
+                // If id is already in the list, remove it
+                this.showInstructionsId.splice(index, 1);
+            } else {
+                // If id is not in the list, add it
+                this.showInstructionsId.push(id);
+            }
         },
         getData() {
             this.loading = true
