@@ -37,7 +37,7 @@
                   </div>
                 </template>
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <side class="bg-gray-100" @get-selected-user="(data) => {user =!null ?  user = data : '' }" />
+        <side class="bg-indigo-700" @get-selected-user="(data) => {user =!null ?  user = data : '' }" />
                 
               </DialogPanel>
             </div>
@@ -51,9 +51,9 @@
   <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col ">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
 
-    <div class="flex grow flex-col  px-0 mx-0 overflow-y-auto ">
+    <div class="flex grow flex-col curved px-0 mx-0 overflow-y-auto ">
 
-      <side class="bg-gray-100" @get-selected-user="(data) => {user =!null ?  user = data : '' }" />
+      <side class=" mr-[30px]" @get-selected-user="(data) => {user =!null ?  user = data : '' }" />
 
     </div>
   </div>
@@ -91,9 +91,9 @@
           </a>
         </form>
         <div class="flex items-center gap-x-4 lg:gap-x-6">
-          <a href="/" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+          <a href="/" class="-m-2.5 p-2.5 bg-indigo-600 rounded-full text-white hover:text-indigo-200">
             <span class="sr-only">View notifications</span>
-            <HomeIcon class="h-6 w-6" aria-hidden="true" />
+            <HomeIcon class="h-5 w-5" aria-hidden="true" />
           </a>
 
           <!-- Separator -->

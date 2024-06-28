@@ -7,8 +7,7 @@ export const useUserStore = defineStore('user', {
   }),
   actions: {
     setToken(token, username) {
-      console.log(username)
-      console.log('bbbbb')
+  
 
       this.userToken = token;
       this.username = username;
@@ -29,6 +28,7 @@ export const useUserStore = defineStore('user', {
       const username = cookies.find((row) => row.startsWith('usernameUser='))?.split('=')[1];
       this.userToken = token || null;
       this.username = username || null;
+
     },
 
     isAuthenticated() {

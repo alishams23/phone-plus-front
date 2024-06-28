@@ -6,9 +6,7 @@
   </div>
 
   <div class="bg-white">
-    <div>
-      <Banner class="mt-[-1px]" />
-    </div>
+  
 
     <div class=" mt-5">
       <PopularProduct />

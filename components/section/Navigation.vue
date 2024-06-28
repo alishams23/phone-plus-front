@@ -1,5 +1,7 @@
 <template>
   <div class="flex justify-start ">
+    <div v-if="searchQuery != null && searchQuery != ''" @click="searchQuery = ''" class=" fixed backdrop-blur-md z-10  w-full h-full top-0 left-0"></div>
+
     <div  style="z-index:9999999999999999" class="fixed bottom-0  ml-[5rem] mb-[5rem]" data-aos="fade-up" v-if="searchQuery != null && searchQuery != ''">
       <transition name="fade">
         <div class="mt-2 w-[30rem] -ms-5"
@@ -11,7 +13,7 @@
                 <div class="rtl overflow-y-auto h-96">
                   <div v-for="item in products.results" :key="item.id" class="mb-3 px-2">
                     <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
-                      <div class="flex items-start bg-white rounded-xl text-sm overflow-hidden">
+                      <div class="flex items-start bg-white/60 rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
                           <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
                           <div >
@@ -29,7 +31,7 @@
                         <img
                           :src="item.image[0].photo"
                           alt="Option image"
-                          class="w-[4rem] h-[4rem] object-cover rounded-e-lg"
+                          class="w-[4rem] h-[4rem] shadow-2xl object-cover rounded-e-lg"
                         />
                       </div>
                     </nuxt-link>
@@ -41,7 +43,7 @@
                 <div class="rtl overflow-y-auto h-96">
                   <div v-for="item in digital_products.results" :key="item.id" class="mb-3 px-2" @click="searchQuery = null">
                     <nuxt-link :to="'/p/digitalProduct/' + item.id">
-                       <div class="flex items-start bg-white rounded-xl text-sm overflow-hidden">
+                       <div class="flex items-start bg-white/60 rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
                           <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
                           <div >
@@ -59,7 +61,7 @@
                         <img
                           :src="item.image[0].photo"
                           alt="Option image"
-                          class="w-[4rem] h-[4rem] object-cover rounded-e-lg"
+                          class="w-[4rem] h-[4rem] shadow-2xl object-cover rounded-e-lg"
                         />
                       </div>
                     </nuxt-link>
@@ -71,6 +73,7 @@
         </div>
       </transition>
     </div>
+    
     <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-8  ">
       <div @click="handleClick" class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-xs  ">
@@ -82,6 +85,7 @@
       <transition name="fade" >
         <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)" 
           class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block transition-all duration-500 rounded-[23px]  justify-center min-w-0  text-indigo-800 md:flex">
+          
           <div class=" rounded-full h-full px-4">
             <div class="relative  ">
               <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -201,6 +205,8 @@
       </div>
     </div>
   </div>
+
+  <div  v-if="open_support == true" class=" fixed backdrop-blur-md z-10  w-full h-full top-0 left-0"></div>
 
 
   <TransitionRoot :show="open_support">

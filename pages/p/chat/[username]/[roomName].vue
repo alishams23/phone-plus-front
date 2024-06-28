@@ -57,7 +57,7 @@
         <div class="lg:w-72 "></div>
         <input v-model="inputData" placeholder="پیام شما" type="text"  style="
             word-break: break-all;"
-          class="shadow-lg grow rtl bg-gray-100   text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block py-4 p-3  "
+          class=" grow rtl bg-gray-100 border   text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block py-4 p-3  "
           @keyup.enter="sendMessage()" />
         <div class="flex items-center px-2">
           <button id="text-submit" type="submit"
@@ -211,4 +211,15 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style >
+
+.curved {
+        padding: 0px 0px 0px 0px;
+        background-image: radial-gradient(ellipse 75% 100% at 30% 50%, rgb(98, 0, 238) 89.9%, #ffffff00 90%);
+        text-align: center;
+        font-family: sans-serif;
+        text-transform: uppercase;
+
+    }
+
+</style>

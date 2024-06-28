@@ -3,7 +3,7 @@
 
     <div class="pt-6 px-5">
       <div class="rtl flex items-start justify-between">
-        <div class="text-base font-semibold leading-6  text-gray-900">فروشندگان</div>
+        <div class="text-base font-semibold leading-6  text-gray-900" :class=" $route.params.username != null ? 'text-white' : ''">فروشندگان</div>
         <div class="mr-3 flex h-7 items-center"> <!-- Adjusted from ml-3 to mr-3 -->
           <!-- <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 ">
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
@@ -26,9 +26,6 @@
   </div>
  
   </div>
-
-
-    
     <ul role="list" class="flex-1  overflow-y-auto">
       <li v-if="$route.name == 'username'" class="rounded-2xl mx-3 mt-2  bg-gray-200"  >
         <div class="group relative flex  items-center px-5 py-4" >
@@ -47,7 +44,8 @@
       </li>
       <li v-else v-if="currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2  bg-glass-2 shadow-3" >
         <div class="group relative flex  items-center px-5 py-4" >
-            <a :href="sectionSupport == true ?'/p/chat/' +  $route.params.username + '/'+'pourya' : '#'" class="relative flex min-w-0 flex-1 items-center">
+       
+            <a :href="sectionSupport == true ?'/p/chat/'+'pourya'  + '/'+ 'pourya_'+ username +  '/': '#'" class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
                 <img class="h-10 w-10 rounded-full object-cover bg-white"   alt="" />
                
@@ -61,7 +59,7 @@
         </div>
       </li>
       
-      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 border-0" :class=" person.contact&&  selected_user == person.contact.username ? 'bg-indigo-600 text-white' : ''" >
+      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 border-0" :class=" person.contact&&  selected_user == person.contact.username ? 'bg-indigo-500 text-white' :  $route.params.username != null ? 'text-white' : ''" >
        <template v-if="person.contact">
          
          {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
@@ -110,7 +108,7 @@ export default {
         return apiStore().address
       },
       username() {
-        return apiStore().username
+        return useUserStore().username
       },
     },
   components: {
@@ -182,6 +180,8 @@ export default {
     this.setIntervalVar = setInterval(() => {
       this.ListUserMessageApi()
     }, 4000)
+    
+
   },
   beforeDestroy(){
     clearInterval(this.setIntervalVar)
