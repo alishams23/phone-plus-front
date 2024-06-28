@@ -86,6 +86,27 @@
                             </div>
                         </dd>
                     </div>
+                    <div class=" py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
+                        <dt class="hidden md:block text-xs md:text-sm font-medium flex justify-start md:justify-center items-top pt-4 leading-6 text-gray-900">
+                              ایمیل
+                            </dt>
+                        <dd
+                            class="mt-1 flex text-sm leading-6 justify-between md:justify-start  text-gray-700 col-span-3 md:col-span-2  mt-0">
+                            <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label
+                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="grid-city">
+                                    ایمیل
+                                </label>
+                                <input
+                                    required
+                                    class=" block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="grid-city" type="text" v-model="email">
+                                    
+                                    </input>
+                            </div>
+                        </dd>
+                    </div>
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                       <dt class="text-xs hidden md:block md:text-sm font-medium flex justify-start md:justify-center items-top pt-4 leading-6 text-gray-900">آدرس</dt>
                       <dd class="mt-1 flex text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
@@ -257,6 +278,7 @@ export default {
       ],
       user: null,
       phone_number: null,
+      email: null,
       first_name: null,
       last_name: null,
       zipCode: null,
@@ -281,6 +303,7 @@ export default {
         this.user = response.data
         this.first_name = this.user["first_name"]
         this.phone_number = this.user["phone_number"]
+        this.email = this.user["email"]
         this.last_name = this.user["last_name"]
         this.zipCode = this.user["zipCode"]
         this.street = this.user["street"]
@@ -295,6 +318,7 @@ export default {
       const data = {
         first_name: this.first_name,
         last_name: this.last_name,
+        email: this.email,
         zipCode: this.zipCode,
         street: this.street,
         city: this.city,
@@ -309,7 +333,7 @@ export default {
         },
       })
         .then(response => {
-
+          this.getData()
           this.loading = false
           this.snackbarVisible = true
           setTimeout(() => {

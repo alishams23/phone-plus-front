@@ -169,6 +169,16 @@
                                             class="block w-full rounded-full border-0 py-1.5 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " />
                                     </div>
                                 </div>
+                                
+                                <div class="sm:col-span-3">
+                                    <label for="email"
+                                        class="block text-sm font-medium leading-6 text-gray-900">ایمیل</label>
+                                    <div class="mt-2">
+                                        <input type="email" name="email" id="email"
+                                            v-model="email" autocomplete="email"
+                                            class="block w-full rounded-full border-0 py-1.5 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " />
+                                    </div>
+                                </div>
 
                                 <div class="ltr">
                                     <label for="phone-number"
@@ -309,11 +319,11 @@ export default {
             dialog_page: 'get_number',
             first_name: '',
             last_name: '',
+            email:'',
             phoneNumber: '',
             code: null,
             loading: false,
             token: '',
-            
         }
     },
     methods: {
@@ -337,6 +347,7 @@ export default {
                 const data = {
                     first_name: this.first_name, // Assuming the API expects the full number with country code
                     last_name: this.last_name, // Assuming the API expects the full number with country code
+                    email: this.email, 
                     number: this.phoneNumber // Assuming the API expects the full number with country code
                 };
                 this.loading = true
