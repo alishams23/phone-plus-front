@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class=" shadow-lg -mt-40 pb-10 flex justify-center">
-            <div class="max-w-[75rem] mx-5 lg:mx-0 flex flex-col shadow-1 rounded-[25px] overflow-hidden">
+            <div class="max-w-[75rem] mx-5 lg:mx-0 flex flex-col shadow-1 rounded-[35px] overflow-hidden">
                 <div class="relative isolate overflow-hidden ">
 
                     <div class="grid grid-cols-4 gap-4 bg-white p-4 pb-10">
@@ -79,13 +79,15 @@
                             <div class="relative  isolate rounded-[25px] pb-10  h-[10rem] lg:h-[20rem]">
 
                                 <img :src="blog.imageBlog.photo" :alt="blog.imageBlog.title_for_photo"
-                                    class="absolute inset-0 -z-1000  h-[10rem] lg:h-[20rem] w-full rounded-[25px] object-cover" />
+                                    class="absolute inset-0 -z-1000  h-[15rem] lg:h-[20rem] w-full rounded-[25px] object-cover" />
                                 <div
-                                    class="absolute inset-0 -z-9999  bg-indigo-900/40   rounded-[25px] h-[10rem] lg:h-[20rem] w-full" />
+                                    class="absolute inset-0 -z-9999   rounded-[25px] h-[10rem] lg:h-[20rem] w-full" />
 
                                 <div class="absolute inset-0 -z-1000   h-[10rem] lg:h-[30rem] w-full ">
-                                    <h1 class="font-bold rtl px-8 lg:px-16 pt-8 lg:pt-16 text-white text-xl lg:text-4xl">
+                                    <h1 class="font-bold flex justify-center rtl px-5 lg:px-16 pt-3 lg:pt-5 text-white text-sm  lg:text-xl">
+                                       <div class="bg-black/40 backdrop-blur-sm lg:backdrop-blur-md px-10 py-3 lg:py-5 rounded-2xl leading-[30px] lg:leading-[40px] ">
                                         {{ blog.title }}
+                                       </div>
                                     </h1>
 
                                 </div>
@@ -93,10 +95,10 @@
 
                             </div>
                         </div>
-                        <div class="bg-gradient-to-b from-gray-100 to-gray-300 col-span-4 lg:col-span-1  rounded-[30px]">
+                        <div class="bg-gradient-to-b mt-20 lg:mt-0 from-gray-100 to-gray-100 border col-span-4 lg:col-span-1  rounded-[30px]">
                             <div class="flex flex-col justify-between h-full">
                                 <div>
-                                    <div class="flex justify-end items-center pt-5 md:pt-10 px-5 ">
+                                    <div class="flex justify-end items-center pt-3 md:pt-4 px-4 ">
                                         <p class="text-black text-5sm font-bold pe-4">
                                             {{ blog.author.get_full_name }}
                                         </p>
@@ -115,10 +117,10 @@
                                     </div>
                                 </div>
 
-                                <div class="md:pb-8 pb-4 px-5 flex mt-4 items-center justify-between">
+                                <div class="md:pb-8 pb-2 px-5 flex mt-4 items-center justify-between">
                                     <div>
-                                        <p class=" text-black  text-xs">
-                                            {{ blog.created_at }}
+                                        <p class=" text-black  text-xs rtl">
+                                            {{ blog.created_at_jalali }}
                                         </p>
                                     </div>
                                     <button @click="isLogin == false ? $router.push('/p/auth/signIn') : like()"

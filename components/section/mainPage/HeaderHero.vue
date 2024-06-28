@@ -69,9 +69,9 @@
                               <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
                                 <div class="flex items-start bg-white/60 rounded-xl text-sm overflow-hidden">
                                   <div class="px-2 py-2 flex-grow">
-                                    <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
-                                    <div >
-                                      <span class="font-bold text-black text-xs rtl text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span> <span class="text-[8px] text-gray-400" >تومان</span>
+                                    <div class="pb-2 font-weight-black text-xs line-clamp-1 h-4">{{item.title}}</div>
+                                    <div  class="mt-2">
+                                      <span class="font-bold text-black text-xs rtl  text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span>
                                     </div>
                                     <!-- <div class="absolute bottom-0 flex left-0 items-end justify-end overflow-hidden rounded-lg px-3 py-1">
                                       <div
@@ -97,11 +97,11 @@
                           <div class="rtl overflow-y-auto h-96">
                             <div v-for="item in digital_products.results" :key="item.id" class="mb-3 px-2" @click="searchQuery = null">
                               <nuxt-link :to="'/p/digitalProduct/' + item.id">
-                                <div class="flex items-start bg-white/60  rounded-xl text-sm overflow-hidden">
+                                <div class="flex items-start bg-white/60  rounded-xl text-sm ">
                                   <div class="px-2 py-2 flex-grow">
-                                    <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
-                                    <div >
-                                      <span class="font-bold text-black text-xs rtl text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span> <span class="text-[8px] text-gray-400" >تومان</span>
+                                    <div class="pb-2 font-weight-black text-xs line-clamp-1 h-4">{{ item.title }}</div>
+                                    <div class="mt-2">
+                                      <span class="font-bold text-black text-xs  rtl text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span> 
                                     </div>
                                     <!-- <div class="absolute bottom-0 flex left-0 items-end justify-end overflow-hidden rounded-lg px-3 py-1">
                                       <div
@@ -193,7 +193,7 @@
   
    
     </div>
-    <div class="mt-[-40px]">
+    <div class="mt-[-40px] mb-[-22px]">
 
       <svg id="Layer_2" fill="white" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695.06 35.8">
 
