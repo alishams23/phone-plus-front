@@ -111,7 +111,6 @@
     </svg>
   </div>
 
-
   <div class="min-h-full">
     <main class="">
       <div class="mx-auto max-w-full  lg:max-w-full ">
@@ -121,6 +120,17 @@
           <div class="overflow-hidden -mt-2 bg-white shadow">
             <div class="">
               <!-- Your content -->
+              <div v-if="results" class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-md text-indigo-700 p-4 m-10 rtl"
+                role="alert">
+                <div class="flex items-center justify-between" >
+                  <p class="font-bold me-2">
+                    محصولات فروشگاه موقتا قابل فروش نیست لطفا با پشتیبان فروشگاه ارتباط بگیرید.
+                  </p>
+                  <nuxt-link v-if="isLogin" :to="support" class=" me-2 cursor-pointer text-white bg-indigo-600 p-2 rounded-lg" >
+                     ارتباط با پشتیبان فروشگاه                  
+                  </nuxt-link>
+                </div>
+              </div>
               <div v-if="results">
                 <PinProductCarousel :idShop="results.id" />
                 <PinDigitalProductCarousel :idShop="results.id" />
@@ -239,10 +249,11 @@ export default {
     ProductCarousel: ProductCarousel,
     BlogCarousel: BlogCarousel,
     loading : true,
+    support: null,
     order: [
         { id_object: 1, title: "محصولات فیزیکی", type: 'product' },
         { id_object: 2, title: "محصولات دیجیتال", type: 'digital' },
-        { id_object: 3, title: "بلاگ", type: 'blog' },
+        { id_object: 3, title: "مقاله ها", type: 'blog' },
       ],
     selectedTab: 'products',
     results: null,
@@ -268,6 +279,7 @@ export default {
       }).then((response) => {
         console.log('getData', response.data);
         this.results = response.data
+        this.support = `/p/chat/${this.results.admin[0].username}/${this.results.admin[0].username}_${useUserStore().username}`
         response.data.order.length > 0 ?  this.order = response.data.order : ''
         this.loading = false
 
@@ -282,7 +294,7 @@ export default {
     NavigationStore().setButtons([{
         'name':'پشتیبانی فروشگاه',
         'func': this.isLogin == true ?null :this.openLogin ,
-        'href': this.isLogin == true ? `/p/chat/${this.results.admin[0].username}/${this.results.admin[0].username}_${useUserStore().username}` : null,
+        'href': this.isLogin == true ? this.support : null,
       }])
   
   },

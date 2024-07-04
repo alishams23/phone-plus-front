@@ -33,32 +33,32 @@
         </div>
         <div v-else>
             <div class="grid grid-cols-1 pb-10 mt-12 lg:mt-0">
-                <div >
+                <div v-for="data in orders" :key="data.id">
                     <div
                         class="min-h-[300px] mt-12 lg:mt-0 bg-gray-100 border shadow-xl lg:mx-[3rem] flex flex-wrap my-2 items-center justify-end rounded-2xl">
                         <div class="grid flex items-center justify-start w-full grid-cols-6">
                         <div class="col-span-1 lg:hidden" />
                         <div class="col-span-4 lg:col-span-2">
-                            <img :src="lastOrder.digital_product.image[0].photo" alt=""
+                            <img :src="data.digital_product.image[0].photo" alt=""
                             class="w-56 lg:w-56 h-56 lg:h-56 -mt-10 lg:mt-0 lg:-ms-10 flex items-center object-cover shadow-lg rounded-3xl" />
                         </div>
                         <div class="col-span-6 lg:col-span-4">
                             <h3 class="mt-3 text-right text-lg pe-4 py-3 font-semibold leading-6 text-black">
                             <a>
-                                {{ lastOrder.digital_product.title }}
+                                {{ data.digital_product.title }}
                             </a>
                             </h3>
                             <div class="text-right pe-4 pb-4">
                             <div class="flex justify-end items-center">
                                 <p class="pe-1 text-[10px] text-gray-400">تومان</p>
-                                <p> {{ parseInt(lastOrder.price/10) }}</p>
+                                <p> {{ parseInt(data.price/10) }}</p>
                             </div>
                             </div>
-                            <p class="text-right text-xs pe-4 test-n pb-4" v-html="truncatedBody(lastOrder.digital_product.description)">
+                            <p class="text-right text-xs pe-4 test-n pb-4" v-html="truncatedBody(data.digital_product.description)">
                             </p>
-                            <div v-if="lastOrder.subset_Digital">
+                            <div v-if="data.subset_Digital">
                             <div class="flex items-center justify-center flex-wrap py-3 ">
-                                <div v-for="cell in lastOrder.subset_Digital.data" class="px-5 flex flex-col items-center" :key="cell.id">
+                                <div v-for="cell in data.subset_Digital.data" class="px-5 flex flex-col items-center" :key="cell.id">
                                 <p class="font-bold">
                                     {{ cell.title }}
                                 </p>
@@ -68,9 +68,9 @@
                                 </div>
                             </div>
                             </div>
-                            <div v-if="lastOrder.digital_product.file" class="flex justify-center pe-4">
+                            <div v-if="data.digital_product.file" class="flex justify-center pe-4">
                             <a
-                                :href="lastOrder.digital_product.file"
+                                :href="data.digital_product.file"
                                 class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -79,24 +79,23 @@
                                 دانلود فایل
                             </a>
                             </div>
-                            
-                            <div class="text-right pe-4 pt-2" >
+                            <div class="text-right pe-4 pt-2">
                                 <div class="flex justify-end items-center">
-                                    <p class="pe-1 text-[10px] text-gray-700 font-bold rtl">{{ lastOrder.order_id }}</p>
+                                    <p class="pe-1 text-[10px] text-gray-700 font-bold rtl">{{ data.order_id }}</p>
                                     <p class="pe-1 text-[10px] text-gray-400 rtl">شماره سفارش : </p>
                                 </div>
                                 <div class="flex justify-end items-center">
-                                    <p class="pe-1 text-[10px] text-gray-700 font-bold rtl">{{ lastOrder.tracking_code }}</p> 
+                                    <p class="pe-1 text-[10px] text-gray-700 font-bold rtl">{{ data.tracking_code }}</p> 
                                     <p class="pe-1 text-[10px] text-gray-400 rtl">کدپیگیری : </p>
                                 </div>
                             </div>
                             <div class="mt-3 text-right text-[10px] ps-4 text-gray-400 rtl">
                                 <p>
-                                    {{ lastOrder.jalali_time }}
+                                    {{ data.jalali_time }}
                                 </p>
                             </div>
-                            <div v-if="lastOrder.digital_product.instructions" class="flex justify-end pe-4 mt-4">
-                                <div @click="toggleInstructions(lastOrder.id)" 
+                            <div v-if="data.digital_product.instructions" class="flex justify-end pe-4 mt-4">
+                                <div @click="toggleInstructions(data.id)" 
                                     class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-indigo-600 cursor-pointer hover:text-indigo-700">
                                     نکات ضروری برای استفاده
                                 </div>
@@ -104,8 +103,8 @@
                         </div>
                         </div>
                             <transition name="fade">
-                                <div v-if="!showInstructionsId.includes(lastOrder.id)" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
-                                    <div v-html="lastOrder.digital_product.instructions"></div>
+                                <div v-if="!showInstructionsId.includes(data.id)" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
+                                    <div v-html="data.digital_product.instructions"></div>
                                 </div>
                             </transition>
                     </div>
@@ -173,14 +172,6 @@ export default {
             const ending = description.length > charLimit ? '...' : '';
             return description.substring(0, charLimit) + ending;
         },
-    },
-    computed:{    
-        lastOrder() {
-            if (this.orders.length === 0) {
-                return null;
-            }
-            return this.orders[0];
-        }
     },
     mounted() {
         if (useUserStore().userToken == null){
