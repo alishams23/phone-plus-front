@@ -118,9 +118,10 @@
         <section aria-labelledby="section-1-title">
           <h2 class="sr-only" id="section-1-title">Section title</h2>
           <div class="overflow-hidden -mt-2 bg-white shadow">
-            <div class="">
+              
+            <div v-if="results">
               <!-- Your content -->
-              <div v-if="results" class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-md text-indigo-700 p-4 m-10 rtl"
+              <div v-if="!results.is_sellable" class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-md text-indigo-700 p-4 m-10 rtl"
                 role="alert">
                 <div class="flex items-center justify-between" >
                   <p class="font-bold me-2">
