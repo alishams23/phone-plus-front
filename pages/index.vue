@@ -94,20 +94,40 @@ export default {
   },
 
   methods: {
-
+    openInNewTab() {
+        window.open('http://171.22.27.89:3000/', '_blank');
+    }
   },
   mounted() {
-    NavigationStore().setButtons([
-      {
-        'name': 'محصولات محبوب',
-        'func': null,
-        'href': `/p/search/?sort_product=-rate`,
-      },
-      {
-        'name': 'محصولات دیجیتال محبوب',
-        'func': null,
-        'href': `/p/search/?sort_digital_product=-rate`,
-      },
+    useUserStore().status=='s'? 
+      NavigationStore().setButtons([
+        {
+          'name': 'محصولات محبوب',
+          'func': null,
+          'href': `/p/search/?sort_product=-rate`,
+        },
+        {
+          'name': 'محصولات دیجیتال محبوب',
+          'func': null,
+          'href': `/p/search/?sort_digital_product=-rate`,
+        },
+        {
+          'name': 'مدیریت فروشگاه',
+          'func': this.openInNewTab,
+          'href': null,
+        }])
+        :
+        NavigationStore().setButtons([
+        {
+          'name': 'محصولات محبوب',
+          'func': null,
+          'href': `/p/search/?sort_product=-rate`,
+        },
+        {
+          'name': 'محصولات دیجیتال محبوب',
+          'func': null,
+          'href': `/p/search/?sort_digital_product=-rate`,
+        },
     ])
   }
 };

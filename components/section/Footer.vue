@@ -57,7 +57,7 @@ const navigation = {
   ],
   company: [
     { name: 'درباره ما', href: '#' },
-    { name: 'بلاگ', href: '#' },
+    { name: 'مقاله ها', href: '#' },
     { name: 'شغل ها', href: '#' },
     { name: 'تماس با ما', href: '#' },
     { name: 'آدرس', href: '#' },

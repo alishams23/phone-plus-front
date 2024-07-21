@@ -32,10 +32,10 @@
             </div>
         </div>
         <div v-else>
-            <div v-if="filteredOrders.length != 0" class="grid grid-cols-1 px-3 pb-10 mt-12 lg:mt-0">
+            <div v-if="filteredOrders.length != 0 " class="grid grid-cols-1 px-3 pb-10 mt-12 lg:mt-0">
                 <div v-for="data in filteredOrders" :key="data.id">
                     <div 
-                    class="min-h-[300px] mt-12 lg:mt-0 bg-gray-100 border shadow-xl lg:mx-[3rem]  flex flex-wrap my-2 items-center justify-end rounded-2xl">
+                        class="min-h-[300px] mt-12 lg:mt-0 bg-gray-100 border shadow-xl lg:mx-[3rem]  flex flex-wrap my-2 items-center justify-end rounded-2xl">
                         <div class="grid flex items-center justify-start w-full grid-cols-6">
                             <div class="col-span-1 lg:hidden"/>
                             
@@ -108,12 +108,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                
-                                <h3 class="mt-3 text-right text-lg pe-4 py-3 font-semibold leading-6 text-black">
-                                    <a>
-                                        {{ data.product.title }}
-                                    </a>
-                                </h3>
+                                </div>
+                                <div class="text-right pe-4 pt-2">
+                                    <div class="flex justify-end items-center">
+                                        <p class="pe-1 text-[10px] text-gray-400 rtl">{{ data.jalali_time }}</p>
+                                       
+                                    </div>
+                                </div>
                                 <div class="text-right pe-4 pb-4">
                                     <div class="flex justify-end items-center">
                                         <p class="pe-1 text-[10px] text-gray-400">تومان</p>
@@ -137,12 +138,11 @@
                                         <p class="pe-1 text-[10px] text-gray-400 rtl">کدپیگیری : </p>
                                     </div>
                                 </div>
-                                <div class="text-right pe-4 pt-2">
-                                    <div class="flex justify-end items-center">
-                                        <p class="pe-1 text-[10px] text-gray-400 rtl">{{ data.jalali_time }}</p>
-                                       
-                                    </div>
-                                </div>
+                                <h3 class="mt-3 text-right text-lg pe-4 py-3 font-semibold leading-6 text-black">
+                                    <a>
+                                        {{ data.product.title }}
+                                    </a>
+                                </h3>
                                 <div class="flex pe-4 pb-4 justify-end w-full items-center">
                                     <p v-if="data.status == 'none'" class="p-2 text-[12px]">
                                         ...درحال آماده سازی برای ارسال
@@ -204,7 +204,7 @@ export default {
     },
     computed: {
         filteredOrders() {
-            return this.orders.filter(order => order.status != 'received');
+            return this.orders.filter(order => order.status == 'received');
         }
     },
     methods: {

@@ -6,7 +6,7 @@
       <transition name="fade">
         <div class="mt-2 w-[30rem] -ms-5"
           v-if="(currentRouteCheck('') && showButton && heightPage != null) || (currentRouteCheck('') != true)">
-          <ul class="bg-glass-2 rtl rounded-xl shadow-xl h-96 w-full">
+          <ul class="bg-glass-2 rtl rounded-xl shadow-xl h-full w-full">
             <div class="flex">
               <div v-if="products.results.length > 0" class="flex-1">
                 <li class="p-4 font-body-2 text-gray-500 font-bold">محصولات</li>
@@ -230,7 +230,7 @@
     </Dialog>
   </TransitionRoot>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-10" @close="changeStateLogin(false)">
+    <Dialog as="div" class="relative z-50" @close="changeStateLogin(false)">
       <LoginPopup @close="() => { changeStateLogin(false) }" />
     </Dialog>
   </TransitionRoot>
@@ -335,6 +335,7 @@ export default {
         this.searchQuery = '';
       } else {
         this.changeStateLogin(true);
+        this.searchQuery = '';
       }
     },
     truncateTitle(title) {

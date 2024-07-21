@@ -1,5 +1,5 @@
 <template>
-  <div v-if="snackbarVisible" class="bg-indigo-700 shadow-2 rtl text-white p-4 py-2 mx-10 rounded-full fixed top-4  flex justify-between items-center">
+  <div v-if="snackbarVisible" class="bg-indigo-700 z-20 shadow-2 rtl text-white p-4 py-2 mx-10 rounded-full fixed top-4  flex justify-between items-center">
     با موفقیت ثبت شد
     <button @click="snackbarVisible = false" class="text-white mr-10">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
@@ -293,6 +293,9 @@ export default {
     getData() { 
       
       this.loading = true
+  
+      
+
       axios.get(`${apiStore().address}/api/account/user-settings-retrieve/${useUserStore().username}/`, {
         headers: {
           "Content-type": "application/json",
@@ -345,6 +348,9 @@ export default {
   },
  
   mounted() {
+    if (!useUserStore().userToken){
+      this.$router.push('/')
+    }
     this.getData()
     NavigationStore().setButtons([
       {
