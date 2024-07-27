@@ -88,7 +88,7 @@
                             <form  @submit.prevent="check_code" @keydown.enter="check_code" class="space-y-6">
                                 <div class="ltr">
                                     <div class="relative mt-2 rounded-full shadow-sm">
-                                        <input type="text" placeholder="code" v-model="code"
+                                        <input type="text" placeholder="کد پیامک شده" v-model="code"
                                             name="phone-number" id="phone-number"
                                             class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " />
                                     </div>
@@ -241,7 +241,7 @@
                             <form  @submit.prevent="check_code_signup" @keydown.enter="check_code_signup" class="space-y-6">
                                 <div class="ltr">
                                     <div class="relative mt-2 rounded-full shadow-sm">
-                                        <input type="text" placeholder="code" v-model="code"
+                                        <input type="text" placeholder="کد پیامک شده" v-model="code"
                                             name="phone-number" id="phone-number"
                                             class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " />
                                     </div>

@@ -50,10 +50,10 @@
         <div v-if="searchQuery != null && searchQuery != ''" @click="searchQuery = ''" class=" fixed backdrop-blur-xl z-10  w-full h-full top-0 left-0"></div>
         <div>
           <div class="flex ">
-            <div class="relative  z-20  w-full">
+            <div class="relative  z-[10]  w-full">
               <input data-aos="flip-up" type="search" id="search-dropdown"
                 v-on:keyup.enter="$router.push('/p/search/?search=' + searchQuery);" v-model="searchQuery"
-                class=" block p-4 w-full z-20 text-sm text-indigo-900 bg-white/70 backdrop-blur-sm focus:bg-white placeholder-gray-600 text-right rtl pr-20  rounded-[20px] "
+                class=" block p-4 w-full z-[10] text-sm text-indigo-900 bg-white/70 backdrop-blur-sm focus:bg-white placeholder-gray-600 text-right rtl pr-20  rounded-[20px] "
                 placeholder="جستجو بین محصولات ..." required>
 
               <div class="absolute mt-2 w-full" v-show="searchQuery != null && searchQuery != ''"

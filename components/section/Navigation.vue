@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-start ">
-    <div v-if="searchQuery != null && searchQuery != ''" @click="searchQuery = ''" class=" fixed backdrop-blur-md z-10  w-full h-full top-0 left-0"></div>
+    <div v-if="searchQuery != null && searchQuery != ''" @click="searchQuery = ''" class=" fixed backdrop-blur-md z-[11]  w-full h-full top-0 left-0"></div>
 
     <div  style="z-index:9999999999999999" class="fixed bottom-0  ml-[5rem] mb-[5rem]" data-aos="fade-up" v-if="searchQuery != null && searchQuery != ''">
       <transition name="fade">
@@ -206,11 +206,11 @@
     </div>
   </div>
 
-  <div  v-if="open_support == true" class=" fixed backdrop-blur-md z-10  w-full h-full top-0 left-0"></div>
+  <div  v-if="open_support == true" class=" fixed backdrop-blur-md z-[11]  w-full h-full top-0 left-0"></div>
 
 
   <TransitionRoot :show="open_support">
-    <Dialog as="div" class="relative z-10" @close="open_support = false">
+    <Dialog as="div" class="relative z-[12]" @close="open_support = false">
       <div class="fixed inset-0" />
 
       <div class="fixed inset-0 overflow-hidden">

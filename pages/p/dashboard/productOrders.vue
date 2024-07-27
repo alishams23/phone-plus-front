@@ -144,6 +144,12 @@
                                     </div>
                                 </div>
                                 <div class="flex pe-4 pb-4 justify-end w-full items-center">
+                                    <div
+                                        v-if="data.status == 'sended'"
+                                        @click="checkReceived(data.id)"
+                                        class="inline-flex items-center justify-center px-5 text-[12px] py-1 cursor-pointer border border-transparent rounded-xl text-white bg-indigo-600 hover:bg-indigo-700">
+                                        دریافت کردم
+                                    </div>
                                     <p v-if="data.status == 'none'" class="p-2 text-[12px]">
                                         ...درحال آماده سازی برای ارسال
                                     </p>
@@ -208,6 +214,22 @@ export default {
         }
     },
     methods: {
+        checkReceived(id){
+            axios.get(`${apiStore().address}/api/order/change-to-delivered/${id}`, {
+                headers: {
+                    "Content-type": "application/json",
+                    Accept: "application/json",
+                    Authorization: `Token ${useUserStore().userToken}`,
+                },
+            }).then((response) => {
+                this.orders = response.data
+                console.log(this.orders);
+                console.log('ad');
+                this.loading = false
+                this.getData()
+
+            })
+        },
         price(value){
             let text
             let chars = Array.from(`${value}`)
