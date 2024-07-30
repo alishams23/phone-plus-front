@@ -34,6 +34,8 @@
     
     <div class=" mt-5 pb-10 ">
       <DiscountDigitalProduct />
+
+      <CategoryDigitalProduct />
     </div>
 
     <div>
@@ -60,6 +62,7 @@ import CategoriesProduct from "@/components/section/mainPage/CategoriesProduct.v
 import CategoriesDigitalProduct from "@/components/section/mainPage/CategoriesDigitalProduct.vue"
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { NavigationStore } from '~/store/navigation';
+import  CategoryDigitalProduct  from "@/components/section/mainPage/CategoryDigitalProduct.vue";
 
 export default {
   components: {
@@ -79,7 +82,8 @@ export default {
     Banner,
     PromoSection,
     Blog,
-    HeaderHero
+    HeaderHero,
+    CategoryDigitalProduct
   },
   head() {
     return {
