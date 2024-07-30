@@ -119,25 +119,25 @@
           <h2 class="sr-only" id="section-1-title">Section title</h2>
           <div class="overflow-hidden -mt-2 bg-white shadow">
               
-            <div v-if="results">
+            <div class="pb-56" v-if="results">
               <!-- Your content -->
-              <div v-if="!results.is_sellable" class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-md text-indigo-700 p-4 m-10 rtl"
+              <div v-if="results.is_sellable == false" class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-md text-indigo-700 p-4 m-10 rtl"
                 role="alert">
                 <div class="flex items-center justify-between" >
                   <p class="font-bold me-2">
-                    محصولات فروشگاه موقتا قابل فروش نیست لطفا با پشتیبان فروشگاه ارتباط بگیرید.
+                    محصولات فروشگاه موقتا قابل فروش نیست لطفا با پشتیبان فروشگاه ارتباط بگیرید. 
                   </p>
                   <nuxt-link v-if="isLogin" :to="support" class=" me-2 cursor-pointer text-white bg-indigo-600 p-2 rounded-lg" >
                      ارتباط با پشتیبان فروشگاه                  
                   </nuxt-link>
                 </div>
               </div>
-              <div v-if="results">
+              <div v-if="results && results.is_sellable == true">
                 <PinProductCarousel :idShop="results.id" />
                 <PinDigitalProductCarousel :idShop="results.id" />
                 
               </div>                                                    <!-- bg-gradient-to-tl bg-indigo-600 from-gray-900 from-0%  text-white  -->
-              <div v-if="results" v-for="(item, index) in order" :class="index % 2 != 0 ? '' : ''" >
+              <div v-if="results && results.is_sellable == true" v-for="(item, index) in order" :class="index % 2 != 0 ? '' : ''" >
                 <component :is="BlogCarousel" :idObject="item.id_object" :idShop="results.id" :title="item.title"
                   v-if="item.type == 'blog'" />
                 <component :is="ProductCarousel" :idObject="null" :idShop="results.id" :title="item.title"
