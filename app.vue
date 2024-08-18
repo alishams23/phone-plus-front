@@ -1,4 +1,7 @@
 <template>
+  <Head>
+        <Title>فون پلاس | phone plus</Title>
+     </Head>
   <div>
     <NuxtLayout>
       <div>

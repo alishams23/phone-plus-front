@@ -46,7 +46,7 @@
                 :class="[digital_products[index].rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
                 aria-hidden="true" />
             </div>
-            <div class="text-gray-500 text-center md:text-right mt-5 max-h-[50px] overflow-hidden pb-4"
+            <div class="text-gray-500 text-center md:text-right mt-5 h-[50px] overflow-hidden pb-4"
               v-html="digital_products[index].description"></div>
             <div class="mt-5">
               <div :class="digital_products[index].discount != 0 ? 'line-through ' : ''"
@@ -129,7 +129,7 @@ export default {
         this.loading = false
         setInterval(() => {
           this.nextItem();
-        }, 3000);
+        }, 10000);
       })
     },
     nextItem() {

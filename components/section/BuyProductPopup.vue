@@ -1,7 +1,7 @@
 <template>
     <div>
         <TransitionRoot as="template" :show="show">
-            <Dialog as="div" class="relative z-10" @close="show = false;">
+            <Dialog as="div" class="relative z-50" @close="show = false;">
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
                     enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
                     <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity" />
@@ -68,27 +68,24 @@
                                                         </dd>
                                                     </div>
                                                     <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
-                                                        <dt class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">تعداد </dt>
-                                                        <dd
-                                                            class="mt-1 flex text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
-                                    
-                                                            <div class="  ">
+                                                        <dt class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">تعداد</dt>
+                                                        <dd class="mt-1 flex text-sm leading-6 justify-end md:justify-center text-gray-700 col-span-1 mt-0">
+                                                            <div class="">
                                                                 <div v-if="color" class="flex">
-                                                                    <input type="number" id="first_name" min="1" :max="color.count"
-                                                                        v-model="qty"
-                                                                        class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5"
+                                                                    <input type="number" id="first_name" min="1" :max="color.count" v-model="qty"
+                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-lg p-2.5"
                                                                         required>
                                                                 </div>
                                                                 <div v-else class="flex">
-                                                                    <input type="number" id="first_name" min="1" :max="product.amount"
-                                                                        v-model="qty"
-                                                                        class="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  p-2.5"
+                                                                    <input type="number" id="first_name" min="1" :max="product.amount" v-model="qty"
+                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-lg p-2.5"
                                                                         required>
                                                                 </div>
                                                             </div>
-                                    
                                                         </dd>
                                                     </div>
+
+
                                                     <div v-if="color" class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
                                                         <dt class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">رنگ‌ </dt>
                                                         <dd
@@ -425,7 +422,7 @@ export default {
             ],
             snackbarVisible:false,
             snackbarDiscount:false,
-            save_address: false,
+            save_address: true,
             qty: 1,
             user: null,
             discount_code: null,
@@ -568,3 +565,15 @@ export default {
 
 }
 </script>
+<style>
+/* Hide the spinners in number input fields */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    appearance: textfield;
+}
+</style>
