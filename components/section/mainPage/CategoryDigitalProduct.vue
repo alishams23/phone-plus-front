@@ -39,11 +39,11 @@
             <div class=" bg-blue-circle-categories-black  -z-10 rounded-2xl absolute inset-0  " />
 
             <div class="min-w-0  ">
-              <a @click="$router.push('/p/search/?category_product=' + category.id);" class="focus:outline-none">
+              <nuxt-link :to="'/p/digitalProduct/'+ category.id" class="focus:outline-none">
                 <span class="absolute inset-0" aria-hidden="true" />
                 <p class="text-sm font-bold text-gray-50 px-3">{{ category.shop.name }}</p>
                 <p class="text-sm font-medium text-gray-200 pt-1 px-3">{{ category.price }}<span class="text-xs font-light ps-1">تومان</span></p>
-              </a>
+              </nuxt-link>
             </div>
             <div class="flex items-center justify-end mt-2">
               <div v-if="category.rate > 0">
