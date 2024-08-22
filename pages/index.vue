@@ -99,7 +99,7 @@ export default {
 
   methods: {
     openInNewTab() {
-        window.open('http://171.22.27.89:3000/', '_blank');
+        window.open('https://panel.phoneplus.ir/', '_blank');
     }
   },
   mounted() {

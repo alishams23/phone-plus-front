@@ -20,7 +20,7 @@
             <div data-aos="flip-up" class="text-center">
             <h1 class="text-2xl pb-10 md:text-4xl mb-5 md:mb-0 font-bold  tracking-tight text-white ">به خانواده فون‌پلاس بپیوندید </h1>
             <a 
-                href="http://171.22.27.89:3000/"
+                href="https://panel.phoneplus.ir/"
                 target="blank"
                 class="text-indigo-600 px-4 text-base font-medium   sm:w-full">
                  < الان فروشنده شوید
@@ -88,7 +88,7 @@
             <p class="mb-4">برای شروع، کافی است بر روی دکمه زیر کلیک کنید و مراحل ثبت‌نام را طی کنید. ما منتظر شما هستیم تا به خانواده بزرگ فروشندگان ما بپیوندید.</p>
                     
             <a 
-                href="http://171.22.27.89:3000/"
+                href="https://panel.phoneplus.ir/"
                 target="blank"
                 class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white  sm:w-full">
                 الان فروشنده شوید
