@@ -3,8 +3,8 @@
     class=" flex w-full items-center lg:pl-0 flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
     
     <div class=" shadow-1 border isolate relative p-7 text-right lg:pl-[0px] w-full rounded-2xl  ">
-      <img :src="blog.imageBlog.photo"  class="absolute  rounded-2xl inset-0 -z-10 h-full w-full " />
-        <div class="absolute inset-0 -z-10 md:bg-gradient-to-l bg-gradient-to-t  rounded-2xl from-black/80 from-0% via-white/80 "  />
+      <img :src="blog.imageBlog.photo"  class="absolute object-cover rounded-2xl inset-0 -z-10 h-full w-full " />
+        <div class="absolute inset-0 -z-10 md:bg-gradient-to-l bg-gradient-to-t  rounded-2xl from-gray-300/20 from-0% via-white/70 "  />
         <div class="absolute inset-0 -z-10 bg-gray-50/90 rounded-2xl"  />
       <div class="w-full ">
         <div class="grid grid-cols-8 justify-center lg:justify-end">
