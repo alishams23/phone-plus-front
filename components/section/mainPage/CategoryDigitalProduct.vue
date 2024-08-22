@@ -38,11 +38,11 @@
             <div class="rounded-2xl  absolute inset-0  -z-10 bg-gradient-to-t  from-gray-900/70 to-gray-800/40" />
             <div class=" bg-blue-circle-categories-black  -z-10 rounded-2xl absolute inset-0  " />
 
-            <div class="min-w-0  ">
+            <div class="min-w-0 shadow-1g ">
               <nuxt-link :to="'/p/digitalProduct/'+ category.id" class="focus:outline-none">
                 <span class="absolute inset-0" aria-hidden="true" />
-                <p class="text-sm font-bold text-gray-50 px-3">{{ category.shop.name }}</p>
-                <p class="text-xs  text-gray-50 px-3 pb-2 pt-1">{{ category.title }}</p>
+                <p class="text-sm font-bold text-gray-50 px-3">{{ category.title }}</p>
+                <p class="text-xs font-bold text-gray-50 px-3 pb-2 pt-1"><span class="text-xs font-light ps-1">فروشنده : </span>{{ category.shop.name }} </p>
               </nuxt-link>
             </div>
             <div class=" w-full mt-2">

@@ -10,11 +10,11 @@
   </div>
   <div v-else>
     <div class="container mx-auto">
-      <transition name="slide-up" mode="out-in">
+      <transition name="slide-u p" mode="out-in">
         <div class="md:rounded-3xl  isolate overflow-hidden relative md:border " :key="digital_products[index]" v-if="loading == false">
         <img
           :src="digital_products[index].image[0].photo ? digital_products[index].image[0].photo : digital_products[index].image"
-          data-aos="fade-left" data-aos-duration="1000" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+          :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1000" class="absolute inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 md:bg-gradient-to-r bg-gradient-to-t from-black/60  via-black/40 " />
         <div class="absolute inset-0 -z-10 bg-black/60   " />
         <div class="relative">
@@ -37,26 +37,38 @@
         <nuxt-link :to="'/p/digitalProduct/' + digital_products[index].id"
           class="flex flex-col text-white md:flex-row justify-center md:justify-between container mx-auto">
           <img :src="digital_products[index].image[0].photo" alt=""
+          :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1500"
             class="md:mb-10 me-4 md:mx-20 mt-10 md:mt-0 mx-4 w-[140px] md:w-[200px] h-[140px] md:h-[200px] border shadow-1 object-cover rounded-3xl " />
           <div class="mx-4 md:mx-20 my-10">
-            <div class="text-white font-black text-center md:text-right text-lg md:text-2xl">
+            <div 
+            :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1000"
+            class="text-white font-black text-center md:text-right text-lg md:text-2xl">
               {{ digital_products[index].title }}
+              
             </div>
-            <div class="flex items-center justify-center md:justify-end pt-2">
+            <div
+            :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1100"
+             class="flex items-center justify-center md:justify-end pt-2">
               <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
                 :class="[digital_products[index].rate / 20 > rating ? 'text-yellow-500' : 'text-gray-100', 'h-3 w-3 flex-shrink-0']"
                 aria-hidden="true" />
             </div>
-            <div class="text-gray-200 text-center md:text-right mt-5 h-[50px] overflow-hidden pb-4"
+            <div
+            :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1200"
+             class="text-gray-200 text-center md:text-right mt-5 h-[50px] overflow-hidden pb-4"
               v-html="digital_products[index].description"
               style="color: white !important;"
               ></div>
             <div class="mt-5">
-              <div :class="digital_products[index].discount != 0 ? 'line-through ' : ''"
+              <div
+              :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1300"
+               :class="digital_products[index].discount != 0 ? 'line-through ' : ''"
                 class="lg:pe-4 text-xs text-red-500 font-semibold text-center md:text-right">
                 {{ digital_products[index].discount != 0 ? digital_products[index].price : '&nbsp; ' }}
               </div>
-              <div class="lg:pe-4 pb-4 text-center md:text-right">
+              <div
+              :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1300"
+               class="lg:pe-4 pb-4 text-center md:text-right">
                 {{ parseInt(digital_products[index].discount != 0 ?
                 digital_products[index].price * (100 - digital_products[index].discount) / 100 :
                 digital_products[index].price) }}
@@ -89,6 +101,7 @@ import { StarIcon } from '@heroicons/vue/20/solid'
 export default {
   components: { DigitalProduct, CloudArrowDownIcon, PinDigitalProduct, StarIcon, ChevronLeftIcon, ChevronRightIcon },
   data: () => ({
+    swap_direction: 'left',
     digital_products: [],
     loading: true,
     index: 0,
@@ -132,11 +145,13 @@ export default {
         this.digital_products = response.data
         this.loading = false
         setInterval(() => {
+          this.swap_direction = 'left'
           this.nextItem();
         }, 10000);
       })
     },
     nextItem() {
+      this.swap_direction = 'left'
       if (this.digital_products.length > this.index + 1) {
         this.index += 1;
       } else if (this.digital_products.length == this.index + 1) {
@@ -144,6 +159,7 @@ export default {
       }
     },
     prevItem() {
+      this.swap_direction = 'right'
       if (this.index > 0) {
         this.index -= 1;
       } else {
