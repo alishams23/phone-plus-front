@@ -11,11 +11,11 @@
   <div v-else>
     <div class="container mx-auto">
       <transition name="slide-up" mode="out-in">
-        <div class="md:rounded-3xl  isolate overflow-hidden relative border border-b" :key="digital_products[index]" v-if="loading == false">
+        <div class="md:rounded-3xl  isolate overflow-hidden relative md:border " :key="digital_products[index]" v-if="loading == false">
         <img
           :src="digital_products[index].image[0].photo ? digital_products[index].image[0].photo : digital_products[index].image"
           data-aos="fade-left" data-aos-duration="1000" class="absolute inset-0 -z-10 h-full w-full object-cover" />
-        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-black/60  via-black/40 " />
+        <div class="absolute inset-0 -z-10 md:bg-gradient-to-r bg-gradient-to-t from-black/60  via-black/40 " />
         <div class="absolute inset-0 -z-10 bg-black/60   " />
         <div class="relative">
           <div class="flex pt-3 justify-between items-center">
