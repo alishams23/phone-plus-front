@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="'/p/product/'+ data.id">
-    <div :class="width ? `${width}` : 'w-[14rem]'" class="relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-20 sm:pt-20 lg:pt-40">
+    <div :class="width ? `${width}` : 'w-[14rem]'" class="shadow-2 relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-20 sm:pt-20 lg:pt-40">
         <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute  inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-black from-0% via-black/30 " />
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />

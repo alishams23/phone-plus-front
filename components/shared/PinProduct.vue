@@ -1,6 +1,6 @@
 <template>
   
-    <div  class="h-[300px]  bg-gradient-to-b from-gray-100 to-white shadow-1 mx-3 ml-7 lg:mx-[3rem] isolate mt-5  justify-end rounded-2xl">
+    <div  class="shadow-2 h-[300px]  bg-gradient-to-b from-gray-100 to-white shadow-1 mx-3 ml-7 lg:mx-[3rem] isolate mt-5  justify-end rounded-2xl">
         <nuxt-link :to="'/p/product/'+ data.id">
           <img :src="data.image[0].photo" alt="" class="absolute h-[7rem] w-[7rem] md:h-[12rem] md:w-[12rem] -ms-5 lg:-ms-10 -mb-10 mt-10 shadow-1 rounded-3xl" />
           <div class="flex justify-end w-full">

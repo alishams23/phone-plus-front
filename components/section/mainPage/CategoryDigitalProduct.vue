@@ -33,9 +33,9 @@
           :style="{ backgroundImage: '', backgroundSize: 'cover' }">
 
           <div v-for="category in digital_products.results" :key="category.id"
-            class=" relative isolate   rounded-2xl cursor-pointer border border-gray-100 shadow-3 bg-white px-3 py-4 shadow-sm "
+            class="relative isolate rounded-2xl cursor-pointer border border-gray-100 shadow-3 bg-white px-3 py-4 shadow-sm "
             :style="{ backgroundImage: 'url(' + category.image[0].photo + ')', backgroundSize: 'cover' }">
-            <div class="rounded-2xl  absolute inset-0  -z-10 bg-gradient-to-t  from-gray-900/70 to-gray-800/40" />
+            <div class="rounded-2xl shadow-2 absolute inset-0  -z-10 bg-gradient-to-t  from-gray-900/70 to-gray-800/40" />
             <div class=" bg-blue-circle-categories-black  -z-10 rounded-2xl absolute inset-0  " />
 
             <div class="min-w-0 shadow-1g ">
