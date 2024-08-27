@@ -20,7 +20,7 @@
           </a>
         </div>
         <div class="text-gray-900 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
-           فروشندگان برتر اپل آیدی 
+          فروشندگان برتر اپل آیدی
           <div
             class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
             <CloudArrowDownIcon class="h-5 text-white" />
@@ -29,36 +29,44 @@
 
       </div>
       <div data-aos="fade-down" data-aos-duration="1000">
-        <div class="container mx-auto grid grid-cols-2 gap-4 sm:grid-cols-5 pb-20 rtl "
+        <div class="container mx-auto grid grid-cols-1 px-2 gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 pb-10 rtl "
           :style="{ backgroundImage: '', backgroundSize: 'cover' }">
 
           <div v-for="category in digital_products.results" :key="category.id"
-            class="relative isolate rounded-2xl cursor-pointer border border-gray-100 shadow-3 bg-white px-3 py-4 shadow-sm "
+            class="relative isolate rounded-2xl cursor-pointer border border-gray-100 shadow-3 bg-white px-3 pt-2 shadow-sm "
             :style="{ backgroundImage: 'url(' + category.image[0].photo + ')', backgroundSize: 'cover' }">
-            <div class="rounded-2xl shadow-2 absolute inset-0  -z-10 bg-gradient-to-t  from-gray-900/70 to-gray-800/40" />
+            <div
+              class="rounded-2xl shadow-2 absolute inset-0  -z-10 bg-gradient-to-t  from-gray-900/70 to-gray-800/40" />
             <div class=" bg-blue-circle-categories-black  -z-10 rounded-2xl absolute inset-0  " />
 
-            <div class="min-w-0 shadow-1g ">
-              <nuxt-link :to="'/p/digitalProduct/'+ category.id" class="focus:outline-none">
-                <span class="absolute inset-0" aria-hidden="true" />
-                <p class="text-sm font-bold text-gray-50 px-3">{{ category.title }}</p>
-                <p class="text-xs font-bold text-gray-50 px-3 pb-2 pt-1"><span class="text-xs font-light ps-1">فروشنده : </span>{{ category.shop.name }} </p>
-              </nuxt-link>
-            </div>
-            <div class=" w-full mt-2">
-
-              <div class="flex items-center justify-end" >
-                <p class=" ml-auto text-md font-medium text-gray-200 px-3">{{ category.price }}<span class="text-xs font-light ps-1">تومان</span></p>
-                <div v-if="category.rate > 0">
-                  <p class="text-xs text-gray-200 pe-1">({{ category.rate_number }})</p>
+            <div class="grid grid-cols-8 gap-4">
+              <div class="col-span-6">
+                <div class="min-w-0 shadow-1g ">
+                  <nuxt-link :to="'/p/digitalProduct/' + category.id" class="focus:outline-none">
+                    <span class="absolute inset-0" aria-hidden="true" />
+                    <p class="text-sm font-bold text-gray-50 px-3">{{ category.title }}</p>
+                    <p class="text-xs font-bold text-gray-50 px-3 pb-1 pt-1"><span
+                        class="text-xs font-light ps-1">فروشنده : </span>{{ category.shop.name }} </p>
+                  </nuxt-link>
                 </div>
-                <div v-else>
-                  <p class="text-xs text-gray-200 pe-1">(0)</p>
+                <p class=" ml-auto text-md text-[35px] text-gray-200 ps-4">{{ category.price }}<span
+                    class="text-xs font-light ps-1">تومان</span></p>
+                <div class=" w-full mt-2">
                 </div>
-                <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
-                  :class="[category.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
-                  aria-hidden="true" />
               </div>
+                <div class="flex items-center justify-end col-span-2">
+                  <div class="flex flex-col items-center justify-end">
+                    <div v-if="category.rate > 0">
+                      <p class="text-xs text-gray-200 pe-1">({{ category.rate_number }})</p>
+                    </div>
+                    <div v-else>
+                      <p class="text-xs text-gray-200 pe-1">(0)</p>
+                    </div>
+                    <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
+                      :class="[category.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
+                      aria-hidden="true" />
+                  </div>
+                </div>
             </div>
           </div>
         </div>
