@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="'/p/blog/' + blog.id"
+  <nuxt-link :to="'/p/blog/' + blog.slug"
     class=" flex w-full items-center lg:pl-0 flex-row-reverse transition ease-in-out   hover:-translate-y-1 hover:scale-105  duration-300  ">
     
     <div class=" shadow-2 border isolate relative p-7 text-right lg:pl-[0px] w-full rounded-2xl  ">

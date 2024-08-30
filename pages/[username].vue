@@ -10,7 +10,7 @@
       <div class="bg rounded-b-[50px] "></div>
       <div class="bg bg2 rounded-b-[50px]"></div>
       <div class="bg bg3 rounded-b-[50px]"></div>
-    <div class="absolute bg-gray-800/70 overflow-hidden inset-0 -z-10  h-full w-full  " />
+    <div class="absolute bg-black/70 overflow-hidden inset-0 -z-10  h-full w-full  " />
     <!-- <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
       <div
         class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"

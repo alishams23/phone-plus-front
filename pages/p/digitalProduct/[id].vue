@@ -29,7 +29,7 @@
         <img :src="product.image[0].photo"
           class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
         <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
-        <img class="absolute bg-gray-800/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <img class="absolute bg-black/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
 
         <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true">
@@ -126,8 +126,10 @@
                           </TabPanel>
                           <!-- Image Panels -->
                           <TabPanel v-for="image in product.image" :key="image.id" class="aspect-square flex justify-center rounded-xl  items-center ">
-                            <img :src="image.photo" :alt="image.title_for_photo"
-                              class=" aspect-square rounded-[25px] object-cover " />
+                            <!-- <img :src="image.photo" :alt="image.title_for_photo"
+                              class=" aspect-square rounded-[25px] object-cover " /> -->
+                            <SharedImageZoom :image="image.photo"></SharedImageZoom>
+
                           </TabPanel>
                         </TabPanels>
                       </TabGroup>

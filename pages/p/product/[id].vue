@@ -24,7 +24,7 @@
         <img :src="product.image[0].photo" 
             class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
         <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
-        <img class="absolute bg-gray-800/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <img class="absolute bg-black/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
         <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
@@ -118,8 +118,9 @@
                           </TabPanel>
                           <!-- Image Panels -->
                           <TabPanel v-for="image in product.image" :key="image.id" class="aspect-[2/1] flex justify-center rounded-xl  items-center ">
-                            <img :src="image.photo" :alt="image.title_for_photo" style="width: 90%; height: 100%; position: relative;"
-                              class=" aspect-[2/1] rounded-[25px] object-cover " />
+                            <SharedImageZoom :image="image.photo"></SharedImageZoom>
+                            <!-- <img :src="image.photo" :alt="image.title_for_photo" style="width: 90%; height: 100%; position: relative;"
+                              class=" aspect-[2/1] rounded-[25px] object-cover " /> -->
                           </TabPanel>
                         </TabPanels>
                       </TabGroup>

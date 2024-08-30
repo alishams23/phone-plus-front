@@ -21,7 +21,7 @@
                 <img :src="blog.imageBlog.photo" alt=""
                     class="absolute overflow-hidden  inset-0 -z-10 h-full w-full object-cover " />
                 <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
-        <img class="absolute bg-gray-800/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
+        <img class="absolute bg-black/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
 
                 <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                     aria-hidden="true">
@@ -214,7 +214,7 @@ export default {
             let Comment = new FormData();
             Comment.append('title', this.comment_title);
             try {
-                axios.post(`${apiStore().address}/api/blog/add-comment/${this.$route.params.id}/`, Comment, {
+                axios.post(`${apiStore().address}/api/blog/add-comment/${this.$route.params.slug}/`, Comment, {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json",
@@ -233,7 +233,7 @@ export default {
         },
         getData() {
             this.loading = true
-            axios.get(`${apiStore().address}/api/blog/blog-retrieve-main-page/${this.$route.params.id}/`, {
+            axios.get(`${apiStore().address}/api/blog/blog-retrieve-main-page/${this.$route.params.slug}/`, {
                 headers: {
                     "Content-type": "application/json",
                     Accept: "application/json",
