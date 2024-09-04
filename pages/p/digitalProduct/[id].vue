@@ -200,7 +200,7 @@
                               <p v-if="is_sellable">خرید / دانلود</p>
                               <p v-else>ناموجود</p>
                             </button>
-                            <BuyDigitalProductPopup   @show-change="(data) => {show = data}" :show="show" :product="product" />
+                            <BuyDigitalProductPopup   @show-change="(data) => {show = data}" v-model:show="show" :product="product" />
                           </div>
                         </div>
 

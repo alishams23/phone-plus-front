@@ -220,7 +220,7 @@
                               class="flex max-w-xs cursor-default flex-1 items-center justify-center rounded-full border border-transparent bg-gray-400 px-8 py-3 text-base font-medium text-white sm:w-full">
                               ناموجود
                             </button>
-                              <BuyProductPopup   @show-change="(data) => {show = data}" :show="show" :product="product" :color="selected_color" />
+                              <BuyProductPopup   @show-change="(data) => {show = data}" v-model:show="show" :product="product" :color="selected_color" />
                           </div>
                         </div>
 

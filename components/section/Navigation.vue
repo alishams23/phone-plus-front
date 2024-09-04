@@ -130,6 +130,16 @@
             class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 " />
           </button>
+          <div v-if="buttons.length > 0 " v-for="button in buttons" :key="button.name" class="md:hidden">
+            <div v-if="button.name == 'خرید محصول' || button.name=='خرید / دانلود'">
+              <button @click="button.func"
+                data-tooltip-target="tooltip-feedback" type="button"
+                :class="currentRouteCheck('productOrders') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
+                class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+                <ShoppingBagIcon class=" w-5 " />
+              </button>
+            </div>
+          </div>
         </div>
         <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
             :class="currentRouteCheck('x')?'bg-white':'bg-indigo-200' "
@@ -180,26 +190,39 @@
                 </MenuItem>
                 <MenuItem v-slot="{ active }" v-if="buttons.length > 0" v-for="button in buttons">
                 <div
+                  v-if="button.name != 'خرید محصول'">
+                  <div  
+                  v-if="button.name != 'خرید / دانلود'"
                   :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm text-right']">
-                  <div v-if="button.func != null" @click="button.func">{{ button.name }}</div>
-                  <nuxt-link tag="div" v-if="button.href" :to="button.href">
-                    {{ button.name }}
-                  </nuxt-link>
+                    <div v-if="button.func != null" @click="button.func">
+                      {{ button.name }}
+                    </div>
+                    <nuxt-link tag="div" v-if="button.href" :to="button.href">
+                      {{ button.name }}
+                    </nuxt-link>
+                  </div >
                 </div>
                 </MenuItem>
               </MenuItems>
             </transition>
           </Menu>
         </div>
-        <div class="lg:flex hidden lg:block my-2">
-          <div data-aos="fade-left"
-     data-aos-anchor-placement="bottom-bottom" v-for="button in buttons" :key="button.name">
+        <div class="md:flex hidden md:block my-2" >
+          <div data-aos="fade-left" 
+            data-aos-anchor-placement="bottom-bottom" 
+            v-for="button in buttons"     
+            :key="button.name">
             <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
-              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{
-        button.name }} </button>
-            <nuxt-link v-if="button.href" :to="button.href" :class="button.color ? button.color : ''"
-              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium   text-[9px] whitespace-nowrap">{{
-        button.name }}</nuxt-link>
+              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium text-[9px] whitespace-nowrap">
+              {{button.name}}
+            </button>
+            <nuxt-link 
+              v-if="button.href" 
+              :to="button.href" 
+              :class="button.color ? button.color : ''"
+              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium text-[9px] whitespace-nowrap">
+              {{button.name}}
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -258,9 +281,9 @@ import axios from 'axios'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { apiStore } from '~/store/api';
 
-import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { XMarkIcon,  } from '@heroicons/vue/24/outline'
 import { useUserStore } from '~/store/user';
-import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
+import { EllipsisVerticalIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
 import side from '@/components/section/chat/side.vue'
 import { Bars3Icon, HomeIcon, ShoppingCartIcon, UserIcon, BellAlertIcon, ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid'
 import LoginPopup from "@/components/section/LoginPopup.vue"
@@ -269,6 +292,7 @@ import { NavigationStore } from '~/store/navigation';
 export default {
 
   components: {
+    ShoppingBagIcon,
     Combobox,
     ComboboxInput,
     ComboboxOptions,
