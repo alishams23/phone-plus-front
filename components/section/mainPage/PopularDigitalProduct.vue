@@ -34,7 +34,7 @@
             </div>
           </div>
         </div>
-        <nuxt-link :to="'/p/digitalProduct/' + digital_products[index].id"
+        <nuxt-link :to="'/p/digitalProduct/' + digital_products[index].slug"
           class="shadow-2 flex flex-col text-white md:flex-row justify-center md:justify-between container mx-auto">
           <img :src="digital_products[index].image[0].photo" alt=""
           :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1500"

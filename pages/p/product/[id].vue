@@ -10,10 +10,8 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null" data-aos="fade-down" class="overflow-x-hidden" >
-
+  <div v-else v-if="product != null" data-aos="fade-down" class="overflow-x-hidden " >
     <div class="min-h-full">
-
       <!-- Top Animation -->
       <div class="relative">
         <div class="">
@@ -64,7 +62,7 @@
           </g>
         </svg>
       </div>
-      <main class="-mt-56 md:-mt-36 pb-8">
+      <main class="-mt-56 md:-mt-36 ">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <h1 class="sr-only">Page title</h1>
           <!-- Main 3 column grid -->
@@ -72,8 +70,29 @@
             <!-- Left column -->
             <div class="grid grid-cols-1 gap-4 lg:col-span-12">
               <section aria-labelledby="section-1-title">
-                <div class="bg-white rounded-[25px] shadow-1">
-                  <div class="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+                <div class="bg-white/70 shadow-lg backdrop-blur-md rounded-t-[25px] relative isolate ">
+                  <div class="absolute bg-white/50 backdrop-blur-md rounded-l-md  rounded-r-2xl shadow-1 py-2 px-3 top-0  mt-[-10px] ml-[-10px] ">
+
+                    <div class="">
+                          <h3 class="sr-only">Reviews</h3>
+                          <div class="flex items-center">
+                            <div class="flex items-center">
+                              <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
+                                :class="[product.rate / 20 > rating ? 'text-indigo-500' : 'text-gray-300', 'h-5 w-5 flex-shrink-0']"
+                                aria-hidden="true" />
+                              <div v-if="product.rate_number > 0">
+                                <p class="text-xs text-gray-400 pl-2">({{ product.rate_number }})</p>
+                              </div>
+                              <div v-else>
+                                <p class="text-xs text-gray-400 pl-2">(0)</p>
+                              </div>
+                            </div>
+                            <p class="sr-only">{{ product.rating }} out of 5 stars</p>
+                          </div>
+                        </div>
+
+                  </div>
+                  <div class="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
                     <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
                       <!-- Image gallery -->
                       <TabGroup as="div" class="flex flex-col-reverse">
@@ -118,7 +137,7 @@
                           </TabPanel>
                           <!-- Image Panels -->
                           <TabPanel v-for="image in product.image" :key="image.id" class="aspect-[2/1] flex justify-center rounded-xl  items-center ">
-                            <SharedImageZoom :image="image.photo"></SharedImageZoom>
+                            <SharedImageZoom :image="image.photo" :images="product.image"></SharedImageZoom>
                             <!-- <img :src="image.photo" :alt="image.title_for_photo" style="width: 90%; height: 100%; position: relative;"
                               class=" aspect-[2/1] rounded-[25px] object-cover " /> -->
                           </TabPanel>
@@ -129,83 +148,71 @@
                       <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 rtl">
                         <h1 class="text-2xl font-bold leading-loose  text-gray-900">{{ product.title }}</h1>
 
-                        <div class="mt-3">
-                          <h2 class="sr-only">Product information</h2>
-                          <div v-if="product.discount != 0" class="flex items-center ">
-                            <div v-if="selected_color" class="text-xl line-through text-gray-300  tr">
-                              {{ product.price + selected_color.price }}
-                            </div>
-                            <div v-else class="text-xl line-through text-gray-300  tr">
-                              {{ product.price }}
-                            </div>
-                            <div class=" overflow-hidden rounded-lg p-4">
-                              <div
-                                class=" text-white  text-sm font-semibold bg-red-500 rtl text-right rounded-full px-3 py-1"
-                                v-if="product.discount != 0"> 
-                                  {{ product.discount }} % 
-                                </div>
-                            </div>
-                          </div>
-                          <div v-if="selected_color">
-                            <p class="text-3xl  text-gray-900">
-                              {{ parseInt((product.price + selected_color.price) * ((100 - product.discount) / 100)) }} 
-                              <span class="text-sm text-gray-600">
-                                تومان
-                              </span>
-                            </p>
-                          </div>
-                          <div v-else>
-                            <p class="text-3xl  text-gray-900">
-                              {{ parseInt((product.price) * ((100 - product.discount) / 100)) }} 
-                              <span class="text-sm text-gray-600">
-                                تومان
-                              </span>
-                            </p>
-                          </div>
-                        </div>
-
+                       <div class="flex justify-between items-end">
+                         <div class="mt-3">
+                           <h2 class="sr-only">Product information</h2>
+                           <div v-if="product.discount != 0" class="flex items-center ">
+                             <div v-if="selected_color" class="text-xl line-through text-gray-300  tr">
+                               {{ product.price + selected_color.price }}
+                             </div>
+                             <div v-else class="text-xl line-through text-gray-300  tr">
+                               {{ product.price }}
+                             </div>
+                             <div class=" overflow-hidden rounded-lg p-4">
+                               <div
+                                 class=" text-white  text-sm font-semibold bg-red-500 rtl text-right rounded-full px-3 py-1"
+                                 v-if="product.discount != 0"> 
+                                   {{ product.discount }} % 
+                                 </div>
+                             </div>
+                           </div>
+                           <div v-if="selected_color">
+                             <p class="text-3xl  text-gray-900">
+                               {{ parseInt((product.price + selected_color.price) * ((100 - product.discount) / 100)) }} 
+                               <span class="text-sm text-gray-600">
+                                 تومان
+                               </span>
+                             </p>
+                           </div>
+                           <div v-else>
+                             <p class="text-3xl  text-gray-900">
+                               {{ parseInt((product.price) * ((100 - product.discount) / 100)) }} 
+                               <span class="text-sm text-gray-600">
+                                 تومان
+                               </span>
+                             </p>
+                           </div>
+                         </div>
+                        
+                         <div v-if="selected_color" class="ltr flex items-end flex-col">
+                          
+                        
+                             <RadioGroup v-model="selected_color" class="mt-2" @click="setButtons" >
+                               <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
+                               <span class="flex items-center space-x-3">
+                                 <RadioGroupOption as="template" v-for="color in product.colors" :key="color.id"
+                                   :value="color" v-slot="{ active, checked }">
+                                   <div 
+                                     :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
+                                     <RadioGroupLabel as="span" class="sr-only">{{ color.title }}</RadioGroupLabel>
+                                     <span aria-hidden="true"
+                                       :class="` h-8 w-8 rounded-full border border-2 border-opacity-10 `"
+                                       :style="`background-color:${color.hexcolor}`" />
+                                   </div>
+                                 </RadioGroupOption>
+                               </span>
+                             </RadioGroup>
+                           </div>
+                        
+                       </div>
                         <!-- Reviews -->
-                        <div class="mt-3">
-                          <h3 class="sr-only">Reviews</h3>
-                          <div class="flex items-center">
-                            <div class="flex items-center">
-                              <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
-                                :class="[product.rate / 20 > rating ? 'text-indigo-500' : 'text-gray-300', 'h-5 w-5 flex-shrink-0']"
-                                aria-hidden="true" />
-                              <div v-if="product.rate_number > 0">
-                                <p class="text-sm text-gray-500 px-3">({{ product.rate_number }})</p>
-                              </div>
-                              <div v-else>
-                                <p class="text-sm text-gray-500 px-3">(0)</p>
-                              </div>
-                            </div>
-                            <p class="sr-only">{{ product.rating }} out of 5 stars</p>
-                          </div>
-                        </div>
+                       
 
                         
 
                         <div class="mt-6">
                           <!-- Colors -->
-                          <div v-if="selected_color" class="ltr flex items-end flex-col">
-                            <h3 class="text-sm text-gray-600 rtl">رنگ‌ها </h3>
-
-                            <RadioGroup v-model="selected_color" class="mt-2" @click="setButtons" >
-                              <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
-                              <span class="flex items-center space-x-3">
-                                <RadioGroupOption as="template" v-for="color in product.colors" :key="color.id"
-                                  :value="color" v-slot="{ active, checked }">
-                                  <div 
-                                    :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
-                                    <RadioGroupLabel as="span" class="sr-only">{{ color.title }}</RadioGroupLabel>
-                                    <span aria-hidden="true"
-                                      :class="` h-8 w-8 rounded-full border border-2 border-opacity-10 `"
-                                      :style="`background-color:${color.hexcolor}`" />
-                                  </div>
-                                </RadioGroupOption>
-                              </span>
-                            </RadioGroup>
-                          </div>
+                     
 
                           <div class="sm:flex-col1 mt-10 flex">
                             
@@ -275,7 +282,7 @@
                       <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700" v-html="product.description" />
                     </div>
 
-                    <section class="bg-white px-6 py-24 sm:py-32 lg:px-8">
+                    <section class=" px-6 py-24 sm:py-32 lg:px-8">
                       <div class=" font-bold text-right text-3xl pb-10">
                         نظرات
                       </div>

@@ -128,7 +128,7 @@
                           <TabPanel v-for="image in product.image" :key="image.id" class="aspect-square flex justify-center rounded-xl  items-center ">
                             <!-- <img :src="image.photo" :alt="image.title_for_photo"
                               class=" aspect-square rounded-[25px] object-cover " /> -->
-                            <SharedImageZoom :image="image.photo"></SharedImageZoom>
+                            <SharedImageZoom :image="image.photo" :images="product.image"></SharedImageZoom>
 
                           </TabPanel>
                         </TabPanels>
