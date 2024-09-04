@@ -4,7 +4,7 @@
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  rounded-2xl from-white from-10% via-white/40" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  rounded-2xl bg-white/90" />
 
-    <nuxt-link :to="'/p/digitalProduct/'+ data.id">
+    <nuxt-link :to="'/p/digitalProduct/'+ data.slug">
       <div class="flex justify-center text-center">
         <div>
           <img :src="data.image[0].photo" alt="" class="-mt-10 w-[150px] h-[150px] border shadow-2  object-cover rounded-3xl" />
