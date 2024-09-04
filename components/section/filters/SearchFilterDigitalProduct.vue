@@ -297,7 +297,7 @@ export default {
       this.loading = true
       this.$emit("loading",true)
 
-      axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category=') : ''}&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop ? this.selected_shop : ''}&is_discount=${this.is_discount} `, {
+      axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?page=${this.page}&search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category=') : ''}&ordering=${this.selected_sort}&min_price=${this.price_range[0]}&max_price=${this.price_range[1]}&shop=${this.selected_shop ? this.selected_shop : ''}&is_discount=${this.is_discount} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -367,7 +367,13 @@ export default {
         val == false ? this.$emit('close') : ''
       },
       deep: true
-    }
+    },
+    'page': {
+            handler: function (val, oldVal) {
+                this.getData()
+            },
+            deep: true
+        },
   }
 }
 

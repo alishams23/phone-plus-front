@@ -42,7 +42,7 @@
             <div class="grid grid-cols-8 gap-4">
               <div class="col-span-6">
                 <div class="min-w-0 shadow-1g ">
-                  <nuxt-link :to="'/p/digitalProduct/' + category.id" class="focus:outline-none">
+                  <nuxt-link :to="'/p/digitalProduct/' + category.slug" class="focus:outline-none">
                     <span class="absolute inset-0" aria-hidden="true" />
                     <p class="text-sm font-bold text-gray-50 px-3">{{ category.title }}</p>
                     <p class="text-xs font-bold text-gray-50 px-3 pb-1 pt-1"><span

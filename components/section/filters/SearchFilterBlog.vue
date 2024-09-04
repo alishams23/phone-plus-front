@@ -255,7 +255,7 @@ export default {
     getData() {
       this.loading = true
       this.$emit("loading",true)
-      axios.get(`${apiStore().address}/api/blog/search-blog-for-buyers/?search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category=') : ''}&ordering=${this.selected_sort}&shop=${this.selected_shop ? this.selected_shop : ''} `, {
+      axios.get(`${apiStore().address}/api/blog/search-blog-for-buyers/?page=${this.page}&search=${this.text}${this.selected_categories.length > 0 ? '&category=' + this.selected_categories.join('&category=') : ''}&ordering=${this.selected_sort}&shop=${this.selected_shop ? this.selected_shop : ''} `, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -319,7 +319,13 @@ export default {
         val == false ? this.$emit('close') : ''
       },
       deep: true
-    }
+    },
+    'page': {
+            handler: function (val, oldVal) {
+                this.getData()
+            },
+            deep: true
+        },
   }
 }
 

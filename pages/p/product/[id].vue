@@ -70,8 +70,8 @@
             <!-- Left column -->
             <div class="grid grid-cols-1 gap-4 lg:col-span-12">
               <section aria-labelledby="section-1-title">
-                <div class="bg-white/70 shadow-lg backdrop-blur-md rounded-t-[25px] relative isolate ">
-                  <div class="absolute bg-white/50 backdrop-blur-md rounded-l-md  rounded-r-2xl shadow-1 py-2 px-3 top-0  mt-[-10px] ml-[-10px] ">
+                <div class="bg-white  shadow-lg rounded-t-[25px] relative isolate ">
+                  <div class="absolute bg-white  rounded-tl-lg shadow-xl  rounded-r-3xl shadow-lg py-2 px-3 top-0  mt-[-10px]  ">
 
                     <div class="">
                           <h3 class="sr-only">Reviews</h3>
@@ -219,15 +219,20 @@
                             <button 
                               v-if="selected_color?selected_color.count>0:product.amount>0"
                               @click="isLogin==true?show = true:openLogin()"
-                              class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white  sm:w-full">
-                              خرید محصول
+                              class="flex max-w-xs flex-1 items-center justify-center rounded-2xl border border-transparent bg-indigo-600   px-2 py-[10px] text-base font-medium text-white  sm:w-full">
+                              
+                              <div class="mx-6">
+                                خرید محصول
+                              </div>
+                              <ShoppingBagIcon 
+                                    class="h-5 w-5 text-white mx-5" />
                             </button>
                             <button 
                               v-else
                               class="flex max-w-xs cursor-default flex-1 items-center justify-center rounded-full border border-transparent bg-gray-400 px-8 py-3 text-base font-medium text-white sm:w-full">
                               ناموجود
                             </button>
-                              <BuyProductPopup   @show-change="(data) => {show = data}" :show="show" :product="product" :color="selected_color" />
+                              <BuyProductPopup   @show-change="(data) => {show = data}" v-model:show="show" :product="product" :color="selected_color" />
                           </div>
                         </div>
 
@@ -392,8 +397,8 @@ import {
 } from '@headlessui/vue'
 import LoginPopup from "@/components/section/LoginPopup.vue"
 import BuyProductPopup from "@/components/section/BuyProductPopup.vue"
-import { StarIcon } from '@heroicons/vue/20/solid'
-import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
+import { StarIcon,ShoppingBagIcon } from '@heroicons/vue/20/solid'
+import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon ,} from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
@@ -405,6 +410,7 @@ export default {
     BuyProductPopup,
     Dialog,
     TransitionRoot,
+    ShoppingBagIcon,
     HeartIcon,
     VideoCameraIcon,
     UserIcon,

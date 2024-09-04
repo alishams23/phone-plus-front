@@ -1,7 +1,7 @@
 <template>
     <div>
         <TransitionRoot as="template" :show="show">
-            <Dialog as="div" class="relative z-10" @close="show = false;">
+            <Dialog as="div" class="relative z-10" @close="$emit('update:show', false)">
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
                     enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
                     <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity" />
@@ -86,10 +86,10 @@
                                                     </form>
                                                 </dl>
                                                 <div class="w-full flex justify-end" >
-                                                    <button @click="tab=2"
+                                                    <!-- <button @click="tab=2"
                                                         class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
                                                         <p >برگشت</p>
-                                                    </button>
+                                                    </button> -->
                                                     <button v-if="btn_buy_loading" type="" disabled
                                                         class="bg-gray-400 text-white font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
                                                         <div class=" flex items-center w-full  justify-center" >

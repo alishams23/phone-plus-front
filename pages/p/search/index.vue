@@ -98,11 +98,18 @@
                   <!-- Your content -->
 
                   <div v-if="selected_tab == 0" class="pt-8 md:pt-0" data-aos="fade-down">
-                    <div v-if="products.length > 0 && loading_product == false" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
-                      <div v-for="item in products" :key="item" class="group my-2  relative">
-                        <Product :data="item" width=" " class=" text-center " />
-                      </div>
-                    </div>
+                     <div v-if="products.length > 0 && loading_product == false">
+                       <div  class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 relative isolate ">
+                         <div v-for="item in products" :key="item" class="group my-2  relative">
+                           <Product :data="item" width=" " class=" text-center " />
+                         </div>
+                       </div>
+                       <div class="w-full flex justify-center mt-5">
+                       <div v-if="productPrevious != null" @click="productPage -= 1" class="cursor-pointer relative inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه قبل</div>
+                         <div v-if="productNext != null" @click="productPage += 1" class="cursor-pointer relative ml-3 inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه بعد</div>
+                 </div>
+                     </div>
+                      
                     <div v-else-if="loading_product == true" class="container rtl px-10 mt-6 flex flex-col items-center py-10 mt-5">
                       <span class="relative flex h-8 w-8">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
@@ -116,28 +123,7 @@
                       </div>
                     </div>
 
-                    <div class="flex m-4 justify-center mt-10" v-if="false">
-                      <!-- Previous Button -->
-                      <a href="#"
-                        class="flex items-center justify-center  px-5 h-9 me-3 text-sm font-medium text-gray-300 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
-                        <svg class="w-3.5 h-3.5 me-2 rtl:rotate-180" aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 5H1m0 0 4 4M1 5l4-4" />
-                        </svg>
-                        قبلی
-                      </a>
-                      <a href="#"
-                        class="flex items-center justify-center  px-5 h-9 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 ">
-                        بعدی
-                        <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
-                        </svg>
-                      </a>
-                    </div>
-
+                   
 
 
                   </div>
@@ -163,6 +149,10 @@
                           <DigitalProduct :data="item" width=" " class=" text-center " />
                         </div>
                       </div>
+                 <div class="w-full flex justify-center">
+                       <div v-if="digitalProductPrevious != null" @click="digitalProductPage -= 1" class="cursor-pointer relative inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه قبل</div>
+                         <div v-if="digitalProductNext != null" @click="digitalProductPage += 1" class="cursor-pointer relative ml-3 inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه بعد</div>
+                 </div>
                     </div>
                     <div v-else-if="loading_digital_product == true" class="container rtl px-10 mt-6 flex flex-col items-center py-10 mt-5">
                       <span class="relative flex h-8 w-8">
@@ -185,6 +175,10 @@
                           <Blog :blog="item" width=" " class=" text-center " />
                         </div>
                       </div>
+                      <div class="w-full flex justify-center pt-5">
+                       <div v-if="blogPrevious != null" @click="blogPage -= 1" class="cursor-pointer relative inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه قبل</div>
+                         <div v-if="blogNext != null" @click="blogPage += 1" class="cursor-pointer relative ml-3 inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه بعد</div>
+                 </div>
                     </div>
                     <div v-else-if="loading_blog == true" class="container rtl px-10 mt-6 flex flex-col items-center py-10 mt-5">
                       <span class="relative flex h-8 w-8">
@@ -207,6 +201,10 @@
                           <Product :data="item" width=" " class=" text-center my-2  " />
                         </div>
                       </div>
+                      <div class="w-full flex justify-center">
+                       <div v-if="productPrevious != null" @click="productPage -= 1" class="cursor-pointer relative inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه قبل</div>
+                         <div v-if="productNext != null" @click="productPage += 1" class="cursor-pointer relative ml-3 inline-flex items-center rounded-xl bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0">صفحه بعد</div>
+                 </div>
                       <div class="border-t-2 mt-8  py-1">
                       </div>
                       <div class=" flex items-center justify-center " style="margin-top:-35px">
@@ -283,16 +281,16 @@
 
                   <div v-show="selected_tab == 0">
                     <SearchFilterProduct :open="open_filter_product" @close="() => { open_filter_product = false }"
-                      :text="text" @loading="(status) =>{loading_product = status}" @get-data-product="(data) => { this.products = data.results }" :page="1" />
+                      :text="text" @loading="(status) =>{loading_product = status}" @get-data-product="(data) => { products = data.results ;productNext=data.next;productPrevious = data.previous}" :page="productPage" />
                   </div>
                   <div v-show="selected_tab == 1">
                     <SearchFilterDigitalProduct :open="open_filter_digitalProduct"
                       @close="() => { open_filter_digitalProduct = false }" :text="text" @loading="(status) =>{loading_digital_product = status}"
-                      @get-data-product="(data) => { this.digitalProducts = data.results }" :page="1" />
+                      @get-data-product="(data) => { digitalProducts = data.results;digitalProductNext=data.next;digitalProductPrevious = data.previous }" :page="digitalProductPage" />
                   </div>
                   <div v-show="selected_tab == 2">
                     <SearchFilterBlog :open="open_filter_blog" @close="() => { open_filter_blog = false }" :text="text" @loading="(status) =>{loading_blog = status}"
-                      @get-data-blog="(data) => { this.blogs = data.results }" :page="1" />
+                      @get-data-blog="(data) => { blogs = data.results ;blogNext=data.next;blogPrevious = data.previous}" :page="blogPage" />
                   </div>
                 </div>
               </div>
@@ -358,6 +356,15 @@ export default {
     AdjustmentsHorizontalIcon
   },
   data: () => ({
+    digitalProductNext :null,
+        digitalProductPrevious:null,
+digitalProductPage:1,
+    productNext :null,
+        productPrevious:null,
+productPage:1,
+    blogNext :null,
+        blogPrevious:null,
+blogPage:1,
     text: '',
     selected_tab: 0,
     products: [],
