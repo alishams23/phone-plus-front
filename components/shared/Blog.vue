@@ -14,12 +14,14 @@
            </div>
           </div>
           <div class="col-span-8 lg:col-span-6 flex flex-col justify-between ">
-            <div>
-              <div class="text-gray-900 font-semibold lg:px-5 mt-4 lg:mt-0 text-sm md:text-md lg:flex lg:items-start lg:h-full min-h-[20px] rtl">{{ blog.title }}</div>
-               <div class=" text-gray-900 font-semibold lg:px-5 text-md lg:text-lg lg:mt-2 rtl ">
-                  <p class="text-gray-600 test-n w-100  text-[14px] py-1 max-w-[90%] lg:max-w-[90%] font-light text-xs mt-2 " v-html="truncatedBody"></p>
-                </div>
-                <div class="text-xs text-indigo-500 lg:px-5 mt-2 text-md">{{ blog.created_at_jalali }}</div>
+            <div class=" h-full flex flex-col justify-between ">
+              <div>
+                <div class="text-gray-900 font-semibold lg:px-5 mt-4 lg:mt-0 text-sm md:text-md lg:flex lg:items-start  min-h-[20px] rtl">{{ blog.title }}</div>
+                 <div class=" text-gray-900 font-semibold lg:px-5 text-md lg:text-lg lg:mt-2 rtl ">
+                    <p class="text-gray-600 test-n w-100  text-[14px] py-1 max-w-[90%] lg:max-w-[90%] font-light text-xs mt-2 " >{{ truncatedBody }}</p>
+                  </div>
+              </div>
+                <div class="text-xs flex-grow-0 text-indigo-500 lg:px-5 mt-auto text-md">{{ blog.created_at_jalali }}</div>
             </div>
             <!-- <div class="flex rtl ">
               <nuxt-link :to="'/p/blog/' + blog.id"
@@ -93,11 +95,11 @@ export default {
   },
   computed: {
     truncatedBody() {
-      if (!this.blog.body) return '';
+      if (!this.blog.plain_description) return '';
       // Adjust the character limit based on your text size and container width to approximate two lines
       const charLimit = 130; // Example character limit for two lines
-      const ending = this.blog.body.length > charLimit ? '...' : '';
-      return this.blog.body.substring(0, charLimit) + '...';
+      const ending = this.blog.plain_description.length > charLimit ? '...' : '';
+      return this.blog.plain_description.substring(0, charLimit) + '...';
     },
     isLogin() {
       return useUserStore().userToken != null

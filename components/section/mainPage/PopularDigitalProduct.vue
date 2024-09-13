@@ -56,7 +56,7 @@
             <div
             :data-aos="swap_direction == 'left'?'fade-left':'fade-right'" data-aos-duration="1200"
              class="text-gray-200 text-center md:text-right mt-5 h-[50px] overflow-hidden pb-4"
-              v-html="digital_products[index].description"
+              v-html="digital_products[index].plain_description"
               style="color: white !important;"
               ></div>
             <div class="mt-5">
