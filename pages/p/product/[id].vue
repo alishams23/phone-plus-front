@@ -1,42 +1,49 @@
 <template>
   <div v-if="loading">
-    <div  class="p-16 py-[400px] flex items-center justify-center" >
+    <div class="p-16 py-[400px] flex items-center justify-center">
       <div role="status">
-          <svg aria-hidden="false" class="w-14 h-14 text-gray-100 animate-spin fill-indigo-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-              <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-          </svg>
-          <span class="sr-only">Loading...</span>
+        <svg aria-hidden="false" class="w-14 h-14 text-gray-100 animate-spin fill-indigo-600" viewBox="0 0 100 101"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+            fill="currentColor" />
+          <path
+            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+            fill="currentFill" />
+        </svg>
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null" data-aos="fade-down" class="overflow-x-hidden " >
+  <div v-else v-if="product != null" data-aos="fade-down" class="overflow-x-hidden ">
     <div class="min-h-full">
       <!-- Top Animation -->
       <div class="relative">
         <div class="">
-            <div class="bg rounded-b-[50px] "></div>
-            <div class="bg bg2 rounded-b-[50px]"></div>
-            <div class="bg bg3 rounded-b-[50px]"></div>
+          <div class="bg rounded-b-[50px] "></div>
+          <div class="bg bg2 rounded-b-[50px]"></div>
+          <div class="bg bg3 rounded-b-[50px]"></div>
         </div>
-        <img :src="product.image[0].photo" 
-            class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
+        <img :src="product.image[0].photo"
+          class="absolute overflow-hidden inset-0 -z-10 h-[50%] md:h-full w-full object-cover " />
         <img class="absolute backdrop-blur-md overflow-hidden inset-0 -z-10  h-full w-full  " />
         <img class="absolute bg-black/60 overflow-hidden inset-0 -z-10  h-full w-full  " />
         <div class="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true">
-            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
+          aria-hidden="true">
+          <div
+            class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
         </div>
         <!-- Shop Name and Picture -->
         <div class="flex flex-row rtl pt-4 container justify-center md:justify-start items-center pb-2">
           <div class=" me-5">
-            <a :href="'/' + product.shop.username" target="blank" >
-              <ArrowTopRightOnSquareIcon class="h-4 w-4 mt-3 text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]" click="" />
+            <a :href="'/' + product.shop.username" target="blank">
+              <ArrowTopRightOnSquareIcon
+                class="h-4 w-4 mt-3 text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]" click="" />
               <img :src="product.shop.image" class="h-24 w-24 object-cover rounded-full" />
             </a>
           </div>
-          <a :href="'/' + product.shop.username" target="blank" >
+          <a :href="'/' + product.shop.username" target="blank">
             <div class="text-sm text-gray-50 drop-shadow-[0_10.2px_10.2px_rgba(0,0,0,0.9)]">
               فروشگاه:
             </div>
@@ -46,8 +53,8 @@
           </a>
         </div>
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:pt-[1rem] lg:pb-[5rem]">
-            <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-            </div>
+          <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+          </div>
         </div>
       </div>
       <div class="mt-[-40px]  hidden md:block">
@@ -71,25 +78,26 @@
             <div class="grid grid-cols-1 gap-4 lg:col-span-12">
               <section aria-labelledby="section-1-title">
                 <div class="bg-white  shadow-lg rounded-t-[25px] relative isolate ">
-                  <div class="absolute bg-white  rounded-tl-lg shadow-xl  rounded-r-3xl shadow-lg py-2 px-3 top-0  mt-[-10px]  ">
+                  <div
+                    class="absolute bg-white  rounded-tl-lg shadow-xl  rounded-r-3xl shadow-lg py-2 px-3 top-0  mt-[-10px]  ">
 
                     <div class="">
-                          <h3 class="sr-only">Reviews</h3>
-                          <div class="flex items-center">
-                            <div class="flex items-center">
-                              <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
-                                :class="[product.rate / 20 > rating ? 'text-indigo-500' : 'text-gray-300', 'h-5 w-5 flex-shrink-0']"
-                                aria-hidden="true" />
-                              <div v-if="product.rate_number > 0">
-                                <p class="text-xs text-gray-400 pl-2">({{ product.rate_number }})</p>
-                              </div>
-                              <div v-else>
-                                <p class="text-xs text-gray-400 pl-2">(0)</p>
-                              </div>
-                            </div>
-                            <p class="sr-only">{{ product.rating }} out of 5 stars</p>
+                      <h3 class="sr-only">Reviews</h3>
+                      <div class="flex items-center">
+                        <div class="flex items-center">
+                          <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
+                            :class="[product.rate / 20 > rating ? 'text-indigo-500' : 'text-gray-300', 'h-5 w-5 flex-shrink-0']"
+                            aria-hidden="true" />
+                          <div v-if="product.rate_number > 0">
+                            <p class="text-xs text-gray-400 pl-2">({{ product.rate_number }})</p>
+                          </div>
+                          <div v-else>
+                            <p class="text-xs text-gray-400 pl-2">(0)</p>
                           </div>
                         </div>
+                        <p class="sr-only">{{ product.rating }} out of 5 stars</p>
+                      </div>
+                    </div>
 
                   </div>
                   <div class="mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
@@ -129,14 +137,17 @@
 
                         <TabPanels class="aspect- aspect-w-1 w-full">
                           <!-- Video Panel -->
-                          <TabPanel v-if="product.video" class="aspect-[2/1] flex justify-center rounded-xl  items-center">
-                            <div class="overflow-hidden rounded-[25px]" style="width: 90%; max-height: 500px; position: relative;">
-                              <div v-html="product.video" >
+                          <TabPanel v-if="product.video"
+                            class="aspect-[2/1] flex justify-center rounded-xl  items-center">
+                            <div class="overflow-hidden rounded-[25px]"
+                              style="width: 90%; max-height: 500px; position: relative;">
+                              <div v-html="product.video">
                               </div>
                             </div>
                           </TabPanel>
                           <!-- Image Panels -->
-                          <TabPanel v-for="image in product.image" :key="image.id" class="aspect-[2/1] flex justify-center rounded-xl  items-center ">
+                          <TabPanel v-for="image in product.image" :key="image.id"
+                            class="aspect-[2/1] flex justify-center rounded-xl  items-center ">
                             <SharedImageZoom :image="image.photo" :images="product.image"></SharedImageZoom>
                             <!-- <img :src="image.photo" :alt="image.title_for_photo" style="width: 90%; height: 100%; position: relative;"
                               class=" aspect-[2/1] rounded-[25px] object-cover " /> -->
@@ -148,91 +159,90 @@
                       <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 rtl">
                         <h1 class="text-2xl font-bold leading-loose  text-gray-900">{{ product.title }}</h1>
 
-                       <div class="flex justify-between items-end">
-                         <div class="mt-3">
-                           <h2 class="sr-only">Product information</h2>
-                           <div v-if="product.discount != 0" class="flex items-center ">
-                             <div v-if="selected_color" class="text-xl line-through text-gray-300  tr">
-                               {{ product.price + selected_color.price }}
-                             </div>
-                             <div v-else class="text-xl line-through text-gray-300  tr">
-                               {{ product.price }}
-                             </div>
-                             <div class=" overflow-hidden rounded-lg p-4">
-                               <div
-                                 class=" text-white  text-sm font-semibold bg-red-500 rtl text-right rounded-full px-3 py-1"
-                                 v-if="product.discount != 0"> 
-                                   {{ product.discount }} % 
-                                 </div>
-                             </div>
-                           </div>
-                           <div v-if="selected_color">
-                             <p class="text-3xl  text-gray-900">
-                               {{ parseInt((product.price + selected_color.price) * ((100 - product.discount) / 100)) }} 
-                               <span class="text-sm text-gray-600">
-                                 تومان
-                               </span>
-                             </p>
-                           </div>
-                           <div v-else>
-                             <p class="text-3xl  text-gray-900">
-                               {{ parseInt((product.price) * ((100 - product.discount) / 100)) }} 
-                               <span class="text-sm text-gray-600">
-                                 تومان
-                               </span>
-                             </p>
-                           </div>
-                         </div>
-                        
-                         <div v-if="selected_color" class="ltr flex items-end flex-col">
-                          
-                        
-                             <RadioGroup v-model="selected_color" class="mt-2" @click="setButtons" >
-                               <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
-                               <span class="flex items-center space-x-3">
-                                 <RadioGroupOption as="template" v-for="color in product.colors" :key="color.id"
-                                   :value="color" v-slot="{ active, checked }">
-                                   <div 
-                                     :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
-                                     <RadioGroupLabel as="span" class="sr-only">{{ color.title }}</RadioGroupLabel>
-                                     <span aria-hidden="true"
-                                       :class="` h-8 w-8 rounded-full border border-2 border-opacity-10 `"
-                                       :style="`background-color:${color.hexcolor}`" />
-                                   </div>
-                                 </RadioGroupOption>
-                               </span>
-                             </RadioGroup>
-                           </div>
-                        
-                       </div>
-                        <!-- Reviews -->
-                       
+                        <div class="flex justify-between items-end">
+                          <div class="mt-3">
+                            <h2 class="sr-only">Product information</h2>
+                            <div v-if="product.discount != 0" class="flex items-center ">
+                              <div v-if="selected_color" class="text-xl line-through text-gray-300  tr">
+                                {{ product.price + selected_color.price }}
+                              </div>
+                              <div v-else class="text-xl line-through text-gray-300  tr">
+                                {{ product.price }}
+                              </div>
+                              <div class=" overflow-hidden rounded-lg p-4">
+                                <div
+                                  class=" text-white  text-sm font-semibold bg-red-500 rtl text-right rounded-full px-3 py-1"
+                                  v-if="product.discount != 0">
+                                  {{ product.discount }} %
+                                </div>
+                              </div>
+                            </div>
+                            <div v-if="selected_color">
+                              <p class="text-3xl  text-gray-900">
+                                {{ parseInt((product.price + selected_color.price) * ((100 - product.discount) / 100))
+                                }}
+                                <span class="text-sm text-gray-600">
+                                  تومان
+                                </span>
+                              </p>
+                            </div>
+                            <div v-else>
+                              <p class="text-3xl  text-gray-900">
+                                {{ parseInt((product.price) * ((100 - product.discount) / 100)) }}
+                                <span class="text-sm text-gray-600">
+                                  تومان
+                                </span>
+                              </p>
+                            </div>
+                          </div>
 
-                        
+                          <div v-if="selected_color" class="ltr flex items-end flex-col">
+
+
+                            <RadioGroup v-model="selected_color" class="mt-2" @click="setButtons">
+                              <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
+                              <span class="flex items-center space-x-3">
+                                <RadioGroupOption as="template" v-for="color in product.colors" :key="color.id"
+                                  :value="color" v-slot="{ active, checked }">
+                                  <div
+                                    :class="[color.selectedColor, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
+                                    <RadioGroupLabel as="span" class="sr-only">{{ color.title }}</RadioGroupLabel>
+                                    <span aria-hidden="true"
+                                      :class="` h-8 w-8 rounded-full border border-2 border-opacity-10 `"
+                                      :style="`background-color:${color.hexcolor}`" />
+                                  </div>
+                                </RadioGroupOption>
+                              </span>
+                            </RadioGroup>
+                          </div>
+
+                        </div>
+                        <!-- Reviews -->
+
+
+
 
                         <div class="mt-6">
                           <!-- Colors -->
-                     
+
 
                           <div class="sm:flex-col1 mt-10 flex">
-                            
-                            <button 
-                              v-if="selected_color?selected_color.count>0:product.amount>0"
-                              @click="isLogin==true?show = true:openLogin()"
+
+                            <button v-if="selected_color ? selected_color.count > 0 : product.amount > 0"
+                              @click="isLogin == true ? show = true : openLogin()"
                               class="flex max-w-xs flex-1 items-center justify-center rounded-2xl border border-transparent bg-indigo-600   px-2 py-[10px] text-base font-medium text-white  sm:w-full">
-                              
+
                               <div class="mx-6">
                                 خرید محصول
                               </div>
-                              <ShoppingBagIcon 
-                                    class="h-5 w-5 text-white mx-5" />
+                              <ShoppingBagIcon class="h-5 w-5 text-white mx-5" />
                             </button>
-                            <button 
-                              v-else
+                            <button v-else
                               class="flex max-w-xs cursor-default flex-1 items-center justify-center rounded-full border border-transparent bg-gray-400 px-8 py-3 text-base font-medium text-white sm:w-full">
                               ناموجود
                             </button>
-                              <BuyProductPopup   @show-change="(data) => {show = data}" v-model:show="show" :product="product" :color="selected_color" />
+                            <BuyProductPopup @show-change="(data) => { show = data }" v-model:show="show"
+                              :product="product" :color="selected_color" />
                           </div>
                         </div>
 
@@ -284,7 +294,8 @@
 
                     <div class="mt-6">
                       <h3 class="sr-only">Description</h3>
-                      <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700" v-html="product.description" />
+                      <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700"
+                        v-html="product.description" />
                     </div>
 
                     <section class=" px-6 py-24 sm:py-32 lg:px-8">
@@ -303,8 +314,8 @@
                             </div>
                             <div class="text-sm leading-6">
                               <div class="font-semibold text-gray-600">
-                                {{ comment.author.first_name }} 
-                                {{comment.author.last_name }}</div>
+                                {{ comment.author.first_name }}
+                                {{ comment.author.last_name }}</div>
                               <div class="">
                                 <h3 class="sr-only">Reviews</h3>
                                 <div class="flex items-center">
@@ -332,8 +343,8 @@
                               <div class="flex rtl items-center  pt-3">
                                 <StarIcon v-for="rate in [0, 1, 2, 3, 4]" :key="rate"
                                   :class="[(comment_rate / 20 > rate || comment_hover_rate / 20 > rate) ? 'text-indigo-600' : 'text-gray-300', 'h-7 w-7 m-1 flex-shrink-0']"
-                                  @click="comment_rate = (rate+1)*20" @mouseover="comment_hover_rate=(rate+1)*20"
-                                  @mouseleave="comment_hover_rate=comment_rate" aria-hidden="true" />
+                                  @click="comment_rate = (rate + 1) * 20" @mouseover="comment_hover_rate = (rate + 1) * 20"
+                                  @mouseleave="comment_hover_rate = comment_rate" aria-hidden="true" />
 
                               </div>
                               <label for="comment" class="sr-only ">نظر خود را بنویسید</label>
@@ -397,12 +408,12 @@ import {
 } from '@headlessui/vue'
 import LoginPopup from "@/components/section/LoginPopup.vue"
 import BuyProductPopup from "@/components/section/BuyProductPopup.vue"
-import { StarIcon,ShoppingBagIcon } from '@heroicons/vue/20/solid'
-import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon ,} from '@heroicons/vue/24/outline'
+import { StarIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
+import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon, } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
-import { NavigationStore } from '~/store/navigation'; 
+import { NavigationStore } from '~/store/navigation';
 export default {
   components: {
     LoginPopup,
@@ -444,25 +455,25 @@ export default {
     selected_color: null,
     // selectedColor: ref(product.colors[0]),
     comment_title: '',
-    show:false,
+    show: false,
     loading: true,
     comment_rate: 0,
-    is_sellable:false,
+    is_sellable: false,
     comment_hover_rate: 0,
   }),
   methods: {
-    setButtons(){
-      this.is_sellable = this.selected_color.count>0? true : false
+    setButtons() {
+      this.is_sellable = this.selected_color.count > 0 ? true : false
       console.log('set buttons', this.is_sellable);
-      if (this.is_sellable){
+      if (this.is_sellable) {
         NavigationStore().setButtons([
           {
-          'name':'خرید محصول',
-          'func': this.isLogin==true? ()=>{this.show = true} : this.openLogin,
-          'href': null,
-        }
+            'name': 'خرید محصول',
+            'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
+            'href': null,
+          }
         ])
-      }else{
+      } else {
         NavigationStore().setButtons([
         ])
       }
@@ -475,15 +486,15 @@ export default {
           Accept: "application/json",
         },
       }).then((response) => {
-        this.selected_color = response.data.colors?response.data.colors[0]:null
+        this.selected_color = response.data.colors ? response.data.colors[0] : null
         this.product = response.data
         this.loading = false
-        if(response.data.colors){
+        if (response.data.colors) {
           response.data.colors.forEach(element => {
-            element.count>0?this.is_sellable = true:''
+            element.count > 0 ? this.is_sellable = true : ''
           });
-        }else{
-          this.product.amount > 0? this.is_sellable = true : ''
+        } else {
+          this.product.amount > 0 ? this.is_sellable = true : ''
         }
         this.setButtons()
       })
