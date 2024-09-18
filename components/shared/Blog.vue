@@ -21,7 +21,7 @@
                     <p class="text-gray-600 test-n w-100  text-[14px] py-1 max-w-[90%] lg:max-w-[90%] font-light text-xs mt-2 " >{{ truncatedBody }}</p>
                   </div>
               </div>
-                <div class="text-xs flex-grow-0 text-indigo-500 lg:px-5 mt-auto text-md">{{ blog.created_at_jalali }}</div>
+                <div class="text-xs rtl flex-grow-0 text-indigo-500 lg:px-5 mt-auto text-md">{{ blog.created_at_jalali }}</div>
             </div>
             <!-- <div class="flex rtl ">
               <nuxt-link :to="'/p/blog/' + blog.id"

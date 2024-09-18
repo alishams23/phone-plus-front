@@ -12,7 +12,7 @@
                 <li class="p-4 font-body-2 text-gray-500 font-bold">محصولات</li>
                 <div class="rtl overflow-y-auto h-96">
                   <div v-for="item in products.results" :key="item.id" class="mb-3 px-2">
-                    <nuxt-link :to="'/p/product/' + item.id" @click="searchQuery = null">
+                    <nuxt-link :to="'/p/product/' + item.slug" @click="searchQuery = null">
                       <div class="flex items-start bg-white/60 rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
                           <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
@@ -42,7 +42,7 @@
                 <li class="p-4 font-body-1 text-gray-500 font-bold">محصولات دیجیتال</li>
                 <div class="rtl overflow-y-auto h-96">
                   <div v-for="item in digital_products.results" :key="item.id" class="mb-3 px-2" @click="searchQuery = null">
-                    <nuxt-link :to="'/p/digitalProduct/' + item.id">
+                    <nuxt-link :to="'/p/digitalProduct/' + item.slug">
                        <div class="flex items-start bg-white/60 rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
                           <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>

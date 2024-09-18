@@ -63,7 +63,7 @@
        <template v-if="person.contact">
          
          {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
-         <div class="group relative flex  items-center px-5 py-4" @click="$emit('get-selected-user', person);selected_user = person.contact.username">
+         <div class="group relative flex  items-center px-5 py-1 " @click="$emit('get-selected-user', person);selected_user = person.contact.username">
            <nuxt-link :to="sectionSupport != true ?'/p/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1 border-0">
              <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center border-0">
                <span class="relative inline-block flex-shrink-0">
@@ -73,8 +73,8 @@
                <div class="mr-4 truncate"> <!-- Adjusted from ml-4 to mr-4 -->
                  <p class="truncate px-4 text-sm font-medium " v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
                  <p class="truncate px-4 text-sm font-medium " v-else>{{ person.contact.full_name }}</p>
-                 <p class="truncate px-4 text-xs text-gray-400 pt-2" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
-                 <p class="truncate px-4 text-xs text-gray-400 pt-2" v-else>{{ '@' + person.contact.username }}</p>
+                 <p class="truncate px-4 text-xs text-gray-800 pt-2" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
+                 <p class="truncate px-4 text-xs text-gray-800 pt-2" v-else>{{ '@' + person.contact.username }}</p>
                </div>
              </a>
            </nuxt-link>
