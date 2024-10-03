@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
   }
   ,
-  css:['~/assets/css/main.scss','~/assets/css/WebFonts/css/fontiran.css',],
+  css:['~/assets/css/main.scss','~/assets/css/quill.css','~/assets/css/WebFonts/css/fontiran.css',],
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
