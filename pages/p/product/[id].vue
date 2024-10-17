@@ -459,13 +459,28 @@ export default {
     loading: true,
     comment_rate: 0,
     is_sellable: false,
+    is_admin: null,
     comment_hover_rate: 0,
   }),
   methods: {
+    openInNewTab() {
+        window.open(`https://panel.phoneplus.ir/products/${this.product.id}`, '_blank');
+    },
     setButtons() {
-      this.is_sellable = this.selected_color.count > 0 ? true : false
-      console.log('set buttons', this.is_sellable);
       if (this.is_sellable) {
+        this.is_admin?
+        NavigationStore().setButtons([
+          {
+            'name': 'ویرایش محصول',
+            'func': this.openInNewTab,
+            'href': null,
+          },
+          {
+            'name': 'خرید محصول',
+            'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
+            'href': null,
+          }
+        ]):
         NavigationStore().setButtons([
           {
             'name': 'خرید محصول',
@@ -474,6 +489,14 @@ export default {
           }
         ])
       } else {
+        this.is_admin?
+        NavigationStore().setButtons([
+          {
+            'name': 'ویرایش محصول',
+            'func': this.openInNewTab,
+            'href': null,
+          }
+        ]):
         NavigationStore().setButtons([
         ])
       }
@@ -484,10 +507,12 @@ export default {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
+          Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : '',
         },
       }).then((response) => {
         this.selected_color = response.data.colors ? response.data.colors[0] : null
         this.product = response.data
+        this.is_admin = response.data.is_admin
         this.loading = false
         if (response.data.colors) {
           response.data.colors.forEach(element => {

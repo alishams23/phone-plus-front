@@ -3,7 +3,7 @@
   <img :src="image" @click="setIsOpen(true)" style="width: 90%; height: 100%; position: relative;"
     class=" aspect-[2/1] rounded-[25px] object-cover " />
   <TransitionRoot as="template" :show="isOpen">
-    <Dialog as="div" class="relative z-50" @close="setIsOpen">
+    <Dialog :initialFocus="{}" as="div" class="relative z-50" @close="setIsOpen">
       <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
         leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
         <div class="fixed inset-0 bg-black bg-opacity-75 transition-opacity" />

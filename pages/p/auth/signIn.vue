@@ -1,6 +1,6 @@
 <template>
   <TransitionRoot as="template" :show="true">
-    <Dialog as="div" class="relative z-50">
+    <Dialog :initialFocus="{}" as="div" class="relative z-50">
       <LoginPopup
         @close="
           () => {
