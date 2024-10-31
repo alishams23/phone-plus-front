@@ -1,5 +1,5 @@
 <template>
-<div class="mb-5 ">
+<div class="mb-5 " v-if="loading == false">
 
 <div class="relative mx-2" >
   <div class="flex  justify-end pb-8 items-end">
@@ -19,7 +19,7 @@
           
           <div class="  flex flex-col items-center pb-5">
             
-            <img class=" w-24 backdrop-grayscale -mt-10 h-24 mb-3 rounded-3xl p-3 object-cover shadow-lg" :src="item.image" alt=""/>
+            <img class=" w-14 h-14 md:w-24 md:h-24 backdrop-grayscale -mt-10   mb-3 rounded-3xl p-3 object-cover shadow-3" :src="item.image" alt=""/>
 
             <h5 class="mb-1 text-md font-medium text-gray-900 ">{{ item.name }}</h5>
             <span class="text-xs text-gray-500">{{ item.username }}</span>

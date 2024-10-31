@@ -1,6 +1,14 @@
 <template>
+  <div class=" bg-white flex items-center justify-center my-20 mx-3" v-if="loading" >
+    <div class="grid grid-cols-1 md:grid-cols-4  gap-4 container mx-auto  h-[110px] md:h-[110px] overflow-hidden">
+      <!-- Placeholder cards to show while loading -->
+      <div v-for="n in 5" :key="n" class="my-5 bg-gray-300  h-[80px] md:h-[90px] w-full animate-pulse rounded-[17px]">
+        <!-- Empty box that represents loading card -->
+      </div>
+    </div>
+  </div>
 
-  <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
+  <!-- <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" >
     <div role="status">
       <span class="relative flex h-8 w-8">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
@@ -9,6 +17,7 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+   -->
   <div v-else>
     <div class="bg-white rounded-[30px] mt-[-50px] isolate overflow-hidden relative">
       <div class="flex pt-2  pb-12 justify-between items-center">
@@ -36,7 +45,7 @@
             class="relative isolate rounded-2xl cursor-pointer border border-gray-100 shadow-3 bg-white px-3 pt-2 shadow-sm "
             :style="{ backgroundImage: 'url(' + category.image[0].photo + ')', backgroundSize: 'cover' }">
             <div
-              class="rounded-2xl shadow-2 absolute inset-0  -z-10 bg-gradient-to-t  from-gray-900/70 to-gray-800/40" />
+              class="rounded-2xl  absolute inset-0  -z-10 bg-gradient-to-t  from-gray-900/70 to-gray-800/40" />
             <div class=" bg-blue-circle-categories-black  -z-10 rounded-2xl absolute inset-0  " />
 
             <div class="grid grid-cols-8 gap-4">

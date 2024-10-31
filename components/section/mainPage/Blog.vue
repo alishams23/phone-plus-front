@@ -1,5 +1,14 @@
 <template>
-  <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
+
+<div class="py-[60px] bg-white flex items-center justify-center mt-20 mx-3" v-if="loading">
+    <div class="grid grid-cols-1 md:grid-cols-2  gap-4 container mx-auto  h-[220px] md:h-[280px] overflow-hidden">
+      <!-- Placeholder cards to show while loading -->
+      <div v-for="n in 5" :key="n" class="my-5 bg-gray-300  h-[200px] md:h-[260px] w-full animate-pulse rounded-[25px]">
+        <!-- Empty box that represents loading card -->
+      </div>
+    </div>
+  </div>
+  <!-- <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" >
         <div role="status">
             <span class="relative flex h-8 w-8">
                 <span
@@ -8,7 +17,9 @@
             </span>
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> -->
+
+
   <div v-else>
     <div class="flex  mt-[-20px] justify-between items-center">
       <div class="rtl mx-10">

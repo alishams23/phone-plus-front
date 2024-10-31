@@ -1,8 +1,17 @@
 <template>
-  <div class=" w-full h-[120px] md:h-[300px] mt-[-20px] flex">
+  <div class=" w-full h-[130px] md:h-[300px] mt-[-20px] flex md:inline-block" v-if="loading == false">
       <img src="/images/banner2.webp" class="w-full h-full object-cover object-center  " alt="">
     </div>
-<div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
+
+    <div class="py-[60px] bg-white flex items-center justify-center mx-3" v-if="loading">
+    <div class="grid grid-cols-2 md:grid-cols-5  gap-4 container mx-auto  h-[220px] md:h-[280px] overflow-hidden">
+      <!-- Placeholder cards to show while loading -->
+      <div v-for="n in 5" :key="n" class="my-5 bg-gray-300  h-[200px] md:h-[260px] w-full animate-pulse rounded-[25px]">
+        <!-- Empty box that represents loading card -->
+      </div>
+    </div>
+  </div>
+<!-- <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" >
         <div role="status">
             <span class="relative flex h-8 w-8">
                 <span
@@ -11,7 +20,7 @@
             </span>
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> -->
   <div  v-else >
     <div class="">
       <div class="flex pt-3 pb-5 justify-between items-center mt-[-10px]">

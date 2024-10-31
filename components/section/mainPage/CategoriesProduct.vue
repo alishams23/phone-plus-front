@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
+  <!-- <div class="pb-16 py-[60px] pb-[60px]  flex items-center justify-center" v-if="loading">
         <div role="status">
             <span class="relative flex h-8 w-8">
                 <span
@@ -8,7 +8,17 @@
             </span>
             <span class="sr-only">Loading...</span>
         </div>
+    </div> -->
+
+    <div class=" bg-white flex items-center justify-center mt-20 mx-3" v-if="loading">
+    <div class="grid grid-cols-2 md:grid-cols-5  gap-4 container mx-auto  h-[80px] md:h-[80px] overflow-hidden">
+      <!-- Placeholder cards to show while loading -->
+      <div v-for="n in 5" :key="n" class="my-5 bg-gray-300  h-[60px] md:h-[60px] w-full animate-pulse rounded-[17px]">
+        <!-- Empty box that represents loading card -->
+      </div>
     </div>
+  </div>
+
   <div v-else>
     <div v-if="data != null" data-aos="fade-up" data-aos-duration="1000">
       <div class="flex pt-10 pb-10 justify-between items-center">
@@ -23,10 +33,10 @@
           </div>
         </div>
       </div>
-      <div class="container mx-auto grid grid-cols-2 gap-4 sm:grid-cols-5 pb-20 rtl "
+      <div class="container mx-auto grid grid-cols-2 gap-4 sm:grid-cols-5 pb-10 rtl "
         :style="{ backgroundImage: '', backgroundSize: 'cover' }">
         <div v-for="category in data" :key="category.id"
-          class="shadow-2  relative isolate  flex items-center  rounded-[19px] cursor-pointer border border-gray-100 shadow-3 bg-white px-6 py-5 shadow-sm "
+          class="  relative isolate  flex items-center rounded-[15px] md:rounded-[19px] cursor-pointer border border-gray-100 shadow-3 bg-white px-6 py-4 md:py-5 shadow-sm "
           :style="{ backgroundImage: 'url(' + category.image + ')', backgroundSize: 'cover' }">
           <div class="rounded-lg absolute inset-0 -z-10 bg-gradient-to-l  from-white from-20% via-white/40" />
           <div class=" bg-blue-circle-categories  absolute inset-0  " />
@@ -36,7 +46,7 @@
           <div class="min-w-0 flex-1 ">
             <a @click="$router.push('/p/search/?category_product=' + category.id);" class="focus:outline-none">
               <span class="absolute inset-0" aria-hidden="true" />
-              <p class="text-sm font-medium text-gray-900 px-3">{{ category.title }}</p>
+              <p class="text-xs md:text-sm font-medium text-gray-900 px-3">{{ category.title }}</p>
             </a>
           </div>
         </div>

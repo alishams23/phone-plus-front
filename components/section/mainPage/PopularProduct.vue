@@ -1,11 +1,19 @@
 <template>
-  <div class="py-[60px] bg-white flex items-center justify-center" v-if="loading">
+  <!-- <div class="py-[60px] bg-white flex items-center justify-center" v-if="loading">
     <div role="status">
       <span class="relative flex h-8 w-8">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-8 w-8 bg-indigo-500"></span>
       </span>
       <span class="sr-only">Loading...</span>
+    </div>
+  </div> -->
+  <div class="py-[60px] bg-white flex items-center justify-center mt-20 mx-3" v-if="loading">
+    <div class="grid grid-cols-2 md:grid-cols-5  gap-4 container mx-auto  h-[220px] md:h-[280px] overflow-hidden">
+      <!-- Placeholder cards to show while loading -->
+      <div v-for="n in 5" :key="n" class="my-5 bg-gray-300  h-[200px] md:h-[260px] w-full animate-pulse rounded-[25px]">
+        <!-- Empty box that represents loading card -->
+      </div>
     </div>
   </div>
   <div v-else>
@@ -44,44 +52,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class=" isolate overflow-hidden relative">
-      <div>
-        <div
-          class=" absolute inset-0 -z-1000 bg-gradient-to-l bg-black from-black from-10% via-blue-800/80 via-black/100" />
-        <div class=" absolute inset-0 -z-1000  bg-blue-circle-best-product" />
-        <div class="relative">
-          <div class="flex pt-3 justify-between items-center">
-            <div class="rtl px-3">
-              <a @click="$router.push('/p/search/?sort_product=' + '-rate');"
-                class="text-gray-100 text-sm mg:text-lg rtl pt-3 cursor-pointer flex items-center  ">
-                بیشتر
-                <span aria-hidden="true" class="px-3 pt-1"> &larr;</span>
-              </a>
-            </div>
-            <div class="text-gray-100 font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
-              محبوب ترین محصولات
+   
 
-              <div
-                class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-gray-300 to-white  flex justify-center  items-center rounded-xl">
-                <ShoppingBagIcon class="h-5 text-indigo-600" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1000">
-          <Carousel :breakpoints="breakpoints" :wrapAround="true" :transition="500" class="pt-0">
-            <Slide v-for="product in best_products" :key="product">
-              <Product :data="product" class="my-10" />
-            </Slide>
-            <template #addons>
-              <Navigation />
-            </template>
-</Carousel>
-</div>
-</div>
-</div> -->
-
-    <div class=" w-full h-[120px] md:h-[300px] mt-[-30px] flex">
+    <div class=" w-full h-[130px] md:h-[300px] mt-[-30px] flex ">
       <img src="/images/banner.webp" class="w-full h-full object-cover object-center  " alt="">
     </div>
   </div>

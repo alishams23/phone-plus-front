@@ -195,7 +195,7 @@
                               </p>
                             </div>
                           </div>
-
+                         
                           <div v-if="selected_color" class="ltr flex items-end flex-col">
 
 
@@ -218,7 +218,12 @@
 
                         </div>
                         <!-- Reviews -->
-
+                        <div class="flex flex-wrap rtl">
+                                            <div class="text-sm flex flex-row items-center bg-gray-100 my-2 text-gray-500 py-1 px-2 mx-1 rounded-full hover:bg-gray-300 hover:text-gray-600"
+                                                v-for="category in product.category" :key="category.id">
+                                                <p @click="$router.push(`/p/search/?category_product=${category.id}&tab=0`)" class="px-2 cursor-pointer">{{ category.title }}</p>
+                                            </div>
+                          </div>
 
 
 

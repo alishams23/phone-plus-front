@@ -1,5 +1,5 @@
 <template>
-  <div :class="width ? `${width}` : 'w-[15rem]'" class="shadow-2 bg-gray-100 border relative isolate my-20  mx-5  rounded-2xl">
+  <div :class="width ? `${width}` : 'w-[15rem]'" class=" bg-gray-100 border relative isolate my-20  mx-5  rounded-2xl">
     <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute  rounded-2xl inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  rounded-2xl from-white from-10% via-white/40" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  rounded-2xl bg-white/90" />

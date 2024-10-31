@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="flex justify-end px-2">
                                         <div class="flex flex-wrap rtl">
-                                            <div class="text-sm flex flex-row items-center bg-gray-100 my-2 text-gray-500 py-1 px-2 mx-1 rounded-full hover:bg-gray-300 hover:text-gray-600"
+                                            <div class="text-sm flex flex-row items-center bg-gray-200 my-2 text-gray-500 py-1 px-2 mx-1 rounded-full hover:bg-gray-300 hover:text-gray-600"
                                                 v-for="category in blog.category" :key="category.id">
                                                 <p @click="$router.push(`/p/search/?category_blog=${category.id}&tab=2`)" class="px-2 cursor-pointer">{{ category.title }}</p>
                                             </div>
