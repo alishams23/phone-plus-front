@@ -106,7 +106,7 @@ export default {
     useUserStore().status=='s'? 
       NavigationStore().setButtons([
         {
-          'name': 'محصولات محبوب',
+          'name': 'محصولات فیزیکی محبوب',
           'func': null,
           'href': `/p/search/?sort_product=-rate`,
         },
@@ -123,7 +123,7 @@ export default {
         :
         NavigationStore().setButtons([
         {
-          'name': 'محصولات محبوب',
+          'name': 'محصولات فیزیکی محبوب',
           'func': null,
           'href': `/p/search/?sort_product=-rate`,
         },

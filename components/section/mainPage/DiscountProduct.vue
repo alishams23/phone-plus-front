@@ -32,7 +32,7 @@
               </a>
             </div>
             <div class="text-black font-bold text-md lg:text-xl text-right px-4 pt-4 flex items-center justify-end">
-              محصولات تخفیف خورده
+              محصولات فیزیکی تخفیف خورده
 
               <div
               class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">

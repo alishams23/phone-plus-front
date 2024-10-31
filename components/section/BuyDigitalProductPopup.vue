@@ -1,7 +1,7 @@
 <template>
     <div>
         <TransitionRoot as="template" :show="show">
-            <Dialog as="div" class="relative z-10" @close="$emit('update:show', false)">
+            <Dialog :initialFocus="{}" as="div" class="relative z-10" @close="$emit('update:show', false)">
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
                     enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
                     <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity" />
@@ -55,7 +55,7 @@
                                     
                                                         </dd>
                                                     </div>
-                                                    <form @submit.prevent="checkDiscountCode">
+                                                    <form @submit.prevent="checkDiscountCode" v-if="show == true">
                                                         <div class="px-4 py-3 md:py-3 grid grid-cols-6 gap-4 px-0">
                                                             <dd
                                                                 class="mt-1 grid grid-cols-2 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-6 md:col-span-6  mt-0">
@@ -67,8 +67,9 @@
                                                                                 کد تخفیف
                                                                             </label>
                                                                             <input required
+                                                                             :autofocus="false"
                                                                             class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                                            id="grid-city" type="text" v-model="discount_code">
+                                                                            id="grid-city" type="text" v-model="discount_code" >
                                                                             <p class="text-xs md:text-sm text-red-600" >
                                                                                 {{error}}
                                                                             </p>

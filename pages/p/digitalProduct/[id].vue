@@ -16,7 +16,6 @@
     </div>
   </div>
   <div v-else v-if="product != null" data-aos="fade-down">
-
     <div class="min-h-full">
 
       <!-- Top Animation -->
@@ -407,6 +406,7 @@ export default {
     loading: true,
     show: false,
     product: null,
+    is_admin: null,
     is_sellable: true,
     btn_buy_loading: false,
     // selectedColor: ref(product.colors[0]),
@@ -415,8 +415,24 @@ export default {
     comment_hover_rate: 0,
   }),
   methods: {
+    openInNewTab() {
+        window.open(`https://panel.phoneplus.ir/digitalProducts/${this.product.id}`, '_blank');
+    },
     setButtons() {
       if (this.is_sellable) {
+        this.is_admin?
+        NavigationStore().setButtons([
+          {
+            'name': 'ویرایش محصول',
+            'func': this.openInNewTab,
+            'href': null,
+          },
+          {
+            'name': 'خرید / دانلود',
+            'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
+            'href': null,
+          }
+        ]):
         NavigationStore().setButtons([
           {
             'name': 'خرید / دانلود',
@@ -425,6 +441,14 @@ export default {
           }
         ])
       } else {
+        this.is_admin?
+        NavigationStore().setButtons([
+          {
+            'name': 'ویرایش محصول',
+            'func': this.openInNewTab,
+            'href': null,
+          }
+        ]):
         NavigationStore().setButtons([
         ])
       }
@@ -435,10 +459,12 @@ export default {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
+          Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : '',
         },
       }).then((response) => {
         console.log('data', response.data);
         this.product = response.data
+        this.is_admin = response.data.is_admin
         this.loading = false
         if (this.product.type == 'license') {
           if (this.product.inventory_status == false) {

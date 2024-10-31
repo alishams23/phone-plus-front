@@ -63,7 +63,7 @@
                     <ul class="bg-glass-2 rtl rounded-xl shadow-xl h-96 w-full">
                       <div class="flex">
                         <div v-if="products.results.length > 0" class="flex-1">
-                          <li class="p-4 font-body-2 text-gray-700 font-bold">محصولات</li>
+                          <li class="p-4 font-body-2 text-gray-700 font-bold">محصولات فیزیکی</li>
                           <div class="rtl overflow-y-auto h-96">
                             <div v-for="item in products.results" :key="item.id" class="mb-3 px-2">
                               <nuxt-link :to="'/p/product/' + item.slug" @click="searchQuery = null">

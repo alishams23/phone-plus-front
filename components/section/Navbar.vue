@@ -3,7 +3,7 @@
   <!-- <div class="bg-glass py-2 fixed   w-full top-0" style="z-index: 9999999;">
     
     <TransitionRoot as="template" :show="open">
-      <Dialog as="div" class="relative z-40 lg:hidden" @close="open = false">
+      <Dialog :initialFocus="{}" as="div" class="relative z-40 lg:hidden" @close="open = false">
         <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
           <div class="fixed inset-0 bg-black bg-opacity-25" />
         </TransitionChild>

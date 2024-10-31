@@ -9,7 +9,7 @@
           <ul class="bg-glass-2 rtl rounded-xl shadow-xl h-full w-full">
             <div class="flex">
               <div v-if="products.results.length > 0" class="flex-1">
-                <li class="p-4 font-body-2 text-gray-500 font-bold">محصولات</li>
+                <li class="p-4 font-body-2 text-gray-500 font-bold">محصولات فیزیکی</li>
                 <div class="rtl overflow-y-auto h-96">
                   <div v-for="item in products.results" :key="item.id" class="mb-3 px-2">
                     <nuxt-link :to="'/p/product/' + item.slug" @click="searchQuery = null">
@@ -233,7 +233,7 @@
 
 
   <TransitionRoot :show="open_support">
-    <Dialog as="div" class="relative z-[12]" @close="open_support = false">
+    <Dialog :initialFocus="{}" as="div" class="relative z-[12]" @close="open_support = false">
       <div class="fixed inset-0" />
 
       <div class="fixed inset-0 overflow-hidden">
@@ -253,7 +253,7 @@
     </Dialog>
   </TransitionRoot>
   <TransitionRoot as="template" :show="open">
-    <Dialog as="div" class="relative z-50" @close="changeStateLogin(false)">
+    <Dialog :initialFocus="{}" as="div" class="relative z-50" @close="changeStateLogin(false)">
       <LoginPopup @close="() => { changeStateLogin(false) }" />
     </Dialog>
   </TransitionRoot>

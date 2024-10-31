@@ -116,8 +116,8 @@ export default {
       
       items: [
         { name: 'اطلاعات کاربری', href: '/p/dashboard/userPanel/', page_name: 'userPanel' },
-        { name: 'محصولات دریافت شده', href: '/p/dashboard/productOrdersReceived/', page_name: 'productOrdersReceived' },
-        { name: 'محصولات درحال آماده سازی و ارسال', href: '/p/dashboard/productOrders/', page_name: 'productOrders' },
+        { name: 'محصولات فیزیکی دریافت شده', href: '/p/dashboard/productOrdersReceived/', page_name: 'productOrdersReceived' },
+        { name: 'محصولات فیزیکی درحال آماده سازی و ارسال', href: '/p/dashboard/productOrders/', page_name: 'productOrders' },
         { name: 'محصولات دیجیتال خریداری شده', href: '/p/dashboard/allDigitalProductOrders/', page_name: 'allDigitalProductOrders' },
         { name: 'خروج', href: '/p/auth/logOut/', page_name: 'logOut' },
       ], 

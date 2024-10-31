@@ -11,7 +11,7 @@
     </div>
   <div v-if="data.length != 0" class=" ">
     <div class="text-gray-800   font-bold text-xl text-right pe-6 pt-3 flex items-center justify-end">
-      محصولات پین شده
+      محصولات فیزیکی پین شده
 
       <div class="ml-2 lg:mx-5  h-12 w-12 bg-gradient-to-b from-indigo-500 to-indigo-700  flex justify-center  items-center rounded-xl">
         <StarIcon class="h-5 text-white"/>

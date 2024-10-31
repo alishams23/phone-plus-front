@@ -194,7 +194,7 @@
                     </div>
                   </div>
                   <div v-if="selected_tab == 3" data-aos="fade-down">
-                    <div class="rtl font-bold text-2xl px-10 ">محصولات</div>
+                    <div class="rtl font-bold text-2xl px-10 ">محصولات فیزیکی</div>
                     <div v-if="products.length > 0">
                       <div class="pb-7 mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative isolate ">
                         <div v-for="item in products" :key="item" class="group py-3 relative">
@@ -378,7 +378,7 @@ blogPage:1,
     open_filter_digitalProduct: false,
     open_filter_blog: false,
     tabs: [
-      { name: 'محصولات', href: '#', id: 0 },
+      { name: 'محصولات فیزیکی', href: '#', id: 0 },
       { name: 'محصولات دیجیتال', href: '#', id: 1 },
       { name: 'مقاله ها', href: '#', id: 2 },
       { name: 'همه', href: '#', id: 3 },
@@ -417,7 +417,7 @@ blogPage:1,
 
     NavigationStore().setButtons([
       {
-        'name': 'محصولات',
+        'name': 'محصولات فیزیکی',
         'func': () => { this.selected_tab = 0 },
         'href': null,
       },
