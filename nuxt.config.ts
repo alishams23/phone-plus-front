@@ -21,9 +21,9 @@ export default defineNuxtConfig({
     'vue3-carousel-nuxt',
     'nuxt-swiper',
     'nuxt-aos',
-    "nuxt-marquee"
-
     // 'nuxt-swiper'
+    "nuxt-marquee",
+    '@vite-pwa/nuxt',
   ],
   
   devServer: {
@@ -31,5 +31,47 @@ export default defineNuxtConfig({
     host:"0"
   },
 
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+    lang: 'fa',
+    name: 'phone plus',
+    orientation: 'portrait',
+    background_color: '#FFFFFF',
+    theme_color: '#A020F0',
+    short_name: 'فون پلاس',
+    description: '  پنل خریداران فون پلاس',
+    start_url: '/',
+    icons: [
+      {
+        src: '/pwa-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/pwa-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+      {
+        src: '/pwa-144x144.png',
+        sizes: '144x144',
+        type: 'image/png',
+        purpose: 'any',
+      },
+    ],
+    },
+     
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+    },
+    client: {
+      installPrompt: true,
+     
+    },
+ 
 
+  /* your pwa options */
+},
 })
