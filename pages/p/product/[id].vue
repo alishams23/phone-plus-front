@@ -16,6 +16,10 @@
     </div>
   </div>
   <div v-else v-if="product != null" data-aos="fade-down" class="overflow-x-hidden ">
+     <Head>
+        <Title>{{ product.title }} </Title>
+      
+     </Head>
     <div class="min-h-full">
       <!-- Top Animation -->
       <div class="relative">

@@ -58,7 +58,7 @@
                         class="text-xs font-light ps-1">فروشنده : </span>{{ category.shop.name }} </p>
                   </nuxt-link>
                 </div>
-                <p class=" ml-auto text-md text-[35px] text-gray-200 ps-4">{{ category.price }}<span
+                <p class=" ml-auto text-md text-[35px] text-gray-200 ps-4">{{ parseInt(category.discount != 0 ? category.price*(100-category.discount)/100 : category.price) }}<span
                     class="text-xs font-light ps-1">تومان</span></p>
                 <div class=" w-full mt-2">
                 </div>

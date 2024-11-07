@@ -54,9 +54,8 @@
             </div>
             <div class=" md:w-8/12 mx-4 md:mx-20 my-10">
               <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1000"
-                class="text-white font-black text-center md:text-right text-lg md:text-2xl">
+                class="text-white font-black text-center md:text-right text-lg md:text-2xl truncate">
                 {{ digital_products[index].title }}
-
               </div>
               <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1100"
                 class="flex items-center justify-center md:justify-end pt-2">

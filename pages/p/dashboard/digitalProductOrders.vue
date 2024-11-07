@@ -71,13 +71,15 @@
                             <div v-if="lastOrder.digital_product.file" class="flex justify-center pe-4">
                             <a
                                 :href="lastOrder.digital_product.file"
-                                class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                                class="inline-flex items-center justify-center px-5 mx-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
                                 دانلود فایل
                             </a>
+                            </div>
+                            <div v-if="lastOrder.digital_product.link_file" class="flex justify-center pe-4">
                             <a
                                 :href="lastOrder.digital_product.link_file"
                                 class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
