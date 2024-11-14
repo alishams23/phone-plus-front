@@ -118,7 +118,7 @@
                         </div>
                         </div>
                             <transition name="fade">
-                                <div v-if="hasValidInstructions" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
+                                <div v-if="!showInstructionsId.includes(lastOrder.id) && hasValidInstructions" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
                                     <div v-html="lastOrder.digital_product.instructions"></div>
                                 </div>
                             </transition>
