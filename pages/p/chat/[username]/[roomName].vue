@@ -23,7 +23,7 @@
 
           <div v-for="data, index in messages" :key="data.id + 'message-chat-'"
             :class="data.username == userSelf ? 'flex-row-reverse' : ''" class="flex m-3 lg:items-center">
-            <div class="w-8 h-8 hidden sm:block"></div>
+            <div class="w-8 h-8 hidden sm:block" :class="index==0?'mt-10':'mt-5'"></div>
             <div class=" px-5  relative h-full" :class="data.username == userSelf
                 ? 'text-white py-1 bg-indigo-600 rounded-full rounded-br-none shadow-lg text-right'
                 : 'bg-gray-100 py-2 rounded-full rounded-bl-none text-right relative'
