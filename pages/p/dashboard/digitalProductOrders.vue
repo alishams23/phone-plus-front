@@ -69,7 +69,7 @@
                             </div>
                             </div>
                             <div class="flex justify-center pe-4" >
-                                <div v-if="lastOrder.digital_product.file!=null || lastOrder.digital_product.file!='null'" class="flex justify-center pe-4">
+                                <div v-if="lastOrder.digital_product.file!=null && lastOrder.digital_product.file!='null'" class="flex justify-center pe-4">
                                 <a
                                     :href="lastOrder.digital_product.file"
                                     class="inline-flex items-center justify-center px-5 mx-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
@@ -80,7 +80,7 @@
                                     دانلود فایل
                                 </a>
                                 </div>
-                                <div v-if="lastOrder.digital_product.link_file!=null || lastOrder.digital_product.link_file!='null'" class="flex justify-center pe-4">
+                                <div v-if="lastOrder.digital_product.link_file!=null && lastOrder.digital_product.link_file!='null'" class="flex justify-center pe-4">
                                 <a
                                     :href="lastOrder.digital_product.link_file"
                                     class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
@@ -108,16 +108,17 @@
                                     {{ lastOrder.jalali_time }}
                                 </p>
                             </div>
-                            <div v-if="lastOrder.digital_product.instructions!='null'" class="flex justify-end pe-4 mt-4">
+                            <div v-if="hasValidInstructions" class="flex justify-end pe-4 mt-4">
                                 <div @click="toggleInstructions(lastOrder.id)" 
                                     class="inline-flex items-center justify-center px-5 pb-3 mb-3 border border-transparent text-base font-medium rounded-md text-indigo-600 cursor-pointer hover:text-indigo-700">
                                     نکات ضروری برای استفاده
                                 </div>
                             </div>
+
                         </div>
                         </div>
                             <transition name="fade">
-                                <div v-if="!showInstructionsId.includes(lastOrder.id) && lastOrder.digital_product.instructions!='null'" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
+                                <div v-if="hasValidInstructions" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
                                     <div v-html="lastOrder.digital_product.instructions"></div>
                                 </div>
                             </transition>
@@ -193,6 +194,9 @@ export default {
                 return null;
             }
             return this.orders[0];
+        },
+        hasValidInstructions() {
+            return this.lastOrder.digital_product.instructions.trim() !== '<p class="ql-align-right ql-direction-rtl">null</p>';
         }
     },
     mounted() {

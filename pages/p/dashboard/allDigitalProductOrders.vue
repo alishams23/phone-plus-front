@@ -108,7 +108,7 @@
                                     {{ data.jalali_time }}
                                 </p>
                             </div>
-                            <div v-if="data.digital_product.instructions != 'null'" class="flex justify-end pe-4 mt-4">
+                            <div v-if="hasValidInstructions" class="flex justify-end pe-4 mt-4">
                                 <div @click="toggleInstructions(data.id)" 
                                     class="inline-flex items-center justify-center px-5 pb-3 mb-3 border border-transparent text-base font-medium rounded-md text-indigo-600 cursor-pointer hover:text-indigo-700">
                                     نکات ضروری برای استفاده
@@ -117,7 +117,7 @@
                         </div>
                         </div>
                             <transition name="fade">
-                                <div v-if="!showInstructionsId.includes(data.id) && data.digital_product.instructions != 'null'" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
+                                <div v-if="hasValidInstructions" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
                                     <div v-html="data.digital_product.instructions"></div>
                                 </div>
                             </transition>
@@ -188,8 +188,8 @@ export default {
         },
     },
     computed: {
-        shouldRenderElement() {
-            return this.data.digital_product.instructions !== '<p class="ql-align-right ql-direction-rtl"><br></p>';
+        hasValidInstructions() {
+            return this.data.digital_product.instructions.trim() !== '<p class="ql-align-right ql-direction-rtl">null</p>';
         }
     },
     mounted() {
