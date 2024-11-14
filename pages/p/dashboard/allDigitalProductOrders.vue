@@ -108,7 +108,7 @@
                                     {{ data.jalali_time }}
                                 </p>
                             </div>
-                            <div v-if="hasValidInstructions" class="flex justify-end pe-4 mt-4">
+                            <div v-if="hasValidInstructions(data)" class="flex justify-end pe-4 mt-4">
                                 <div @click="toggleInstructions(data.id)" 
                                     class="inline-flex items-center justify-center px-5 pb-3 mb-3 border border-transparent text-base font-medium rounded-md text-indigo-600 cursor-pointer hover:text-indigo-700">
                                     نکات ضروری برای استفاده
@@ -117,7 +117,7 @@
                         </div>
                         </div>
                             <transition name="fade">
-                                <div v-if="hasValidInstructions" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
+                                <div v-if="showInstructionsId.includes(data.id) && hasValidInstructions(data)" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
                                     <div v-html="data.digital_product.instructions"></div>
                                 </div>
                             </transition>
@@ -152,6 +152,9 @@ export default {
         }
     },
     methods: {
+        hasValidInstructions(data) {
+                return data.digital_product.instructions.trim() !== '<p class="ql-align-right ql-direction-rtl">null</p>';
+        },
         toggleInstructions(id) {
             const index = this.showInstructionsId.indexOf(id);
             if (index > -1) {
@@ -186,11 +189,7 @@ export default {
             const ending = description.length > charLimit ? '...' : '';
             return description.substring(0, charLimit) + ending;
         },
-    },
-    computed: {
-        hasValidInstructions() {
-            return this.data.digital_product.instructions.trim() !== '<p class="ql-align-right ql-direction-rtl">null</p>';
-        }
+
     },
     mounted() {
         if (useUserStore().userToken == null){
