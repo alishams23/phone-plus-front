@@ -5,8 +5,7 @@
       <div class="xl:grid xl:grid-cols-3 xl:gap-8">
         <div class="space-y-8">
           <!-- <img class="h-7" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Company name" /> -->
-          <p class="text-sm leading-6 text-gray-300 rtl">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-            استفاده از طراحان گرافیک است.</p>
+          <p class="text-sm leading-6 text-gray-300 rtl">فون پلاس - بستری برای خرید و فروش آنلاین محصولات فیزیکی و دیجیتال. فروشگاه خود را ایجاد کنید و به راحتی محصولات خود را به هزاران مشتری عرضه کنید.</p>
           <div class="flex space-x-6">
             <a v-for="item in navigation.social" :key="item.name" :href="item.href"
               class="text-gray-500 hover:text-gray-400">
@@ -19,7 +18,7 @@
 
 
           <div>
-            <h3 class="text-sm font-semibold leading-6 text-white">صفحات محبوب</h3>
+            <!-- <h3 class="text-sm font-semibold leading-6 text-white">صفحات محبوب</h3> -->
             <ul role="list" class="mt-6 space-y-4">
               <li v-for="item in navigation.support" :key="item.name">
                 <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
@@ -39,7 +38,7 @@
         </div>
       </div>
       <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 mb-12">
-        <p class="text-xs leading-5 text-gray-400">&copy; فون پلاس ۱۴۰۲</p>
+        <p class="text-xs leading-5 text-gray-400">&copy; فون پلاس ۱۴۰۳</p>
       </div>
     </div>
   </footer>
@@ -50,9 +49,9 @@ import { defineComponent, h } from 'vue'
 
 const navigation = {
   support: [
-    { name: 'صفحه ی یک ', href: '#' },
-    { name: 'صفحه ی دو ', href: '#' },
-    { name: 'صفحه ی سه ', href: '#' },
+    { name: 'فروشنده شوید', href: '/p/start_selling' },
+    { name: 'محصولات دیجیتال', href: '/p/search/?tab=1' },
+    { name: ' محصولات فیزیکی', href: '/p/search/?tab=0' },
    
   ],
   company: [

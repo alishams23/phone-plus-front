@@ -1,9 +1,12 @@
 <template>
+    <VitePwaManifest />
+    <NuxtLoadingIndicator />
   <Head>
         <Title>فون پلاس | phone plus</Title>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
      </Head>
+   
   <div>
     <NuxtLayout>
       <div>

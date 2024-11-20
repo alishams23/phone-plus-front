@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   ,
   css:['~/assets/css/main.scss','~/assets/css/WebFonts/css/fontiran.css',],
   modules: [
+    '@vite-pwa/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     'vue3-carousel-nuxt',
@@ -23,7 +24,6 @@ export default defineNuxtConfig({
     'nuxt-aos',
     // 'nuxt-swiper'
     "nuxt-marquee",
-    '@vite-pwa/nuxt',
   ],
   
   devServer: {
@@ -34,32 +34,32 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-    lang: 'fa',
-    name: 'phone plus',
-    orientation: 'portrait',
-    background_color: '#FFFFFF',
-    theme_color: '#A020F0',
-    short_name: 'فون پلاس',
-    description: '  پنل خریداران فون پلاس',
-    start_url: '/',
-    icons: [
-      {
-        src: '/pwa-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
-      {
-        src: '/pwa-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        src: '/pwa-144x144.png',
-        sizes: '144x144',
-        type: 'image/png',
-        purpose: 'any',
-      },
-    ],
+      lang: 'fa',
+      name: 'phone plus',
+      orientation: 'portrait',
+      background_color: '#FFFFFF',
+      theme_color: '#A020F0',
+      short_name: 'فون پلاس',
+      description: '  پنل خریداران فون پلاس',
+      start_url: '/',
+      icons: [
+        {
+          src: '/pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: '/pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+        {
+          src: '/pwa-144x144.png',
+          sizes: '144x144',
+          type: 'image/png',
+          purpose: 'any',
+        },
+      ],
     },
      
     workbox: {
