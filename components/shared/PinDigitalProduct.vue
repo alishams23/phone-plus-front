@@ -11,16 +11,18 @@
         </div>
       </div>
       <div>
-        <h3 class="mt-3 rtl text-sm md:text-lg lg:pe-4 py-2 font-semibold leading-6 text-black overflow-hidden whitespace-nowrap text-ellipsis">
+        <h3 class="mt-3 px-3 rtl text-center text-sm md:text-lg lg:pe-4 py-2 font-semibold leading-6 text-black overflow-hidden h-[60px]  md:h-[65px] whitespace- nowrap line-clamp-2">
           <a>
             {{ data.title }}
           </a>
         </h3>
-        <div :class="data.discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-gray-300 font-semibold">
-          {{ data.discount != 0 ? data.price : '&nbsp; ' }}
-        </div>
-        <div class="lg:pe-4 pb-10">
-          {{ parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price) }}
+        <div class="flex flex-col justify-center text-center" >
+          <div :class="data.discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-gray-300 font-semibold">
+            {{ data.discount != 0 ? data.price : '&nbsp; ' }}
+          </div>
+          <div class="lg:pe-4 pb-10">
+            {{ parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price) }}
+          </div>
         </div>
       
         <div class="absolute bottom-0 flex left-0 items-end justify-end overflow-hidden rounded-lg pe-4 ps-4 pb-2">
@@ -29,7 +31,7 @@
           </div>
         </div> 
       </div>
-      <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">
+      <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg px-4 pb-3">
         <div class="flex items-center justify-end mt-2">
             
             <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
