@@ -1,5 +1,5 @@
 <template>
-    <div class="pb-16 py-[200px] pb-[800px]  flex items-center justify-center" v-if="loading">
+    <div class="pb-16 py-[200px] pb-[800px] bg-white   flex items-center justify-center " v-if="loading">
         <div role="status">
             <span class="relative flex h-8 w-8">
                 <span

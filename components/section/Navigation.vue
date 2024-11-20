@@ -74,8 +74,8 @@
       </transition>
     </div>
     
-    <div class="fixed mx-auto mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-8  ">
-      <div @click="handleClick" class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[23px] px-3 justify-center hidden  text-white md:flex">
+    <div class="fixed mx-auto mb-2 md:mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-2 md:px-8  ">
+      <div @click="handleClick" class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[200px] px-3 justify-center hidden  text-white md:flex">
         <div class=" block px-1 text-xs  ">
          
           پشتیبانی
@@ -84,7 +84,7 @@
       </div>
       <transition name="fade" >
         <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)" 
-          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block transition-all duration-500 rounded-[23px]  justify-center min-w-0  text-indigo-800 md:flex">
+          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block transition-all duration-500 rounded-[200px]  justify-center min-w-0  text-indigo-800 md:flex">
           
           <div class=" rounded-full h-full px-4">
             <div class="relative  ">
@@ -110,24 +110,24 @@
       </transition>
       <div
     :class="((currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true))? 'w-[100%] md:w-[80%]': 'w-[2000%]' "
-    class="bg-glass-3 ml-0 md:ml-3 transition-all duration-1000 ease-in-out px-8 py-2 flex flex-row items-center justify-between rounded-[23px] rtl">
+    class="bg-glass-3 ml-0 md:ml-3 transition-all duration-1000 ease-in-out px-4 lg:px-8 py-2 flex flex-row items-center justify-between rounded-[200px] rtl">
 
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-            class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <HomeIcon class=" w-5 " />
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
           <button @click="isLogin ? $router.push('/p/dashboard/userPanel/') : changeStateLogin(true)"
             :class="currentRouteCheck('userPanel') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-            class="p-2.5   transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5   transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <UserIcon class=" w-5 " />
           </button>
           <button @click="isLogin ? $router.push('/p/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('productOrders') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-            class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <ShoppingCartIcon class=" w-5 " />
           </button>
           <div v-if="buttons.length > 0 " v-for="button in buttons" :key="button.name" class="md:hidden">
@@ -135,7 +135,7 @@
               <button @click="button.func"
                 data-tooltip-target="tooltip-feedback" type="button"
                 :class="currentRouteCheck('productOrders') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-                class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[16px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+                class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
                 <ShoppingBagIcon class=" w-5 " />
               </button>
             </div>

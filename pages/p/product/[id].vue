@@ -260,7 +260,7 @@
 
                           <div class="divide-y divide-gray-200 border-t">
                             <!-- <Disclosure as="div" v-for="detail in product.Specification" :key="detail.id" v-slot="{ open }"></Disclosure> -->
-                            <Disclosure as="div" v-slot="{ open }">
+                            <Disclosure as="div" :defaultOpen="true" v-slot="{ open }">
                               <h3>
                                 <DisclosureButton
                                   class="group relative flex w-full items-center justify-between py-6 text-left">
@@ -303,8 +303,10 @@
 
                     <div class="mt-6">
                       <h3 class="sr-only">Description</h3>
-                      <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700"
-                        v-html="product.description" />
+                      <!-- <div class="space-y-6 text-base rtl font-light leading-relaxed text-gray-700"
+                        v-html="product.description" /> -->
+                    <ShowTextEditor class="space-y-6" :content="product.description"></ShowTextEditor>
+
                     </div>
 
                     <section class=" px-6 py-24 sm:py-32 lg:px-8">

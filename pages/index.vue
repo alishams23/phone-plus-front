@@ -8,7 +8,7 @@
   <div class="bg-white">
   
 
-    <div class=" mt-5">
+    <div class="mt-5 ">
       <PopularProduct />
     </div>
 

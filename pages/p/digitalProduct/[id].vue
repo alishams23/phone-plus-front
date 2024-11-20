@@ -259,7 +259,9 @@
                     <div class="mt-6 rtl">
                       <h3 class="sr-only">Description</h3>
 
-                      <div class="space-y-6 text-base text-gray-700" v-html="product.description" />
+                      <!-- <div class="space-y-6 text-base text-gray-700" v-html="product.description" /> -->
+                    <ShowTextEditor class="space-y-6":content="product.description"></ShowTextEditor>
+
                     </div>
 
                     <section class="bg-white px-6 py-24 sm:py-32 lg:px-8">

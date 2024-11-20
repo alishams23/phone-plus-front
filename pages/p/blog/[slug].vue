@@ -137,7 +137,8 @@
                     </div>
                 </div>
                 <div class="p-10 md:p-16 rtl">
-                    <p v-html="blog.body"></p>
+                    <!-- <p v-html="blog.body"></p> -->
+                    <ShowTextEditor :content="blog.body"></ShowTextEditor>
                 </div>
 
                 <section class="bg-white px-6 py-24 sm:py-32 lg:px-8">
