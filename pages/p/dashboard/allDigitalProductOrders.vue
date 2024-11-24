@@ -117,7 +117,7 @@
                         </div>
                         </div>
                             <transition name="fade">
-                                <div v-if="showInstructionsId.includes(data.id) && hasValidInstructions(data)" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
+                                <div v-if="showInstructionsId.includes(data.id) == false && hasValidInstructions(data)" class=" my-4 w-full mx-2 lg:mx-4 px-4 py-2 rtl bg-gray-200 rounded-lg">
                                     <div v-html="data.digital_product.instructions"></div>
                                 </div>
                             </transition>
@@ -153,7 +153,14 @@ export default {
     },
     methods: {
         hasValidInstructions(data) {
-                return data.digital_product.instructions.trim() !== '<p class="ql-align-right ql-direction-rtl">null</p>';
+
+            if(data.digital_product.instructions.trim() !== '<p class="ql-align-right ql-direction-rtl">null</p>' &&
+                data.digital_product.instructions.trim() !== '<p class="ql-align-right ql-direction-rtl"><br></p>' &&
+                data.digital_product.instructions.trim() !== 'null' && data.digital_product.instructions.trim() !== null ){
+                    return true
+                }
+
+
         },
         toggleInstructions(id) {
             const index = this.showInstructionsId.indexOf(id);
