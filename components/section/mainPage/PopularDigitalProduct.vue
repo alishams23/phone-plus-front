@@ -70,7 +70,7 @@
                 <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1300"
                   :class="digital_products[index].discount != 0 ? 'line-through ' : ''"
                   class="lg:pe-4 text-xs text-red-500 font-semibold text-center md:text-right">
-                  {{ digital_products[index].discount != 0 ? digital_products[index].price : '&nbsp; ' }}
+                  {{ digital_products[index].discount != 0 ? price(parseInt(digital_products[index].price)) : '&nbsp; ' }}
                 </div>
                 <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1300"
                   class="lg:pe-4 pb-4 text-center md:text-right">
