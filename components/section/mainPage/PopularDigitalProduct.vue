@@ -74,9 +74,12 @@
                 </div>
                 <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1300"
                   class="lg:pe-4 pb-4 text-center md:text-right">
-                  {{ parseInt(digital_products[index].discount) != 0 ?
-                    price(parseInt(digital_products[index].price * (100 - digital_products[index].discount) / 100)) :
-                    price(parseInt(digital_products[index].price)) }}
+                  <div class="flex flex-row justify-end">
+                    <span class="text-xs text-gray-400 py-1 px-1">تومان</span>
+                    {{ parseInt(digital_products[index].discount) != 0 ?
+                      price(parseInt(digital_products[index].price * (100 - digital_products[index].discount) / 100)) :
+                      price(parseInt(digital_products[index].price)) }}
+                  </div>
                 </div>
               </div>
             </div>
