@@ -168,10 +168,10 @@
                             <h2 class="sr-only">Product information</h2>
                             <div v-if="product.discount != 0" class="flex items-center ">
                               <div v-if="selected_color" class="text-xl line-through text-gray-300  tr">
-                                {{ product.price + selected_color.price }}
+                                {{ price(product.price + selected_color.price) }}
                               </div>
                               <div v-else class="text-xl line-through text-gray-300  tr">
-                                {{ product.price }}
+                                {{ price(product.price) }}
                               </div>
                               <div class=" overflow-hidden rounded-lg p-4">
                                 <div
@@ -183,7 +183,7 @@
                             </div>
                             <div v-if="selected_color">
                               <p class="text-3xl  text-gray-900">
-                                {{ parseInt((product.price + selected_color.price) * ((100 - product.discount) / 100))
+                                {{ price(parseInt((product.price + selected_color.price) * ((100 - product.discount) / 100)))
                                 }}
                                 <span class="text-sm text-gray-600">
                                   تومان
@@ -192,7 +192,7 @@
                             </div>
                             <div v-else>
                               <p class="text-3xl  text-gray-900">
-                                {{ parseInt((product.price) * ((100 - product.discount) / 100)) }}
+                                {{ price(parseInt((product.price) * ((100 - product.discount) / 100))) }}
                                 <span class="text-sm text-gray-600">
                                   تومان
                                 </span>
@@ -474,6 +474,21 @@ export default {
     comment_hover_rate: 0,
   }),
   methods: {
+    price(value){
+            let text
+            let chars = Array.from(`${value}`)
+            for (let index = 1; index <= chars.length; index++) {
+                
+                if(index % 3==0){
+                    if (chars.length != index) {
+                    chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                        
+                    }
+                }
+
+            }
+            return chars.join("");;
+        },    
     openInNewTab() {
         window.open(`https://panel.phoneplus.ir/products/${this.product.id}`, '_blank');
     },

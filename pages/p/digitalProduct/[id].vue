@@ -168,7 +168,7 @@
                         <div class="mt-3">
                           <h2 class="sr-only">Product information</h2>
                           <div v-if="product.discount != 0" class="flex items-center ">
-                            <div class="text-xl line-through text-gray-300  tracking-tight">{{ product.price }} </div>
+                            <div class="text-xl line-through text-gray-300  tracking-tight">{{ price(product.price) }} </div>
                             <div class=" overflow-hidden rounded-lg p-4">
                               <div
                                 class=" text-white  text-sm font-semibold bg-red-500 rtl text-right rounded-full px-3 py-1"
@@ -178,7 +178,7 @@
                             </div>
                           </div>
                           <p class="text-3xl tracking-tight text-gray-900">{{
-                            parseInt((product.price) * ((100 - product.discount) / 100)) }}
+                            price(parseInt((product.price) * ((100 - product.discount) / 100))) }}
                             <span class="text-sm text-gray-600">تومان</span>
                           </p>
                         </div>
@@ -421,6 +421,21 @@ export default {
     comment_hover_rate: 0,
   }),
   methods: {
+    price(value){
+            let text
+            let chars = Array.from(`${value}`)
+            for (let index = 1; index <= chars.length; index++) {
+                
+                if(index % 3==0){
+                    if (chars.length != index) {
+                    chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                        
+                    }
+                }
+
+            }
+            return chars.join("");;
+        },
     openInNewTab() {
         window.open(`https://panel.phoneplus.ir/digitalProducts/${this.product.id}`, '_blank');
     },

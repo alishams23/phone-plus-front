@@ -18,10 +18,10 @@
         </h3>
         <div class="flex flex-col justify-center text-center" >
           <div :class="data.discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-gray-300 font-semibold">
-            {{ data.discount != 0 ? data.price : '&nbsp; ' }}
+            {{ data.discount != 0 ? price(data.price) : '&nbsp; ' }}
           </div>
           <div class="lg:pe-4 pb-10">
-            {{ parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price) }}
+            {{ price(parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price)) }}
           </div>
         </div>
       
@@ -46,11 +46,27 @@
 <script >
 import { StarIcon } from '@heroicons/vue/20/solid'
 
-  export default {
-      components: {StarIcon},
+export default {
+  components: {StarIcon},
+  props: ["data","width"],
+  methods: {
+    price(value){
+      let text
+      let chars = Array.from(`${value}`)
+      for (let index = 1; index <= chars.length; index++) {
+          
+          if(index % 3==0){
+              if (chars.length != index) {
+              chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                  
+              }
+          }
 
-    props: ["data","width"],
-  }
+      }
+      return chars.join("");;
+    },
+  },
+}
 </script>
 
 <style>

@@ -56,11 +56,11 @@
                                                             class="mt-1 flex text-xs md:text-sm leading-6 justify-end md:justify-center  text-gray-700 col-span-1  mt-0">
                                                             <p class="text-md md:text-xl tracking-tight text-gray-900">
                                                                 <div v-if="color">
-                                                                    {{ parseInt(((product.price + color.price) * ((100 - product.discount) / 100)) * qty) }}
+                                                                    {{ price(parseInt(((product.price + color.price) * ((100 - product.discount) / 100)) * qty)) }}
                                                                     <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                                 </div>
                                                                 <div v-else>
-                                                                    {{ parseInt(((product.price ) * ((100 - product.discount) / 100)) * qty) }}
+                                                                    {{ price(parseInt(((product.price ) * ((100 - product.discount) / 100)) * qty)) }}
                                                                     <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                                 </div>
                                                             </p>
@@ -286,19 +286,29 @@
                                                         پرداخت:
                                                     </div>
                                                     <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                        <dt  v-if="product.delivery_fee != 0" class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">هزینه ارسال
+                                                        </dt>
+                                                        <dd v-if="product.delivery_fee != 0" class="mt-1 flex text-sm text-right justify-end md:justify-center leading-6 text-gray-700 col-span-1 mt-0">
+                                                            <p class="text-md md:text-xl tracking-tight text-gray-900">
+                                                                <div>
+                                                                    {{ price(product.delivery_fee) }}
+                                                                    <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
+                                                                </div>
+                                                            </p>
+                                    
+                                                        </dd>
                                                         <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">مبلغ قابل پرداخت
                                                         </dt>
                                                         <dd class="mt-1 flex text-sm text-right justify-end md:justify-center leading-6 text-gray-700 col-span-1 mt-0">
                                                             <p class="text-md md:text-xl tracking-tight text-gray-900">
                                                                 <div v-if="color">
-                                                                
                                                                     <span v-if="discount_amount" class="text-[7px] md:text-[10px] text-red-600 px-1 ">- {{discount_amount}} تومان</span>
-                                                                    {{parseInt((((product.price + color.price) * ((100 - product.discount) / 100)) * qty)-discount_amount) }}
+                                                                    {{price(parseInt((((product.price + color.price) * ((100 - product.discount) / 100)) * qty)-discount_amount+product.delivery_fee)) }}
                                                                     <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                                 </div>
                                                                 <div v-else>
                                                                     <span v-if="discount_amount" class="text-[7px] md:text-[10px] text-red-600 px-1 ">- {{discount_amount}} تومان</span>
-                                                                    {{ parseInt((((product.price ) * ((100 - product.discount) / 100)) * qty)-discount_amount) }}
+                                                                    {{ price(parseInt((((product.price ) * ((100 - product.discount) / 100)) * qty)-discount_amount)) }}
                                                                     <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                                 </div>
                                                             </p>
@@ -514,6 +524,21 @@ export default {
                     this.loading = false
                 // You can change the dialog page or show a success message here
             })
+        },
+        price(value){
+            let text
+            let chars = Array.from(`${value}`)
+            for (let index = 1; index <= chars.length; index++) {
+                
+                if(index % 3==0){
+                    if (chars.length != index) {
+                    chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                        
+                    }
+                }
+
+            }
+            return chars.join("");;
         },
         checkDiscountCode() {
             if(this.save_address){

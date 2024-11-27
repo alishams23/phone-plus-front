@@ -7,7 +7,7 @@
                     <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity" />
                 </TransitionChild>
                 <div v-if="snackbarDiscount" class="bg-green-700 shadow-2 rtl text-white p-4 py-2 mx-10 rounded-full fixed top-4  flex justify-between items-center">
-                    کد تخفیف اعمال شد {{ discount_amount }}تومان از سفارش شما کسر شد
+                    کد تخفیف اعمال شد {{ price(discount_amount) }}تومان از سفارش شما کسر شد
                     <button @click="snackbarDiscount = false" class="text-white mr-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -47,8 +47,8 @@
                                                             <p class="text-md md:text-xl tracking-tight text-gray-900">
                                         
                                                                 <div >
-                                                                    <span v-if="discount_amount" class="text-[7px] md:text-[10px] text-red-600 px-1 ">- {{discount_amount}} تومان</span>
-                                                                    {{ parseInt((((product.price ) * ((100 - product.discount) / 100)) * qty)-discount_amount) }}
+                                                                    <span v-if="discount_amount" class="text-[7px] md:text-[10px] text-red-600 px-1 ">- {{prices(discount_amount)}} تومان</span>
+                                                                    {{ price(parseInt((((product.price ) * ((100 - product.discount) / 100)) * qty)-discount_amount)) }}
                                                                     <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                                 </div>
                                                             </p>
@@ -188,6 +188,21 @@ export default {
         }
     },
     methods: {
+        price(value){
+            let text
+            let chars = Array.from(`${value}`)
+            for (let index = 1; index <= chars.length; index++) {
+                
+                if(index % 3==0){
+                    if (chars.length != index) {
+                    chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                        
+                    }
+                }
+
+            }
+            return chars.join("");;
+        },
         getData() {
 
             this.loading = true

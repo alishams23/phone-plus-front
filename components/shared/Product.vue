@@ -20,8 +20,8 @@
             {{ data.title }}
           </a>
         </h3>
-        <div class=" text-xs md:text-sm  font-bold text-white  rtl text-center rounded-full ">   {{ data.discount != 0 ? parseInt((data.price + data.colors[0].price)*((100-data.discount)/100)) : '&nbsp; ' }}  </div>
-        <div :class="data.discount != 0 ? 'line-through text-gray-500  text-xs ' : 'text-white  text-sm ' " class=" font-semibold   rtl text-center rounded-full ">  {{ data.price + data.colors[0].price}}   </div>
+        <div class=" text-xs md:text-sm  font-bold text-white  rtl text-center rounded-full ">   {{ data.discount != 0 ? price(parseInt((data.price + data.colors[0].price)*((100-data.discount)/100))) : '&nbsp; ' }}  </div>
+        <div :class="data.discount != 0 ? 'line-through text-gray-500  text-xs ' : 'text-white  text-sm ' " class=" font-semibold   rtl text-center rounded-full ">  {{ price(data.price + data.colors[0].price)}}   </div>
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pe-4 pb-2 pt-6">
             <div class="relative text-white shadow-xl text-xs md:text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1 " v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
@@ -69,7 +69,23 @@ import { StarIcon } from '@heroicons/vue/20/solid'
 export default {
   components: {StarIcon},
   props: ["data","width"],
+  methods: {
+    price(value){
+      let text
+      let chars = Array.from(`${value}`)
+      for (let index = 1; index <= chars.length; index++) {
+          
+          if(index % 3==0){
+              if (chars.length != index) {
+              chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                  
+              }
+          }
 
+      }
+      return chars.join("");;
+    },
+  },
 }
 
 

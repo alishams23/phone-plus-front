@@ -51,7 +51,7 @@
                             <div class="text-right pe-4 pb-4">
                             <div class="flex justify-end items-center">
                                 <p class="pe-1 text-[10px] text-gray-400">تومان</p>
-                                <p> {{ parseInt(lastOrder.price/10) }}</p>
+                                <p> {{ price(parseInt(lastOrder.price/10)) }}</p>
                             </div>
                             </div>
                             <p class="text-right text-xs pe-4 test-n pb-4" v-html="truncatedBody(lastOrder.digital_product.description)">
@@ -136,7 +136,7 @@ import { apiStore } from '~/store/api';
 import { NavigationStore } from '~/store/navigation'; 
 
 export default {
-
+    
     setup() {
         definePageMeta({
             layout: "user-dashboard",
@@ -153,6 +153,21 @@ export default {
         }
     },
     methods: {
+        price(value){
+            let text
+            let chars = Array.from(`${value}`)
+            for (let index = 1; index <= chars.length; index++) {
+                
+                if(index % 3==0){
+                    if (chars.length != index) {
+                    chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                        
+                    }
+                }
+
+            }
+            return chars.join("");;
+        },
         toggleInstructions(id) {
             const index = this.showInstructionsId.indexOf(id);
             if (index > -1) {
