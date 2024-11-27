@@ -74,9 +74,9 @@
                 </div>
                 <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1300"
                   class="lg:pe-4 pb-4 text-center md:text-right">
-                  {{ parseInt(digital_products[index].discount != 0 ?
-                    digital_products[index].price * (100 - digital_products[index].discount) / 100 :
-                    digital_products[index].price) }}
+                  {{ parseInt(digital_products[index].discount) != 0 ?
+                    price(parseInt(digital_products[index].price * (100 - digital_products[index].discount) / 100)) :
+                    price(parseInt(digital_products[index].price)) }}
                 </div>
               </div>
             </div>
@@ -141,6 +141,21 @@ export default {
     },
   }),
   methods: {
+    price(value){
+            let text
+            let chars = Array.from(`${value}`)
+            for (let index = 1; index <= chars.length; index++) {
+                
+                if(index % 3==0){
+                    if (chars.length != index) {
+                    chars[chars.length-index] = `,${chars[chars.length-index]}`;
+                        
+                    }
+                }
+
+            }
+            return chars.join("");;
+        },
     getData() {
       this.loading = true
       axios.get(`${apiStore().address}/api/product/best-digital-product-list-main-page/`, {
