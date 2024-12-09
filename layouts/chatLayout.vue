@@ -66,7 +66,7 @@
 
   <div class="lg:pl-1">
     <div
-      class="fixed w-full top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4  sm:gap-x-6 sm:px-6 lg:px-8">
+      class="fixed shadow-md w-full top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4  sm:gap-x-6 sm:px-6 lg:px-8">
       <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
         <span class="sr-only">Open sidebar</span>
         <Bars3Icon class="h-6 w-6" aria-hidden="true" />
@@ -75,13 +75,13 @@
       <!-- Separator -->
       <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true" />
       <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-        <form class="relative flex items-center  flex-1" action="#" method="GET">
+        <form class="relative flex items-center lg:ms-64 flex-1" action="#" method="GET">
           <a :href="`/${user.contact.shop ? user.contact.shop.username : ''}`" class="relative" v-if="user">
             <div class="-m-1.5 flex items-center p-1.5">
               <img class="h-8 w-8 rounded-full bg-gray-100 object-cover"
                 v-if="user.contact.shop && user.contact.shop.image" :src="address + user.contact.shop.image" alt="" />
-              <img class="h-8 w-8 rounded-full bg-gray-100 object-cover bg-gray-200" v-else alt="" />
-              <span class="hidden lg:flex lg:items-center">
+              <img class="h-8 w-8 rounded-full bg-gray-100 object-cover bg-gray-200" v-else src="https://store.thegospelcoalition.org/img/containers/site_uploads/authors/placeholder.png/6e71de5b0d18d62e8e5132e567f000f2/placeholder.webp" alt="" />
+              <span class=" lg:flex lg:items-center">
                 <span v-if="user.contact.shop" class="ml-4 text-sm font-semibold leading-6 text-gray-900"
                   aria-hidden="true">{{ user.contact.shop.name }}</span>
                 <span v-else class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">{{user.contact.full_name }}</span>
@@ -90,7 +90,7 @@
           </a>
         </form>
         <div class="flex items-center gap-x-4 lg:gap-x-6">
-          <a href="/" class="-m-2.5 p-2.5 bg-indigo-600 rounded-full text-white hover:text-indigo-200">
+          <a href="/" class="-m-2.5 p-2.5 bg-indigo-600 rounded-full text-white hover:bg-indigo-800">
             <span class="sr-only">View notifications</span>
             <HomeIcon class="h-5 w-5" aria-hidden="true" />
           </a>
@@ -206,26 +206,7 @@ export default {
   },
 
   methods: {
-    getInfo() {
-      try {
-        fetch(
-          `${this.address}/api/UserRetrieveApi/alishams/`,
-          {
-            headers: {
-              "Content-type": "application/json",
-              Accept: "application/json",
-              Authorization: `Token ${useUserStore().userToken}`
-            }
-          }
-        )
-          .then(response => response.json())
-          .then(data => {
-            // this.$store.commit("getUser", data);
-          });
-        this.loading = false;
-      } catch (error) { }
-    },
-
+    
   },
   mounted() {
     // this.loginPage();

@@ -22,17 +22,17 @@
 
 
           <div v-for="data, index in messages" :key="data.id + 'message-chat-'"
-            :class="data.username == userSelf ? 'flex-row-reverse' : ''" class="flex m-3 lg:items-center">
-            <div class="w-8 h-8 hidden sm:block" :class="index==0?'mt-10':'mt-5'"></div>
-            <div class=" px-5  relative h-full" :class="data.username == userSelf
-                ? 'text-white py-1 bg-indigo-600 rounded-full rounded-br-none shadow-lg text-right'
-                : 'bg-gray-100 py-2 rounded-full rounded-bl-none text-right relative'
+            :class="data.username == userSelf ? 'flex-row-reverse' : index==0?'pt-8':''" class="flex m-3 lg:items-center">
+            <div class="w-8 h-8 hidden sm:block" :class="index==0?'':''"></div>
+            <div class=" px-5 shadow-lg relative h-full" :class="data.username == userSelf
+                ? 'text-/white py-1 bg-indigo-50 rounded-full rounded-br-none shadow-lg text-right'
+                : 'bg-gray-100 ms-0 lg:ms-60 py-2 rounded-full rounded-bl-none text-right relative'
               ">
               <div v-if="data.content">{{ data.content }}</div>
-              <div>
-                <div v-if="data.read == 'True'">
+              <div class="flex items-center">
+                <div v-if="data.read == 'True'" >
                   <svg v-if="data.username == userSelf" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+                    fill="currentColor" class="bi bi-check2-all me-2 text-blue-300" viewBox="0 0 16 16">
                     <path
                       d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z" />
                     <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z" />
@@ -40,10 +40,15 @@
                 </div>
                 <div v-else>
                   <svg v-if="data.username == userSelf" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                    fill="currentColor" class="bi bi-check2 me-2 text-gray-400" viewBox="0 0 16 16">
                     <path
                       d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
                   </svg>
+                </div>
+                <div>
+                  <div class="text-gray-400 text-sm">
+                    {{ convertToJalaali(data.created_at) }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,11 +62,11 @@
         <div class="lg:w-72 "></div>
         <input v-model="inputData" placeholder="پیام شما" type="text"  style="
             word-break: break-all;"
-          class=" grow rtl bg-gray-100 border   text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block py-4 p-3  "
+          class=" grow rtl bg-gray-50 border shadow-2 text-gray-900 text-sm rounded-full focus:outline-none focus:ring-0 focus:border-indigo-300 block py-4 p-3  "
           @keyup.enter="sendMessage()" />
         <div class="flex items-center px-2">
           <button id="text-submit" type="submit"
-            class="bg-indigo-800 flex items-center justify-center rounded-full shadow-2 w-12 h-12 text-white"
+            class="bg-indigo-600 hover:bg-indigo-800 flex items-center justify-center rounded-full shadow-2 w-12 h-12 text-white"
             @click="sendMessage()">
             <PaperAirplaneIcon class="text-white h-5" />
           </button>
@@ -73,6 +78,7 @@
 
 <script>
 import { apiStore } from '~/store/api';
+import moment from 'moment-jalaali';
 
 import {
   PaperAirplaneIcon
@@ -140,6 +146,10 @@ export default {
     }
   },
   methods: {
+    convertToJalaali(dateString) {
+      const jalaaliDate = moment(dateString).format('jMM/jDD HH:mm');
+      return jalaaliDate;
+    },
     sendMessage() {
       if (this.inputData != null && this.inputData != '') {
         this.chatSocket.send(

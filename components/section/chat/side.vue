@@ -1,28 +1,27 @@
 <template>
   <div :class="class" class=" h-full px-0 mx-0 ">
 
-    <div class="pt-6 px-5">
-      <div class="rtl flex items-start justify-between">
-        <div class="text-base font-semibold leading-6  text-gray-900" :class=" $route.params.username != null ? 'text-white' : ''">فروشندگان</div>
-        <div class="mr-3 flex h-7 items-center"> <!-- Adjusted from ml-3 to mr-3 -->
-          <!-- <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 ">
-            <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-          </button> -->
-        </div>
-      </div>
-    </div>
+   
 
 
-  <div class=" flex align-center justify-around mb-5 mt-3">   
+  <div class=" flex align-center justify-around mb-5 mt-4">   
     <label for="simple-search" class="sr-only">Search</label>
   
     <div class="relative w-full px-5">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-8 pointer-events-none">
+      <input 
+        v-model="searchInput" 
+        @input="ListUserMessageApi" 
+        type="text" 
+        id="simple-search" 
+        class="bg-gray-50 bg-white text-gray-900 text-sm rounded-full block w-full ps-10 p-2.5 px-5 rtl focus:outline-none focus:ring-0 border-none" 
+        placeholder="جستجو ..." 
+        required 
+      />
+      <div class="absolute inset-y-0 end-9 flex items-center ps-8 pointer-events-none">
         <svg class="w-4 h-4 text-indigo-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
       </svg>
       </div>
-      <input v-model="searchInput" @input="ListUserMessageApi" type="text" id="simple-search" class="bg-gray-50 bg-white text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 px-5 rtl" placeholder="جستجو ..." required />
   </div>
  
   </div>
@@ -42,12 +41,12 @@
 
         </div>
       </li>
-      <li v-else v-if="currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2  bg-glass-2 shadow-3" >
+      <li v-else v-if="currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2 bg-glass-2 shadow-3" >
         <div class="group relative flex  items-center px-5 py-4" >
        
             <a :href="sectionSupport == true ?'/p/chat/'+'pourya'  + '/'+ 'pourya_'+ username +  '/': '#'" class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
-                <img class="h-10 w-10 rounded-full object-cover bg-white"   alt="" />
+                <img class="h-10 w-10 rounded-full object-cover bg-white" src="https://logodix.com/logo/1707094.png"  alt="" />
                
               </span>
               <div class="mr-4 truncate"> 
@@ -63,18 +62,18 @@
        <template v-if="person.contact">
          
          {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
-         <div class="group relative flex  items-center px-5 py-1 " @click="$emit('get-selected-user', person);selected_user = person.contact.username">
+         <div class="group  justify-end items-center ps-5 py-1 " @click="$emit('get-selected-user', person);selected_user = person.contact.username">
            <nuxt-link :to="sectionSupport != true ?'/p/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1 border-0">
-             <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center border-0">
+             <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-start justify-start border-0">
                <span class="relative inline-block flex-shrink-0">
                  <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
-                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else  alt="" />
+                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else src="https://store.thegospelcoalition.org/img/containers/site_uploads/authors/placeholder.png/6e71de5b0d18d62e8e5132e567f000f2/placeholder.webp" alt="" />
                </span>
-               <div class="mr-4 truncate"> <!-- Adjusted from ml-4 to mr-4 -->
-                 <p class="truncate px-4 text-sm font-medium " v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
-                 <p class="truncate px-4 text-sm font-medium " v-else>{{ person.contact.full_name }}</p>
-                 <p class="truncate px-4 text-xs text-gray-800 pt-2" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
-                 <p class="truncate px-4 text-xs text-gray-800 pt-2" v-else>{{ '@' + person.contact.username }}</p>
+               <div class="w-full"> 
+                 <p class="truncate ps-4 text-sm font-medium  text-left" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
+                 <p class="truncate ps-4 text-sm font-medium  text-left" v-else>{{ person.contact.full_name }}</p>
+                 <p class="truncate ps-4 text-xs text-gray-900 pt-2 text-left" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
+                 <p class="truncate ps-4 text-xs text-gray-900 pt-2 text-left" v-else>{{ '@' + person.contact.username }}</p>
                </div>
              </a>
            </nuxt-link>

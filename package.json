@@ -23,6 +23,7 @@
     "@vueup/vue-quill": "^1.2.0",
     "axios": "^1.6.7",
     "i": "^0.3.7",
+    "moment-jalaali": "^0.10.4",
     "nuxt-aos": "^1.2.4",
     "nuxt-marquee": "^1.0.4",
     "nuxt-swiper": "^1.2.2",
