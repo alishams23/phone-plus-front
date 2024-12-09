@@ -17,10 +17,7 @@
       </div>
       <!-- my message-->
       <div class="flex flex-col  pt-5 justify-between ">
-
-        <div>
-
-
+        <div class="mt-10">
           <div v-for="data, index in messages" :key="data.id + 'message-chat-'"
             :class="data.username == userSelf ? 'flex-row-reverse' : index==0?'pt-8':''" class="flex m-3 lg:items-center">
             <div class="w-8 h-8 hidden sm:block" :class="index==0?'':''"></div>
