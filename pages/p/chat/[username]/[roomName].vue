@@ -21,8 +21,8 @@
           <div v-for="data, index in messages" :key="data.id + 'message-chat-'"
             :class="data.username == userSelf ? 'flex-row-reverse' : index==0?'pt-8':''" class="flex m-3 lg:items-center">
             <div class="w-8 h-8 hidden sm:block" :class="index==0?'':''"></div>
-            <div class=" px-5 shadow-lg relative h-full" :class="data.username == userSelf
-                ? 'text-/white py-1 bg-indigo-50 rounded-full rounded-br-none shadow-lg text-right'
+            <div class=" px-5 shadow-md relative h-full" :class="data.username == userSelf
+                ? 'text-/white py-1 bg-indigo-50 rounded-full rounded-br-none shadow-md text-right'
                 : 'bg-gray-100 ms-0 lg:ms-60 py-2 rounded-full rounded-bl-none text-right relative'
               ">
               <div v-if="data.content">{{ data.content }}</div>
@@ -43,7 +43,7 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="text-gray-400 text-sm">
+                  <div class="text-gray-400 text-[10px]">
                     {{ convertToJalaali(data.created_at) }}
                   </div>
                 </div>
