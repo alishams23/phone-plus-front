@@ -51,7 +51,7 @@
                 <div class="p-6 text-xl font-semibold leading-8 text-white">
                     <p>“تبدیل شدن به فروشنده در سایت فون‌پلاس تصمیمی بود که زندگیم را تغییر داد. حالا من درآمد بیشتری دارم و مشتریان وفادار خود را یافته‌ام. تجربه‌ای بی‌نظیر است!”</p>
                 </div>
-                <figcaption class="pb-10  text-sm leading-6 text-gray-300"><strong class="font-semibold text-white">علی رضایی،</strong> یکی از فروشندگان موفق</figcaption>
+                <div class="pb-10  text-sm leading-6 text-gray-300"><strong class="font-semibold text-white">علی رضایی،</strong> یکی از فروشندگان موفق</div>
             </div>
           </div>
         </div>

@@ -148,7 +148,7 @@ export default {
         },
     getData() {
       this.loading = true
-      axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?category=1`, {
+      axios.get(`${apiStore().address}/api/product/digital-products-search-for-buyer/?category=1&ordering=-rate`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",

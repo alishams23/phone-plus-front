@@ -60,7 +60,7 @@
                                                             <dd
                                                                 class="mt-1 grid grid-cols-2 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-6 md:col-span-6  mt-0">
                                                                     <div class="py-2 col-span-1 w-full  px-3 mb-6 md:mb-0">
-                                                                        <p>
+                                                                        <div>
                                                                             <label
                                                                                 class="block uppercase w-full tracking-wide text-gray-700 text-xs font-bold "
                                                                                 for="grid-city">
@@ -73,7 +73,7 @@
                                                                             <p class="text-xs md:text-sm text-red-600" >
                                                                                 {{error}}
                                                                             </p>
-                                                                        </p>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="py-2  col-span-1 w-full flex justify-end flex justify-center mt-4 mb-6 md:mb-0">
                                                                         <button type="submit"

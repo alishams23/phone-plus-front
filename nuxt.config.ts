@@ -12,9 +12,10 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true,
     },
-  }
-  ,
+  },
+
   css:['~/assets/css/main.scss','~/assets/css/WebFonts/css/fontiran.css',],
+
   modules: [
     '@vite-pwa/nuxt',
     '@pinia/nuxt',
@@ -25,7 +26,7 @@ export default defineNuxtConfig({
     // 'nuxt-swiper'
     "nuxt-marquee",
   ],
-  
+
   devServer: {
     port: 3001,
     // host:"0"
@@ -74,4 +75,6 @@ export default defineNuxtConfig({
 
   /* your pwa options */
 },
+
+  compatibilityDate: '2024-12-10',
 })
