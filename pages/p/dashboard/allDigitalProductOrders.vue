@@ -58,16 +58,38 @@
                             <p class="text-right text-xs pe-4 test-n pb-4" v-html="truncatedBody(data.digital_product.description)">
                             </p>
                             <div v-if="data.subset_Digital">
-                            <div class="flex items-center justify-center flex-wrap py-3 ">
-                                <div v-for="cell in data.subset_Digital.data" class="px-5 flex flex-col items-center" :key="cell.id">
-                                <p class="font-bold">
-                                    {{ cell.title }}
-                                </p>
-                                <p>
-                                    {{ cell.body }}
-                                </p>
+                                <div class="flex items-center justify-center flex-wrap py-3 ">
+                                    <div v-for="cell in data.subset_Digital.data" class="px-5 flex flex-col items-center" :key="cell.id">
+                                    <p class="font-bold">
+                                        {{ cell.title }}
+                                    </p>
+                                    <p>
+                                        {{ cell.body }}
+                                    </p>
+                                    </div>
                                 </div>
                             </div>
+                            <div v-if="data.subsets_Digital">
+                                <div v-for="(subset_Digital, index) in data.subsets_Digital" :key="index" class="">
+                                    <div class="flex items-center justify-center flex-wrap py-3">
+                                        <div 
+                                            v-for="cell in subset_Digital.data" 
+                                            class="px-5 flex flex-col items-center" 
+                                            :key="cell.id">
+                                            <p class="font-bold">
+                                                {{ cell.title }}
+                                            </p>
+                                            <p>
+                                                {{ cell.body }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- Render divider only if it's not the last item -->
+                                    <div 
+                                        v-if="index !== data.subsets_Digital.length - 1" 
+                                        class="border-t border-gray-300">
+                                    </div>
+                                </div>
                             </div>
                             <div class="flex justify-center pe-4" >
                                 <div v-if="data.digital_product.file!=null && data.digital_product.file!='null'" class="flex justify-center pe-4">

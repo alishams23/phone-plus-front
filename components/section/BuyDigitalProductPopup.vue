@@ -54,34 +54,44 @@
                                                             </p>
                                     
                                                         </dd>
+                                                        <dt v-if="product.type == 'license'" class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">تعداد</dt>
+                                                        <dd v-if="product.type == 'license'" class="mt-1 flex text-sm leading-6 justify-end md:justify-center text-gray-700 col-span-1 mt-0">
+                                                            <div class="">
+                                                                <div class="flex">
+                                                                    <input type="number" id="first_name" min="1" :max="product.inventory_count" v-model="qty"
+                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-lg p-2.5"
+                                                                        required>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
                                                     </div>
                                                     <form @submit.prevent="checkDiscountCode" v-if="show == true">
                                                         <div class="px-4 py-3 md:py-3 grid grid-cols-6 gap-4 px-0">
                                                             <dd
-                                                                class="mt-1 grid grid-cols-2 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-6 md:col-span-6  mt-0">
-                                                                    <div class="py-2 col-span-1 w-full  px-3 mb-6 md:mb-0">
-                                                                        <div>
-                                                                            <label
-                                                                                class="block uppercase w-full tracking-wide text-gray-700 text-xs font-bold "
-                                                                                for="grid-city">
-                                                                                کد تخفیف
-                                                                            </label>
-                                                                            <input required
-                                                                             :autofocus="false"
-                                                                            class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                                            id="grid-city" type="text" v-model="discount_code" >
-                                                                            <p class="text-xs md:text-sm text-red-600" >
-                                                                                {{error}}
-                                                                            </p>
-                                                                        </div>
+                                                            class="mt-1 grid grid-cols-2 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-6 md:col-span-6  mt-0">
+                                                                <div class="py-2 col-span-1 w-full  px-3 mb-6 md:mb-0">
+                                                                    <div>
+                                                                        <label
+                                                                            class="block uppercase w-full tracking-wide text-gray-700 text-xs font-bold "
+                                                                            for="grid-city">
+                                                                            کد تخفیف
+                                                                        </label>
+                                                                        <input required
+                                                                            :autofocus="false"
+                                                                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                        id="grid-city" type="text" v-model="discount_code" >
+                                                                        <p class="text-xs md:text-sm text-red-600" >
+                                                                            {{error}}
+                                                                        </p>
                                                                     </div>
-                                                                    <div class="py-2  col-span-1 w-full flex justify-end flex justify-center mt-4 mb-6 md:mb-0">
-                                                                        <button type="submit"
-                                                                            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 mb-8 px-5 rounded-full">
-                                                                            <p v-if="btn_discount_loading">درحال بررسی...</p>
-                                                                            <p v-else>اعمال کد تخفیف</p>
-                                                                        </button>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="py-2  col-span-1 w-full flex justify-end flex justify-center mt-4 mb-6 md:mb-0">
+                                                                    <button type="submit"
+                                                                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 mb-8 px-5 rounded-full">
+                                                                        <p v-if="btn_discount_loading">درحال بررسی...</p>
+                                                                        <p v-else>اعمال کد تخفیف</p>
+                                                                    </button>
+                                                                </div>
                                                             </dd>
                                                         </div>
                                                     </form>
@@ -218,10 +228,11 @@ export default {
         },
         sendData() {
             this.btn_buy_loading = true
-            const apiUrl = `${apiStore().address}/api/order/create-order-digital-product/`;
+            const apiUrl = `${apiStore().address}/api/order/create-group-order-digital-product/`;
             const data = {
                 discount_code: this.discount_code,
                 digital_product: this.product.id,
+                count: this.qty,
             };
             this.loading = true
             axios.post(apiUrl, data, {
