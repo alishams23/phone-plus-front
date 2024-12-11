@@ -80,7 +80,7 @@
             <div class="-m-1.5 flex items-center p-1.5">
               <img class="h-8 w-8 rounded-full bg-gray-100 object-cover"
                 v-if="user.contact.shop && user.contact.shop.image" :src="address + user.contact.shop.image" alt="" />
-              <img class="h-8 w-8 rounded-full bg-gray-100 object-cover bg-gray-200" v-else src="https://store.thegospelcoalition.org/img/containers/site_uploads/authors/placeholder.png/6e71de5b0d18d62e8e5132e567f000f2/placeholder.webp" alt="" />
+              <img class="h-8 w-8 rounded-full bg-gray-100 object-cover bg-gray-200" v-else src="/images/default_profile_2.svg" alt="" />
               <span class=" lg:flex lg:items-center">
                 <span v-if="user.contact.shop" class="ml-4 text-sm font-semibold leading-6 text-gray-900"
                   aria-hidden="true">{{ user.contact.shop.name }}</span>
