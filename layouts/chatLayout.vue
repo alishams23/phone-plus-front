@@ -57,9 +57,9 @@
   <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col ">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
 
-    <div class="flex grow flex-col curved px-0 mx-0 overflow-y-auto ">
+    <div class="flex grow flex-col curved px-0 mx-0 overflow-y-auto rtl">
 
-      <side class=" mr-[30px]" @get-selected-user="(data) => { user = !null ? user = data : '' }" />
+      <side class=" mr-[30px] ltr" @get-selected-user="(data) => { user = !null ? user = data : '' }" />
 
     </div>
   </div>

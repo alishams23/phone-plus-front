@@ -4,6 +4,7 @@
   <Head>
         <Title>فون پلاس | phone plus</Title>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta name="enamad" content="۴۴۵۴۱۷۰۳">
 
      </Head>
    
