@@ -290,17 +290,15 @@
                                                         </dt>
                                                         <dd v-if="product.delivery_fee != 0" class="mt-1 flex text-sm text-right justify-end md:justify-center leading-6 text-gray-700 col-span-1 mt-0">
                                                             <p class="text-md md:text-xl tracking-tight text-gray-900">
-                                                                <div>
                                                                     {{ price(product.delivery_fee) }}
                                                                     <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
-                                                                </div>
                                                             </p>
                                     
                                                         </dd>
                                                         <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">مبلغ قابل پرداخت
                                                         </dt>
                                                         <dd class="mt-1 flex text-sm text-right justify-end md:justify-center leading-6 text-gray-700 col-span-1 mt-0">
-                                                            <p class="text-md md:text-xl tracking-tight text-gray-900">
+                                                            <div class="text-md md:text-xl tracking-tight text-gray-900">
                                                                 <div v-if="color">
                                                                     <span v-if="discount_amount" class="text-[7px] md:text-[10px] text-red-600 px-1 ">- {{discount_amount}} تومان</span>
                                                                     {{price(parseInt((((product.price + color.price) * ((100 - product.discount) / 100)) * qty)-discount_amount+product.delivery_fee)) }}
@@ -311,7 +309,7 @@
                                                                     {{ price(parseInt((((product.price ) * ((100 - product.discount) / 100)) * qty)-discount_amount)) }}
                                                                     <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                                 </div>
-                                                            </p>
+                                                            </div>
                                     
                                                         </dd>
                                                     </div>

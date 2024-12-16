@@ -67,7 +67,7 @@
              <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-start justify-start border-0">
                <span class="relative inline-block flex-shrink-0">
                  <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
-                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else src="https://store.thegospelcoalition.org/img/containers/site_uploads/authors/placeholder.png/6e71de5b0d18d62e8e5132e567f000f2/placeholder.webp" alt="" />
+                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else src="/images/default_profile_2.svg" alt="" />
                </span>
                <div class="w-full"> 
                  <p class="truncate ps-4 text-sm font-medium  text-left" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>

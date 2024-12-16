@@ -12,7 +12,7 @@ export default function () {
               if (isNaN(value) || (input.min !== '' && value < parseFloat(input.min))) {
                 input.setCustomValidity(`عدد وارد شده باید بزرگتر از ${input.min} باشد`);
               } else if (input.max !== '' && value > parseFloat(input.max)) {
-                input.setCustomValidity(`عدد وارد شده باید کوچکتر از ${input.max} باشد`);
+                input.setCustomValidity(`در حال حاضر حداکثر ${input.max} عدد قابل تحویل میباشد. اگر تعداد بیشتری میخواهید در زمان دیگری اقدام کنید ، یا با فروشنده تماس بگیرید.`);
               } else {
                 input.setCustomValidity("این فیلد ضروری است");
               }
