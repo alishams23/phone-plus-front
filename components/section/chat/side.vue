@@ -58,7 +58,7 @@
         </div>
       </li>
       
-      <li v-for="person in contacts " class="rounded-2xl mx-3 mt-2 border-0" :class=" person.contact&&  selected_user == person.contact.username ? 'bg-indigo-500 text-white' :  $route.params.username != null ? 'text-white' : ''" >
+      <li v-for="person in contacts " class="rounded-2xl mx-1 mt-2 border-0" :class=" person.contact&&  selected_user == person.contact.username ? 'bg-indigo-500 text-white' :  $route.params.username != null ? 'text-white' : ''" >
        <template v-if="person.contact">
          
          {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
