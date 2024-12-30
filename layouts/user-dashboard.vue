@@ -41,15 +41,15 @@
                <h2 class="sr-only" id="section-2-title">Section title</h2>
                <div class="overflow-hidden rounded-lg bg-white shadow">
                  <div class="">
-                   <div class="py-3 ">
+                   <div class=" ">
                      <div v-for="item in items" :key="item.name" class=" flex hover:bg-gray-50"
-                       :class="currentRouteCheck(item.page_name)?'font-black bg-white':''" >
+                       :class="currentRouteCheck(item.page_name)?'font-bold bg-indigo-50':''" >
                        <nuxt-link :to="item.href"
-                       :class="currentRouteCheck(item.page_name)?'font-black bg-white':'', item.name=='خروج'?'text-red-600' : 'border-b'"
+                       :class="currentRouteCheck(item.page_name)?' ':'', item.name=='خروج'?'text-red-600' : 'border-b'"
                          class=" flex-auto rtl    block  px-4 py-8 text-sm text-gray-700 ">
                          {{ item.name }}
                        </nuxt-link>
-                       <div  class="px-[0.01rem] my-4" :class="currentRouteCheck(item.page_name)?'border-l-8 rounded-l-lg border-indigo-500 ':''"></div>
+                       <div  class="" :class="currentRouteCheck(item.page_name)?'border-l-[5px]  border-indigo-500 ':''"></div>
                      </div>
                    </div>
                  </div>

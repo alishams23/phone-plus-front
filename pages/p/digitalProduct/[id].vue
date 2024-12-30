@@ -217,6 +217,7 @@
                               class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none sm:w-full">
                               <p v-if="is_sellable">خرید / دانلود</p>
                               <p v-else>ناموجود</p>
+                              <ShoppingBagIcon class="h-5 w-5 text-white mr-5" />
                             </button>
                             <BuyDigitalProductPopup @show-change="(data) => { show = data }" v-model:show="show"
                               :product="product" />
@@ -370,7 +371,7 @@ import {
   TabPanels,
 } from '@headlessui/vue'
 import BuyDigitalProductPopup from "@/components/section/BuyDigitalProductPopup.vue"
-import { StarIcon } from '@heroicons/vue/20/solid'
+import { StarIcon , ShoppingBagIcon } from '@heroicons/vue/20/solid'
 import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { useUserStore } from '~/store/user';
@@ -382,6 +383,7 @@ export default {
     ArrowTopRightOnSquareIcon,
     HeartIcon,
     VideoCameraIcon,
+    ShoppingBagIcon,
     UserIcon,
     StarIcon,
     HeartIcon,

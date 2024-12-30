@@ -99,7 +99,7 @@
              
               
               <input @change="open_support = false" type="search" v-on:keyup.enter="$router.push('/p/search/?search=' + searchQuery);searchQuery = null" v-model="searchQuery" id="default-search"
-                class="w-full p-4 pl-10 text-sm rtl text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-indigo-800   border-transparent"
+                class="w-full p-4 pl-10 text-sm rtl text-indigo-800 rounded-full bg-transparent focus:border-transparent placeholder-black   border-transparent"
                 placeholder="جستجو..." required>
 
               

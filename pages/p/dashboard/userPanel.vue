@@ -11,7 +11,7 @@
       <div class="grid rtl grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] mt-12 lg:mt-0">
           <section aria-labelledby="section-1-title">
               <h2 class="sr-only" id="section-1-title">Section title</h2>
-              <div class="overflow-hidden rounded-lg bg-white shadow">
+              <div class="overflow-hidden rounded-lg bg-white mb-20 shadow">
                   <div  class="p-16 flex items-center justify-center " >
                       <div role="status">
                           <svg aria-hidden="false" class="w-14 h-14 text-gray-100 animate-spin fill-indigo-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
       <div class="grid rtl mt-12 lg:mt-0 grid-cols-1 gap-4 lg:col-span-2 lg:mx-[3rem] ">
         <section aria-labelledby="section-1-title">
           <h2 class="sr-only" id="section-1-title">Section title</h2>
-          <div class="overflow-hidden rounded-lg bg-white shadow">
+          <div class="overflow-hidden rounded-lg bg-white mb-20 shadow">
             <div class="p-6">
               <div class="px-4 sm:px-0">
                 <h3 class="text-base font-semibold leading-7 text-gray-900">اطلاعات شخصی</h3>
@@ -51,7 +51,7 @@
                                     نام
                                 </label>
                                 <input required
-                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-city" type="text" v-model="first_name">
                             </div>
                             <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -61,7 +61,7 @@
                                       نام خانوادگی
                                 </label>
                                 <input required
-                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full  py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-city" type="text" v-model="last_name">
                             </div>
                         </dd>
@@ -79,7 +79,7 @@
                                     شماره موبایل
                                 </label>
                                 <p 
-                                    class=" block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    class=" block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-city" type="text" >
                                     {{phone_number}}
                                     </p>
@@ -100,7 +100,7 @@
                                 </label>
                                 <input
                                     required
-                                    class=" block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    class=" block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full  py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-city" type="text" v-model="email">
                                     
                                     </input>
@@ -118,7 +118,7 @@
                             </label>
                             <div class="relative">
                               <select v-model="state"
-                                class="block appearance-none w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                class="block appearance-none w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 id="grid-state">
                                 <option v-for="province in provinces" :key="province" :value="province">{{ province }}
                                 </option>
@@ -138,7 +138,7 @@
                               شهر
                             </label>
                             <input
-                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full  py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-city" type="text" v-model="city">
                           </div>
                           <div class="py-2 w-full  px-3 mb-6 md:mb-0">
@@ -147,7 +147,7 @@
                               محل سکونت
                             </label>
                             <textarea
-                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-city"
                               v-model="street"
                               rows="3" 
@@ -162,7 +162,7 @@
                               کدپستی
                             </label>
                             <input
-                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                              class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full  py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                               id="grid-zip" type="text" v-model="zipCode">
                           </div>
                         </div>
@@ -172,7 +172,7 @@
                   <div class="flex justify-end" >
                     <button
                       type="submit"
-                      class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-4 px-4 rounded-full px-10">
+                      class="bg-indigo-600 hover:bg-indigo-800 text-white  py-2 mb-4 px-5 rounded-full px-10">
                       ثبت تغییرات
                     </button>
                   </div>

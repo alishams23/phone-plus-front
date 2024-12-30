@@ -35,9 +35,9 @@
                                 <div v-if="tab==1">
                                     <form @submit.prevent="tab=2">
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
-                                            <div class="mt-6 border-t border-gray-100">
-                                                <dl class="divide-y divide-gray-100">
-                                                    <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
+                                            <div class="mt-6 ">
+                                                <dl class="">
+                                                    <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-lg py-1">
                                                         محصول:
                                                     </div>
                                                     <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
@@ -73,12 +73,12 @@
                                                             <div class="">
                                                                 <div v-if="color" class="flex">
                                                                     <input type="number" id="first_name" min="1" :max="color.count" v-model="qty"
-                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-lg p-2.5"
+                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-full p-2.5"
                                                                         required>
                                                                 </div>
                                                                 <div v-else class="flex">
                                                                     <input type="number" id="first_name" min="1" :max="product.amount" v-model="qty"
-                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-lg p-2.5"
+                                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-full p-2.5"
                                                                         required>
                                                                 </div>
                                                             </div>
@@ -106,7 +106,7 @@
                                                         </dd>
                                                     </div>
                                                 </dl>
-                                                <div class="w-full flex justify-end" >
+                                                <div class="w-full flex " >
                                                     <button type="submit"
                                                         class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10 w-[10rem] md:w-[15rem]">
                                                         <p >مرحله بعد</p>
@@ -119,10 +119,10 @@
                                 <div v-if="tab==2">
                                     <form @submit.prevent="tab=3">
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
-                                            <div class="mt-6 border-t border-gray-100">
-                                                <dl class="divide-y divide-gray-100">
+                                            <div class="mt-6 ">
+                                                <dl class="">
                                                     <div
-                                                        class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
+                                                        class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-lg py-1">
                                                         دریافت کننده:
                                                     </div>
                                                     <div class="px-4 py-3 md:py-6 grid grid-cols-3 gap-4 px-0">
@@ -138,7 +138,7 @@
                                                                     نام
                                                                 </label>
                                                                 <input required
-                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="first_name">
                                                             </div>
                                                             <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -148,7 +148,7 @@
                                                                      نام خانوادگی
                                                                 </label>
                                                                 <input required
-                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="last_name">
                                                             </div>
                                                         </dd>
@@ -161,16 +161,16 @@
                                                         <dd
                                                             class="mt-1 flex text-sm leading-6 justify-between md:justify-start  text-gray-700 col-span-3 md:col-span-2  mt-0">
                                                             <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                                                <p>
+                                                                <div>
                                                                     <label
                                                                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                                                         for="grid-city">
                                                                         شماره موبایل
                                                                     </label>
                                                                     <input required
-                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="phone_number">
-                                                                </p>
+                                                                </div>
                                                             </div>
                                                             <div class="py-2 w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                                                 <p class="text-xs pt-5 text-gray-400" >
@@ -194,7 +194,7 @@
                                                                     </label>
                                                                     <div class="relative">
                                                                         <select v-model="state"
-                                                                            class="block appearance-none w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                            class="block appearance-none w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-full leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                             id="grid-state">
                                                                             <option v-for="province in provinces"
                                                                                 :key="province" :value="province">{{
@@ -220,7 +220,7 @@
                                                                         شهر
                                                                     </label>
                                                                     <input required
-                                                                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                         id="grid-city" type="text" v-model="city">
                                                                 </div>
                                                                 <div class="py-2 w-full px-3 mb-6 md:mb-0">
@@ -229,7 +229,7 @@
                                                                         محل سکونت
                                                                     </label>
                                                                     <textarea
-                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city"
                                                                     v-model="street"
                                                                     rows="3" 
@@ -244,7 +244,7 @@
                                                                         کدپستی
                                                                     </label>
                                                                     <input required
-                                                                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                        class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                         id="grid-zip" type="text" v-model="zipCode">
                                                                 </div>
                                                                 <div class="py-2 flex items-center w-full pt-10 px-3 mb-6 md:mb-0">
@@ -252,7 +252,7 @@
                                                                         type="checkbox"
                                                                         id="save-address"
                                                                         v-model="save_address"
-                                                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                                                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded-full focus:ring-blue-500"
                                                                     >
                                                                     <label for="save-address" class="ml-2 block px-2 text-sm text-gray-900">
                                                                         ذخیره اطلاعت من
@@ -262,16 +262,16 @@
                                                         </dd>
                                                     </div>
                                                 </dl>
-                                                <div class="w-full flex justify-end" >
-                                                    <button @click="tab=1"
-                                                        class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
-                                                        <p >برگشت</p>
-                                                    </button>
-                                                    
+                                                <div class="w-full flex " >
                                                     <button type="submit"
                                                         class="bg-indigo-600 mx-4 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
                                                         <p >مرحله بعد</p>
                                                     </button>
+                                                    <button @click="tab=1"
+                                                        class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8 px-5 rounded-full mx-3 px-10 w-[10rem] md:w-[10rem]">
+                                                        <p >برگشت</p>
+                                                    </button>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -280,9 +280,9 @@
                                 <div v-if="tab==3">
                                     <div >
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
-                                            <div class="mt-6 border-t border-gray-100">
-                                                <dl class="divide-y divide-gray-100">
-                                                    <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
+                                            <div class="mt-6 ">
+                                                <dl class="">
+                                                    <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-lg py-1">
                                                         پرداخت:
                                                     </div>
                                                     <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
@@ -318,23 +318,23 @@
                                                             <dd
                                                                 class="mt-1 grid grid-cols-2 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-6 md:col-span-6  mt-0">
                                                                     <div class="py-2 col-span-1 w-full  px-3 mb-6 md:mb-0">
-                                                                        <p>
+                                                                        <div>
                                                                             <label
                                                                                 class="block uppercase w-full tracking-wide text-gray-700 text-xs font-bold "
                                                                                 for="grid-city">
                                                                                 کد تخفیف
                                                                             </label>
                                                                             <input required
-                                                                            class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                            class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                             id="grid-city" type="text" v-model="discount_code">
                                                                             <p class="text-xs md:text-sm text-red-600" >
                                                                                 {{error}}
                                                                             </p>
-                                                                        </p>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="py-2  col-span-1 w-full flex justify-end flex justify-center mt-4 mb-6 md:mb-0">
                                                                         <button type="submit"
-                                                                            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 mb-8 px-5 rounded-full">
+                                                                            class="bg-indigo-600 hover:bg-indigo-700 text-white  py-2 mb-8 px-5 rounded-full">
                                                                             <p v-if="btn_discount_loading">درحال بررسی...</p>
                                                                             <p v-else>اعمال کد تخفیف</p>
                                                                         </button>
@@ -343,11 +343,7 @@
                                                         </div>
                                                     </form>
                                                 </dl>
-                                                <div class="w-full flex justify-end" >
-                                                    <button @click="tab=2"
-                                                        class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
-                                                        <p >برگشت</p>
-                                                    </button>
+                                                <div class="w-full flex " >
                                                     <button v-if="btn_buy_loading" type="" disabled
                                                         class="bg-gray-400 text-white font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
                                                         <div class=" flex items-center w-full  justify-center" >
@@ -364,6 +360,11 @@
                                                         class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10 w-[10rem] md:w-[15rem]">
                                                         <p >پرداخت</p>
                                                     </button>
+                                                    <button @click="tab=2"
+                                                        class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8  rounded-full mx-3 px-10 w-[10rem] md:w-[10rem]">
+                                                        <p >برگشت</p>
+                                                    </button>
+                                                  
                                                 </div>
                                             </div>
                                         </div>

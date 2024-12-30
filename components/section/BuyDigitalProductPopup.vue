@@ -7,7 +7,7 @@
                     <div class="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity" />
                 </TransitionChild>
                 <div v-if="snackbarDiscount" class="bg-green-700 shadow-2 rtl text-white p-4 py-2 mx-10 rounded-full fixed top-4  flex justify-between items-center">
-                    کد تخفیف اعمال شد {{ price(discount_amount) }}تومان از سفارش شما کسر شد
+                    کد تخفیف اعمال شد {{ price(calculate_discount_amount(discount_amount,qty)) }}تومان از سفارش شما کسر شد
                     <button @click="snackbarDiscount = false" class="text-white mr-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -35,34 +35,31 @@
                                     <div >
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
                                             
-                                            <div class="mt-6 border-t border-gray-100">
-                                                <dl class="divide-y divide-gray-100">
-                                                    <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-full py-1">
+                                            <div class="mt-6 ">
+                                                <dl class="">
+                                                    <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-lg py-1">
                                                         پرداخت:
                                                     </div>
                                                     <form @submit.prevent="checkDiscountCode" v-if="show == true">
-                                                    <div class="px-4 py-3 md:py-3 grid grid-cols-6 gap-4 px-0">
+                                                    <div class="px-4 py-3 md:py-3 grid grid-cols-6 gap-4 px-0 mt-4">
                                                         <dd
                                                         class="mt-1 grid grid-cols-2 flex text-sm leading-6 justify-between md:justify-center  text-gray-700 col-span-6 md:col-span-6  mt-0">
-                                                            <div class="py-2 col-span-1 w-full  px-3 mb-6 md:mb-0">
+                                                            <div class="py-2 col-span-1 w-full  px-3  ">
                                                                 <div>
-                                                                    <label
-                                                                        class="block uppercase w-full tracking-wide text-gray-700 text-xs font-bold "
-                                                                        for="grid-city">
-                                                                        کد تخفیف
-                                                                    </label>
+                                                                   
                                                                     <input required
                                                                         :autofocus="false"
-                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                                        placeholder="   کد تخفیف"
+                                                                    class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="discount_code" >
                                                                     <p class="text-xs md:text-sm text-red-600" >
                                                                         {{error}}
                                                                     </p>
                                                                 </div>
                                                             </div>
-                                                            <div class="py-2  col-span-1 w-full flex justify-end flex justify-center mt-4 mb-6 md:mb-0">
+                                                            <div class="py-2  col-span-1 w-full flex justify-end flex justify-center">
                                                                 <button type="submit"
-                                                                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 mb-8 px-5 rounded-full">
+                                                                    class="bg-indigo-600 hover:bg-indigo-700 text-white  py-2 mb-8 px-5 rounded-full">
                                                                     <p v-if="btn_discount_loading">درحال بررسی...</p>
                                                                     <p v-else>اعمال کد تخفیف</p>
                                                                 </button>
@@ -70,14 +67,14 @@
                                                         </dd>
                                                     </div>
                                                 </form>
-                                                    <form @submit.prevent="sendData">
-                                                        <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0">
+                                                    <form @submit.prevent="sendData" class="border-t">
+                                                        <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0 gap-y-5 border-b  mb-5" >
                                                             <dt v-if="product.type == 'license'" class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">تعداد</dt>
                                                             <dd v-if="product.type == 'license'" class="mt-1 flex text-sm leading-6 justify-end md:justify-center text-gray-700 col-span-1 mt-0">
                                                                 <div class="">
                                                                     <div class="flex">
                                                                         <input type="number" id="first_name" min="1" :max="product.inventory_count" v-model="qty"
-                                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-lg p-2.5"
+                                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm w-20 rounded-full p-2.5"
                                                                             required>
                                                                     </div>
                                                                 </div>
@@ -85,13 +82,15 @@
                                                             <dt class="text-xs md:text-sm font-medium flex justify-start md:justify-center items-center leading-6 text-gray-900">مبلغ قابل پرداخت
                                                             </dt>
                                                             <dd class="mt-1 flex text-sm text-right justify-end md:justify-center leading-6 text-gray-700 col-span-1 mt-0">
-                                                                <p class="text-md md:text-xl tracking-tight text-gray-900">
+                                                                <div class="text-md md:text-xl tracking-tight text-gray-900">
+                                                                    <span v-if="discount_amount" class="text-[7px] md:text-[10px]  text-center text-red-600 px-1">- {{price(calculate_discount_amount(discount_amount,qty))}} تومان</span>
+                                                                   
                                                                     <div >
-                                                                        <span v-if="discount_amount" class="text-[7px] md:text-[10px] text-red-600 px-1">- {{prices(discount_amount)}} تومان</span>
-                                                                        {{ price(parseInt((((product.price ) * ((100 - product.discount) / 100)) * qty)-discount_amount)) }}
+                                                                        {{ price(parseInt((((product.price ) * ((100 - product.discount) / 100)) * qty)- calculate_discount_amount(discount_amount,qty))) }}
                                                                         <span class="text-[10px] md:text-sm text-gray-600">تومان</span>
                                                                     </div>
-                                                                </p>
+
+                                                                </div>
                                                             </dd>
                                                         </div>
                                                         <div class="w-full flex justify-end">
@@ -108,13 +107,16 @@
                                                                 </div>
                                                             </button>
                                                         </div>
-                                                        <div class="w-full flex justify-center" >
+                                                        <div class=" flex " >
+                                                          <div>
                                                             <button 
                                                                 type="submit"
-                                                                class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 rounded-full px-10 w-[10rem] md:w-[15rem]"
+                                                                class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-indigo-600   px-5 py-[8px] text-base font-medium text-white  sm:w-full"
                                                             >
-                                                                <p>پرداخت</p>
+                                                                <p class="mx-6">پرداخت</p>
+                                                                <ShoppingBagIcon class="h-5 w-5 text-white mx-5" />
                                                             </button>
+                                                          </div>
                                                         </div>
                                                     </form>
                                                 </dl>
@@ -136,17 +138,20 @@
 <script>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import axios from 'axios'
+import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
+
 import { useUserStore } from '~/store/user';
 import { apiStore } from '~/store/api';
 
 export default {
     props: ["show", "product"],
-    components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot },
+    components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot ,ShoppingBagIcon},
     data() {
         return {
             btn_buy_loading: false,
             btn_discount_loading: false,
             discount_amount: 0,
+            discount_is_percentage:false,
             snackbarVisible: false,
             snackbarDiscount: false,
             qty: 1,
@@ -186,9 +191,16 @@ export default {
                 this.btn_buy_loading = false
             })
         },
+        calculate_discount_amount(discount_amount,qty){
+            if (this.discount_is_percentage) {
+                      return (((this.product.price) * ((100 - this.product.discount) / 100)) * qty) * (discount_amount / 100)
+                    } else {
+                        return discount_amount
+                    } 
+        },
         checkDiscountCode() {
             this.btn_discount_loading = true
-            const apiUrl = `${apiStore().address}/api/product/check-valid-digital-product-discount/${this.discount_code}/${this.$route.params.id}/`;
+            const apiUrl = `${apiStore().address}/api/product/check-valid-digital-product-discount/${this.discount_code}/${this.product.id}/`;
             axios.get(apiUrl, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -197,11 +209,13 @@ export default {
                 },
             }).then(response => {
                 if (response.data.valid) {
-                    if (response.data.is_percentage) {
-                        this.discount_amount = (((this.product.price) * ((100 - this.product.discount) / 100)) * this.qty) * (response.data.amount / 100)
-                    } else {
-                        this.discount_amount = response.data.amount
-                    }
+                    this.discount_amount = response.data.amount
+                    this.discount_is_percentage = response.data.is_percentage
+                    // if (response.data.is_percentage) {
+                    //     this.discount_amount = (((this.product.price) * ((100 - this.product.discount) / 100)) * this.qty) * (response.data.amount / 100)
+                    // } else {
+                    //     this.discount_amount = response.data.amount
+                    // }
                     this.snackbarDiscount = true
                     setTimeout(() => {
                         this.snackbarDiscount = false
