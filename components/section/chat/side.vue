@@ -69,11 +69,19 @@
                  <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
                  <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else src="/images/default_profile_2.svg" alt="" />
                </span>
-               <div class="w-full"> 
-                 <p class="truncate ps-4 text-sm font-medium  text-left" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
-                 <p class="truncate ps-4 text-sm font-medium  text-left" v-else>{{ person.contact.full_name }}</p>
-                 <p class="truncate ps-4 text-xs text-gray-900 pt-2 text-left" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
-                 <p class="truncate ps-4 text-xs text-gray-900 pt-2 text-left" v-else>{{ '@' + person.contact.username }}</p>
+               <div class="w-full flex justify-between items-center pe-4"> 
+                 <div class="max-w-10">
+                   <p class="truncate ps-4 text-sm font-medium me-4 w-[89%] text-left" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
+                   <p class="truncate ps-4 text-sm font-medium me-4 w-[89%] text-left" v-else>{{ person.contact.full_name }}</p>
+                   <p class="truncate ps-4 text-xs text-gray-900 pt-2 text-left" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
+                   <p class="truncate ps-4 text-xs text-gray-900 pt-2 text-left" v-else>{{ '@' + person.contact.username }}</p>
+                  </div>
+                  <div
+                      v-if="person.unread > 0"
+                      class="flex items-center bg-indigo-600 pt-1 justify-center w-5 h-5 text-xs font-medium text-white bg-primary rounded-full"
+                    >
+                      {{ person.unread }}
+                  </div>
                </div>
              </a>
            </nuxt-link>

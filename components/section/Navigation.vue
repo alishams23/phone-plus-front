@@ -76,6 +76,12 @@
     
     <div class="fixed mx-auto mb-2 md:mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-2 md:px-8  ">
       <div @click="handleClick" class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[200px] px-3 justify-center hidden  text-white md:flex">
+        <div
+            v-if="countMessage > 0"
+            class="flex items-center animate-pulse bg-indigo-600 pt-1 justify-center w-5 h-5 text-xs font-medium text-white bg-primary rounded-full"
+          >
+            {{ countMessage }}
+        </div>
         <div class=" block px-1 text-xs  ">
          
           پشتیبانی
@@ -185,6 +191,12 @@
                 <div @click="isLogin ? open_support = true : changeStateLogin(true)"
                   :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block flex  justify-start items-center px-4 py-2 text-sm text-right']">
                   پشتیبانی
+                  <div
+                      v-if="countMessage > 0"
+                      class="flex items-center animate-pulse mx-2 bg-indigo-600 pt-1 justify-center w-5 h-5 text-xs font-medium text-white bg-primary rounded-full"
+                    >
+                      {{ countMessage }}
+                  </div>
                   <!-- <ChatBubbleLeftRightIcon class="w-5 mx-2 text-indigo-600" /> -->
                 </div>
                 </MenuItem>
@@ -327,7 +339,8 @@ export default {
       products: [],
       digital_products: [],
       loading: false,
-      heightPage:null
+      heightPage:null,
+      countMessage:0
     };
   },
   computed: {
@@ -346,7 +359,7 @@ export default {
   },
   mounted() {
 
-   
+    this.getMessage()
     window.addEventListener('scroll', this.checkScroll);
   },
   beforeDestroy() {
@@ -365,6 +378,16 @@ export default {
     truncateTitle(title) {
       return title.length > 30 ? title.substring(0, 20) + '...' : title;
     },
+    getMessage() {
+            axios.get(`${apiStore().address}/api/chat/unread-messages/`, {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `Token ${useUserStore().userToken}`
+                },
+            }).then((response) => {
+                this.countMessage = response.data.count
+            })
+        },
     getProducts() {
       this.loading = true
       axios.get(`${apiStore().address}/api/product/products-search-for-buyer/?search=${this.searchQuery}`, {
