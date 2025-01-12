@@ -7,6 +7,9 @@
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
         <div class="absolute inset-0 -z-10 rounded-2xl bg-blue-circle" />
     
+        <div class="absolute top-0 flex right-0  items-center justify-center overflow-hidden   m-2  ">
+          <div class="relative text-white shadow-xl text-xs font-semi bg-glass-3 text-left rounded-2xl px-10 pt-3 pb-3"> محصول دیجیتال </div>
+        </div> 
         <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
       
           <div class="-ml-4 flex items-center gap-x-4">
@@ -41,9 +44,7 @@
               aria-hidden="true" />
         </div>
       </div>
-        <div class="absolute top-0 flex right-0  items-end justify-end overflow-hidden  ">
-          <div class="relative text-white shadow-xl text-xs font-semi bg-glass-3 text-left  rounded-es-2xl px-10 pt-3 pb-4"> محصولات دیجیتال </div>
-        </div> 
+   
       </div>
   </nuxt-link>
 
