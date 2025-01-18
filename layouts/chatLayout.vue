@@ -209,6 +209,9 @@ export default {
     
   },
   mounted() {
+    if( useUserStore().userToken == null) {
+      this.$router.push('/');
+    }
     // this.loginPage();
   },
 
