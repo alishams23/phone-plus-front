@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.6.1",
+    "@nuxtjs/sitemap": "^6.1.5",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@vite-pwa/nuxt": "^0.10.6",
     "nuxt": "^3.7.0",
@@ -24,6 +25,7 @@
     "axios": "^1.6.7",
     "i": "^0.3.7",
     "moment-jalaali": "^0.10.4",
+    "nuxi": "^3.20.0",
     "nuxt-aos": "^1.2.4",
     "nuxt-marquee": "^1.0.4",
     "nuxt-swiper": "^1.2.2",

@@ -25,12 +25,28 @@ export default defineNuxtConfig({
     'nuxt-aos',
     // 'nuxt-swiper'
     "nuxt-marquee",
+    '@nuxtjs/sitemap',
   ],
 
   devServer: {
     port: 3001,
     // host:"0"
   },
+  site: { 
+    url: 'https://phoneplus.ir', 
+    name: 'phone plus - فون پلاس' 
+  }, 
+
+  sitemap: {
+    sources:[
+      // Using the custom Django REST API endpoint for URLs
+      'https://phoneplus.ir/api/product/digital-product-ID-list-view/',
+      'https://phoneplus.ir/api/product/product-ID-list-view/',
+      'https://phoneplus.ir/api/account/shop-username-list-view/',
+      'https://phoneplus.ir/api/blog/blog-slug-list-view/',
+    ]
+  },
+
 
   pwa: {
     registerType: 'autoUpdate',
