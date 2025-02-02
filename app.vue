@@ -2,7 +2,7 @@
     <VitePwaManifest />
     <NuxtLoadingIndicator />
   <Head>
-        <Title>فون پلاس | phone plus</Title>
+        <Title>فون پلاس | قدم به قدم رو به جلو </Title>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <meta name="enamad" content="۴۴۵۴۱۷۰۳">
 

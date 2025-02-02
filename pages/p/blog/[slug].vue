@@ -123,7 +123,7 @@
                                             {{ blog.created_at_jalali }}
                                         </p>
                                     </div>
-                                    <button @click="isLogin == false ? $router.push('/p/auth/signIn') : like()"
+                                    <button @click="isLogin == false ? $router.push('/') : like()"
                                         class="text-sm mx-3  flex items-center py-2 px-3 rounded-full hover:bg-red-600 hover:text-white focus:outline-none focus:shadow-outline"
                                         :class="blog.likeAuthor == true ? 'text-white bg-red-600' : ' bg-gray-100  text-gray-500 '">
                                         <div class="pr-2 ">

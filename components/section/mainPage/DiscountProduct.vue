@@ -1,6 +1,8 @@
 <template>
   <div class=" w-full h-[130px] md:h-[300px] mt-[-20px] flex md:inline-block" v-if="loading == false">
-      <img src="/images/banner2.webp" class="w-full h-full object-cover object-center  " alt="">
+    <a href="https://old.phoneplus.ir/telegram-premium/">
+      <img src="/images/banner/2.png" class="w-full h-full object-cover object-center  " alt="">
+    </a>
     </div>
 
     <div class="py-[60px] bg-white flex items-center justify-center mx-3" v-if="loading">
