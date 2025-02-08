@@ -54,7 +54,7 @@
     </div>
    
 
-    <div class=" w-full h-[130px] md:h-[300px] mt-[-30px] flex ">
+    <div class=" w-full h-[130px] md:h-[300px] mt-[-30px] flex md:inline-block">
       <a href="https://phoneplus.ir/p/start_selling">
       <img src="/images/banner/1.png" class="w-full h-full object-cover object-center  " alt="">
     </a>
