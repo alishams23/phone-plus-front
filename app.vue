@@ -14,12 +14,12 @@
         <NuxtPage/>
       </div>
     </NuxtLayout>
+    
   </div>
 </template>
 
 <script>
 import { useUserStore } from '~/store/user'; 
-
 
 export default {
 beforeMount() {

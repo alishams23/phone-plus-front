@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="'/p/product/'+ data.slug">
-    <div :class="width ? `${width}` : 'w-[14rem]'" class=" relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-20 sm:pt-20 lg:pt-40">
+    <div :class="width ? `${width}` : 'w-[14rem]'" class=" relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-20 sm:pt-20 lg:pt-32">
         <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute  inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-black from-0% via-black/30 " />
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
@@ -14,13 +14,13 @@
         
           </div>
         </div>
-        <h3 class="mt-3 rtl text-sm md:text-md pb-3 font-semibold  text-white text-center overflow-hidden h-[40px] md:h-[56px] whitespace- nowrap line-clamp-2 ">
+        <h3 class="mt-3 rtl text-sm md:text-md pb-1 font-semibold  text-white text-center overflow-hidden h-[40px] md:h-[50px] whitespace- nowrap line-clamp-2 ">
           <a v-if="data.title">
             <span class="absolute inset-0" />
             {{ data.title }}
           </a>
         </h3>
-        <p class=" text-sm pb-2 md:text-md font-semibold text-white text-center overflow-hidden line-clamp-1 ">
+        <p  v-if="isCompanyNameExist" class=" text-sm  md:text-md font-semibold text-white text-center overflow-hidden line-clamp-1 ">
          <span class="text-xs font-light text-gray-100"> فروشگاه: </span> {{ data.shop.name }} 
         </p>
         <div class=" text-xs md:text-sm  font-bold text-white  rtl text-center rounded-full ">   {{ data.discount != 0 ? price(parseInt((data.price + data.colors[0].price)*((100-data.discount)/100))) : '&nbsp; ' }}  </div>
@@ -29,8 +29,7 @@
             <div class="relative text-white shadow-xl text-xs md:text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1 " v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
         <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg px-4 pb-4">
-          <div class="flex items-center justify-end mt-2">
-              
+          <div class="flex items-center justify-end mt-2"> 
               <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating"
                 :class="[data.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
                 aria-hidden="true" />
@@ -71,7 +70,14 @@ import { StarIcon } from '@heroicons/vue/20/solid'
 
 export default {
   components: {StarIcon},
-  props: ["data","width"],
+  props: {
+    data: Object,
+    width: String,
+    isCompanyNameExist: {
+      type: Boolean,
+      default: true
+    }
+  },
   methods: {
     price(value){
       let text

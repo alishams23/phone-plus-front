@@ -26,7 +26,7 @@
        }" :space-between="10" class="px-3 ">
          <SwiperSlide  v-for="item in data" :key="item"
            class="mb-10 mx-2 ">
-           <PinDigitalProduct class=" px-5" :data="item" />
+           <PinDigitalProduct :isCompanyNameExist="false" class=" px-5" :data="item" />
          </SwiperSlide>
        </Swiper>
      </div >

@@ -34,7 +34,7 @@
           clickable: true,
         }" :space-between="10" class="px-3 ">
            <SwiperSlide v-for="item in data" :key="item + 'product xxx'" class="mb-10 mx-2 ">
-             <Product class="my-10 " :data="item" />
+             <Product :isCompanyNameExist="false" class="my-10 " :data="item" />
            </SwiperSlide>
         </Swiper>
       </div>

@@ -26,7 +26,7 @@
             </span>
           </a>
         </h3>
-        <p class=" rtl text-center text-xs my-1 md:text-sm lg:pe-4 py-1 font-semibold leading-6 text-black overflow-hidden ">
+        <p v-if="isCompanyNameExist" class=" rtl text-center text-xs my-1 md:text-sm lg:pe-4 py-1 font-semibold leading-6 text-black overflow-hidden ">
           <span class="text-xs font-light text-gray-700"> فروشگاه: </span> {{ data.shop.name }} 
         </p>
         <div class=" text-sm font-bold   text-center rounded-full ">     {{ price(parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price)) }} </div>
@@ -58,7 +58,14 @@ import { StarIcon } from '@heroicons/vue/20/solid'
 export default {
 
   components: {StarIcon},
-  props: ["data","width"],
+  props: {
+    data: Object,
+    width: String,
+    isCompanyNameExist: {
+      type: Boolean,
+      default: true
+    }
+  },
   methods: {
     price(value){
       let text
