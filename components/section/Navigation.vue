@@ -122,19 +122,28 @@
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
             class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-            <HomeIcon class=" w-5 " />
+            <div class="flex">
+              <HomeIcon class=" w-5 " />
+              <!-- <p class="text-[12px] font-bold w-10 px-3">خانه</p> -->
+            </div>
             <span class="sr-only">Mute microphone</span>
           </nuxt-link>
           <button @click="isLogin ? $router.push('/p/dashboard/userPanel/') : changeStateLogin(true)"
             :class="currentRouteCheck('userPanel') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-            class="p-2.5   transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-            <UserIcon class=" w-5 " />
+            class="p-2.5 transform hover:-translate-y-1 duration-500 group rounded-[200px] mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            <div class="flex">
+              <UserIcon class=" w-5 mr-1" />
+              <p class="text-[12px] font-bold w-20 px-1">حساب کاربری</p>
+            </div>
           </button>
           <button @click="isLogin ? $router.push('/p/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('productOrders') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
             class="p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
-            <ShoppingCartIcon class=" w-5 " />
+            <div class="flex">
+              <ShoppingCartIcon class=" w-5 mr-1" />
+              <p class="text-[12px] font-bold w-16 px-1">سفارشات</p>
+            </div>
           </button>
           <div v-if="buttons.length > 0 " v-for="button in buttons" :key="button.name" class="md:hidden">
             <div v-if="button.name == 'خرید محصول' || button.name=='خرید / دانلود'">

@@ -25,7 +25,7 @@
   </div>
  
   </div>
-    <ul role="list" class="flex-1  overflow-y-auto">
+    <ul role="list" class="flex-1  overflow-y-auto overflow-x-hidden">
       <li v-if="$route.name == 'username'" class="rounded-2xl mx-3 mt-2 bg-gray-200"  >
         <div class="group relative flex  items-center px-5 py-4" >
             <a :href="sectionSupport == true ?'/p/chat/' +  $route.params.username + '/'+username : '#'" class="relative flex min-w-0 flex-1 items-center">
@@ -58,24 +58,24 @@
         </div>
       </li>
       
-      <li v-for="person in contacts " :class=" $route.params.username != null ?'mx-1 my-2 border-b mt-[2px] border-indigo-500':''"  >
+      <li v-for="person in contacts " :class=" $route.params.username != null ?'mx-1 me-4 my-2  mt-[2px]':''"  >
     <div :class=" person.contact&&  selected_user == person.contact.username ? 'bg-indigo-500 rounded-2xl text-white' :  $route.params.username != null ? 'text-white' : ''">
       <template v-if="person.contact" >
          
          {{ selected_user == person.contact.username ?  $emit('get-selected-user', person) : '' }}
          <div class="group mb-2 justify-end items-center ps-5 my-1 " @click="$emit('get-selected-user', person);selected_user = person.contact.username">
            <nuxt-link :to="sectionSupport != true ?'/p/chat/' +  person.contact.username + '/'+person.room_name  : '' "  class="-m-1  block flex-1 p-1 border-0">
-             <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex min-w-0 flex-1 items-center justify-center border-0">
-               <span class="relative inline-block flex-shrink-0">
-                 <img class="h-10 w-10 rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
-                 <img class="h-10 w-10 bg-gray-100 rounded-full object-cover" v-else src="/images/default_profile_2.svg" alt="" />
-               </span>
+             <a :href="sectionSupport == true ? '/p/chat/' +  person.contact.username + '/'+person.room_name: '#'" class="relative flex  flex-1 items-center border-0">
+              
+                 <img class="h-10 w-10  rounded-full object-cover" v-if="person.contact.shop && person.contact.shop.image" :src="address + person.contact.shop.image" alt="" />
+                 <img class="h-10 w-10  bg-gray-100 rounded-full object-cover" v-else src="/images/default_profile_2.svg" alt="" />
+              
                <div class="w-full flex justify-between items-center pe-4"> 
                  <div class="max-w-10">
-                   <p class="truncate ps-2 text-[12px] font-medium me-4 w-[89%] text-left" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
-                   <p class="truncate ps-2 text-[12px] font-medium me-4 w-[89%] text-left" v-else>{{ person.contact.full_name }}</p>
-                   <p class="truncate ps-2 text-[8px] pt-2 text-left" :class="$route.params.username != null ? 'text-gray-300' : 'text-gray-900'" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
-                   <p class="truncate ps-2 text-[8px] pt-2 text-left" :class="$route.params.username != null ? 'text-gray-300' : 'text-gray-900'" v-else>{{ '@' + person.contact.username }}</p>
+                   <p class="truncate ps-2 text-[14px] font-medium me-4 w-[89%] rtl text-left" v-if="person.contact.shop">{{ person.contact.shop.name }}</p>
+                   <p class="truncate ps-2 text-[14px] font-medium me-4 w-[89%] rtl text-left" v-else>{{ person.contact.full_name }}</p>
+                   <p class="truncate ps-4 text-[9px] pt-2 text-left" :class="$route.params.username != null ? 'text-gray-300' : 'text-gray-900'" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
+                   <p class="truncate ps-4 text-[9px] pt-2 text-left" :class="$route.params.username != null ? 'text-gray-300' : 'text-gray-900'" v-else>{{ '@' + person.contact.username }}</p>
                   </div>
                   <div
                   v-if="person.unread > 0"
