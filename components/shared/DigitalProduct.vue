@@ -26,6 +26,9 @@
             </span>
           </a>
         </h3>
+        <p class=" rtl text-center text-xs my-1 md:text-sm lg:pe-4 py-1 font-semibold leading-6 text-black overflow-hidden ">
+          <span class="text-xs font-light text-gray-700"> فروشگاه: </span> {{ data.shop.name }} 
+        </p>
         <div class=" text-sm font-bold   text-center rounded-full ">     {{ price(parseInt(data.discount != 0 ? data.price*(100-data.discount)/100 : data.price)) }} </div>
         <div :class="data.discount != 0 ? 'line-through ' : '' " class=" text-xs text-gray-300 font-semibold   rtl text-center rounded-full ">   {{ data.discount != 0 ? price(data.price) : '&nbsp; ' }}  </div>
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pb-3">

@@ -56,6 +56,9 @@
               <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1000"
                 class="text-white font-black text-center md:text-right text-lg md:text-2xl truncate">
                 {{ digital_products[index].title }}
+                <p class=" text-white rtl font-black text-center md:text-right text-lg md:text-lg truncate ">
+                  <span class="text-xs font-light text-gray-100"> فروشگاه: </span> {{ digital_products[index].shop.name }} 
+                </p>
               </div>
               <div :data-aos="swap_direction == 'left' ? 'fade-left' : 'fade-right'" data-aos-duration="1100"
                 class="flex items-center justify-center md:justify-end pt-2">

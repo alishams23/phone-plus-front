@@ -20,6 +20,9 @@
             {{ data.title }}
           </a>
         </h3>
+        <p class=" text-sm pb-2 md:text-md font-semibold text-white text-center overflow-hidden line-clamp-1 ">
+         <span class="text-xs font-light text-gray-100"> فروشگاه: </span> {{ data.shop.name }} 
+        </p>
         <div class=" text-xs md:text-sm  font-bold text-white  rtl text-center rounded-full ">   {{ data.discount != 0 ? price(parseInt((data.price + data.colors[0].price)*((100-data.discount)/100))) : '&nbsp; ' }}  </div>
         <div :class="data.discount != 0 ? 'line-through text-gray-500  text-xs ' : 'text-white  text-sm ' " class=" font-semibold   rtl text-center rounded-full ">  {{ price(data.price + data.colors[0].price)}}   </div>
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pe-4 pb-2 pt-6">

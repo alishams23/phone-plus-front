@@ -16,6 +16,9 @@
             {{ data.title }}
           </a>
         </h3>
+        <p class=" rtl text-center text-xs md:text-sm lg:pe-4 py-1 font-semibold leading-6 text-black overflow-hidden ">
+         <span class="text-xs font-light text-gray-700"> فروشگاه: </span> {{ data.shop.name }} 
+        </p>
         <div class="flex flex-col justify-center text-center" >
           <div :class="data.discount != 0 ? 'line-through ' : '' " class="lg:pe-4 text-xs text-gray-300 font-semibold">
             {{ data.discount != 0 ? price(data.price) : '&nbsp; ' }}
