@@ -45,18 +45,18 @@
         
         <div v-if="currentRouteCheck('')" class="mt-16 col-span-2 flex justify-start items-center space-x-10">
           <!-- eNamad Badge -->
-          <a
-            referrerpolicy="origin"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://trustseal.enamad.ir/?id=261983&amp;Code=VwgWQmFg1VHBWyU0iuiF"
+          <a 
+            referrerpolicy='origin' 
+            target='_blank' 
+            href='https://trustseal.enamad.ir/?id=261983&Code=VwgWQmFg1VHBWyU0iuiF'
           >
-            <img
-              referrerpolicy="origin"
-              src="https://Trustseal.eNamad.ir/logo.aspx?id=261983&amp;Code=VwgWQmFg1VHBWyU0iuiF"
-              alt="eNamad Logo"
-              class="cursor-pointer w-28"
-            />
+            <img 
+              referrerpolicy='origin' 
+              src='https://trustseal.enamad.ir/logo.aspx?id=261983&Code=VwgWQmFg1VHBWyU0iuiF' 
+              alt='' 
+              style='cursor:pointer' 
+              code='VwgWQmFg1VHBWyU0iuiF'
+            >
           </a>
   
           <!-- Samandehi Badge -->
