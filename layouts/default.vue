@@ -6,7 +6,7 @@
   <slot  />  
 
   <Footer />
-  <!-- <SectionPwaPrompt /> -->
+  <SectionPwaPrompt />
 
 </template>
 
