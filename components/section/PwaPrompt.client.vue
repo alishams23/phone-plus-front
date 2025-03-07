@@ -52,7 +52,7 @@ import { Dialog, DialogOverlay, DialogPanel } from '@headlessui/vue';
 import { useUserStore } from '~/store/user'; 
 
 const userStore = useUserStore();
-const showPopup = ref(true);
+const showPopup = ref(false);
 
 onMounted(() => {
   // Load token/username/status/hasDismissedPopup from cookies
