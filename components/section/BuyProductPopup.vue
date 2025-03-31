@@ -37,6 +37,9 @@
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
                                             <div class="mt-6 ">
                                                 <dl class="">
+                                                    <div class="text-gray-500 text-sm flex justify-center rounded-lg pb-4">
+                                                        شما درحال خرید از فروشگاه  <span class="font-bold px-2"> {{ product.shop.name }} </span>  هستید
+                                                    </div>
                                                     <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-lg py-1">
                                                         محصول:
                                                     </div>
@@ -121,6 +124,9 @@
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
                                             <div class="mt-6 ">
                                                 <dl class="">
+                                                    <div class="text-gray-500 text-sm flex justify-center rounded-lg pb-4">
+                                                        شما درحال خرید از فروشگاه  <span class="font-bold px-2"> {{ product.shop.name }} </span>  هستید
+                                                    </div>
                                                     <div
                                                         class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-lg py-1">
                                                         دریافت کننده:
@@ -281,6 +287,9 @@
                                     <div >
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
                                             <div class="mt-6 ">
+                                                <div class="text-gray-500 text-sm flex justify-center rounded-lg pb-4">
+                                                        شما درحال خرید از فروشگاه  <span class="font-bold px-2"> {{ product.shop.name }} </span>  هستید
+                                                    </div>
                                                 <dl class="">
                                                     <div class="bg-gray-100 text-gray-500 text-sm flex justify-center rounded-lg py-1">
                                                         پرداخت:
