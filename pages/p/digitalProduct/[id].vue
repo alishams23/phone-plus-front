@@ -423,6 +423,9 @@ export default {
     comment_hover_rate: 0,
   }),
   methods: {
+    openInNewTab() {
+        window.open('https://panel.phoneplus.ir/', '_blank');
+    },
     price(value){
             let text
             let chars = Array.from(`${value}`)
@@ -445,6 +448,11 @@ export default {
       if (this.is_sellable) {
         this.is_admin?
         NavigationStore().setButtons([
+          {
+            'name': 'مدیریت فروشگاه',
+            'func': this.openInNewTab,
+            'href': null,
+          },
           {
             'name': 'ویرایش محصول',
             'func': this.openInNewTab,

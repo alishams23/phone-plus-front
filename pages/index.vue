@@ -62,6 +62,7 @@ import CategoriesProduct from "@/components/section/mainPage/CategoriesProduct.v
 import CategoriesDigitalProduct from "@/components/section/mainPage/CategoriesDigitalProduct.vue"
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { NavigationStore } from '~/store/navigation';
+import { apiStore } from '~/store/api';
 import  CategoryDigitalProduct  from "@/components/section/mainPage/CategoryDigitalProduct.vue";
 
 export default {
@@ -93,16 +94,32 @@ export default {
   layout: "landing",
   data() {
     return {
-
+      shop_username : null
     };
   },
 
   methods: {
     openInNewTab() {
         window.open('https://panel.phoneplus.ir/', '_blank');
-    }
+    },
+    getShopUsername() {
+      this.loading = true
+      axios.get(`${apiStore().address}/api/account/admin-shop-username/`, {
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+          Authorization: `Token ${useUserStore().userToken}`,
+        },
+      }).then((response) => {
+        console.log(response);
+        
+        this.shop_username = response.username
+      })
+    },
+
   },
   mounted() {
+    this.getShopUsername()
     useUserStore().status=='s'? 
       NavigationStore().setButtons([
         {
@@ -119,6 +136,11 @@ export default {
           'name': 'مدیریت فروشگاه',
           'func': this.openInNewTab,
           'href': null,
+        },
+        {
+          'name': 'فروشگاه',
+          'func': null,
+          'href': `/${this.shop_username}`,
         }])
         :
         NavigationStore().setButtons([

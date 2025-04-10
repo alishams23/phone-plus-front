@@ -294,7 +294,9 @@ export default {
     },
   },
   methods: {
-
+    openInNewTab() {
+        window.open('https://panel.phoneplus.ir/', '_blank');
+    },
     async getData() {
       this.loading = true
       await axios.get(`${apiStore().address}/api/account/shop-profile-info/${this.$route.params.username}/`, {
@@ -319,6 +321,13 @@ export default {
   },
   async mounted() {
     await this.getData()
+    useUserStore().status=='s'? 
+    NavigationStore().setButtons([{
+          'name': 'مدیریت فروشگاه',
+          'func': this.openInNewTab,
+          'href': null,
+        }])
+    :
     NavigationStore().setButtons([{
         'name':'پشتیبانی فروشگاه',
         'func': this.isLogin == true ?null :this.openLogin ,
