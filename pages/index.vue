@@ -1,6 +1,5 @@
 <template>
   <!-- <Blog /> -->
-
   <div class=" rounded-b-[50px]">
     <HeaderHero />
   </div>
@@ -102,24 +101,24 @@ export default {
     openInNewTab() {
         window.open('https://panel.phoneplus.ir/', '_blank');
     },
-    getShopUsername() {
+    async getShopUsername() {
       this.loading = true
-      axios.get(`${apiStore().address}/api/account/admin-shop-username/`, {
+      await axios.get(`${apiStore().address}/api/account/admin-shop-username/`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
           Authorization: `Token ${useUserStore().userToken}`,
         },
       }).then((response) => {
-        console.log(response);
+        console.log(response.data.username);
         
-        this.shop_username = response.username
+        this.shop_username = response.data.username
       })
     },
 
   },
-  mounted() {
-    this.getShopUsername()
+  async mounted() {
+    await this.getShopUsername()
     useUserStore().status=='s'? 
       NavigationStore().setButtons([
         {
