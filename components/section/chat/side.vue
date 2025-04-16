@@ -28,7 +28,7 @@
     <ul role="list" class="flex-1  overflow-y-auto overflow-x-hidden">
       <li v-if="$route.name == 'username'" class="rounded-2xl mx-3 mt-2 bg-gray-200"  >
         <div class="group relative flex  items-center px-5 py-4" >
-            <a :href="sectionSupport == true ?'/p/chat/' +  $route.params.username + '/'+username : '#'" class="relative flex min-w-0 flex-1 items-center">
+            <a :href="sectionSupport == true ?'/p/chat/' +  $route.params.username + '/'+ 'newUser' : '#'" class="relative flex min-w-0 flex-1 items-center">
               <span class="relative inline-block flex-shrink-0">
                 <img class="h-10 w-10 rounded-full object-cover"  :src="address + '/api/account/shop-profile/' + $route.params.username" alt="" />
                
