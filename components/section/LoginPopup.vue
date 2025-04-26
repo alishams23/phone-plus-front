@@ -29,13 +29,16 @@
                                     <label for="phone-number"
                                         class="block text-sm  font-medium leading-6 text-gray-900">شماره
                                         موبایل</label>
-                                    <div class="relative mt-2 rounded-full shadow-sm">
-                                        <input type="text" name="phone-number" id="phone-number"
-                                            v-model="phoneNumber"
-                                            class="block w-full rounded-full border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
-                                            placeholder="09 -- -- -- -- -- -- -- " />
-
-                                    </div>
+                                        <div class="relative mt-2 rounded-full shadow-sm">
+                                            <input 
+                                                type="tel" 
+                                                name="phone-number" 
+                                                id="phone-number"
+                                                v-model="phoneNumber"
+                                                class="block w-full rounded-full border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400"
+                                                placeholder="09 -- -- -- -- -- -- -- " 
+                                            />
+                                        </div>
                                     <div v-if="error">
                                         <p class="text-red-600 text-xs pe-3 pt-3">{{ error }}</p>
                                     </div>
@@ -88,9 +91,15 @@
                             <form  @submit.prevent="check_code" class="space-y-6">
                                 <div class="ltr">
                                     <div class="relative mt-2 rounded-full shadow-sm">
-                                        <input type="text" placeholder="کد پیامک شده" v-model="code"
-                                            name="phone-number" id="phone-number"
-                                            class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " />
+                                        <input
+                                            type="tel"
+                                            inputmode="numeric"
+                                            placeholder="کد پیامک شده"
+                                            v-model="code"
+                                            name="sms-code"
+                                            id="sms-code"
+                                            class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400"
+                                        />
                                     </div>
                                     <div v-if="error">
                                         <p class="text-red-600 text-xs pe-3 pt-3">{{ error }}</p>
@@ -156,7 +165,8 @@
                                         <input type="text" name="first-name" id="first-name"
                                             v-model="first_name" autocomplete="given-name"
                                             class="block w-full rounded-full border-0 py-1.5 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " />
-                                    </div>
+                                    
+                                        </div>
                                 </div>
 
                                 <div class="sm:col-span-3">
@@ -185,7 +195,7 @@
                                         class="block text-sm font-medium leading-6 text-gray-900">شماره
                                         موبایل</label>
                                     <div class="relative mt-2 rounded-full shadow-sm">
-                                        <input type="text" name="phone-number" id="phone-number"
+                                        <input type="tel" name="phone-number" id="phone-number"
                                             v-model="phoneNumber"
                                             class="block w-full rounded-full border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
                                             placeholder="09 -- -- -- -- -- -- --" />
@@ -240,7 +250,7 @@
                             <form @submit.prevent="check_code_signup" class="space-y-6">
                                 <div class="ltr">
                                     <div class="relative mt-2 rounded-full shadow-sm">
-                                        <input type="text" placeholder="کد پیامک شده" v-model="code"
+                                        <input type="tel" placeholder="کد پیامک شده" v-model="code"
                                             name="phone-number" id="phone-number"
                                             class="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 " />
                                     </div>
