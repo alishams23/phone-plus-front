@@ -74,8 +74,8 @@
       </transition>
     </div>
     
-    <div class="fixed mx-auto mb-2 md:mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-2 md:px-8  ">
-      <div @click="handleClick" class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[200px] px-3 justify-center hidden  text-white md:flex">
+    <div class="fixed mx-auto mb-2 xl:mb-3 bottom-0 left-0 z-50 flex flex-row w-full flex justify-between px-2 xl:px-8  ">
+      <div @click="handleClick" class="flex-1/8 px-5  items-center bg-gradient-to-b from-indigo-600 to-indigo-900 rounded-[200px] px-3 justify-center hidden  text-white xl:flex">
         <div
             v-if="countMessage > 0"
             class="flex items-center animate-pulse bg-indigo-600 pt-1 justify-center w-5 h-5 text-xs font-medium text-white bg-primary rounded-full"
@@ -90,7 +90,7 @@
       </div>
       <transition name="fade" >
         <div v-if="(currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true)" 
-          class="flex-1/8 ml-3 items-center bg-glass-2 hidden md:block transition-all duration-500 rounded-[200px]  justify-center min-w-0  text-indigo-800 md:flex">
+          class="flex-1/8 ml-3 items-center bg-glass-2 hidden xl:block transition-all duration-500 rounded-[200px]  justify-center min-w-0  text-indigo-800 xl:flex">
           
           <div class=" rounded-full h-full px-4">
             <div class="relative  ">
@@ -115,13 +115,13 @@
         </div>
       </transition>
       <div
-    :class="((currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true))? 'w-[100%] md:w-[80%]': 'w-[2000%]' "
-    class="bg-glass-3 ml-0 md:ml-3 transition-all duration-1000 ease-in-out px-4 lg:px-8 py-2 flex flex-row items-center justify-between rounded-[200px] rtl">
+    :class="((currentRouteCheck('') && showButton && heightPage != null ) || (currentRouteCheck('') != true))? 'w-[100%] xl:w-[80%]': 'w-[2000%]' "
+    class="bg-glass-3 ml-0 xl:ml-3 transition-all duration-1000 ease-in-out px-4 lg:px-8 py-2 flex flex-row items-center justify-between rounded-[200px] rtl">
 
         <div class="flex items-center  px-1 rounded-full ">
           <nuxt-link tag="button" to="/" data-tooltip-target="tooltip-microphone" type="button"
             :class="currentRouteCheck('') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-            class="p-2 md:p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2 xl:p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <div class="flex">
               <HomeIcon class=" w-5 " />
               <!-- <p class="text-[12px] font-bold w-10 px-3">خانه</p> -->
@@ -130,7 +130,7 @@
           </nuxt-link>
           <button @click="isLogin ? $router.push('/p/dashboard/userPanel/') : changeStateLogin(true)"
             :class="currentRouteCheck('userPanel') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-            class="p-2 md:p-2.5 transform hover:-translate-y-1 duration-500 group rounded-[200px] mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2 xl:p-2.5 transform hover:-translate-y-1 duration-500 group rounded-[200px] mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <div class="flex">
               <UserIcon class=" w-5 mr-1" />
               <p class="text-[12px] font-bold w-20 px-1">حساب کاربری</p>
@@ -139,18 +139,18 @@
           <button @click="isLogin ? $router.push('/p/dashboard/productOrders/') : changeStateLogin(true)"
             data-tooltip-target="tooltip-feedback" type="button"
             :class="currentRouteCheck('productOrders') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-            class="p-2 md:p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2 xl:p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <div class="flex">
               <ShoppingCartIcon class=" w-5 mr-1" />
               <p class="text-[12px] font-bold w-16 px-1">سفارشات</p>
             </div>
           </button>
-          <div v-if="buttons.length > 0 " v-for="button in buttons" :key="button.name" class="md:hidden">
+          <div v-if="buttons.length > 0 " v-for="button in buttons" :key="button.name" class="xl:hidden">
             <div v-if="button.name == 'خرید محصول' || button.name=='خرید / دانلود'">
               <button @click="button.func"
                 data-tooltip-target="tooltip-feedback" type="button"
                 :class="currentRouteCheck('productOrders') ? ' text-indigo-900 bg-gradient-to-b from-white to-white/70' : 'text-white bg-gradient-to-b from-indigo-600 to-indigo-900 '"
-                class="p-2 md:p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+                class="p-2 xl:p-2.5 transform hover:-translate-y-1  duration-500  group rounded-[200px]  mr-4 focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
                 <ShoppingBagIcon class=" w-5 " />
               </button>
             </div>
@@ -158,7 +158,7 @@
         </div>
         <!-- <nuxt-link tag="button" to="" data-tooltip-target="tooltip-settings" type="button"
             :class="currentRouteCheck('x')?'bg-white':'bg-indigo-200' "
-            class="p-2 md:p-2.5 animate-pulse transform hover:-translate-y-3  duration-500  group rounded-full mr-4 md:mr-0  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
+            class="p-2 xl:p-2.5 animate-pulse transform hover:-translate-y-3  duration-500  group rounded-full mr-4 xl:mr-0  focus:outline-none focus:ring-4 focus:ring-indigo-200 ">
             <BellAlertIcon class=" w-5 text-indigo-600" />
           </nuxt-link> -->
         <div id="tooltip-settings" role="tooltip"
@@ -169,7 +169,7 @@
         </div>
         <div class="w-full flex justify-end ">
           <!-- <button id="moreOptionsDropdownButton" data-dropdown-toggle="moreOptionsDropdown" type="button"
-              class="pe-2 md:hidden group rounded-full  ">
+              class="pe-2 xl:hidden group rounded-full  ">
               <svg class="w-4 h-4 text-gray-500 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white"
                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
                 <path
@@ -177,7 +177,7 @@
               </svg>
               <span class="sr-only">Show options</span>
             </button> -->
-          <Menu as="div" class="relative md:hidden inline-block text-left">
+          <Menu as="div" class="relative xl:hidden inline-block text-left">
             <div>
               <MenuButton
                 class="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ">
@@ -228,20 +228,20 @@
             </transition>
           </Menu>
         </div>
-        <div class="md:flex hidden md:block my-2" >
+        <div class="xl:flex hidden xl:block my-2" >
           <div data-aos="fade-left" 
             data-aos-anchor-placement="bottom-bottom" 
             v-for="button in buttons"     
             :key="button.name">
             <button v-if="button.func != null" @click="button.func" :class="button.color ? button.color : ''"
-              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium text-[9px] whitespace-nowrap">
+              class="-m-2 text-indigo-100  mx-1 py-2 rounded-full block px-2 text-sm font-medium text-[9px] whitespace-nowrap">
               {{button.name}}
             </button>
             <nuxt-link 
               v-if="button.href" 
               :to="button.href" 
               :class="button.color ? button.color : ''"
-              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-4 text-sm font-medium text-[9px] whitespace-nowrap">
+              class="-m-2 text-indigo-100  mx-2 py-2 rounded-full block px-1 text-sm font-medium text-[9px] whitespace-nowrap">
               {{button.name}}
             </nuxt-link>
           </div>
