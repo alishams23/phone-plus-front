@@ -448,10 +448,9 @@ export default {
                     })
                     .catch(error => {
                         // Handle error response
-                        this.error = 'کاربری با این شماره وجود ندارد'
+                        // this.error = 'کاربری با این شماره وجود ندارد'
                         this.loading = false
-                        console.error('Error sending SMS:', error);
-                        // You can show an error message to the user here
+                        this.dialog_page = 'register'
                     });
             } else {
                 // Phone number is empty, handle accordingly

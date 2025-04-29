@@ -367,9 +367,9 @@ export default {
     },
   },
   mounted() {
-    if (!this.isLogin) {
-        this.changeStateLogin(true);
-      }
+    // if (!this.isLogin) {
+    //     this.changeStateLogin(true);
+    //   }
     this.getMessage()
     window.addEventListener('scroll', this.checkScroll);
   },
