@@ -119,7 +119,7 @@
         <button
           @click="page--"
           :disabled="!previous"
-          class="px-4 py-2 rounded-lg border hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="px-4 py-2 rounded-full border hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
         >صفحه قبل</button>
 
         <span class="px-4 py-2">صفحه {{ page }}</span>
@@ -127,7 +127,7 @@
         <button
           @click="page++"
           :disabled="!next"
-          class="px-4 py-2 rounded-lg border hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+          class="px-4 py-2 rounded-full border hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
         >صفحه بعد</button>
       </div>
     </div>
