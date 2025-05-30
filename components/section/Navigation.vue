@@ -15,7 +15,7 @@
                     <nuxt-link :to="'/p/product/' + item.slug" @click="searchQuery = null">
                       <div class="flex items-start bg-white/60 rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
-                          <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
+                          <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title, digital_products.results.length == 0) }}</div>
                           <div >
                             <span class="font-bold text-black text-xs rtl text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span> <span class="text-[8px] text-gray-400" >تومان</span>
                           </div>
@@ -45,7 +45,7 @@
                     <nuxt-link :to="'/p/digitalProduct/' + item.slug">
                        <div class="flex items-start bg-white/60 rounded-xl text-sm overflow-hidden">
                         <div class="px-2 py-2 flex-grow">
-                          <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title) }}</div>
+                          <div class="pb-2 font-weight-black text-xs">{{ truncateTitle(item.title, products.results.length == 0) }}</div>
                           <div >
                             <span class="font-bold text-black text-xs rtl text-right rounded-full">{{ item.price * (100 - item.discount) / 100 }}</span> <span class="text-[8px] text-gray-400" >تومان</span>
                           </div>
@@ -386,8 +386,12 @@ export default {
         this.searchQuery = '';
       }
     },
-    truncateTitle(title) {
-      return title.length > 30 ? title.substring(0, 20) + '...' : title;
+    truncateTitle(title, is_other_col_hide) {
+      if (is_other_col_hide){
+        return title.length > 60 ? title.substring(0, 60) + '...' : title;
+      }else{
+        return title.length > 20 ? title.substring(0, 20) + '...' : title;
+      }
     },
     getMessage() {
             axios.get(`${apiStore().address}/api/chat/unread-messages/`, {
