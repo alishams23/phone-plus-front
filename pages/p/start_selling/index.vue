@@ -19,9 +19,10 @@
         <div class="mx-5 lg:mx-auto max-w-2xl py-32 sm:py-48 lg:pb-[7rem] lg:pt-16">
             <div data-aos="flip-up" class="text-center">
             <h1 class="text-2xl pb-10 md:text-4xl mb-5 md:mb-0 font-bold  tracking-tight text-white ">به خانواده فون‌پلاس بپیوندید </h1>
+            <!-- target="blank" -->
             <a 
                 href="https://panel.phoneplus.ir/"
-                target="blank"
+                
                 class="text-indigo-600 px-4 text-base font-medium   sm:w-full">
                  < الان فروشنده شوید
                  
