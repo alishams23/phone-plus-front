@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { apiStore } from '~/store/api';
+  
 import axios from 'axios'
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 import { CloudArrowDownIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/20/solid'

@@ -392,8 +392,8 @@
 <script>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import axios from 'axios'
-import { useUserStore } from '~/store/user';
-import { apiStore } from '~/store/api';
+ 
+  
 
 export default {
     props: ["show", "product", "color"],

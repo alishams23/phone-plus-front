@@ -214,7 +214,7 @@ import axios from 'axios'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { BuildingStorefrontIcon } from '@heroicons/vue/20/solid';
 
-import { apiStore } from '~/store/api';
+  
 import {
   Combobox,
   ComboboxInput,

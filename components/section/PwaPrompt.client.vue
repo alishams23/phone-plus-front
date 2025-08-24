@@ -49,7 +49,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { Dialog, DialogOverlay, DialogPanel } from '@headlessui/vue';
-import { useUserStore } from '~/store/user'; 
+  
 
 const userStore = useUserStore();
 const showPopup = ref(false);

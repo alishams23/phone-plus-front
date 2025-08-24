@@ -74,13 +74,13 @@
 </template>
 
 <script>
-import { apiStore } from '~/store/api';
+  
 import moment from 'moment-jalaali';
 
 import {
   PaperAirplaneIcon
 } from '@heroicons/vue/24/outline'
-import { useUserStore } from '~/store/user';
+ 
 
 export default {
   components: { PaperAirplaneIcon, },

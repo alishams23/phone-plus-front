@@ -161,9 +161,9 @@
 
 <script >
 import axios from 'axios'
-import { useUserStore } from '~/store/user';
-import { apiStore } from '~/store/api';
-import { NavigationStore } from '~/store/navigation'; 
+ 
+  
+  
 
 export default {
 

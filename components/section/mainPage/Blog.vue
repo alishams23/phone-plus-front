@@ -56,9 +56,8 @@
 </template>
 
 <script>
-import { apiStore } from "~/store/api";
+ 
 import axios from "axios";
-import { useUserStore } from "~/store/user";
 import Blog from "~/components/shared/Blog.vue";
 import { DocumentTextIcon } from '@heroicons/vue/20/solid'
 

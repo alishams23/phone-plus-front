@@ -88,7 +88,7 @@
 <script>
 import { StarIcon } from '@heroicons/vue/20/solid'
 import axios from "axios";
-import { apiStore } from '~/store/api';
+  
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 import PinDigitalProduct from "@/components/shared/PinDigitalProduct.vue"
 import { CloudArrowDownIcon } from '@heroicons/vue/20/solid'

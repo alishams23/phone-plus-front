@@ -145,8 +145,8 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 import axios from 'axios'
 import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
 
-import { useUserStore } from '~/store/user';
-import { apiStore } from '~/store/api';
+ 
+  
 
 export default {
     props: ["show", "product"],

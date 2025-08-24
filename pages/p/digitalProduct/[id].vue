@@ -374,9 +374,9 @@ import BuyDigitalProductPopup from "@/components/section/BuyDigitalProductPopup.
 import { StarIcon , ShoppingBagIcon } from '@heroicons/vue/20/solid'
 import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
-import { useUserStore } from '~/store/user';
-import { apiStore } from '~/store/api';
-import { NavigationStore } from '~/store/navigation';
+ 
+  
+ 
 export default {
   components: {
     BuyDigitalProductPopup,

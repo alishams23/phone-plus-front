@@ -300,15 +300,15 @@ import {
 import { ref } from 'vue'
 import axios from 'axios'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { apiStore } from '~/store/api';
+  
 
 import { XMarkIcon,  } from '@heroicons/vue/24/outline'
-import { useUserStore } from '~/store/user';
+ 
 import { EllipsisVerticalIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
 import side from '@/components/section/chat/side.vue'
 import { Bars3Icon, HomeIcon, ShoppingCartIcon, UserIcon, BellAlertIcon, ChatBubbleLeftRightIcon } from '@heroicons/vue/24/solid'
 import LoginPopup from "@/components/section/LoginPopup.vue"
-import { NavigationStore } from '~/store/navigation';
+ 
 
 export default {
 

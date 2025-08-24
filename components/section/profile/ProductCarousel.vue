@@ -55,8 +55,8 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Product from "@/components/shared/Product.vue"
 import axios from 'axios'
-import { apiStore } from '~/store/api';
-import { useUserStore } from '~/store/user';
+  
+ 
 import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
 
 

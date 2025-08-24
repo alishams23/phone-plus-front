@@ -97,7 +97,7 @@
   </div>
 </template>
 <script>
-import { useUserStore } from '~/store/user';
+ 
 
 import {
   DialogTitle,
@@ -108,7 +108,7 @@ import {
 } from '@headlessui/vue'
 import { EllipsisVerticalIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon , PaperClipIcon} from '@heroicons/vue/24/outline'
-import { apiStore } from '~/store/api'; 
+   
 
 export default {
   props:["class","sectionSupport"],

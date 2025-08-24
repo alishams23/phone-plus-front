@@ -231,9 +231,9 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { ArrowRightIcon } from '@heroicons/vue/24/solid'
-import { apiStore } from '~/store/api';
-import { useUserStore } from '~/store/user';
-import { NavigationStore } from '~/store/navigation'; 
+  
+ 
+  
 export default {
   components: {
     Product,

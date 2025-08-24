@@ -104,7 +104,7 @@
 <script>
 import axios from "axios";
 import Product from "@/components/shared/Product.vue"
-import { apiStore } from '~/store/api'; 
+   
 import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
 
 
