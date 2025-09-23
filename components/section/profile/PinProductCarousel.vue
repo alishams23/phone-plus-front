@@ -48,8 +48,8 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import PinProduct from "@/components/shared/PinProduct.vue"
 import axios from 'axios'
-import { apiStore } from '~/store/api';
-import { useUserStore } from '~/store/user';
+  
+ 
 import {
     StarIcon
   } from '@heroicons/vue/20/solid'

@@ -80,7 +80,7 @@ import axios from 'axios'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { ArrowRightIcon } from '@heroicons/vue/24/solid'
-import { apiStore } from '~/store/api';
+  
 export default {
     components: { ArrowRightIcon,BuildingStorefrontIcon },
     setup() {

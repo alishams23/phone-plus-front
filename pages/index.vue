@@ -46,7 +46,7 @@
 
 <script>
 import axios from "axios";
-import { useUserStore } from '~/store/user';
+ 
 import LoginPopup from "@/components/section/LoginPopup.vue"
 import DiscountDigitalProduct from "@/components/section/mainPage/DiscountDigitalProduct.vue"
 import PopularDigitalProduct from "@/components/section/mainPage/PopularDigitalProduct.vue"
@@ -60,8 +60,8 @@ import Shop from "~/components/section/mainPage/Shop.vue"
 import CategoriesProduct from "@/components/section/mainPage/CategoriesProduct.vue"
 import CategoriesDigitalProduct from "@/components/section/mainPage/CategoriesDigitalProduct.vue"
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { NavigationStore } from '~/store/navigation';
-import { apiStore } from '~/store/api';
+ 
+  
 import  CategoryDigitalProduct  from "@/components/section/mainPage/CategoryDigitalProduct.vue";
 
 export default {

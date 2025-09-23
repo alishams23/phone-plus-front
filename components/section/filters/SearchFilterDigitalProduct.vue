@@ -207,7 +207,7 @@
 </template>
 
 <script>
-import { apiStore } from '~/store/api';
+  
 import Slider from '@vueform/slider'
 import {
   Popover,

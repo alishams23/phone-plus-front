@@ -328,7 +328,7 @@ import SearchFilterDigitalProduct from "@/components/section/filters/SearchFilte
 import SearchFilterBlog from "@/components/section/filters/SearchFilterBlog.vue"
 import Blog from '~/components/shared/Blog.vue'
 import { ChevronDownIcon, AdjustmentsHorizontalIcon } from '@heroicons/vue/20/solid'
-import { NavigationStore } from '~/store/navigation';
+ 
 export default {
   components: {
     Slider,

@@ -112,7 +112,7 @@
 import ChatUsers from '~/components/section/chat/ChatUsers.vue';
 import NavbarChat from '~/components/section/chat/NavbarChat.vue';
 import Side from '~/components/section/chat/side.vue';
-import { apiStore } from '~/store/api';
+  
 
 import {
   Dialog,
@@ -139,7 +139,7 @@ import {
 } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 
-import { useUserStore } from '~/store/user';
+ 
 export default {
   computed: {
     address() {

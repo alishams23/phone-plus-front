@@ -51,8 +51,8 @@ import {
     StarIcon
   } from '@heroicons/vue/20/solid'
   
-import { apiStore } from '~/store/api';
-import { useUserStore } from '~/store/user';
+  
+ 
 export default {
   props: ['idShop'],
   components: {

@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { apiStore } from '~/store/api';
+  
 import axios from 'axios'
 
 import { TagIcon } from '@heroicons/vue/20/solid'

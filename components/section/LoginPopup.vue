@@ -309,8 +309,8 @@ import { ref } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
-import { useUserStore } from '~/store/user';
-import { apiStore } from '~/store/api';
+ 
+  
 
 export default {
 

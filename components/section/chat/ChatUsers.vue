@@ -77,7 +77,7 @@
 <script>
 import Contact from '~/components/section/chat/Contact.vue'
 
-import { useUserStore } from '~/store/user'; 
+  
 export default {
   components:{Contact},
   data() {

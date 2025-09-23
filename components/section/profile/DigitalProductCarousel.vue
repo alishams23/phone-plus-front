@@ -53,8 +53,8 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import DigitalProduct from "@/components/shared/DigitalProduct.vue"
 import axios from 'axios'
-import { apiStore } from '~/store/api';
-import { useUserStore } from '~/store/user';
+  
+ 
 
 export default {
   props: ["title", "idObject", "idShop"],
