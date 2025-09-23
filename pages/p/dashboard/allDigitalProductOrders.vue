@@ -80,14 +80,14 @@
 
                 <!-- Download Buttons -->
                 <div class="flex justify-center pe-4">
-                  <a v-if="data.digital_product.file" :href="data.digital_product.file"
+                  <a v-if="data.digital_product.file && data.digital_product.file!= 'null'" :href="data.digital_product.file"
                      class="inline-flex items-center justify-center px-5 mx-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
                     دانلود فایل
                   </a>
-                  <a v-if="data.digital_product.link_file" :href="data.digital_product.link_file"
+                  <a v-if="data.digital_product.link_file && data.digital_product.link_file!='null'" :href="data.digital_product.link_file"
                      class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
