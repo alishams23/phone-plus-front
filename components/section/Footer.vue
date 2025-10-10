@@ -1,122 +1,165 @@
 <template>
-  <footer class="bg-gray-900" aria-labelledby="footer-heading">
-    <h2 id="footer-heading" class="sr-only">Footer</h2>
-    <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 ">
-        
-        <!-- Main Description Section -->
-        <div class="col-span-2">
-          <p class="text-sm leading-6 text-gray-300 rtl">
-            فون پلاس - بستری برای خرید و فروش آنلاین محصولات فیزیکی و دیجیتال. فروشگاه خود را ایجاد کنید و به راحتی محصولات خود را به هزاران مشتری عرضه کنید.
+  <footer
+    class="relative isolate overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-300 pb-24"
+    aria-labelledby="footer-heading"
+    role="contentinfo"
+    dir="rtl"
+  >
+    <h2 id="footer-heading" class="sr-only">فوتر</h2>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 lg:pt-28">
+      <div class="grid grid-cols-1 gap-y-12 gap-x-10 md:grid-cols-2 lg:grid-cols-4">
+        <!-- Brand / About -->
+        <div class="lg:col-span-2">
+          <NuxtLink to="/" class="inline-flex items-center gap-3 group">
+            <!-- <svg class="h-9 w-9 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l9 5v10l-9 5-9-5V7l9-5zm0 2.3L5 7.3v9.4l7 4 7-4V7.3l-7-3z"/>
+            </svg> -->
+            <span class="text-white text-lg font-semibold group-hover:opacity-90">فون پلاس</span>
+          </NuxtLink>
+
+          <p class="mt-4 text-sm leading-7">
+            فون پلاس ـ بستری برای خرید و فروش آنلاین محصولات فیزیکی و دیجیتال. فروشگاه خود را بسازید
+            و محصولات‌تان را به هزاران مشتری عرضه کنید.
           </p>
+
+          <!-- Contact (row layout) -->
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 text-sm">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 119.5 9 2.5 2.5 0 0112 11.5z"/></svg>
+              <span>قزوین، برج خلیج فارس، طبقه ۳</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h2.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1.02l-2.2 2.21z"/></svg>
+              <a href="tel:02833578138" class="hover:text-white">028-33578138</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v.35l-10 6.25L2 6.35V6zm0 2.74V18a2 2 0 002 2h16a2 2 0 002-2V8.74l-9.4 5.87a2 2 0 01-2.2 0L2 8.74z"/></svg>
+              <a href="mailto:customer@phoneplus.ir" class="hover:text-white">customer@phoneplus.ir</a>
+            </div>
+
+            <!-- Social (inline row) -->
+            <ul class="flex items-center gap-3 mt-1" aria-label="شبکه‌های اجتماعی">
+              <li v-for="s in socials" :key="s.label">
+                <a :href="s.href" target="_blank" rel="noopener noreferrer" class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 hover:bg-white/10 transition">
+                  <component :is="s.icon" class="h-4.5 w-4.5 text-white" />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <!-- Social Links Section -->
-        <div class="flex col-span-1 justify-start items-center space-x-4 sm:space-x-6">
-          <ul class="flex space-x-4 sm:space-x-6">
-            <li class="rounded-full w-8 h-8 flex justify-center items-center">
-              <a href="https://t.me/thephoneplus" target="_blank" class="text-white">
-                <!-- Telegram Icon -->
-                <svg class="w-4 h-4" fill="currentColor" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512">
-                  <path d="M477.805,102.981l-67.327,317.515c-5.08,22.41-18.326,27.984-37.15,17.431l-102.585-75.596l-49.497,47.607c-5.477,5.478-10.06,10.061-20.617,10.061l7.37-104.479l190.129-171.804c8.268-7.37-1.792-11.454-12.848-4.083L150.233,287.633l-101.19-31.671c-22.011-6.873-22.408-22.012,4.581-32.568L449.419,70.911C467.744,64.04,483.779,74.994,477.805,102.981z" />
-                </svg>
-              </a>
-            </li>
-            <li class="rounded-full w-8 h-8 flex justify-center items-center">
-              <a href="https://wa.me/+989365068548" target="_blank" class="text-white">
-                <!-- WhatsApp Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 32 32">
-                  <path fill-rule="evenodd" fill="currentColor" d="M24.503906 7.503906 C 22.246094 5.246094 19.246094 4 16.050781 4 C 9.464844 4 4.101563 9.359375 4.101563 15.945313 C 4.097656 18.050781 4.648438 20.105469 5.695313 21.917969 L 4 28.109375 L 10.335938 26.445313 C 12.078125 27.398438 14.046875 27.898438 16.046875 27.902344 L 16.050781 27.902344 C 22.636719 27.902344 27.996094 22.542969 28 15.953125 C 28 12.761719 26.757813 9.761719 24.503906 7.503906 Z M 16.050781 25.882813 L 16.046875 25.882813 C 14.265625 25.882813 12.515625 25.402344 10.992188 24.5 L 10.628906 24.285156 L 6.867188 25.269531 L 7.871094 21.605469 L 7.636719 21.230469 C 6.640625 19.648438 6.117188 17.820313 6.117188 15.945313 C 6.117188 10.472656 10.574219 6.019531 16.054688 6.019531 C 18.707031 6.019531 21.199219 7.054688 23.074219 8.929688 C 24.949219 10.808594 25.980469 13.300781 25.980469 15.953125 C 25.980469 21.429688 21.523438 25.882813 16.050781 25.882813 Z M 21.496094 18.445313 C 21.199219 18.296875 19.730469 17.574219 19.457031 17.476563 C 19.183594 17.375 18.984375 17.328125 18.785156 17.625 C 18.585938 17.925781 18.015625 18.597656 17.839844 18.796875 C 17.667969 18.992188 17.492188 19.019531 17.195313 18.871094 C 16.894531 18.722656 15.933594 18.40625 14.792969 17.386719 C 13.90625 16.597656 13.304688 15.617188 13.132813 15.320313 C 12.957031 15.019531 13.113281 14.859375 13.261719 14.710938 C 13.398438 14.578125 13.5625 14.363281 13.710938 14.1875 C 13.859375 14.015625 13.910156 13.890625 14.011719 13.691406 C 14.109375 13.492188 14.058594 13.316406 13.984375 13.167969 C 13.910156 13.019531 13.3125 11.546875 13.0625 10.949219 C 12.820313 10.367188 12.574219 10.449219 12.390625 10.4375 C 12.21875 10.429688 12.019531 10.429688 11.820313 10.429688 C 11.621094 10.429688 11.296875 10.503906 11.023438 10.804688 C 10.75 11.101563 9.980469 11.824219 9.980469 13.292969 C 9.980469 14.761719 11.050781 16.183594 11.199219 16.382813 C 11.347656 16.578125 13.304688 19.59375 16.300781 20.886719 C 17.011719 21.195313 17.566406 21.378906 18 21.515625 C 18.714844 21.742188 19.367188 21.710938 19.882813 21.636719 C 20.457031 21.550781 21.648438 20.914063 21.898438 20.214844 C 22.144531 19.519531 22.144531 18.921875 22.070313 18.796875 C 21.996094 18.671875 21.796875 18.597656 21.496094 18.445313 Z"></path>
-                </svg>
-              </a>
-            </li>
-            <li class="rounded-full w-8 h-8 flex justify-center items-center">
-              <a href="https://www.instagram.com/thephoneplus" target="_blank" class="text-white">
-                <!-- Instagram Icon -->
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zM8.01 3.5h7.98a4.26 4.26 0 014.26 4.26v8.48a4.26 4.26 0 01-4.26 4.26H8.01a4.26 4.26 0 01-4.26-4.26V7.76A4.26 4.26 0 018.01 3.5zM12 7.28a4.72 4.72 0 100 9.44 4.72 4.72 0 000-9.44zm0 7.79a3.07 3.07 0 110-6.14 3.07 3.07 0 010 6.14zM16.97 6.2a1.11 1.11 0 110 2.22 1.11 1.11 0 010-2.22z" clip-rule="evenodd"></path>
-                </svg>
-              </a>
+        <!-- Quick links (single column) -->
+        <div>
+          <h3 class="text-sm font-semibold text-white">دسترسی سریع</h3>
+          <ul class="mt-4 flex flex-col gap-2 text-sm">
+            <li v-for="item in quickLinks" :key="item.name">
+              <NuxtLink :to="item.href" class="hover:text-white">{{ item.name }}</NuxtLink>
             </li>
           </ul>
         </div>
 
-        
-        
-        <div v-if="currentRouteCheck('')" class="mt-16 col-span-2 flex justify-start items-center space-x-10">
-          <!-- eNamad Badge -->
-          <a 
-            referrerpolicy='origin' 
-            target='_blank' 
-            href='https://trustseal.enamad.ir/?id=261983&Code=VwgWQmFg1VHBWyU0iuiF'
-          >
-            <img 
-              referrerpolicy='origin' 
-              src='https://trustseal.enamad.ir/logo.aspx?id=261983&Code=VwgWQmFg1VHBWyU0iuiF' 
-              alt='' 
-              style='cursor:pointer' 
-              code='VwgWQmFg1VHBWyU0iuiF'
-            >
-          </a>
-  
-          <!-- Samandehi Badge -->
-          <img
+        <!-- Trust badges -->
+        <div class="flex flex-col items-start justify-end gap-4 lg:items-end">
+          <a
             referrerpolicy="origin"
-            class="cursor-pointer w-28"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://trustseal.enamad.ir/?id=261983&Code=VwgWQmFg1VHBWyU0iuiF"
+            aria-label="نماد اعتماد الکترونیکی"
+            class="rounded-2xl bg-white/5 p-2 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/20"
+          >
+            <img
+              referrerpolicy="origin"
+              src="https://trustseal.enamad.ir/logo.aspx?id=261983&Code=VwgWQmFg1VHBWyU0iuiF"
+              alt="نماد اعتماد الکترونیکی"
+              class="h-14 w-auto"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+
+          <button
+            type="button"
             @click="openSamandehi"
-            alt="logo-samandehi"
-            src="https://logo.samandehi.ir/logo.aspx?id=288821&p=odrfaqgwaqgwaqgwodrfnbpd"
-          />
+            class="rounded-2xl bg-white/5 p-2 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/20 outline-none"
+            aria-label="نشان ساماندهی"
+          >
+            <img
+              referrerpolicy="origin"
+              class="h-14 w-auto"
+              alt="نشان ساماندهی"
+              loading="lazy"
+              decoding="async"
+              src="https://logo.samandehi.ir/logo.aspx?id=288821&p=odrfaqgwaqgwaqgwodrfnbpd"
+            />
+          </button>
         </div>
       </div>
 
-      <!-- Trust Badges Section -->
-
-      <!-- Footer Bottom Section -->
-      <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 mb-12">
-        <p class="text-xs leading-5 text-gray-400">&copy; فون پلاس ۱۴۰۳</p>
+      <!-- Bottom -->
+      <div class="mt-10 border-t border-white/10 pt-5 sm:mt-14 lg:mt-16">
+        <p class="text-xs leading-5 text-gray-400 text-center sm:text-right">&copy; فون پلاس {{ persianYear }}</p>
       </div>
     </div>
   </footer>
 </template>
 
+<script setup lang="ts">
+import { useRoute } from 'vue-router'
+import { computed, h } from 'vue'
 
+const route = useRoute()
+const currentRouteCheck = (page_name: string) => {
+  if (page_name !== '') return route.name?.toString().split('-').includes(page_name)
+  return route.name === 'index'
+}
 
-<script setup>
-import { useHead } from 'nuxt/app';
-import { defineComponent, h } from 'vue';
+const persianYear = computed(() =>
+  new Intl.DateTimeFormat('fa-IR-u-ca-persian', { year: 'numeric' }).format(new Date())
+)
 
-const navigation = {
-  support: [
-    { name: 'فروشنده شوید', href: '/p/start_selling' },
-    { name: 'محصولات دیجیتال', href: '/p/search/?tab=1' },
-    { name: ' محصولات فیزیکی', href: '/p/search/?tab=0' },
-  ],
-  social: [
-    {
-      name: 'Instagram',
-      href: '#',
-    },
-  ],
-};
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-
-const currentRouteCheck = (page_name) => {
-  if (page_name !== '') {
-    return route.name.split("-").includes(page_name);
-  } else if (route.name === 'index') {
-    return true;
-  }
-};
-// Samandehi Popup Function
 const openSamandehi = () => {
-  window.open("https://logo.samandehi.ir/Verify.aspx?id=288821&p=uiwkmcsimcsimcsiuiwkrfth", "Popup", "width=450,height=630");
-};
+  window.open(
+    'https://logo.samandehi.ir/Verify.aspx?id=288821&p=uiwkmcsimcsimcsiuiwkrfth',
+    'Popup',
+    'width=450,height=630'
+  )
+}
 
-// Load ZarinPal Trust Script
-useHead({
-  script: [{ src: "https://www.zarinpal.com/webservice/TrustCode", type: "text/javascript", async: true }]
-});
+const quickLinks = [
+  { name: 'صفحه اصلی', href: '/' },
+  { name: 'محصولات دیجیتال', href: '/p/search/?tab=1' },
+  { name: 'محصولات فیزیکی', href: '/p/search/?tab=0' },
+  { name: 'فروشنده شوید', href: '/p/start_selling' },
+]
+
+const TelegramIcon = (props: any) => h('svg', { ...props, viewBox: '0 0 24 24', fill: 'currentColor' }, [h('path', { d: 'M9.036 14.314l-.376 5.296c.54 0 .774-.231 1.053-.508l2.53-2.428 5.244 3.866c.962.531 1.65.252 1.91-.89l3.46-16.334h.001c.33-1.554-.56-2.162-1.645-1.785L1.43 9.33C-.18 9.92-.171 10.822 1.14 11.22l5.77 1.8L18.98 6.28c.88-.536 1.69-.24 1.026.342L9.036 14.314z' })])
+const WhatsappIcon = (props: any) =>
+  h(
+    'svg',
+    { ...props, viewBox: '0 0 24 24', fill: 'currentColor', 'aria-hidden': 'true' },
+    [
+      h('path', {
+        d: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.67.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.297.297-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.58-.487-.501-.67-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.003a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.116 1.03 6.988 2.902a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.87 11.87 0 005.735 1.463h.005c6.553 0 11.889-5.335 11.892-11.89a11.82 11.82 0 00-3.497-8.413Z'
+      })
+    ]
+  )
+const InstagramIcon = (props: any) => h('svg', { ...props, viewBox: '0 0 24 24', fill: 'currentColor' }, [h('path', { d: 'M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zm4.25 4.78a5.22 5.22 0 110 10.44 5.22 5.22 0 010-10.44zm6.22-.98a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM12 9.22a3.28 3.28 0 100 6.56 3.28 3.28 0 000-6.56z' })])
+
+const socials = [
+  { label: 'تلگرام فون پلاس', href: 'https://t.me/thephoneplus', icon: TelegramIcon },
+  { label: 'واتس‌اپ فون پلاس', href: 'https://wa.me/+989365068548', icon: WhatsappIcon },
+  { label: 'اینستاگرام فون پلاس', href: 'https://www.instagram.com/thephoneplus', icon: InstagramIcon },
+]
 </script>
+
+<style scoped>
+a:focus-visible, button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 0.4);
+}
+a[rel~="noopener"] { -webkit-tap-highlight-color: transparent; }
+</style>
