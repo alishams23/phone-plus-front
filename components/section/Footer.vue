@@ -73,7 +73,7 @@
           >
             <img
               referrerpolicy="origin"
-              src="https://trustseal.enamad.ir/logo.aspx?id=261983&Code=VwgWQmFg1VHBWyU0iuiF"
+              src="https://trustseal.enamad.ir/?id=261983&Code=VwgWQmFg1VHBWyU0iuiF"
               alt="نماد اعتماد الکترونیکی"
               class="h-14 w-auto"
               loading="lazy"
