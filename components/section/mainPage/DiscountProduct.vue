@@ -1,7 +1,7 @@
 <template>
   <div class=" w-full h-[130px] md:h-[300px] mt-[-20px] flex md:inline-block" v-if="loading == false">
-    <a href="https://old.phoneplus.ir/telegram-premium/">
-      <img src="/images/banner/2.png" class="w-full h-full object-cover object-center  " alt="">
+    <a href="https://phoneplus.ir/p/digitalProduct/%D8%AE%D8%B1%DB%8C%D8%AF-%D8%B4%D9%85%D8%A7%D8%B1%D9%87-%D9%85%D8%AC%D8%A7%D8%B2%DB%8C-%D8%AF%D8%A7%D8%A6%D9%85%DB%8C-%D8%A2%D9%85%D8%B1%DB%8C%DA%A9%D8%A7-%DA%AF%D9%88%DA%AF%D9%84-%D9%88%DB%8C%D8%B3-google-voic">
+      <img src="/images/banner/2.jpg" class="w-full h-full object-cover object-center  " alt="">
     </a>
     </div>
 
