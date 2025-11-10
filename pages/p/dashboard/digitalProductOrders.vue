@@ -74,11 +74,11 @@
                   </div>
                 </div>
                 <div class="flex justify-center pe-4">
-                  <a v-if="data.digital_product.file" :href="data.digital_product.file"
+                  <a v-if="data.digital_product.file && data.digital_product.file!='null'" :href="data.digital_product.file"
                      class="inline-flex items-center justify-center px-5 mx-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                     دانلود فایل
                   </a>
-                  <a v-if="data.digital_product.link_file" :href="data.digital_product.link_file"
+                  <a v-if="data.digital_product.link_file && data.digital_product.link_file!='null'" :href="data.digital_product.link_file"
                      class="inline-flex items-center justify-center px-5 py-3 mb-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                     دانلود فایل
                   </a>
