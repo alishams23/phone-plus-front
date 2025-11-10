@@ -29,8 +29,7 @@ export default defineNuxtConfig({
   ],
 
   devServer: {
-    port: 3001,
-    // host:"0"
+    port: 3001
   },
   site: { 
     url: 'https://phoneplus.ir', 

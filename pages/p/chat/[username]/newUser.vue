@@ -60,7 +60,6 @@
           )
             .then(response => response.json())
             .then((data) => {
-              console.log(data)
               this.username = data.contact.username
               this.$router.push('/p/chat/' + data.contact.username + '/' + data.room_name);
             })

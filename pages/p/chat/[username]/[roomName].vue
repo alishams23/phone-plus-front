@@ -121,7 +121,6 @@ export default {
         )
           .then(response => response.json())
           .then((data) => {
-            console.log(data)
             this.username = data.contact.username
          
             this.user = data.contact

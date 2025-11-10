@@ -52,7 +52,7 @@
                                                                    
                                                                     <input required
                                                                         :autofocus="false"
-                                                                        placeholder="   کد تخفیف"
+                                                                        placeholder="کد تخفیف"
                                                                     class="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                                                     id="grid-city" type="text" v-model="discount_code" >
                                                                     <p class="text-xs md:text-sm text-red-600" >
@@ -96,33 +96,61 @@
                                                                 </div>
                                                             </dd>
                                                         </div>
-                                                        
-                                                        <div class=" flex w-full" >
-                                                          <div>
-                                                            <button 
-                                                                v-if="btn_buy_loading" type="submit" disabled
-                                                                    class="flex max-w-xs flex-1 items-center px-20 w-fulls justify-center w-full rounded-full border border-transparent bg-gray-400 py-[8px] text-base font-medium text-white  sm:w-full"
-                                                            >
-                                                                <div class="flex items-center w-full justify-center">
-                                                                    <div role="status">
-                                                                        <svg aria-hidden="false" class="w-6 h-6 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                                            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                                                        </svg>
-                                                                        <span class="sr-only">Loading...</span>
-                                                                    </div>
-                                                                </div>
-                                                            </button>
-                                                            <button
-                                                                type="submit" v-else
-                                                                class="flex max-w-xs flex-1 items-center justify-center  rounded-full border border-transparent bg-indigo-600   px-5 py-[8px] text-base font-medium text-white  sm:w-full"
-                                                            >
-                                                                <p class="mx-6">پرداخت</p>
-                                                                <ShoppingBagIcon class="h-5 w-5 text-white mx-5" />
-                                                            </button>
-                                                            
-                                                          </div>
-                                                        </div>
+                                                        <div class="flex flex-wrap items-center justify-between gap-4 w-full">
+                                                            <!-- Gateways -->
+                                                            <div class="flex flex-wrap sm:flex-nowrap gap-4 justify-center sm:justify-start flex-1">
+                                                                <label 
+                                                                v-for="(key, index) in available_gateways"
+                                                                :key="key"
+                                                                @click="selected_gateway = key"
+                                                                class="custom-option text-center flex flex-col items-center gap-2 cursor-pointer transition-all hover:scale-105 hover:shadow-md p-3 rounded-xl border-2"
+                                                                :class="selected_gateway === key ? 'border-indigo-500 bg-indigo-50 shadow-md' : 'border-gray-50 bg-white'"
+                                                                >
+                                                                <img 
+                                                                    :src="gateways[key].img" 
+                                                                    :alt="gateways[key].name" 
+                                                                    class="w-12 h-12 object-contain" 
+                                                                />
+                                                                <span class="text-xs font-medium text-gray-700">
+                                                                    {{ gateways[key].name }}
+                                                                </span>
+
+                                                                <!-- Hidden radio -->
+                                                                <input 
+                                                                    type="radio" 
+                                                                    name="gateway" 
+                                                                    class="hidden" 
+                                                                    :value="key"
+                                                                    v-model="selected_gateway"
+                                                                />
+                                                                </label>
+                                                            </div>
+
+                                                            <!-- Button -->
+                                                            <div class="flex items-center justify-center sm:justify-end w-full sm:w-auto">
+                                                                <!-- <button 
+                                                                    v-if="btn_buy_loading" 
+                                                                    type="submit" 
+                                                                    disabled
+                                                                    class="flex items-center justify-center rounded-full bg-gray-400 px-8 py-2 text-white font-medium cursor-not-allowed"
+                                                                    >
+                                                                    <svg aria-hidden="false" class="w-6 h-6 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none">
+                                                                        <path d="M100 50.5908C100 78.2051..." fill="currentColor" />
+                                                                        <path d="M93.9676 39.0409..." fill="currentFill" />
+                                                                    </svg>
+                                                                </button> -->
+                                                                <button
+                                                                    :disabled="selected_gateway == null  || btn_buy_loading ? true : false" 
+                                                                    type="submit"
+                                                                    :class="selected_gateway == null || btn_buy_loading? 'bg-gray-400 text-white' : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg'"
+                                                                    class="flex items-center justify-center gap-3 rounded-full px-8 py-2 font-medium transition-all"
+                                                                    >
+                                                                    <p>پرداخت</p>
+                                                                    <ShoppingBagIcon class="h-5 w-5 text-white" />
+                                                                </button>
+                                                            </div>
+                                                            </div>
+
                                                     </form>
                                                 </dl>
 
@@ -145,97 +173,114 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 import axios from 'axios'
 import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
 
- 
-  
-
 export default {
-    props: ["show", "product"],
-    components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot ,ShoppingBagIcon},
-    data() {
-        return {
-            btn_buy_loading: false,
-            btn_discount_loading: false,
-            discount_amount: 0,
-            discount_is_percentage:false,
-            snackbarVisible: false,
-            snackbarDiscount: false,
-            qty: 1,
-            error: null,
-            discount_code: null,
+  props: ["show", "product", "available_gateways"],
+  emits: ["update:show", "selected_gateway"],
+  components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot, ShoppingBagIcon },
+  data() {
+    return {
+      btn_buy_loading: false,
+      btn_discount_loading: false,
+      discount_amount: 0,
+      discount_is_percentage: false,
+      snackbarVisible: false,
+      snackbarDiscount: false,
+      qty: 1,
+      error: null,
+      discount_code: null,
+      selected_gateway: this.available_gateways?.[0] ?? null,
+      gateways: {
+        sep:        { name: 'سپ',        img: '/images/gateways/sep.png' },
+        custom:     { name: 'زرینپال',   img: '/images/gateways/zarinpal.png' },
+        zarinpal:   { name: 'زرین پال',  img: '/images/gateways/zarinpal.png' },
+        behpardakht:{ name: 'به پرداخت', img: '/images/gateways/behpardakht.png' },
+        sadad:      { name: 'سداد',      img: '/images/gateways/sadad.png' },
+      }
+    }
+  },
+  watch: {
+    // Emit whenever user changes gateway
+    selected_gateway(newVal) {
+      this.$emit('selected_gateway', newVal)
+    },
+    // Initialize default and emit once when gateways list shows up/changes
+    available_gateways: {
+      immediate: true,
+      handler(list) {
+        if (!this.selected_gateway && Array.isArray(list) && list.length) {
+          this.selected_gateway = list[0]
+          this.$emit('selected_gateway', this.selected_gateway)
         }
+      }
+    }
+  },
+  methods: {
+    // If you toggle the dialog inside, make sure to use v-model contract:
+    close() {
+      this.$emit('update:show', false)
     },
-    methods: {
-        price(value) {
-            let text
-            let chars = Array.from(`${value}`)
-            for (let index = 1; index <= chars.length; index++) {
-                if (index % 3 == 0) {
-                    if (chars.length != index) {
-                        chars[chars.length - index] = `,${chars[chars.length - index]}`;
-                    }
-                }
-            }
-            return chars.join("");
-        },
-        sendData() {
-            this.btn_buy_loading = true
-            const apiUrl = `${apiStore().address}/api/order/create-group-order-digital-product/`;
-            const data = {
-                discount_code: this.discount_code,
-                digital_product: this.product.id,
-                count: this.qty,
-            };
-            axios.post(apiUrl, data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    Accept: "application/json",
-                    Authorization: `Token ${useUserStore().userToken}`
-                },
-            }).then(response => {
-                window.location.href = `${apiStore().address}/api/wallet/go_to_gateway_digital_product_view/${response.data.id}`
-                this.btn_buy_loading = false
-            })
-        },
-        calculate_discount_amount(discount_amount,qty){
-            if (this.discount_is_percentage) {
-                      return (((this.product.price) * ((100 - this.product.discount) / 100)) * qty) * (discount_amount / 100)
-                    } else {
-                        return discount_amount
-                    } 
-        },
-        checkDiscountCode() {
-            this.btn_discount_loading = true
-            const apiUrl = `${apiStore().address}/api/product/check-valid-digital-product-discount/${this.discount_code}/${this.product.id}/`;
-            axios.get(apiUrl, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    Accept: "application/json",
-                    Authorization: `Token ${useUserStore().userToken}`
-                },
-            }).then(response => {
-                if (response.data.valid) {
-                    this.discount_amount = response.data.amount
-                    this.discount_is_percentage = response.data.is_percentage
-                    // if (response.data.is_percentage) {
-                    //     this.discount_amount = (((this.product.price) * ((100 - this.product.discount) / 100)) * this.qty) * (response.data.amount / 100)
-                    // } else {
-                    //     this.discount_amount = response.data.amount
-                    // }
-                    this.snackbarDiscount = true
-                    setTimeout(() => {
-                        this.snackbarDiscount = false
-                    }, 5000);
-                } else {
-                    this.error = 'کد تخفیف معتبر نیست'
-                }
-                this.btn_discount_loading = false
-            }).catch(error => {
-                this.error = 'مشکلی پیش‌آمده'
-            });
-        },
+    price(value) {
+      let chars = Array.from(`${value}`)
+      for (let index = 1; index <= chars.length; index++) {
+        if (index % 3 == 0 && chars.length != index) {
+          chars[chars.length - index] = `,${chars[chars.length - index]}`
+        }
+      }
+      return chars.join("")
     },
-    mounted() {
-        // Placeholder for initialization logic
+    chooseGateway(key) {
+      // Call this from your template (e.g., click/radio change)
+      this.selected_gateway = key
     },
+    sendData() {
+      this.btn_buy_loading = true
+      const apiUrl = `${apiStore().address}/api/order/create-group-order-digital-product/${this.selected_gateway}/`
+      const data = {
+        discount_code: this.discount_code,
+        digital_product: this.product.id,
+        count: this.qty,
+      }
+      axios.post(apiUrl, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Accept: "application/json",
+          Authorization: `Token ${useUserStore().userToken}`
+        },
+      }).then(response => {
+        window.location.href = `${apiStore().address}/api/wallet/go_to_gateway_digital_product_view/${response.data.id}`
+        this.btn_buy_loading = false
+      })
+    },
+    calculate_discount_amount(discount_amount, qty) {
+      if (this.discount_is_percentage) {
+        return (((this.product.price) * ((100 - this.product.discount) / 100)) * qty) * (discount_amount / 100)
+      } else {
+        return discount_amount
+      }
+    },
+    checkDiscountCode() {
+      this.btn_discount_loading = true
+      const apiUrl = `${apiStore().address}/api/product/check-valid-digital-product-discount/${this.discount_code}/${this.product.id}/`
+      axios.get(apiUrl, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Accept: "application/json",
+          Authorization: `Token ${useUserStore().userToken}`
+        },
+      }).then(response => {
+        if (response.data.valid) {
+          this.discount_amount = response.data.amount
+          this.discount_is_percentage = response.data.is_percentage
+          this.snackbarDiscount = true
+          setTimeout(() => { this.snackbarDiscount = false }, 5000)
+        } else {
+          this.error = 'کد تخفیف معتبر نیست'
+        }
+        this.btn_discount_loading = false
+      }).catch(() => {
+        this.error = 'مشکلی پیش‌آمده'
+      })
+    },
+  },
 }
 </script>

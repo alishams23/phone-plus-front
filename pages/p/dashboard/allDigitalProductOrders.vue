@@ -223,7 +223,6 @@ export default {
         },
         getData() {
             this.loading = true
-            console.log(useUserStore().userToken)
             axios.get(`${apiStore().address}/api/order/order-digital-product-user-list/`, 
                 {
                 headers: {

@@ -180,7 +180,6 @@ export default {
                 this.orders   = data.results || data;
                 this.next     = data.next || null;
                 this.previous = data.previous || null;
-                console.log(this.orders);
                 this.loading = false;
             })
         },

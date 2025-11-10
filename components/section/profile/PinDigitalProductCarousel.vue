@@ -125,7 +125,6 @@ export default {
           Accept: "application/json",
         },
       }).then((response) => {
-        console.log('product carousel get data', response.data);
         this.data = response.data.results
         this.loading = false
      

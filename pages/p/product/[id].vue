@@ -251,7 +251,7 @@
                               ناموجود
                             </button>
                             <BuyProductPopup @show-change="(data) => { show = data }" v-model:show="show"
-                              :product="product" :color="selected_color" />
+                              :product="product" :color="selected_color" :available_gateways="available_gateways" />
                           </div>
                         </div>
 
@@ -471,6 +471,7 @@ export default {
     comment_rate: 0,
     is_sellable: false,
     is_admin: null,
+    available_gateways: null,
     comment_hover_rate: 0,
   }),
   methods: {
@@ -546,6 +547,7 @@ export default {
       }).then((response) => {
         this.selected_color = response.data.colors ? response.data.colors[0] : null
         this.product = response.data
+        this.available_gateways = response.data.available_gateways
         this.is_admin = response.data.is_admin
         this.loading = false
         if (response.data.colors) {

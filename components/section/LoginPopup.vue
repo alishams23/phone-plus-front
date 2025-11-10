@@ -364,7 +364,6 @@ export default {
                 })
                     .then(response => {
                         // Handle success response
-                        console.log('SMS sent successfully:', response);
                         this.dialog_page = 'get_code_signup'
                         this.loading = false
                         this.cooldownTime = 120; // Reset to 2 minutes
@@ -437,7 +436,6 @@ export default {
                 })
                     .then(response => {
                         // Handle success response
-                        console.log('SMS sent successfully:', response);
                         this.dialog_page = 'get_code'
                         this.loading = false
                         this.cooldownTime = 120; // Reset to 2 minutes

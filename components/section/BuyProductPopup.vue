@@ -352,8 +352,10 @@
                                                         </div>
                                                     </form>
                                                 </dl>
+                                                
                                                 <div class="w-full flex " >
-                                                    <button v-if="btn_buy_loading" type="" disabled
+                                                    
+                                                    <!-- <button v-if="btn_buy_loading" type="" disabled
                                                         class="bg-gray-400 text-white font-bold py-2 mb-8 px-5 rounded-full px-10 w-[10rem] md:w-[15rem]">
                                                         <div class=" flex items-center w-full  justify-center" >
                                                             <div role="status">
@@ -364,15 +366,66 @@
                                                                 <span class="sr-only">Loading...</span>
                                                             </div>
                                                         </div>
-                                                    </button>
-                                                    <button v-else @click="sendData"
-                                                        class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 mb-8 px-4 rounded-full px-10 w-[10rem] md:w-[15rem]">
-                                                        <p >پرداخت</p>
-                                                    </button>
-                                                    <button @click="tab=2"
-                                                        class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8  rounded-full mx-3 px-10 w-[10rem] md:w-[10rem]">
-                                                        <p >برگشت</p>
-                                                    </button>
+                                                    </button> -->
+                                                    <div class="flex flex-wrap items-center justify-between gap-4 w-full">
+                                                            <!-- Gateways -->
+                                                            <div class="flex flex-wrap sm:flex-nowrap gap-4 justify-center sm:justify-start flex-1">
+                                                                <label 
+                                                                v-for="(key, index) in available_gateways"
+                                                                :key="key"
+                                                                @click="selected_gateway = key"
+                                                                class="custom-option text-center flex flex-col items-center gap-2 cursor-pointer transition-all hover:scale-105 hover:shadow-md p-3 rounded-xl border-2"
+                                                                :class="selected_gateway === key ? 'border-indigo-500 bg-indigo-50 shadow-md' : 'border-gray-50 bg-white'"
+                                                                >
+                                                                <img 
+                                                                    :src="gateways[key].img" 
+                                                                    :alt="gateways[key].name" 
+                                                                    class="w-12 h-12 object-contain" 
+                                                                />
+                                                                <span class="text-xs font-medium text-gray-700">
+                                                                    {{ gateways[key].name }}
+                                                                </span>
+
+                                                                <!-- Hidden radio -->
+                                                                <input 
+                                                                    type="radio" 
+                                                                    name="gateway" 
+                                                                    class="hidden" 
+                                                                    :value="key"
+                                                                    v-model="selected_gateway"
+                                                                />
+                                                                </label>
+                                                            </div>
+
+                                                            <!-- Button -->
+                                                            <div class="flex items-center justify-center sm:justify-end w-full sm:w-auto">
+                                                                <!-- <button 
+                                                                    v-if="btn_buy_loading" 
+                                                                    type="submit" 
+                                                                    disabled
+                                                                    class="flex items-center justify-center rounded-full bg-gray-400 px-8 py-2 text-white font-medium cursor-not-allowed"
+                                                                    >
+                                                                    <svg aria-hidden="false" class="w-6 h-6 text-gray-200 animate-spin fill-gray-600" viewBox="0 0 100 101" fill="none">
+                                                                        <path d="M100 50.5908C100 78.2051..." fill="currentColor" />
+                                                                        <path d="M93.9676 39.0409..." fill="currentFill" />
+                                                                    </svg>
+                                                                </button> -->
+                                                                <button
+                                                                    @click="sendData"
+                                                                    :disabled="selected_gateway == null  || btn_buy_loading ? true : false" 
+                                                                    :class="selected_gateway == null || btn_buy_loading? 'bg-gray-400 text-white' : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg'"
+                                                                    class="text-white font-bold py-2 mb-8 px-4 rounded-full px-10 w-[10rem] md:w-[10  rem]"
+                                                                    >
+                                                                    <p>پرداخت</p>
+                                                                    <ShoppingBagIcon class="h-5 w-5 text-white" />
+                                                                </button>
+                                                                
+                                                                <button @click="tab=2"
+                                                                class="bg-white hover:bg-indigo-50 text-indigo-600 font-bold py-2 mb-8  rounded-full mx-3 px-10 w-[10rem] md:w-[10rem]">
+                                                                <p >برگشت</p>
+                                                            </button>
+                                                        </div>
+                                                        </div>
                                                   
                                                 </div>
                                             </div>
@@ -396,7 +449,7 @@ import axios from 'axios'
   
 
 export default {
-    props: ["show", "product", "color"],
+    props: ["show", "product", "color", "available_gateways"],
     components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot },
     data() {
         return {
@@ -452,6 +505,14 @@ export default {
             city: null,
             state: null,
             tab:1,
+            selected_gateway: this.available_gateways?.[0] ?? null,
+            gateways: {
+                sep:        { name: 'سپ',        img: '/images/gateways/sep.png' },
+                custom:     { name: 'زرینپال',   img: '/images/gateways/zarinpal.png' },
+                zarinpal:   { name: 'زرین پال',  img: '/images/gateways/zarinpal.png' },
+                behpardakht:{ name: 'به پرداخت', img: '/images/gateways/behpardakht.png' },
+                sadad:      { name: 'سداد',      img: '/images/gateways/sadad.png' },
+            }
         }
     },
     methods: {
@@ -489,7 +550,7 @@ export default {
             this.loading = true
             axios.put(apiUrl, data, {
                 headers: {
-                'Content-Type': 'multipart/form-data',
+                "Content-type": "application/json",
                 Accept: "application/json",
                 Authorization: `Token ${useUserStore().userToken}`
                 },
@@ -506,7 +567,7 @@ export default {
                 this.saveAddress()
             }
             this.btn_buy_loading = true
-            const apiUrl = `${apiStore().address}/api/order/create-order/`;
+            const apiUrl = `${apiStore().address}/api/order/create-order/${this.selected_gateway}/`;
             const data = {
                 count: this.qty,
                 product: this.product.id,
@@ -523,7 +584,7 @@ export default {
             this.loading = true
             axios.post(apiUrl, data, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    "Content-type": "application/json",
                     Accept: "application/json",
                     Authorization: `Token ${useUserStore().userToken}`
                 },
@@ -561,7 +622,6 @@ export default {
                     Authorization: `Token ${useUserStore().userToken}`
                 },
             }).then(response => {
-                console.log('discount', response.data);
                 if (response.data.valid){
                     if(response.data.is_percentage){
                         this.discount_amount = (((this.product.price + this.color.price) * ((100 - this.product.discount) / 100))  * this.qty) * (response.data.amount/100)  
@@ -575,7 +635,6 @@ export default {
                 }else{
                     this.error = 'کد تخفیف معتبر نیست'
                 }
-                console.log('amount', this.discount_amount, this.product);
                 this.btn_discount_loading = false
             }).catch(error => {
                 // Handle error response
@@ -590,7 +649,6 @@ export default {
         show: {
 
             handler(val, oldVal) {
-                console.log(this.show)
                 this.$emit('show-change', this.show)
             }
         },

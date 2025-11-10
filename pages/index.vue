@@ -110,7 +110,6 @@ export default {
           Authorization: `Token ${useUserStore().userToken}`,
         },
       }).then((response) => {
-        console.log(response.data.username);
         
         this.shop_username = response.data.username
       })

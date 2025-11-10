@@ -16,10 +16,11 @@
     </div>
   </div>
   <div v-else v-if="product != null" data-aos="fade-down">
-         <Head>
-        <Title>{{ product.title }} </Title>
-      
-     </Head>
+
+    <Head>
+      <Title>{{ product.title }} </Title>
+
+    </Head>
     <div class="min-h-full">
 
       <!-- Top Animation -->
@@ -168,7 +169,8 @@
                         <div class="mt-3">
                           <h2 class="sr-only">Product information</h2>
                           <div v-if="product.discount != 0" class="flex items-center ">
-                            <div class="text-xl line-through text-gray-300  tracking-tight">{{ price(product.price) }} </div>
+                            <div class="text-xl line-through text-gray-300  tracking-tight">{{ price(product.price) }}
+                            </div>
                             <div class=" overflow-hidden rounded-lg p-4">
                               <div
                                 class=" text-white  text-sm font-semibold bg-red-500 rtl text-right rounded-full px-3 py-1"
@@ -186,11 +188,13 @@
 
 
                         <div class="flex flex-wrap rtl">
-                                            <div class="text-sm flex flex-row items-center bg-gray-100 my-2 text-gray-500 py-1 px-2 mx-1 rounded-full hover:bg-gray-300 hover:text-gray-600"
-                                                v-for="category in product.category" :key="category.id">
-                                                <p @click="$router.push(`/p/search/?category_digital_product=${category.id}&tab=1`)" class="px-2 cursor-pointer">{{ category.title }}</p>
-                                            </div>
+                          <div
+                            class="text-sm flex flex-row items-center bg-gray-100 my-2 text-gray-500 py-1 px-2 mx-1 rounded-full hover:bg-gray-300 hover:text-gray-600"
+                            v-for="category in product.category" :key="category.id">
+                            <p @click="$router.push(`/p/search/?category_digital_product=${category.id}&tab=1`)"
+                              class="px-2 cursor-pointer">{{ category.title }}</p>
                           </div>
+                        </div>
 
                         <div class="mt-6">
 
@@ -219,8 +223,12 @@
                               <p v-else>ناموجود</p>
                               <ShoppingBagIcon class="h-5 w-5 text-white mr-5" />
                             </button>
-                            <BuyDigitalProductPopup @show-change="(data) => { show = data }" v-model:show="show"
-                              :product="product" />
+                            <BuyDigitalProductPopup 
+                              @show-change="(data) => { show = data }" 
+                              @selected_gateway="gateway => selected_gateway = gateway"
+                              v-model:show="show"
+                              :product="product" 
+                              :available_gateways="available_gateways"  />
                           </div>
                         </div>
 
@@ -261,7 +269,7 @@
                       <h3 class="sr-only">Description</h3>
 
                       <!-- <div class="space-y-6 text-base text-gray-700" v-html="product.description" /> -->
-                    <ShowTextEditor class="space-y-6":content="product.description"></ShowTextEditor>
+                      <ShowTextEditor class="space-y-6" :content="product.description"></ShowTextEditor>
 
                     </div>
 
@@ -371,12 +379,12 @@ import {
   TabPanels,
 } from '@headlessui/vue'
 import BuyDigitalProductPopup from "@/components/section/BuyDigitalProductPopup.vue"
-import { StarIcon , ShoppingBagIcon } from '@heroicons/vue/20/solid'
+import { StarIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
 import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
- 
-  
- 
+
+
+
 export default {
   components: {
     BuyDigitalProductPopup,
@@ -417,6 +425,8 @@ export default {
     is_admin: null,
     is_sellable: true,
     btn_buy_loading: false,
+    available_gateways: null,
+    selected_gateway: null,
     // selectedColor: ref(product.colors[0]),
     comment_title: '',
     comment_rate: 0,
@@ -424,68 +434,69 @@ export default {
   }),
   methods: {
     openInNewTab() {
-        window.open('https://panel.phoneplus.ir/', '_blank');
+      window.open('https://panel.phoneplus.ir/', '_blank');
     },
-    price(value){
-            let text
-            let chars = Array.from(`${value}`)
-            for (let index = 1; index <= chars.length; index++) {
-                
-                if(index % 3==0){
-                    if (chars.length != index) {
-                    chars[chars.length-index] = `,${chars[chars.length-index]}`;
-                        
-                    }
-                }
+    price(value) {
+      let text
+      let chars = Array.from(`${value}`)
+      for (let index = 1; index <= chars.length; index++) {
 
-            }
-            return chars.join("");;
-        },
+        if (index % 3 == 0) {
+          if (chars.length != index) {
+            chars[chars.length - index] = `,${chars[chars.length - index]}`;
+
+          }
+        }
+
+      }
+      return chars.join("");;
+    },
     openInNewTab() {
-        window.open(`https://panel.phoneplus.ir/digitalProducts/${this.product.id}`, '_blank');
+      window.open(`https://panel.phoneplus.ir/digitalProducts/${this.product.id}`, '_blank');
     },
     setButtons() {
       if (this.is_sellable) {
-        this.is_admin?
-        NavigationStore().setButtons([
-          {
-            'name': 'مدیریت فروشگاه',
-            'func': this.openInNewTab,
-            'href': null,
-          },
-          {
-            'name': 'ویرایش محصول',
-            'func': this.openInNewTab,
-            'href': null,
-          },
-          {
-            'name': 'خرید / دانلود',
-            'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
-            'href': null,
-          }
-        ]):
-        NavigationStore().setButtons([
-          {
-            'name': 'خرید / دانلود',
-            'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
-            'href': null,
-          }
-        ])
+        this.is_admin ?
+          NavigationStore().setButtons([
+            {
+              'name': 'مدیریت فروشگاه',
+              'func': this.openInNewTab,
+              'href': null,
+            },
+            {
+              'name': 'ویرایش محصول',
+              'func': this.openInNewTab,
+              'href': null,
+            },
+            {
+              'name': 'خرید / دانلود',
+              'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
+              'href': null,
+            }
+          ]) :
+          NavigationStore().setButtons([
+            {
+              'name': 'خرید / دانلود',
+              'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
+              'href': null,
+            }
+          ])
       } else {
-        this.is_admin?
-        NavigationStore().setButtons([
-          {
-            'name': 'ویرایش محصول',
-            'func': this.openInNewTab,
-            'href': null,
-          }
-        ]):
-        NavigationStore().setButtons([
-        ])
+        this.is_admin ?
+          NavigationStore().setButtons([
+            {
+              'name': 'ویرایش محصول',
+              'func': this.openInNewTab,
+              'href': null,
+            }
+          ]) :
+          NavigationStore().setButtons([
+          ])
       }
     },
     getData() {
       this.loading = true
+      // TODO available_gateways ['sep', 'zarinpal', 'behpardakht']
       axios.get(`${apiStore().address}/api/product/digital-product-retrieve-main-page/${this.$route.params.id}/`, {
         headers: {
           "Content-type": "application/json",
@@ -493,8 +504,8 @@ export default {
           Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : '',
         },
       }).then((response) => {
-        console.log('data', response.data);
         this.product = response.data
+        this.available_gateways = response.data.available_gateways
         this.is_admin = response.data.is_admin
         this.loading = false
         if (this.product.type == 'license') {
@@ -509,7 +520,8 @@ export default {
     sendData() {
       this.btn_buy_loading = true
       this.setButtons()
-      const apiUrl = `${apiStore().address}/api/order/create-order-digital-product/`;
+      // TODO Add /sep/
+      const apiUrl = `${apiStore().address}/api/order/create-order-digital-product/${this.selected_gateway}/`;
       const data = {
         digital_product: this.product.id,
       };
@@ -531,7 +543,6 @@ export default {
           if (response.status == 200) {
             window.location.href = response.data["result"]
           }
-          console.log(response.data);
           this.btn_buy_loading = false;
           this.setButtons();
         }),

@@ -307,7 +307,6 @@ export default {
               this.isLogin == true ? `Token ${useUserStore().userToken}` : "",
         },
       }).then((response) => {
-        console.log('getData', response.data);
         this.results = response.data
         this.support = `/p/chat/${this.results.admin[0].username}/${this.results.admin[0].username}_${useUserStore().username}`
         response.data.order.length > 0 ?  this.order = response.data.order : ''
