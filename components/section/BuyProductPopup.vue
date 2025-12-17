@@ -568,11 +568,15 @@ export default {
             }
             this.btn_buy_loading = true
             const apiUrl = `${apiStore().address}/api/order/create-order/${this.selected_gateway}/`;
+            const discountCode =
+                typeof this.discount_code === 'string'
+                    ? this.discount_code.trim().toLowerCase()
+                    : this.discount_code;
             const data = {
                 count: this.qty,
                 product: this.product.id,
                 product_color: this.color ? this.color.id : null,
-                discount_code: this.discount_code,
+                discount_code: discountCode || null,
                 phone_number: this.phone_number,
                 first_name: this.first_name,
                 last_name: this.last_name,
@@ -614,7 +618,11 @@ export default {
                 this.saveAddress()
             }
             this.btn_discount_loading = true
-            const apiUrl = `${apiStore().address}/api/product/check-valid-product-discount/${this.discount_code}/${this.$route.params.id}/`;
+            const discountCode =
+                typeof this.discount_code === 'string'
+                    ? this.discount_code.trim().toLowerCase()
+                    : this.discount_code;
+            const apiUrl = `${apiStore().address}/api/product/check-valid-product-discount/${discountCode}/${this.product.id}/`;
             axios.get(apiUrl,{
                 headers: {
                     'Content-Type': 'multipart/form-data',

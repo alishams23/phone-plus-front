@@ -235,8 +235,12 @@ export default {
     sendData() {
       this.btn_buy_loading = true
       const apiUrl = `${apiStore().address}/api/order/create-group-order-digital-product/${this.selected_gateway}/`
+      const discountCode =
+        typeof this.discount_code === 'string'
+          ? this.discount_code.trim().toLowerCase()
+          : this.discount_code
       const data = {
-        discount_code: this.discount_code,
+        discount_code: discountCode || null,
         digital_product: this.product.id,
         count: this.qty,
       }
@@ -260,7 +264,11 @@ export default {
     },
     checkDiscountCode() {
       this.btn_discount_loading = true
-      const apiUrl = `${apiStore().address}/api/product/check-valid-digital-product-discount/${this.discount_code}/${this.product.id}/`
+      const discountCode =
+        typeof this.discount_code === 'string'
+          ? this.discount_code.trim().toLowerCase()
+          : this.discount_code
+      const apiUrl = `${apiStore().address}/api/product/check-valid-digital-product-discount/${discountCode}/${this.product.id}/`
       axios.get(apiUrl, {
         headers: {
           'Content-Type': 'multipart/form-data',
