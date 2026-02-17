@@ -41,7 +41,22 @@
 
         </div>
       </li>
-      <li v-else v-if="currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2 bg-glass-2 shadow-3" >
+      <li v-else-if="sectionSupport == true && supportLink && currentRouteCheck('chat') == false" class="rounded-2xl mx-3 mt-2 bg-gray-200" >
+        <div class="group relative flex  items-center px-5 py-4" >
+            <a :href="supportLink" class="relative flex min-w-0 flex-1 items-center">
+              <span class="relative inline-block flex-shrink-0">
+                <img class="h-10 w-10 rounded-full object-cover bg-white" src="/images/default_profile_2.svg"  alt="" />
+              </span>
+              <div class="mr-4 truncate"> 
+                <p class="truncate px-4 text-sm font-medium rtl" >پشتیبانی فروشگاه</p>
+                <p class="truncate px-4 text-xs text-gray-500" v-if="supportTargetUsername">{{ '@' + supportTargetUsername }}</p>
+              </div>
+            </a>
+            <PaperClipIcon class="h-6 w-6" aria-hidden="true" />
+
+        </div>
+      </li>
+      <li v-else-if="currentRouteCheck('chat') == false && !isStoreSupportContext" class="rounded-2xl mx-3 mt-2 bg-glass-2 shadow-3" >
         <div class="group relative flex  items-center px-5 py-4" >
        
             <a :href="sectionSupport == true ?'/p/chat/'+'pourya'  + '/'+ 'pourya_'+ username +  '/': '#'" class="relative flex min-w-0 flex-1 items-center">
@@ -120,6 +135,24 @@ export default {
       username() {
         return useUserStore().username
       },
+      supportLink() {
+        const buttons = NavigationStore().buttons || []
+        const supportButton = buttons.find(
+          (button) => button && button.name == 'پشتیبانی فروشگاه' && button.href
+        )
+        const href = supportButton ? supportButton.href : null
+        if (!href || href.includes('undefined') || href.includes('null')) return null
+        return href
+      },
+      supportTargetUsername() {
+        if (!this.supportLink) return null
+        const parts = this.supportLink.split('/').filter(Boolean)
+        return parts.length > 2 ? parts[2] : null
+      },
+      isStoreSupportContext() {
+        const routeName = this.routeName()
+        return routeName == 'username' || this.currentRouteCheck('product') || this.currentRouteCheck('digitalProduct')
+      },
     },
   components: {
     DialogTitle,
@@ -151,14 +184,16 @@ export default {
   },
   methods: {
     currentRouteCheck(page_name) {
+      const routeName = this.routeName()
       if (page_name != '') {
-        return this.$route.name.split("-").includes(page_name);
-      } else if (this.$route.name== 'index') {
+        return routeName.split("-").includes(page_name);
+      } else if (routeName == 'index') {
         return true
       }
+      return false
     },
     routeName(){
-      return this.$route.name
+      return this.$route && this.$route.name ? String(this.$route.name) : ''
     },
     async ListUserMessageApi() {
       await fetch(`${apiStore().address}/api/chat/ChatList/?search=${this.searchInput == null ? '' :this.searchInput}`, {

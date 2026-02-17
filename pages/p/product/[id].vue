@@ -473,6 +473,7 @@ export default {
     is_admin: null,
     available_gateways: null,
     comment_hover_rate: 0,
+    support: null,
   }),
   methods: {
     openInNewTab() {
@@ -496,6 +497,23 @@ export default {
     openInNewTab() {
         window.open(`https://panel.phoneplus.ir/products/${this.product.id}`, '_blank');
     },
+    async getShopSupport(shopUsername) {
+      this.support = null
+      if (!shopUsername || !this.isLogin) return
+
+      await axios.get(`${apiStore().address}/api/account/shop-profile-info/${shopUsername}/`, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Accept: "application/json",
+          Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : "",
+        },
+      }).then((response) => {
+        if (response.data && response.data.admin && response.data.admin.length > 0) {
+          const adminUsername = response.data.admin[0].username
+          this.support = `/p/chat/${adminUsername}/${adminUsername}_${useUserStore().username}`
+        }
+      }).catch(() => { })
+    },
     setButtons() {
       if (this.is_sellable) {
         this.is_admin?
@@ -518,6 +536,11 @@ export default {
         ]):
         NavigationStore().setButtons([
           {
+            'name': 'پشتیبانی فروشگاه',
+            'func': this.isLogin == true ? null : this.openLogin,
+            'href': this.isLogin == true ? this.support : null,
+          },
+          {
             'name': 'خرید محصول',
             'func': this.isLogin == true ? () => { this.show = true } : this.openLogin,
             'href': null,
@@ -533,22 +556,30 @@ export default {
           }
         ]):
         NavigationStore().setButtons([
+          {
+            'name': 'پشتیبانی فروشگاه',
+            'func': this.isLogin == true ? null : this.openLogin,
+            'href': this.isLogin == true ? this.support : null,
+          }
         ])
       }
     },
-    getData() {
+    async getData() {
       this.loading = true
-      axios.get(`${apiStore().address}/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
+      await axios.get(`${apiStore().address}/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
           Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : '',
         },
-      }).then((response) => {
+      }).then(async (response) => {
         this.selected_color = response.data.colors ? response.data.colors[0] : null
         this.product = response.data
         this.available_gateways = response.data.available_gateways
         this.is_admin = response.data.is_admin
+        if (response.data && response.data.shop && response.data.shop.username) {
+          await this.getShopSupport(response.data.shop.username)
+        }
         this.loading = false
         if (response.data.colors) {
           response.data.colors.forEach(element => {
