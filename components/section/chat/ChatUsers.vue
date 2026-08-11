@@ -9,6 +9,10 @@
           <!-- <img src="@/assets/inside/images/treaget2.png" class="mx-3" style="width: 50px"> -->
         </div>
       </div>
+      <div class="flex border-b px-3 py-2 gap-2">
+        <button @click="chatTab = 'active'" :class="chatTab === 'active' ? 'bg-indigo-600 text-white' : 'bg-gray-100'" class="rounded-full px-4 py-2 text-sm">فعال</button>
+        <button @click="chatTab = 'archived'" :class="chatTab === 'archived' ? 'bg-indigo-600 text-white' : 'bg-gray-100'" class="rounded-full px-4 py-2 text-sm">آرشیو</button>
+      </div>
       <nuxt-link to="/"
         class=" h-10 w-10 rounded-full bg-treaget treaget-shadow d-flex align-items-center justify-content-center ">
         <i class="fa fa-home text-white p-2"></i>
@@ -87,6 +91,7 @@ export default {
       contacts: [],
       searchContact: [],
       searchInput: '',
+      chatTab: 'active',
       headers: {
         'Content-type': 'application/json',
         Accept: 'application/json',
@@ -106,7 +111,8 @@ export default {
   },
   methods: {
     async ListUserMessageApi() {
-      await fetch(`${apiStore().address}/api/chat/ChatList/`, {
+      const query = this.chatTab === 'archived' ? '?archived=true' : ''
+      await fetch(`${apiStore().address}/api/chat/ChatList/${query}`, {
         headers: this.headers
       })
         .then(response => response.json())
@@ -117,7 +123,7 @@ export default {
     }, async searchUser() {
       this.loadingListUserMessage = true
 
-      await fetch(`${apiStore().address}/api/chat/Search/?search=${this.searchInput}`, {
+      await fetch(`${apiStore().address}/api/chat/Search/?search=${this.searchInput}${this.chatTab === 'archived' ? '&archived=true' : ''}`, {
         headers: this.headers
       })
         .then(response => response.json())
@@ -129,6 +135,9 @@ export default {
     slideBarDeactivator() {
       document.getElementById('wrapper').classList.remove('sidebar-active')
     }
+  }
+  ,watch: {
+    chatTab() { this.ListUserMessageApi() }
   }
 }
 </script>

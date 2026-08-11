@@ -55,16 +55,17 @@
     </div>
     <div class="pb-20"></div>
     <div class="fixed bottom-0 right-0 w-full  ">
+      <div v-if="chatUnavailable" class="rtl mx-5 mb-3 rounded-lg bg-amber-50 p-3 text-amber-900">ارسال پیام جدید برای این فروشگاه امکان‌پذیر نیست.</div>
       <div v-if="username != null && loadingGetMessage == false" class=" flex items-center flex-row px-10 pb-3 ">
         <div class="lg:w-72 "></div>
         <input v-model="inputData" placeholder="پیام شما" type="text"  style="
             word-break: break-all;"
           class=" grow rtl bg-gray-50 border shadow-2 text-gray-900 text-sm rounded-full focus:outline-none focus:ring-0 focus:border-indigo-300 block py-4 p-3  "
-          @keyup.enter="sendMessage()" />
+          :disabled="chatUnavailable" @keyup.enter="sendMessage()" />
         <div class="flex items-center px-2">
           <button id="text-submit" type="submit"
             class="bg-indigo-600 hover:bg-indigo-800 flex items-center justify-center rounded-full shadow-2 w-12 h-12 text-white"
-            @click="sendMessage()">
+            :disabled="chatUnavailable" @click="sendMessage()">
             <PaperAirplaneIcon class="text-white h-5" />
           </button>
         </div>
@@ -107,7 +108,8 @@ export default {
       setInterval2: null,
       setInterval3: null,
       loadingGetMessage: false,
-      chatSocket: null
+      chatSocket: null,
+      chatUnavailable: false,
     }
   },
   mounted() {
@@ -119,8 +121,16 @@ export default {
             headers: this.headers
           }
         )
-          .then(response => response.json())
+          .then(async (response) => {
+            if (response.status === 404) {
+              this.chatUnavailable = true
+              this.loadingGetMessage = false
+              return null
+            }
+            return response.json()
+          })
           .then((data) => {
+            if (!data) return
             this.username = data.contact.username
          
             this.user = data.contact
@@ -147,6 +157,7 @@ export default {
       return jalaaliDate;
     },
     sendMessage() {
+      if (this.chatUnavailable || !this.chatSocket || this.chatSocket.readyState !== WebSocket.OPEN) return;
       if (this.inputData != null && this.inputData != '') {
         this.chatSocket.send(
           JSON.stringify({
@@ -179,6 +190,10 @@ export default {
       }
       this.chatSocket.onmessage = (e) => {
         const data = JSON.parse(e.data)
+        if ((data.command === 'error' && data.error === 'shop_not_available') || data.command === 'shop_unavailable' || data.code === 'shop_unavailable' || data.detail === 'shop_unavailable') {
+          this.chatUnavailable = true;
+          return;
+        }
         if (data.command === 'fetch_message') {
           this.messages = data.message
           this.loadingGetMessage = false
@@ -208,7 +223,8 @@ export default {
         }
       }
       this.chatSocket.onclose = (e) => {
-        console.error('Chat socket closed unexpectedly')
+        if (e.code === 4003 || e.code === 4004) this.chatUnavailable = true;
+        else console.error('Chat socket closed unexpectedly')
       }
     },
 

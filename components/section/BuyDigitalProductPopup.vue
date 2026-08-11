@@ -70,6 +70,7 @@
                                                         </dd>
                                                     </div>
                                                 </form>
+                                                    <ShopUnavailableAlert v-if="!shopAvailable" class="my-4" />
                                                     <form @submit.prevent="sendData" class="border-t">
                                                         <div class="px-4 py-3 md:py-6 grid grid-cols-2 gap-4 px-0 gap-y-5 border-b  mb-5" >
                                                             <dt v-if="product.type == 'license'" class="text-xs md:text-sm font-medium leading-6 flex justify-start md:justify-center items-center text-gray-900">تعداد</dt>
@@ -140,7 +141,7 @@
                                                                     </svg>
                                                                 </button> -->
                                                                 <button
-                                                                    :disabled="selected_gateway == null  || btn_buy_loading ? true : false" 
+                                                                    :disabled="!shopAvailable || selected_gateway == null  || btn_buy_loading ? true : false"
                                                                     type="submit"
                                                                     :class="selected_gateway == null || btn_buy_loading? 'bg-gray-400 text-white' : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg'"
                                                                     class="flex items-center justify-center gap-3 rounded-full px-8 py-2 font-medium transition-all"
@@ -172,11 +173,15 @@
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import axios from 'axios'
 import { ShoppingBagIcon } from '@heroicons/vue/20/solid'
+import ShopUnavailableAlert from '@/components/section/ShopUnavailableAlert.vue'
 
 export default {
   props: ["show", "product", "available_gateways"],
   emits: ["update:show", "selected_gateway"],
-  components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot, ShoppingBagIcon },
+  components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot, ShoppingBagIcon, ShopUnavailableAlert },
+  computed: {
+    shopAvailable() { return this.product?.shop?.is_active !== false; },
+  },
   data() {
     return {
       btn_buy_loading: false,
@@ -233,6 +238,7 @@ export default {
       this.selected_gateway = key
     },
     sendData() {
+      if (!this.shopAvailable) { this.error = 'این فروشگاه فعال نیست.'; return; }
       this.btn_buy_loading = true
       const apiUrl = `${apiStore().address}/api/order/create-group-order-digital-product/${this.selected_gateway}/`
       const discountCode =
@@ -253,6 +259,11 @@ export default {
       }).then(response => {
         window.location.href = `${apiStore().address}/api/wallet/go_to_gateway_digital_product_view/${response.data.id}`
         this.btn_buy_loading = false
+      }).catch((error) => {
+        this.btn_buy_loading = false
+        this.error = error.response?.data?.product?.[0] === 'product_not_available'
+          ? 'این محصول یا فروشگاه دیگر قابل خرید نیست.'
+          : 'ثبت سفارش انجام نشد. لطفاً دوباره تلاش کنید.'
       })
     },
     calculate_discount_amount(discount_amount, qty) {

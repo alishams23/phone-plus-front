@@ -44,6 +44,7 @@
                      class="w-56 lg:w-56 h-56 lg:h-56 -mt-10 lg:mt-0 lg:-ms-10 flex items-center object-cover shadow-lg rounded-3xl" />
               </div>
               <div class="col-span-6 lg:col-span-4">
+                <OrderShopStatus :order="data" />
                 <h3 class="mt-3 text-right text-lg pe-4 py-3 font-semibold leading-6 text-black">
                   <a>{{ data.digital_product.title }}</a>
                 </h3>

@@ -237,7 +237,8 @@
 
                           <div class="sm:flex-col1 mt-10 flex">
 
-                            <button v-if="selected_color ? selected_color.count > 0 : product.amount > 0"
+                            <ShopUnavailableAlert v-if="!shopAvailable" class="w-full" />
+                            <button v-else-if="selected_color ? selected_color.count > 0 : product.amount > 0"
                               @click="isLogin == true ? show = true : openLogin()"
                               class="flex max-w-xs flex-1 items-center justify-center rounded-2xl border border-transparent bg-indigo-600   px-2 py-[10px] text-base font-medium text-white  sm:w-full">
 
@@ -419,9 +420,11 @@ import {
 } from '@headlessui/vue'
 import LoginPopup from "@/components/section/LoginPopup.vue"
 import BuyProductPopup from "@/components/section/BuyProductPopup.vue"
+import ShopUnavailableAlert from '@/components/section/ShopUnavailableAlert.vue'
 import { StarIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
 import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon, } from '@heroicons/vue/24/outline'
 import axios from 'axios'
+import { showError } from '#app'
  
   
  
@@ -430,6 +433,7 @@ export default {
     LoginPopup,
     ArrowTopRightOnSquareIcon,
     BuyProductPopup,
+    ShopUnavailableAlert,
     Dialog,
     TransitionRoot,
     ShoppingBagIcon,
@@ -457,6 +461,9 @@ export default {
 
   },
   computed: {
+    shopAvailable() {
+      return this.product?.shop?.is_active !== false
+    },
     isLogin() {
       return useUserStore().userToken != null;
     },
@@ -588,7 +595,11 @@ export default {
         } else {
           this.product.amount > 0 ? this.is_sellable = true : ''
         }
+        this.is_sellable = this.is_sellable && this.shopAvailable
         this.setButtons()
+      }).catch((error) => {
+        this.loading = false
+        showError({ statusCode: error.response?.status || 503, statusMessage: 'Product unavailable' })
       })
     },
     async sendComment() {

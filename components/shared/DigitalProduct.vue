@@ -1,7 +1,7 @@
 <template>
 
-  <nuxt-link :to="'/p/digitalProduct/'+ data.slug">
-    <div :class="width ? `${width}` : 'w-[15rem]'" class=" relative isolate my-10 mx-2 justify-end overflow-hidden rounded-2xl  bg-gray-900 px-8 pb-8 pt-[10rem] sm:pt-60 lg:pt-[8rem]">
+  <nuxt-link :to="shopAvailable ? '/p/digitalProduct/' + data.slug : undefined" :aria-disabled="!shopAvailable" @click="preventUnavailableNavigation">
+    <div :class="[width ? `${width}` : 'w-[15rem]', { 'opacity-75 cursor-not-allowed': !shopAvailable }]" class=" relative isolate my-10 mx-2 justify-end overflow-hidden rounded-2xl  bg-gray-900 px-8 pb-8 pt-[10rem] sm:pt-60 lg:pt-[8rem]">
         <img :src="data.image[0].photo" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-white from-10% via-white/30" />
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
@@ -34,7 +34,7 @@
         <div class="absolute bottom-0 flex left-0  items-end justify-end overflow-hidden rounded-lg ps-4 pb-3">
           <div class="relative text-white shadow-xl text-sm font-semibold bg-indigo-600 rtl text-right rounded-full px-3 py-1" v-if="data.discount != 0">   {{ data.discount}} % </div>
         </div> 
-        <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">
+      <div class="absolute bottom-0 flex right-0  items-end justify-end overflow-hidden rounded-lg pe-4 pb-3">
         <div class="flex items-center justify-end mt-2">
             <div v-if="data.rate > 0">
                 <p class="text-sm text-gray-500 px-3">({{ data.rate_number }})</p>
@@ -46,6 +46,9 @@
               :class="[data.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
               aria-hidden="true" />
         </div>
+      </div>
+      <div v-if="!shopAvailable" class="absolute inset-x-3 top-3 rounded-full bg-amber-100 px-3 py-1 text-center text-xs font-bold text-amber-900">
+        فروشگاه غیرفعال است
       </div>
    
       </div>
@@ -66,7 +69,15 @@ export default {
       default: true
     }
   },
+  computed: {
+    shopAvailable() {
+      return this.data?.shop?.is_active !== false
+    },
+  },
   methods: {
+    preventUnavailableNavigation(event) {
+      if (!this.shopAvailable) event.preventDefault()
+    },
     price(value){
       let text
       let chars = Array.from(`${value}`)

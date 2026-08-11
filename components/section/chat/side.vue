@@ -23,6 +23,10 @@
       </svg>
       </div>
   </div>
+  <div class="flex gap-2 px-5 pb-3 rtl">
+    <button @click="chatTab = 'active'" :class="chatTab === 'active' ? 'bg-indigo-600 text-white' : 'bg-gray-100'" class="rounded-full px-4 py-2 text-sm">فعال</button>
+    <button @click="chatTab = 'archived'" :class="chatTab === 'archived' ? 'bg-indigo-600 text-white' : 'bg-gray-100'" class="rounded-full px-4 py-2 text-sm">آرشیو</button>
+  </div>
  
   </div>
     <ul role="list" class="flex-1  overflow-y-auto overflow-x-hidden">
@@ -91,6 +95,7 @@
                    <p class="truncate ps-2 text-[14px] font-medium me-4 w-[89%] rtl text-left" v-else>{{ person.contact.full_name }}</p>
                    <p class="truncate ps-4 text-[9px] pt-2 text-left" :class="$route.params.username != null ? 'text-gray-300' : 'text-gray-900'" v-if="person.contact.shop">{{ '@' + person.contact.shop.username }}</p>
                    <p class="truncate ps-4 text-[9px] pt-2 text-left" :class="$route.params.username != null ? 'text-gray-300' : 'text-gray-900'" v-else>{{ '@' + person.contact.username }}</p>
+                   <p v-if="person.is_archived" class="text-[10px] text-amber-600 rtl">فروشگاه غیرفعال است</p>
                   </div>
                   <div
                   v-if="person.unread > 0"
@@ -175,6 +180,7 @@ export default {
       selected_user:this.$route.params.username,
       searchContact: [],
       searchInput: '',
+      chatTab: 'active',
       headers: {
         'Content-type': 'application/json',
         Accept: 'application/json',
@@ -196,7 +202,9 @@ export default {
       return this.$route && this.$route.name ? String(this.$route.name) : ''
     },
     async ListUserMessageApi() {
-      await fetch(`${apiStore().address}/api/chat/ChatList/?search=${this.searchInput == null ? '' :this.searchInput}`, {
+      const query = new URLSearchParams({ search: this.searchInput || '' })
+      if (this.chatTab === 'archived') query.set('archived', 'true')
+      await fetch(`${apiStore().address}/api/chat/ChatList/?${query.toString()}`, {
         headers: this.headers
       })
         .then(response => response.json())
@@ -209,7 +217,7 @@ export default {
     }, async searchUser() {
       this.loadingListUserMessage = true
 
-      await fetch(`${apiStore().address}/api/chat/Search/?search=${this.searchInput}`, {
+      await fetch(`${apiStore().address}/api/chat/Search/?search=${this.searchInput}${this.chatTab === 'archived' ? '&archived=true' : ''}`, {
         headers: this.headers
       })
         .then(response => response.json())
@@ -218,6 +226,9 @@ export default {
           this.loadingListUserMessage = false
         })
     },
+  },
+  watch: {
+    chatTab() { this.ListUserMessageApi() },
   },
   mounted() {
     this.loadingListUserMessage = true

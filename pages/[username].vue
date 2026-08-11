@@ -1,5 +1,4 @@
 <template>
-  
   <div class="relative " v-if="results && results.image">
       <img v-if="results.background_image" :src="results.background_image" alt=""
         class="absolute  inset-0 -z-10  h-full w-full object-cover " />
@@ -147,7 +146,8 @@
               </div>
 
               <div v-else>
-                <div v-if="results.is_sellable == false" class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-md text-indigo-700 p-4 m-10 rtl"
+                <ShopUnavailableAlert v-if="!isShopActive" class="m-10" />
+                <div v-else-if="results.is_sellable == false" class="bg-indigo-100 border-r-[9px] border-indigo-500 rounded-md text-indigo-700 p-4 m-10 rtl"
                   role="alert">
                   <div class="flex items-center justify-between" >
                     <p class="font-bold me-2">
@@ -158,12 +158,12 @@
                     </nuxt-link>
                   </div>
                 </div>
-                <div v-if="results && results.is_sellable == true">
+                <div v-if="results && isShopActive && results.is_sellable == true">
                   <PinProductCarousel :idShop="results.id" />
                   <PinDigitalProductCarousel :idShop="results.id" />
                   
                 </div>                                                    <!-- bg-gradient-to-tl bg-indigo-600 from-gray-900 from-0%  text-white  -->
-                <div v-if="results && results.is_sellable == true" v-for="(item, index) in order" :class="index % 2 != 0 ? '' : ''" >
+                <div v-if="results && isShopActive && results.is_sellable == true" v-for="(item, index) in order" :class="index % 2 != 0 ? '' : ''" >
                   <component :is="BlogCarousel" :idObject="item.id_object" :idShop="results.id" :title="item.title"
                     v-if="item.type == 'blog'" />
                   <component :is="ProductCarousel" :idObject="null" :idShop="results.id" :title="item.title"
@@ -223,7 +223,9 @@ import DigitalProductCarousel from "@/components/section/profile/DigitalProductC
 import ProductCarousel from "@/components/section/profile/ProductCarousel.vue"
 import BlogCarousel from "@/components/section/profile/BlogCarousel.vue"
 import Blog from "@/components/shared/Blog.vue"
+import ShopUnavailableAlert from '@/components/section/ShopUnavailableAlert.vue'
 import axios from 'axios'
+import { showError } from '#app'
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -238,6 +240,7 @@ export default {
   components: {
     Product,
     Blog,
+    ShopUnavailableAlert,
     PinProductCarousel,
     PinDigitalProductCarousel,
     DigitalProductCarousel,
@@ -289,6 +292,9 @@ export default {
     ],
   }),
   computed: {
+    isShopActive() {
+      return this.results?.is_active !== false
+    },
     isLogin() {
       return useUserStore().userToken != null;
     },
@@ -299,20 +305,40 @@ export default {
     },
     async getData() {
       this.loading = true
-      await axios.get(`${apiStore().address}/api/account/shop-profile-info/${this.$route.params.username}/`, {
+      try {
+        const response = await axios.get(`${apiStore().address}/api/account/shop-profile-info/${this.$route.params.username}/`, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Accept: "application/json",
           Authorization:
               this.isLogin == true ? `Token ${useUserStore().userToken}` : "",
         },
-      }).then((response) => {
+        })
         this.results = response.data
+
         this.support = `/p/chat/${this.results.admin[0].username}/${this.results.admin[0].username}_${useUserStore().username}`
         response.data.order.length > 0 ?  this.order = response.data.order : ''
+      } catch (error) {
+        // Axios normally exposes HTTP status under `response.status`, but keep
+        // the other shapes for Nuxt/browser errors so a real API 404 is never
+        // rendered as a generic 503 page.
+        // Django's 404 response currently has no CORS headers. The browser can
+        // show the real 404 in DevTools, while Axios exposes it as ERR_NETWORK
+        // without `error.response`. On this storefront lookup that means the
+        // requested shop is unavailable, so keep the user-facing result a 404.
+        const isUnreadableBrowserResponse = !error.response && error.request
+        const statusCode = error.response?.status
+          ?? error.status
+          ?? error.statusCode
+          ?? (isUnreadableBrowserResponse ? 404 : 503)
+        console.error('Unable to load market profile:', error)
+        showError({
+          statusCode,
+          statusMessage: statusCode === 404 ? 'Shop not found' : 'Market service unavailable',
+        })
+      } finally {
         this.loading = false
-
-      })
+      }
     },
     openLogin() {
       NavigationStore().changeLoginState(true)
@@ -320,6 +346,8 @@ export default {
   },
   async mounted() {
     await this.getData()
+    if (!this.results) return
+
     useUserStore().status=='s'? 
     NavigationStore().setButtons([{
           'name': 'مدیریت فروشگاه',

@@ -32,6 +32,7 @@
                             <DialogPanel
                                 class="relative text-right rtl transform overflow-hidden rounded-[25px] bg-white text-left shadow-xl transition-all my-8 w-full max-w-3xl">
                                 <!-- Your content -->
+                                <ShopUnavailableAlert v-if="!shopAvailable" class="m-5" />
                                 <div v-if="tab==1">
                                     <form @submit.prevent="tab=2">
                                         <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-5 lg:px-8">
@@ -412,8 +413,8 @@
                                                                 </button> -->
                                                                 <button
                                                                     @click="sendData"
-                                                                    :disabled="selected_gateway == null  || btn_buy_loading ? true : false" 
-                                                                    :class="selected_gateway == null || btn_buy_loading? 'bg-gray-400 text-white' : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg'"
+                                                                    :disabled="!shopAvailable || selected_gateway == null || btn_buy_loading" 
+                                                                    :class="!shopAvailable || selected_gateway == null || btn_buy_loading ? 'bg-gray-400 text-white' : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg'"
                                                                     class="text-white font-bold py-2 mb-8 px-4 rounded-full px-10 w-[10rem] md:w-[10  rem]"
                                                                     >
                                                                     <p>پرداخت</p>
@@ -445,12 +446,16 @@
 <script>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import axios from 'axios'
+import ShopUnavailableAlert from '@/components/section/ShopUnavailableAlert.vue'
  
   
 
 export default {
     props: ["show", "product", "color", "available_gateways"],
-    components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot },
+    components: { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot, ShopUnavailableAlert },
+    computed: {
+        shopAvailable() { return this.product?.shop?.is_active !== false; },
+    },
     data() {
         return {
             error: null,
@@ -563,6 +568,7 @@ export default {
             })
         },
         sendData() {
+            if (!this.shopAvailable) { this.error = 'این فروشگاه فعال نیست.'; return; }
             if(this.save_address){
                 this.saveAddress()
             }
@@ -596,6 +602,12 @@ export default {
                     window.location.href = `${apiStore().address}/api/wallet/go_to_gateway_view/${response.data.id}`
                     this.loading = false
                 // You can change the dialog page or show a success message here
+            }).catch((error) => {
+                this.loading = false
+                this.btn_buy_loading = false
+                this.error = error.response?.data?.product?.[0] === 'product_not_available'
+                    ? 'این محصول یا فروشگاه دیگر قابل خرید نیست.'
+                    : 'ثبت سفارش انجام نشد. لطفاً دوباره تلاش کنید.'
             })
         },
         price(value){

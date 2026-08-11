@@ -43,6 +43,7 @@
                                     class=" w-56 lg:w-56 h-56 lg:h-56 -mt-10 lg:mt-0 lg:-ms-10 flex items-center object-cover shadow-lg rounded-3xl" />
                             </div>
                             <div class="col-span-6 lg:col-span-4">
+                                <OrderShopStatus :order="data" />
                                 <div class="w-full flex justify-end ">
                                     <div class=" w-[95%] pe-4">
                                         <div class="flex flex-wrap pt-7 ">

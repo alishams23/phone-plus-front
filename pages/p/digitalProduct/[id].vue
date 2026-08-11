@@ -216,6 +216,7 @@
                                 </div>
                               </div>
                             </button>
+                            <ShopUnavailableAlert v-if="!shopAvailable" class="w-full" />
                             <button v-else @click="isLogin == true ? is_sellable ? show = true : '' : openLogin()"
                               :class="is_sellable ? 'bg-indigo-600 hover:bg-indigo-700' : 'cursor-default bg-gray-400'"
                               class="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent px-8 py-3 text-base font-medium text-white focus:outline-none sm:w-full">
@@ -379,15 +380,18 @@ import {
   TabPanels,
 } from '@headlessui/vue'
 import BuyDigitalProductPopup from "@/components/section/BuyDigitalProductPopup.vue"
+import ShopUnavailableAlert from '@/components/section/ShopUnavailableAlert.vue'
 import { StarIcon, ShoppingBagIcon } from '@heroicons/vue/20/solid'
 import { ArrowTopRightOnSquareIcon, HeartIcon, MinusIcon, PlusIcon, UserIcon, VideoCameraIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
+import { showError } from '#app'
 
 
 
 export default {
   components: {
     BuyDigitalProductPopup,
+    ShopUnavailableAlert,
     ArrowTopRightOnSquareIcon,
     HeartIcon,
     VideoCameraIcon,
@@ -414,6 +418,9 @@ export default {
 
   },
   computed: {
+    shopAvailable() {
+      return this.product?.shop?.is_active !== false
+    },
     isLogin() {
       return useUserStore().userToken != null;
     },
@@ -544,8 +551,12 @@ export default {
             this.is_sellable = false
           }
         }
+        this.is_sellable = this.is_sellable && this.shopAvailable
         this.setButtons()
 
+      }).catch((error) => {
+        this.loading = false
+        showError({ statusCode: error.response?.status || 503, statusMessage: 'Product unavailable' })
       })
     },
     sendData() {
@@ -564,21 +575,12 @@ export default {
           Authorization: `Token ${useUserStore().userToken}`
         },
       }).then(response => {
-        axios.post(`${apiStore().address}/api/wallet/pay-order-digital-product/`, { order_id: response.data.id }, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Accept: "application/json",
-            Authorization: `Token ${useUserStore().userToken}`
-          },
-        }).then(response => {
-          if (response.status == 200) {
-            window.location.href = response.data["result"]
-          }
-          this.btn_buy_loading = false;
-          this.setButtons();
-        }),
-          this.loading = false;
-        // You can change the dialog page or show a success message here
+        window.location.href = `${apiStore().address}/api/wallet/go_to_gateway_digital_product_view/${response.data.id}`;
+        this.btn_buy_loading = false;
+        this.setButtons();
+      }).catch(() => {
+        this.btn_buy_loading = false;
+        this.setButtons();
       })
     },
     async sendComment() {

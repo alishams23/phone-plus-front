@@ -1,6 +1,6 @@
 <template>
-  <nuxt-link :to="'/p/product/'+ data.slug">
-    <div :class="width ? `${width}` : 'w-[14rem]'" class=" relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-20 sm:pt-20 lg:pt-32">
+  <nuxt-link :to="shopAvailable ? '/p/product/' + data.slug : undefined" :aria-disabled="!shopAvailable" @click="preventUnavailableNavigation">
+    <div :class="[width ? `${width}` : 'w-[14rem]', { 'opacity-75 cursor-not-allowed': !shopAvailable }]" class=" relative isolate  mx-2 justify-end overflow-hidden rounded-[25px]  bg-gray-900 px-8 pb-8 pt-20 sm:pt-20 lg:pt-32">
         <img :src="data.image[0].photo ? data.image[0].photo : data.image" :alt="data.image[0].title_for_photo" class="absolute  inset-0 -z-10 h-full w-full object-cover" />
         <div class="absolute inset-0 -z-10 bg-gradient-to-t  from-black from-0% via-black/30 " />
         <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
@@ -34,6 +34,9 @@
                 :class="[data.rate / 20 > rating ? 'text-yellow-500' : 'text-gray-300', 'h-3 w-3 flex-shrink-0']"
                 aria-hidden="true" />
           </div>
+        </div>
+        <div v-if="!shopAvailable" class="absolute inset-x-3 top-3 rounded-full bg-amber-100 px-3 py-1 text-center text-xs font-bold text-amber-900">
+          فروشگاه غیرفعال است
         </div>
     </div>
   </nuxt-link>
@@ -78,7 +81,15 @@ export default {
       default: true
     }
   },
+  computed: {
+    shopAvailable() {
+      return this.data?.shop?.is_active !== false
+    },
+  },
   methods: {
+    preventUnavailableNavigation(event) {
+      if (!this.shopAvailable) event.preventDefault()
+    },
     price(value){
       let text
       let chars = Array.from(`${value}`)

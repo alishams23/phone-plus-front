@@ -37,13 +37,16 @@ export default defineNuxtConfig({
   }, 
 
   sitemap: {
-    sources:[
+    // These URLs are fetched by Nitro to build the sitemap. The production API
+    // is not reachable from every developer environment, so avoid an
+    // unhandled timeout while `nuxt dev` is running.
+    sources: process.env.NODE_ENV === 'production' ? [
       // Using the custom Django REST API endpoint for URLs
       'https://phoneplus.ir/api/product/digital-product-ID-list-view/',
       'https://phoneplus.ir/api/product/product-ID-list-view/',
       'https://phoneplus.ir/api/account/shop-username-list-view/',
       'https://phoneplus.ir/api/blog/blog-slug-list-view/',
-    ]
+    ] : []
   },
 
 
