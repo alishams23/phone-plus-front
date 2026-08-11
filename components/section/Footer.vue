@@ -72,13 +72,22 @@
             class="rounded-2xl bg-white/5 p-2 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/20"
           >
             <img
+              v-if="!enamadFailed"
               referrerpolicy="origin"
-              src="https://trustseal.enamad.ir/logo.aspx?id=261983&Code=VwgWQmFg1VHBWyU0iuiF"
+              :src="enamadLogoUrl"
               alt="نماد اعتماد الکترونیکی"
               code="VwgWQmFg1VHBWyU0iuiF"
               class="h-24 w-auto cursor-pointer object-contain"
               decoding="async"
+              @error="enamadFailed = true"
             />
+            <span v-else class="flex h-24 w-28 flex-col items-center justify-center gap-2 text-center text-xs text-white">
+              <svg class="h-9 w-9 text-indigo-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M12 3 5 6v5c0 4.8 2.8 8.2 7 10 4.2-1.8 7-5.2 7-10V6l-7-3Z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+              نماد اعتماد الکترونیکی
+            </span>
           </a>
 
           <button
@@ -88,13 +97,21 @@
             aria-label="نشان ساماندهی"
           >
             <img
+              v-if="!samandehiFailed"
               referrerpolicy="origin"
               class="h-14 w-auto"
               alt="نشان ساماندهی"
-              loading="lazy"
               decoding="async"
-              src="https://logo.samandehi.ir/logo.aspx?id=288821&p=odrfaqgwaqgwaqgwodrfnbpd"
+              :src="samandehiLogoUrl"
+              @error="samandehiFailed = true"
             />
+            <span v-else class="flex h-20 w-28 flex-col items-center justify-center gap-2 text-center text-xs text-white">
+              <svg class="h-8 w-8 text-indigo-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M12 3 5 6v5c0 4.8 2.8 8.2 7 10 4.2-1.8 7-5.2 7-10V6l-7-3Z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+              نشان ساماندهی
+            </span>
           </button>
         </div>
       </div>
@@ -109,9 +126,13 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { computed, h } from 'vue'
+import { computed, h, ref } from 'vue'
 
 const route = useRoute()
+const enamadFailed = ref(false)
+const samandehiFailed = ref(false)
+const enamadLogoUrl = '/_trust-badges/enamad'
+const samandehiLogoUrl = '/_trust-badges/samandehi'
 const currentRouteCheck = (page_name: string) => {
   if (page_name !== '') return route.name?.toString().split('-').includes(page_name)
   return route.name === 'index'

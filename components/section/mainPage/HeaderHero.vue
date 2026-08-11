@@ -240,7 +240,13 @@ export default {
   ],
 
   setup() {
+    const swiper = ref(null)
+    const onSwiper = (swiperInstance) => {
+      swiper.value = swiperInstance
+    }
     return {
+      swiper,
+      onSwiper,
       modules: [Autoplay, Pagination, Navigation],
     };
   },

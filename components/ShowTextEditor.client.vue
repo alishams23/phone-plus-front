@@ -21,16 +21,13 @@
 <script setup lang="ts">
   import '@vueup/vue-quill/dist/vue-quill.snow.css'
   // import EditIcon from '@/assets/icons/edit.svg'
-  import { defineProps, reactive } from "vue";
+  import { reactive, ref, toRefs } from "vue";
   // import SaveIcon from '@/assets/icons/save.svg'
   const props = defineProps<{
     content: string,
 }>();
 
 const { content } = toRefs(props);
-
-  import { ref, defineEmits } from 'vue';
-
 
   const emit = defineEmits(['update']);
   const editorContent = ref('');
