@@ -85,12 +85,13 @@ export default {
           headers: {
             "Content-type": "application/json",
             Accept: "application/json",
-            Authorization:
-              this.isLogin == true ? `Token ${useUserStore().userToken}` : "",
           },
         })
         .then((response) => {
           this.blogs = response.data.slice(0, 4);
+          this.loading = false;
+        })
+        .catch(() => {
           this.loading = false;
         });
     },

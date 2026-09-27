@@ -102,17 +102,17 @@ export default {
         window.open('https://panel.phoneplus.ir/', '_blank');
     },
     async getShopUsername() {
-      this.loading = true
-      await axios.get(`${apiStore().address}/api/account/admin-shop-username/`, {
-        headers: {
-          "Content-type": "application/json",
-          Accept: "application/json",
-          Authorization: `Token ${useUserStore().userToken}`,
-        },
-      }).then((response) => {
-        
+      if (!useUserStore().userToken || useUserStore().status !== 's') return
+      try {
+        const response = await axios.get(`${apiStore().address}/api/account/admin-shop-username/`, {
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+            Authorization: `Token ${useUserStore().userToken}`,
+          },
+        })
         this.shop_username = response.data.username
-      })
+      } catch (e) {}
     },
 
   },
