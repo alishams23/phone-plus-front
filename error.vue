@@ -55,5 +55,19 @@ const message = computed(() => isShopNotFound.value
   : isNotFound.value ? 'نشانی واردشده درست نیست یا این صفحه دیگر وجود ندارد.'
   : 'در دریافت اطلاعات مشکلی رخ داد. لطفاً دوباره تلاش کنید.')
 
-const handleError = () => clearError({ redirect: useRoute().fullPath })
+const handleError = () => {
+  if (props.error?.statusCode === 401) {
+    try {
+      useUserStore().logout()
+    } catch (e) {}
+  }
+  clearError({ redirect: useRoute().fullPath })
+}
+
+useHead({
+  title: computed(() => `${title.value} | فون پلاس`),
+  meta: [
+    { name: 'robots', content: 'noindex, nofollow' },
+  ],
+})
 </script>

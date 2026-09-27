@@ -30,14 +30,16 @@ export const useUserStore = defineStore('user', {
       const status = cookies.find((row) => row.startsWith('status='))?.split('=')[1];
       const hasDismissedPopup = cookies.find((row) => row.startsWith('hasDismissedPopup='))?.split('=')[1];
       
-      this.userToken = token || null;
-      this.username = username || null;
-      this.status = status || null;
+      const cleanVal = (val) => (val && val !== 'undefined' && val !== 'null' && val.trim() !== '') ? val.trim() : null;
+
+      this.userToken = cleanVal(token);
+      this.username = cleanVal(username);
+      this.status = cleanVal(status);
       this.hasDismissedPopup = hasDismissedPopup === 'true' || false; // Parse boolean from string
     },
 
     isAuthenticated() {
-      return this.userToken !== null;
+      return this.userToken !== null && this.userToken !== 'undefined' && this.userToken !== 'null';
     },
 
     logout() {

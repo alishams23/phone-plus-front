@@ -15,10 +15,12 @@
       </div>
     </div>
   </div>
-  <div v-else v-if="product != null" data-aos="fade-down" class="overflow-x-hidden ">
+  <div v-else-if="product != null" data-aos="fade-down" class="overflow-x-hidden ">
      <Head>
-        <Title>{{ product.title }} </Title>
-      
+        <Title>{{ product.title }} | فون پلاس</Title>
+        <meta v-if="product.plain_description || product.title" name="description" :content="product.plain_description || product.title" />
+        <meta property="og:title" :content="product.title" />
+        <meta v-if="product.image && product.image[0]" property="og:image" :content="product.image[0].photo" />
      </Head>
     <div class="min-h-full">
       <!-- Top Animation -->
@@ -465,7 +467,8 @@ export default {
       return this.product?.shop?.is_active !== false
     },
     isLogin() {
-      return useUserStore().userToken != null;
+      const token = useUserStore().userToken;
+      return token !== null && token !== 'undefined' && token !== 'null' && token !== '';
     },
   },
   data: () => ({
@@ -573,13 +576,38 @@ export default {
     },
     async getData() {
       this.loading = true
-      await axios.get(`${apiStore().address}/api/product/product-retrieve-main-page/${this.$route.params.id}/`, {
-        headers: {
+      try {
+        const userStore = useUserStore()
+        const token = userStore.userToken
+        const headers = {
           "Content-type": "application/json",
           Accept: "application/json",
-          Authorization: this.isLogin == true ? `Token ${useUserStore().userToken}` : '',
-        },
-      }).then(async (response) => {
+        }
+        if (this.isLogin && token) {
+          headers.Authorization = `Token ${token}`
+        }
+
+        let response
+        try {
+          response = await axios.get(
+            `${apiStore().address}/api/product/product-retrieve-main-page/${this.$route.params.id}/`,
+            { headers }
+          )
+        } catch (fetchError) {
+          // If request fails with 401 Unauthorized (e.g. token expired/invalid),
+          // clear stale credentials and retry anonymously because product viewing is public.
+          if (fetchError.response?.status === 401 && headers.Authorization) {
+            userStore.logout()
+            delete headers.Authorization
+            response = await axios.get(
+              `${apiStore().address}/api/product/product-retrieve-main-page/${this.$route.params.id}/`,
+              { headers }
+            )
+          } else {
+            throw fetchError
+          }
+        }
+
         this.selected_color = response.data.colors ? response.data.colors[0] : null
         this.product = response.data
         this.available_gateways = response.data.available_gateways
@@ -597,10 +625,19 @@ export default {
         }
         this.is_sellable = this.is_sellable && this.shopAvailable
         this.setButtons()
-      }).catch((error) => {
+      } catch (error) {
         this.loading = false
-        showError({ statusCode: error.response?.status || 503, statusMessage: 'Product unavailable' })
-      })
+        // Django/WCDN 404 response currently has no CORS headers, causing Axios to report network error
+        const isUnreadableBrowserResponse = !error.response && error.request
+        const statusCode = error.response?.status
+          ?? error.status
+          ?? error.statusCode
+          ?? (isUnreadableBrowserResponse ? 404 : 503)
+        showError({
+          statusCode,
+          statusMessage: statusCode === 404 ? 'Product not found' : 'Product unavailable',
+        })
+      }
     },
     async sendComment() {
 
