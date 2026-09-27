@@ -66,7 +66,6 @@
           <a
             referrerpolicy="origin"
             target="_blank"
-            rel="noopener noreferrer"
             href="https://trustseal.enamad.ir/?id=261983&Code=VwgWQmFg1VHBWyU0iuiF"
             aria-label="نماد اعتماد الکترونیکی"
             class="rounded-2xl bg-white/5 p-2 ring-1 ring-white/10 transition hover:bg-white/10 hover:ring-white/20"
